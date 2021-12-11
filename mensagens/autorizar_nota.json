@@ -1,0 +1,1096 @@
+{
+	"openapi":"3.0.0",
+	"info":{
+		"title":"nf-gem-api",
+		"version":"1.00"
+	},
+	"paths":{
+		"/autorizar_nota":{
+			"post":{
+				"description":"Mensagem de autorizacao de nota",
+				"requestBody":{
+					"required":true,
+					"content":{
+						"application/json":{
+							"schema":{
+								"type":"object",
+								"required":["codigo_numerico","natureza_operacao","modelo_nota","serie","numero_nota","tipo_operacao","destino","codigo_municipio","ambiente","emissor","destinatario","produtos","responsavel_tecnico"],
+								"properties":{
+									"codigo_numerico":{"type":"string","description":"8 digitos arbitrários que compoem a chave"},
+									"natureza_operacao":{"type":"string","description":"Informa se a operação é uma venda,devolucao,transferencia,etc."},
+									"modelo_nota":{"type":"string","description":"Informa se a nota é NFCE ou NFE"},
+									"serie":{"type":"string","description":"Número da série fiscal utilizada pela empresa"},
+									"numero_nota":{"type":"string","description":"Número representando a sequência da nota"},
+									"tipo_operacao":{"type":"string","description":"Representa se a operação é de entrada, onde os produtos comercializados estão entrando no estoque do emissor, ou se a operação é de saída, onde os produtos comercializados estão saindo do estoque do emissor."},
+									"destino":{"type":"string","description":"Especifica se o destino da mercadoria é para o mesmo estado, para outro estado ou para o exterior"},
+									"codigo_municipio":{"type":"string","description":"Código do município onde a operação foi realizada"},
+									"tipo_emissao":{"type":"string","description":"Determina se a emissão é normal ou se é feita em contingência"},
+									"ambiente":{"type":"string","description":"Determina se a nota está sendo emitida em ambiente de produção ou em ambiente de testes(homologação)"},
+									"finalidade":{"type":"string","description":"Especifica qual é a finalidade da nota. Ex: nota compra/venda, nota de devolução, etc."},
+									"consumidor_final":{"type":"string","description":"Determina se a operação esta sendo feita diretamente com o consumidor final dos produtos ou não."},
+									"presenca_comprador":{"type":"string","description":"Determina se o comprador realizou a operação de forma presencial ou remota, via internet ou outro meio de comunicação."},
+									"intermediario":{"type":"string","description":"Indica se a nota será emitida por um sistema próprio, sem intermediários, ou por sistemas de terceiros, como empresas ou orgãos públicos."},
+									"nfe_referenciada":{"type":"string","description":"Contem a chave da NFe referenciada"},
+									"emissor":{
+										"description":"Dados do emissor da nota fiscal",
+										"type":"object",
+										"required":["nome","regime_tributario","logradouro","numero","bairro","codigo_municipio","cep","inscricao_estadual"],
+										"properties":{
+											"cnpj":{"type":"string"},
+											"cpf":{"type":"string"},
+											"nome":{"type":"string","description":"Nome ou razão social do emissor"},
+											"nome_fantasia":{"type":"string"},
+											"logradouro":{"type":"string"},
+											"numero":{"type":"string"},
+											"complemento":{"type":"string"},
+											"bairro":{"type":"string"},
+											"codigo_municipio":{"type":"string","description":"Código do IBGE referente ao município"},
+											"cep":{"type":"string"},
+											"codigo_pais":{"type":"string","description":"Código do BACEN(Banco Central) referente ao país do emissor"},
+											"fone":{"type":"string"},
+											"inscricao_estadual":{"type":"string"},
+											"inscricao_estadual_substituicao_tributaria":{"type":"string"},
+											"regime_tributario":{"type":"string","description":"Regime de tributação da empresa. Pode ser Simples Nacional, Lucro Presumido ou Simples Nacional com Excesso de Sublimite."},
+											"dados_fiscais":{
+												"type":"object",
+												"required":["inscricao_municipal"],
+												"properties":{
+													"inscricao_municipal":{"type":"string"},
+													"cnae":{"type":"string"},
+												}
+											}
+										},
+									},
+									"destinatario":{
+										"type":"object",
+										"required":["logradouro","numero","bairro","codigo_municipio","indicador_inscricao_destinatario"],
+										"properties":{
+											"cnpj":{"type":"string"},
+											"cpf":{"type":"string"},
+											"id_estrangeiro":{"type":"string","description":"Identificador do destinatário caso seja estrangeiro. Pode conter o número de passaporte ou outro documento legal."},
+											"nome":{"type":"string","description":"Nome ou razão social do destinatário"},
+											"logradouro":{"type":"string"},
+											"numero":{"type":"string"},
+											"complemento":{"type":"string"},
+											"bairro":{"type":"string"},
+											"codigo_municipio":{"type":"string"},
+											"cep":{"type":"string"},
+											"codigo_pais":{"type":"string","description":"Código do BACEN(Banco Central) referente ao país do emissor"},
+											"fone":{"type":"string"},
+											"indicador_inscricao_destinatario":{"type":"string"},
+											"inscricao_estadual":{"type":"string"},
+											"inscricao_suframa":{"type":"string"},
+											"inscricao_municipal":{"type":"string"},
+											"email":{"type":"string"}
+										}
+									},
+									"local_retirada":{
+										"description":"Caso os produto devam ser retirados em um local diferente do endereço do emissor da nota, esse grupo deve ser preenchido.",
+										"type":"object",
+										"required":["logradouro","numero","bairro","codigo_municipio"],
+										"properties":{
+											"cnpj":{"type":"string","description":"CNPJ da empresa onde o produto será retirado"},
+											"cpf":{"type":"string","description":"CPF da pessoa onde o produto será retirado"},
+											"nome":{"type":"string","description":"Nome ou razão social"},
+											"logradouro":{"type":"string"},
+											"numero":{"type":"string"},
+											"complemento":{"type":"string"},
+											"bairro":{"type":"string"},
+											"codigo_municipio":{"type":"string"},
+											"cep":{"type":"string"},
+											"codigo_pais":{"type":"string","description":"Código do BACEN(Banco Central) referente ao país do emissor"},
+											"fone":{"type":"string"},
+											"email":{"type":"string"},
+											"inscricao_estadual":{"type":"string"}
+										}
+									},
+									"local_entrega":{
+										"description":"Caso os produto devam ser entregues em um local diferente do endereço do destinatário da nota, esse grupo deve ser preenchido.",
+										"type":"object",
+										"required":["logradouro","numero","bairro","codigo_municipio"],
+										"properties":{
+											"cnpj":{"type":"string","description":"CNPJ da empresa onde o produto será entregue"},
+											"cpf":{"type":"string","description":"CPF da pessoa onde o produto será entregue"},
+											"nome":{"type":"string","description":"Nome ou razão social"},
+											"logradouro":{"type":"string"},
+											"numero":{"type":"string"},
+											"complemento":{"type":"string"},
+											"bairro":{"type":"string"},
+											"codigo_municipio":{"type":"string"},
+											"cep":{"type":"string"},
+											"codigo_pais":{"type":"string","description":"Código do BACEN(Banco Central) referente ao país do emissor"},
+											"fone":{"type":"string"},
+											"email":{"type":"string"},
+											"inscricao_estadual":{"type":"string"}
+										}
+									},
+									"autorizacao_acesso_nota":{
+										"description":"Grupo com os dados de pessoas autorizadas a acessar o documento da NFe",
+										"type":"array",
+										"items":{
+											"type":"object",
+											"properties":{
+												"cnpj":{"type":"string"},
+												"cpf":{"type":"string"}
+											}
+										}
+									},
+									"produtos":{
+										"description":"Informações dos produtos presentes na nota fiscal",
+										"type":"array",
+										"items":{
+											"type":"object",
+											"required":["nome_produto","codigo_ncm","cfop","quantidade","preco"],
+											"properties":{
+												"codigo_produto":{"type":"string","description":"Código utilizado no sistema interno do vendedor do produto. Esse campo pode ser utilizado como forma de identificar mais facilmente os produtos vendidos na nota."},
+												"codigo_ean":{"type":"string"},
+												"nome_produto":{"type":"string"},
+												"codigo_ncm":{"type":"string","description":"NCM(Nomenclatura Comum do Mercosul) é um código que identifica o tipo do produto."},
+												"codigo_nve":{
+													"description":"NVE(Nomenclatura de Valor Aduaneiro e Estatística)",
+													"type":"array",
+													"items":{
+														"type":"object",
+														"required":["codigo"],
+														"properties":{
+															"codigo":{"type":"string"}
+														}
+													}
+												},
+												"origem":{"type":"string","description":"Determina a origem do produto (nacional,internacional,etc.)"},
+												"grupo_cest":{
+													"description":"Indica a escala de produção e dados descritivos do produto",
+													"type":"object",
+													"required":["cest"],
+													"properties":{
+														"cest":{"type":"string","description":"Código CEST do produto"},
+														"indicador_escala":{"type":"string","description":"Indica se a produção é feita em escala relevante"},
+														"cnpj_fabricante":{"type":"string"}
+													}
+												},
+												"codigo_beneficiario_fiscal":{"type":"string"},
+												"codigo_excecao_tipi":{"type":"string"},
+												"cfop":{"type":"string","description":"CFOP(Código Fiscal de Operações e Prestações) identifica o tipo de operação e de origem do produto. Deve ser determinado tendo em vista a origem do produto e qual a operação da nota fiscal."},
+												"unidade_comercial":{"type":"string","description":"Unidade em que o produto é vendido. Ex: unidade, dúzia, trio, Kg, L, etc."},
+												"quantidade":{"type":"string","description":"Quantidade de produtos de acordo com a unidade comercial."},
+												"preco":{"type":"string","description":"Preço de uma unidade do produto de acordo com a unidade comercial."},
+												"gtin":{"type":"string"},
+												"unidade_tributavel":{"type":"string","description":"Unidade utilizada no cálculo dos tributos. Ex: unidade, Kg, L, etc."},
+												"quantidade_tributavel":{"type":"string","description":"Quantidade de produtos de acordo com a unidade tributável."},
+												"valor_frete":{"type":"string","description":"Valor do frete dos produtos"},
+												"valor_seguro":{"type":"string","description":"Valor do seguro total dos produtos"},
+												"valor_desconto":{"type":"string","description":"Valor do desconto total dado pelos produtos"},
+												"valor_outras_despesas":{"type":"string"},
+												"indicador_valor_item":{"type":"string","description":"Indica se o valor total desses produtos deve ser somado na hora de calcular o valor total da nota."},
+												"item_lista_servicos":{"type":"string","description":"Indica o código da Lista de Serviços da ABRASF para esse produto. Informar apenas se o produto na verdade for um serviço."},
+												"codigo_servico":{"type":"string","description":"Indica o código do serviço prestado dentro do município. Informar apenas se o produto na verdade for um serviço."},
+												"importacoes":{
+													"description":"Grupo para declaração de importações",
+													"type":"object",
+													"required":["numero_documento_importacao","data_documento_importacao","local_desembaraco","uf_desembaraco","data_desembaraco","via_transporte","tipo_intermedio","codigo_exportador"],
+													"properties":{
+														"numero_documento_importacao":{"type":"string"},
+														"data_documento_importacao":{"type":"string","description":"Data de registro do documento"},
+														"local_desembaraco":{"type":"string"},
+														"uf_desembaraco":{"type":"string"},
+														"data_desembaraco":{"type":"string"},
+														"via_transporte":{"type":"string","description":"Via por onde a mercadoria será transportada. Ex: marítima, aérea, fluvial, etc."},
+														"valor_frete":{"type":"string","description":"Valor do frete da mercadoria. Valor será utilizado para calcular o imposto AFRMM, destinado à marinha, caso o transporte seja feito pelo mar."},
+														"tipo_intermedio":{"type":"string"},
+														"cnpj":{"type":"string","description":"CNPJ de quem encomendou a importação, caso seja intermediária por alguém que não é o destinatário da nota"},
+														"uf_adquirente_encomendante":{"type":"string","description":"UF do adquirente, caso não seja o destinatário da nota."},
+														"codigo_exportador":{"type":"string","description":"Código arbitrário utilizado para identificar o exportador dos produtos."},
+														"adicoes":{
+															"type":"array",
+															"items":{
+																"type":"object",
+																"required":["numero_adicao","numero_item_adicao","codigo_fabricante_estrangeiro"],
+																"properties":{
+																	"numero_adicao":{"type":"string"},
+																	"numero_item_adicao":{"type":"string","description":"Número sequencial do item na adição."},
+																	"codigo_fabricante_estrangeiro":{"type":"string"},
+																	"valor_desconto_item":{"type":"string"},
+																	"numero_drawback":{"type":"string","description":"Número do ato concessório do drawback."}
+																}
+															}
+														}
+													}
+												},
+												"exportacoes":{
+													"description":"Grupo de dados de exportação",
+													"type":"array",
+													"items":{
+														"type":"object",
+														"properties":{
+															"numero_drawback":{"type":"string","description":"Número do ato concessório de drawback"},
+															"exportacao_indireta":{
+																"type":"object",
+																"required":["numero_registro_exportacao","chave_nfe_exportacao","quantidade_item_exportado"],
+																"properties":{
+																	"numero_registro_exportacao":{"type":"string","description":"Número do registro de exportação"},
+																	"chave_nfe_exportacao":{"type":"string","description":"Chave da NFe recebida para exportação"},
+																	"quantidade_item_exportado":{"type":"string"}
+																}
+															}
+														}
+													}
+												},
+												"numero_pedido":{"type":"string","description":"Identificador do pedido. Pode ser utilizado pelo emissor ou destinatário para fazer o controle interno de seus pedidos."},
+												"numero_item_pedido":{"type":"string","description":"Identificador do item dentro do pedido. Utilizado pelo emissor ou destinatário para fazer o controle de cada item dentro de um pedido."},
+												"numero_fci":{"type":"string","description":"Número de controle da FCI(Ficha de Conteúdo de Importação)"},
+												"rastreamento":{
+													"type":"array",
+													"items":{
+														"type":"object",
+														"required":["numero_lote","quantidade_produto_lote","data_fabricacao","data_validade"],
+														"properties":{
+															"numero_lote":{"type":"string"},
+															"quantidade_produto_lote":{"type":"string"},
+															"data_fabricacao":{"type":"string"},
+															"data_validade":{"type":"string"},
+															"codigo_agregacao":{"type":"string"}
+														}
+													}
+												},
+												"veiculo":{
+													"type":"object",
+													"required":["tipo_operacao","chassi","codigo_cor","descricao_cor","potencia","cilindradas","peso_liquido","peso_bruto","numero_serie","tipo_combustivel","numero_motor","capacidade_maxima_tracao","distancia_eixos","ano_modelo","ano_fabricacao","tipo_pintura","tipo_veiculo","especie_veiculo","condicao_vin","condicao_veiculo","codigo_marca_modelo","codigo_cor_denatran","lotacao","tipo_restricao"],
+													"properties":{
+														"tipo_operacao":{"type":"string","description":"Define se é venda para consumidor final, venda para grandes consumidores, etc."},
+														"chassi":{"type":"string"},
+														"codigo_cor":{"type":"string","description":"Código da cor utilizado pela montadora"},
+														"descricao_cor":{"type":"string"},
+														"potencia":{"type":"string"},
+														"cilindradas":{"type":"string"},
+														"peso_liquido":{"type":"string","description":"Peso líquido em toneladas"},
+														"peso_bruto":{"type":"string","description":"Peso bruto em toneladas"},
+														"numero_serie":{"type":"string"},
+														"tipo_combustivel":{"type":"string","description":"Código da tabela RENAVAM referente ao combustível utilizado pelo veículo."},
+														"numero_motor":{"type":"string"},
+														"capacidade_maxima_tracao":{"type":"string","description":"CMT em toneladas"},
+														"distancia_eixos":{"type":"string"},
+														"ano_modelo":{"type":"string"},
+														"ano_fabricacao":{"type":"string"},
+														"tipo_pintura":{"type":"string"},
+														"tipo_veiculo":{"type":"string","description":"Tipo de pintura de acordo com a tabela RENAVAM."},
+														"especie_veiculo":{"type":"string","Espécie de veículo de acordo com a tabela RENAVAM."},
+														"condicao_vin":{"type":"string","description":"Indica se o veículo possui VIN."},
+														"condicao_veiculo":{"type":"string"},
+														"codigo_marca_modelo":{"type":"string","description":"Código do modelo de acordo com a tabela RENAVAM."},
+														"codigo_cor_denatran":{"type":"string","description":"Código de cor do DENATRAN."},
+														"lotacao":{"type":"string"},
+														"tipo_restricao":{"type":"string","description":"Define se há algum tipo de restrição no veículo."}
+													}
+												},
+												"medicamento":{
+													"type":"object",
+													"required":["codigo_produto_anvisa","preco_maximo_consumidor"],
+													"properties":{
+														"codigo_produto_anvisa":{"type":"string"},
+														"motivo_isencao_anvisa":{"type":"string","description":"Descrição do motivo de isenção. Informar o número do RDC(Resolução da Diretoria Colegiada) da ANVISA referente ao caso."},
+														"preco_maximo_consumidor":{"type":"string"}
+													}
+												},
+												"armas":{
+													"type":"array",
+													"items":{
+														"type":"object",
+														"required":["tipo_arma","numero_serie","numero_cano","descricao"],
+														"properties":{
+															"tipo_arma":{"type":"string"},
+															"numero_serie":{"type":"string"},
+															"numero_cano":{"type":"string"},
+															"descricao":{"type":"string"}
+														}
+													}
+												},
+												"combustivel":{
+													"type":"object",
+													"required":["codigo_produto_anvisa","descricao_anp"],
+													"properties":{
+														"codigo_produto_anp":{"type":"string","description":"Código do produto presente no SIMP(Sistema de Informações de Movimentação de Produtos) da ANP."},
+														"descricao_anp":{"type":"string","description":"Utilizar descrição conforme SIMP da ANP."},
+														"percentual_glp":{"type":"string","description":"Percentual de GLP presente no combustível."},
+														"percentual_gnv":{"type":"string","description":"Percentual de GNV presente no combustível."},
+														"percentual_gni":{"type":"string","description":"Percentual de GNI presente no combustível."},
+														"valor_partida":{"type":"string","description":"Valor por kilograma do produto, sem considerar ICMS."},
+														"codigo_autorizacao_codif":{"type":"string","description":"Código do CODIF obrigatório para algumas UF's."},
+														"quantidade_combustivel":{"type":"string","description":"Quantidade do combustível faturada a temperatura ambiente."},
+														"uf_consumo":{"type":"string","description":"UF onde o combustível será consumido."},
+														"informacoes_cide":{
+															"type":"object",
+															"required":["base_calculo_cide","aliquota_cide","valor_cide"],
+															"properties":{
+																"base_calculo_cide":{"type":"string"},
+																"aliquota_cide":{"type":"string"},
+																"valor_cide":{"type":"string"}
+															}
+														},
+														"encerrante":{
+															"type":"object",
+															"required":["numero_bico","numero_tanque","valor_encerrante_inicio","valor_encerrante_fim"],
+															"properties":{
+																"numero_bico":{"type":"string"},
+																"numero_bomba":{"type":"string"},
+																"numero_tanque":{"type":"string"},
+																"valor_encerrante_inicio":{"type":"string"},
+																"valor_encerrante_fim":{"type":"string"}
+															}
+														}
+													}
+												},
+												"numero_recopi":{"type":"string","description":"Número do RECOPI(Reconhecimento e Controle das Operações com Papel Imune)"},
+												"imposto":{
+													"type":"object",
+													"required":["icms"],
+													"properties":{
+														"icms":{
+															"type":"object",
+															"required":["codigo"],
+															"properties":{
+																"codigo":{"type":"string","description":"Código tributário do ICMS. Pode ser CST para empresas fora do simples naacional e CSOSN para empresas do simples nacional."},
+																"modalidade_base_calculo":{"type":"string"},
+																"percentual_margem_valor_adicionado_icms_st":{"type":"string"},
+																"percentual_reducao_base_calculo_icms_st":{"type":"string"},
+																"motivo_desoneracao":{"type":"string"},
+																"percentual_reducao_base_calculo":{"type":"string"},
+																"percentual_diferimento":{"type":"string"},
+																"aliquota_suportada_consumidor_final":{"type":"string"},
+																"percentual_reducao_base_calculo_efetiva":{"type":"string"},
+																"percentual_base_calculo_operacao_propria":{"type":"string"},
+																"ufst":{"type":"string","description":"UF para qual é devido o ICMS."},
+																"percentual_credito_simples_nacional":{"type":"string"},
+																"modalidade_base_calculo_st":{"type":"string"}
+															}
+														},
+														"pis":{
+															"type":"object",
+															"required":["codigo"],
+															"properties":{
+																"codigo":{"type":"string","description":"Código tributário do PIS."},
+																"aliquota":{"type":"string","description":"Percentual cobrado por produto."},
+																"quantidade_tributavel":{"type":"string","description":"Quantidade de produtos tributados. Por padrão, todos os produtos serão tributados caso esse campo não seja informado."},
+																"valor_unitario":{"type":"string","description":"Imposto por produto em R$."}
+															}
+														},
+														"cofins":{
+															"type":"object",
+															"required":["codigo"],
+															"properties":{
+																"codigo":{"type":"string","description":"Código tributário do COFINS."},
+																"aliquota":{"type":"string","description":"Percentual cobrado por produto."},
+																"quantidade_tributavel":{"type":"string","description":"Quantidade de produtos tributados. Por padrão, todos os produtos serão tributados caso esse campo não seja informado."},
+																"valor_unitario":{"type":"string","description":"Imposto por produto em R$."}
+															}
+														},
+														"ipi":{
+															"type":"object",
+															"required":["codigo"],
+															"properties":{
+																"cnpj_produtor":{"type":"string","description":"CNPJ do produtor da mercadoria."},
+																"codigo_selo":{"type":"string","description":"Código do selo de controle IPI."},
+																"quantidade_selo":{"type":"string","description":"Quantidade de selo de controle."},
+																"codigo_enquadramento":{"type":"string","description":"Código de enquadramento legal do IPI"},
+																"codigo":{"type":"string","description":"Código tributário do IPI."},
+																"aliquota":{"type":"string","description":"Percentual do imposto cobrado por produto."},
+																"quantidade_tributavel":{"type":"string","description":"Quantidade a ser tributada. Por padrão, a quantidade de produtos informada será utilizada caaso esse campo não seja preenchido."},
+																"valor_unitario":{"type":"string","description":"Valor em R$ de imposto cobrado por unidade tributável do produto."}
+															}
+														},
+														"ii":{
+															"type":"object",
+															"required":["valor_despesas_aduaneiras"],
+															"properties":{
+																"valor_despesas_aduaneiras":{"type":"string"}
+															}
+														},
+														"issqn":{
+															"type":"object",
+															"required":["aliquota"],
+															"properties":{
+																"aliquota":{"type":"string"},
+																"codigo_municipio":{"type":"string"},
+																"valor_deducao":{"type":"string","description":"Valor a ser deduzido da base de cálculo."},
+																"valor_desconto_incondicionado":{"type":"string"},
+																"valor_desconto_condicionado":{"type":"string"},
+																"valor_retencao_iss":{"type":"string"},
+																"indicador_exigibilidade_iss":{"type":"string","description":"Define a exigibilidade do ISSQN para o produto."},
+																"codigo_pais":{"type":"string","description":"Código do BACEN(Banco Central) para o país onde o serviço foi prestado."},
+																"indicador_incentivo":{"type":"string","description":"Indica se há ou não incentivo fiscal."}
+															}
+														}
+													}
+												},
+												"devolucao_imposto":{
+													"type":"object",
+													"properties":{
+														"percentual_mercadoria_devolvida":{"type":"string"},
+													}
+												},
+												"informacoes_adicionais":{"type":"string"}
+											}
+										}
+									},
+									"transporte":{
+										"type":"object",
+										"properties":{
+											"modalidade_frete":{"type":"string"},
+											"transportador":{
+												"type":"array",
+												"items":{
+													"type":"object",
+													"required":["nome","inscricao_estadual","endereco","municipio"],
+													"properties":{
+														"cnpj":{"type":"string","description":"CNPJ do transportador"},
+														"cpf":{"type":"string","description":"CPF do transportador"},
+														"nome":{"type":"string"},
+														"inscricao_estadual":{"type":"string"},
+														"endereco":{"type":"string"},
+														"municipio":{"type":"string"},
+														"uf":{"type":"string"}
+													}
+												}
+											},
+											"retencao_icms_transporte":{
+												"type":"object",
+												"required":["valor_servico","base_calculo_retencao_icms","aliquota_retencao","valor_icms_retido","cfop","codigo_municipio"],
+												"properties":{
+													"valor_servico":{"type":"string"},
+													"base_calculo_retencao_icms":{"type":"string"},
+													"aliquota_retencao":{"type":"string"},
+													"valor_icms_retido":{"type":"string"},
+													"cfop":{"type":"string"},
+													"codigo_municipio":{"type":"string"}
+												}
+											},
+											"veiculo_transporte":{
+												"type":"object",
+												"required":["placa","uf"],
+												"properties":{
+													"placa":{"type":"string"},
+													"uf":{"type":"string"},
+													"rntc":{"type":"string"}
+												}
+											},
+											"reboque":{
+												"type":"array",
+												"items":{
+													"type":"object",
+													"required":["placa","uf"],
+													"properties":{
+														"placa":{"type":"string"},
+														"uf":{"type":"string"},
+														"rntc":{"type":"string"}
+													}
+												}
+											},
+											"vagao":{"type":"string"},
+											"balsa":{"type":"string"},
+											"volumes":{
+												"type":"array",
+												"items":{
+													"type":"object",
+													"properties":{
+														"quantidade_volumes":{"type":"string"},
+														"especie_volumes":{"type":"string"},
+														"marca_volumes":{"type":"string"},
+														"numeracao_volumes":{"type":"string"},
+														"peso_liquido":{"type":"string"},
+														"peso_bruto":{"type":"string"},
+														"lacres":{
+															"type":"array",
+															"items":{
+																"type":"object",
+																"required":["numero_lacre"],
+																"properties":{
+																	"numero_lacre":{"type":"string"}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									},
+									"cobranca":{
+										"type":"object",
+										"properties":{
+											"fatura":{
+												"type":"object",
+												"properties":{
+													"numero_fatura":{"type":"string"},
+													"valor_original":{"type":"string"},
+													"valor_desconto":{"type":"string"},
+													"valor_liquido":{"type":"string","description":"Valor original menos o valor do desconto."}
+												}
+											},
+											"parcelas":{
+												"type":"array",
+												"items":{
+													"type":"object",
+													"required":["valor_parcela"],
+													"properties":{
+														"numero_parcela":{"type":"string"},
+														"data_vencimento":{"type":"string"},
+														"valor_parcela":{"type":"string"}
+													}
+												}
+											}
+										}
+									},
+									"pagamento":{
+										"type":"object",
+										"properties":{
+											"detalhamento_pagamentos":{
+												"type":"array",
+												"items":{
+													"type":"object",
+													"properties":{
+														"forma_pagamento":{"type":"string","description":"Indica se o pagamento é à vista ou a prazo."},
+														"meio_pagamento":{"type":"string","description":"Pagamento em dinheio, cartão, etc."},
+														"valor_pagamento":{"type":"string"},
+														"cartao":{
+															"type":"object",
+															"required":["tipo_integracao"],
+															"properties":{
+																"tipo_integracao":{"type":"string","description":"Identifica o tipo de sistema de automação do pagamento."},
+																"cnpj_instituicao":{"type":"string","description":"CNPJ da instituição que processa o pagamento."},
+																"bandeira":{"type":"string","description":"Bandeira do cartão."},
+																"numero_autorizacao_operacao":{"type":"string","description":"Número da autorização da operação com o cartão de crédito."}
+															}
+														}
+													}
+												}
+											},
+										}
+									},
+									"informacoes_intermediario":{
+										"type":"object",
+										"required":["cnpj","identificador_intermediador"],
+										"properties":{
+											"cnpj":{"type":"string"},
+											"identificador_intermediador":{"type":"string","description":"Identificador do intermediador. Ex: nome do vendedor, nome de usuário, etc."}
+										}
+									},
+									"informacoes_adicionais":{
+										"type":"object",
+										"properties":{
+											"informacoes_contribuinte":{"type":"string"},
+											"observacoes_contribuinte":{
+												"type":"array",
+												"items":{
+													"type":"object",
+													"required":["campo","conteudo"],
+													"properties":{
+														"campo":{"type":"string"},
+														"conteudo":{"type":"string"}
+													}
+												}
+											}
+										}
+									},
+									"exportacao":{
+										"type":"object",
+										"required":["uf","descricao_local_exportacao"],
+										"properties":{
+											"uf":{"type":"string","description":"UF de onde a mercadoria será exportada."},
+											"descricao_local_exportacao":{"type":"string","description":"Descrição do local de onde a mercadoria será exportada."},
+											"descricao_local_despacho":{"type":"string","description":"Descrição do local de despacho da mercadoria."}	
+										}
+									},
+									"compra":{
+										"type":"object",
+										"properties":{
+											"nota_empenho":{"type":"string"},
+											"pedido":{"type":"string"},
+											"contrato":{"type":"string"}					
+										}
+									},
+									"cana":{
+										"type":"object",
+										"required":["safra","mes_ano","fornecimento_diario"],
+										"properties":{
+											"safra":{"type":"string","description":"Identificação da safra."},
+											"mes_ano":{"type":"string","Mês e ano de referência."},
+											"fornecimento_diario":{
+												"type":"array",
+												"items":{
+													"type":"object",
+													"required":["dia","quantidade","quantidade_total_mes","quantidade_total_anterior","quantidade_total_geral"],
+													"properties":{
+														"dia":{"type":"string","description":"Dia do fornecimento."},
+														"quantidade":{"type":"string","description":"Quantidade fornecida."},
+														"quantidade_total_mes":{"type":"string","description":"Mês de fornecimento."},
+														"quantidade_total_anterior":{"type":"string"},
+														"quantidade_total_geral":{"type":"string"}
+													}
+												}
+											},
+											"deducoes":{
+												"type":"array",
+												"items":{
+													"type":"object",
+													"required":["descricao","valor_deducao","valor_fornecimentos","valor_total_deducao","valor_liquido_fornecimentos"],
+													"properties":{
+														"descricao":{"type":"string"},
+														"valor_deducao":{"type":"string"},
+														"valor_fornecimentos":{"type":"string"},
+														"valor_total_deducao":{"type":"string"},
+														"valor_liquido_fornecimentos":{"type":"string"}
+													}
+												}
+											}
+										}
+									},
+									"responsavel_tecnico":{
+										"type":"object",
+										"required":["cnpj","nome_contato","email","fone"],
+										"properties":{
+											"cnpj":{"type":"string"},
+											"nome_contato":{"type":"string"},
+											"email":{"type":"string"},
+											"fone":{"type":"string"},
+											"informacoes_csrt":{
+												"type":"object",
+												"required":["id_csrt","csrt"],
+												"properties":{
+													"id_csrt":{"type":"string"},
+													"csrt":{"type":"string"}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses":{
+					"200":{"description":"sucesso"}
+				}
+			}
+		}
+	}
+}
+
+// {
+// 	"codigo_uf":"",
+// 	"codigo_numerico":"",
+// 	"natureza_operacao":"",
+// 	"modelo_nota":"",
+// 	"serie":"",
+// 	"numero_nota":"",
+// 	"tipo_operacao":"",
+// 	"destino":"",
+// 	"codigo_municipio":"",
+// 	"tipo_emissao":"",
+// 	"ambiente":"",
+// 	"finalidade":"",
+// 	"consumidor_final":"",
+// 	"presenca_comprador":"",
+// 	"intermediario":"",
+// 	"nfe_referenciada":"",
+// 	"emissor":{
+// 		"cnpj":"",
+// 		"cpf":"",
+// 		"nome":"",
+// 		"nome_fantasia":"",
+// 		"endereco":{
+// 			"logradouro":"",
+// 			"numero":"",
+// 			"complemento":"",
+// 			"bairro":"",
+// 			"codigo_municipio":"",
+// 			"cep":"",
+// 			"codigo_pais":"",
+// 			"fone":"",
+// 			"inscricao_estadual":"",
+// 			"inscricao_estadual_substituicao_tributaria":"",
+// 			"dados_fiscais":{
+// 				"inscricao_municipal":"",
+// 				"cnae":"",
+// 				"regime_tributario":""
+// 			}
+// 		}
+// 	},
+// 	"destinatario":{
+// 		"cnpj":"",
+// 		"cpf":"",
+// 		"id_estrangeiro":"",
+// 		"nome":"",
+// 		"endereco":"",
+// 		"logradouro":"",
+// 		"numero":"",
+// 		"complemento":"",
+// 		"bairro":"",
+// 		"codigo_municipio":"",
+// 		"cep":"",
+// 		"codigo_pais":"",
+// 		"fone":"",
+// 		"indicador_inscricao_destinatario":"",
+// 		"inscricao_estadual":"",
+// 		"inscricao_suframa":"",
+// 		"inscricao_municipal":"",
+// 		"email":""
+// 	},
+// 	"local_retirada":{
+// 		"cnpj":"",
+// 		"cpf":"",
+// 		"nome":"",
+// 		"logradouro":"",
+// 		"numero":"",
+// 		"complemento":"",
+// 		"bairro":"",
+// 		"codigo_municipio":"",
+// 		"cep":"",
+// 		"codigo_pais":"",
+// 		"fone":"",
+// 		"email":"",
+// 		"inscricao_estadual":""
+// 	},
+// 	"local_entrega":{
+// 		"cnpj":"",
+// 		"cpf":"",
+// 		"nome":"",
+// 		"logradouro":"",
+// 		"numero":"",
+// 		"complemento":"",
+// 		"bairro":"",
+// 		"codigo_municipio":"",
+// 		"cep":"",
+// 		"codigo_pais":"",
+// 		"fone":"",
+// 		"email":"",
+// 		"inscricao_estadual":""
+// 	},
+// 	"autorizacao_acesso_nota":[
+// 		{
+// 			"cnpj":"",
+// 			"cpf":""
+// 		}
+// 	],
+// 	"produtos":[
+// 		{
+// 			"codigo_produto":"",
+// 			"codigo_ean":"",
+// 			"nome_produto":"",
+// 			"codigo_ncm":"",
+// 			"codigo_nve":"",
+// 			"origem":"",
+// 			"grupo_cest":{
+// 				"cest":"",
+// 				"indicador_escala":"",
+// 				"cnpf_fabricante":""
+// 			},
+// 			"codigo_beneficiario_fiscal":"",
+// 			"codigo_excecao_tipi":"",
+// 			"cfop":"",
+// 			"unidade_comercial":"",
+// 			"quantidade_comercial":"",
+// 			"valor_unitario":"",
+// 			"valor_total":"",
+// 			"codigo_ean_tributavel":"",
+// 			"unidade_tributavel":"",
+// 			"quantidade_tributavel":"",
+// 			"valor_unitario_tributacao":"",
+// 			"valor_frete":"",
+// 			"valor_seguro":"",
+// 			"valor_desconto":"",
+// 			"valor_outras_despesas":"",
+// 			"indicador_valor_item":"",
+// 			"importacoes":[
+// 				{
+// 					"numero_documento_importacao":"",
+// 					"data_documento_importacao":"",
+// 					"local_desembaraco":"",
+// 					"uf_desembaraco":"",
+// 					"data_desembaraco":"",
+// 					"via_transporte":"",
+// 					"valor_imposto_marinha":"",
+// 					"tipo_intermedio":"",
+// 					"cnpj":"",
+// 					"uf_adquirente_encomendante":"",
+// 					"codigo_exportador":"",
+// 					"adicoes":[
+// 						{
+// 							"numero_adicao":"",
+// 							"numero_item_adicao":"",
+// 							"codigo_fabricante_estrangeiro":"",
+// 							"valor_desconto_item":"",
+// 							"numero_drawback":""
+// 						}
+// 					]
+// 				}
+// 			],
+// 			"exportacoes":[
+// 				{
+// 					"numero_drawback":"",
+// 					"exportacao_indireta":{
+// 						"numero_registro_exportacao":"",
+// 						"chave_nfe_exportacao":"",
+// 						"quantidade_item_exportado":""
+// 					}
+// 				}
+// 			],
+// 			"numero_pedido":"",
+// 			"numero_item_pedido":"",
+// 			"numero_fci":"",
+// 			"rastreamento":[
+// 				{
+// 					"numero_lote":"",
+// 					"quantidade_produto_lote":"",
+// 					"data_fabricacao":"",
+// 					"data_validade":"",
+// 					"codigo_agregacao":""
+// 				}
+// 			],
+// 			"veiculo":{
+// 				"tipo_operacao":"",
+// 				"chassi":"",
+// 				"codigo_cor":"",
+// 				"descricao_cor":"",
+// 				"potencia":"",
+// 				"cilindradas":"",
+// 				"peso_liquido":"",
+// 				"peso_bruto":"",
+// 				"numero_serie":"",
+// 				"tipo_combustivel":"",
+// 				"numero_motor":"",
+// 				"capacidade_maxima_tracao":"",
+// 				"distancia_eixos":"",
+// 				"ano_modelo":"",
+// 				"ano_fabricacao":"",
+// 				"tipo_pintura":"",
+// 				"tipo_veiculo":"",
+// 				"especie_veiculo":"",
+// 				"condicao_vin":"",
+// 				"condicao_veiculo":"",
+// 				"codigo_marca_modelo":"",
+// 				"codigo_cor_denatran":"",
+// 				"lotacao":"",
+// 				"tipo_restricao":""
+// 			},
+// 			"medicamento":{
+// 				"codigo_produto_anvisa":"",
+// 				"motivo_isencao_anvisa":"",
+// 				"preco_maximo_consumidor":""
+// 			},
+// 			"armas":[
+// 				{
+// 					"tipo_arma":"",
+// 					"numero_serie":"",
+// 					"numero_cano":"",
+// 					"descricao":""
+// 				}
+// 			],
+// 			"combustivel":{
+// 				"codigo_produto_anp":"",
+// 				"descricao_anp":"",
+// 				"percentual_glp":"",
+// 				"percentual_gnv":"",
+// 				"percentual_gni":"",
+// 				"valor_partida":"",
+// 				"codigo_autorizacao_codif":"",
+// 				"quantidade_combustivel":"",
+// 				"uf_consumo":"",
+// 				"informacoes_cide":{
+// 					"base_calculo_cide":"",
+// 					"aliquota_cide":"",
+// 					"valor_cide":""
+// 				},
+// 				"encerrante":{
+// 					"numero_bico":"",
+// 					"numero_bomba":"",
+// 					"numero_tanque":"",
+// 					"valor_encerrante_inicio":"",
+// 					"valor_encerrante_fim":""
+// 				}
+// 			},
+// 			"numero_recopi":"",
+// 			"imposto":{
+// 				"icms":{
+// 					"codigo":"",
+// 					"modalidade_base_calculo":"",
+// 					"percentual_margem_valor_adicionado_icms_st":"",
+// 					"percentual_reducao_base_calculo_icms_st":"",
+// 					"motivo_desoneracao":"",
+// 					"percentual_reducao_base_calculo":"",
+// 					"percentual_diferimento":"",
+// 					"aliquota_suportada_consumidor_final":"",
+// 					"percentual_reducao_base_calculo_efetiva":"",
+// 					"percentual_base_calculo_operacao_propria":"",
+// 					"ufst":"",
+// 					"percentual_credito_simples_nacional":"",
+// 					"modalidade_base_calculo_st":""
+// 				},
+// 				"pis":{
+// 					"codigo":"",
+// 					"aliquota":"",
+// 					"quantidade_tributavel":"",
+// 					"valor_unitario":""
+// 				},
+// 				"cofins":{
+// 					"codigo":"",
+// 					"aliquota":"",
+// 					"quantidade_tributavel":"",
+// 					"valor_unitario":""
+// 				},
+// 				"ipi":{
+// 					"cnpj_produtor":"",
+// 					"codigo_selo":"",
+// 					"quantidade_selo":"",
+// 					"codigo":"",
+// 					"aliquota":"",
+// 					"quantidade_tributavel":"",
+// 					"valor_unitario":""
+// 				},
+// 				"ii":{
+// 					"valor_despesas_aduaneiras":""
+// 				},
+// 				"issqn":{
+// 					"aliquota":"",
+// 					"codigo_municipio":"",
+// 					"item_lista_servicos":"",
+// 					"valor_deducao":"",
+// 					"valor_desconto_incondicionado":"",
+// 					"valor_desconto_condicionado":"",
+// 					"valor_retencao_iss":"",
+// 					"indicador_exigibilidade_iss":"",
+// 					"codigo_servico":"",
+// 					"codigo_pais":"",
+// 					"indicador_incentivo":""
+// 				}
+// 			},
+// 			"devolucao_imposto":{
+// 				"percentual_mercadoria_devolvida":"",
+// 				"valor_ipi_devolvido":""
+// 			},
+// 			"informacoes_adicionais":""
+// 		}
+// 	],
+// 	"transporte":{
+// 		"modalidade_frete":"",
+// 		"transportador":[
+// 			{
+// 				"cnpj":"",
+// 				"cpf":"",
+// 				"nome":"",
+// 				"inscricao_estadual":"",
+// 				"endereco":"",
+// 				"municipio":"",
+// 				"uf":""
+// 			}
+// 		],
+// 		"retencao_icms_transporte":{
+// 			"valor_servico":"",
+// 			"base_calculo_retencao_icms":"",
+// 			"aliquota_retencao":"",
+// 			"valor_icms_retido":"",
+// 			"cfop":"",
+// 			"codigo_municipio":""
+// 		},
+// 		"veiculo_transporte":{
+// 			"placa":"",
+// 			"uf":"",
+// 			"rntc":""
+// 		},
+// 		"reboque":[{
+// 			"placa":"",
+// 			"uf":"",
+// 			"rntc":""
+// 		}],
+// 		"vagao":"",
+// 		"balsa":"",
+// 		"volumes":[{
+// 			"quantidade_volumes":"",
+// 			"especie_volumes":"",
+// 			"marca_volumes":"",
+// 			"numeracao_volumes":"",
+// 			"peso_liquido":"",
+// 			"peso_bruto":"",
+// 			"lacres":[{
+// 				"numero_lacre":""
+// 			}]
+// 		}]
+// 	},
+// 	"cobranca":{
+// 		"fatura":{
+// 			"numero_fatura":"",
+// 			"valor_original":"",
+// 			"valor_desconto":"",
+// 			"valor_liquido":""
+// 		},
+// 		"parcelas":[{
+// 			"numero_parcela":"",
+// 			"data_vencimento":"",
+// 			"valor_parcela":""
+// 		}]
+// 	},
+// 	"pagamento":{
+// 		"detalhamento_pagamentos":[
+// 			{
+// 				"forma_pagamento":"",
+// 				"meio_pagamento":"",
+// 				"valor_pagamento":"",
+// 				"cartao":{
+// 					"tipo_integracao":"",
+// 					"cnpj_instituicao":"",
+// 					"bandeira":"",
+// 					"numero_autorizacao_operacao":""
+// 				}
+// 			}
+// 		],
+// 		"valor_troco":""
+// 	},
+// 	"intermediario":{
+// 		"cnpj":"",
+// 		"identificador_intermediador":""
+// 	},
+// 	"informacoes_adicionais":{
+// 		"informacoes_contribuinte":"",
+// 		"observacoes_contribuinte":[
+// 			{
+// 				"campo":"",
+// 				"conteudo":""
+// 			}
+// 		]
+// 	},
+// 	"exportacao":{
+// 		"uf_saida_pais":"",
+// 		"descricao_embarque_transposicao":"",
+// 		"descricao_local_despacho":""
+// 	},
+// 	"compra":{
+// 		"nota_empenho":"",
+// 		"pedido":"",
+// 		"contrato":""
+// 	},
+// 	"cana":{
+// 		"safra":"",
+// 		"mes_ano":"",
+// 		"fornecimento_diario":[{
+// 			"dia":"",
+// 			"quantidade":"",
+// 			"quantidade_total_mes":"",
+// 			"quantidade_total_anterior":"",
+// 			"quantidade_total_geral":""
+// 		}],
+// 		"deducoes":[{
+// 			"descricao":"",
+// 			"valor_deducao":"",
+// 			"valor_fornecimentos":"",
+// 			"valor_total_deducao":"",
+// 			"valor_liquido_fornecimentos":""
+// 		}]
+// 	},
+// 	"responsavel_tecnico":{
+// 		"cnpj":"",
+// 		"nome_contato":"",
+// 		"email":"",
+// 		"fone":"",
+// 		"informacoes_csrt":{
+// 			"id_csrt":"",
+// 			"csrt":""
+// 		}
+// 	}
+// }
