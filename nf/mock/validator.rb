@@ -16,6 +16,9 @@ module NF
 				regra_x25a_10(xml)
 				regra_x25b_10(xml)
 				regra_e16a_20(xml)
+				#regra_ie_transp(xml)
+				#regra_ie_dest(xml)
+				regra_e18_10(xml)
 				xml
 			end
 
@@ -67,7 +70,33 @@ module NF
 					end
 				end
 
-				def regra_e16a_30(xml)
+				def regra_ie_transp(xml)
+					transportador_cpf = xml.xpath("xs:enviNFe//xs:NFe//xs:infNFe//xs:transp//xs:transporta//xs:CPF","xs" => "http://www.portalfiscal.inf.br/nfe").first
+					transportador_inscricao_estadual = xml.xpath("xs:enviNFe//xs:NFe//xs:infNFe//xs:transp//xs:transporta//xs:IE","xs" => "http://www.portalfiscal.inf.br/nfe").first
+
+					if !transportador_cpf.nil? and !transportador_inscricao_estadual.nil?
+						transportador_inscricao_estadual.remove
+					end
+
+				end
+
+				def regra_ie_dest(xml)
+					destinatario_cnpj = xml.xpath("xs:enviNFe//xs:NFe//xs:infNFe//xs:dest//xs:CNPJ","xs" => "http://www.portalfiscal.inf.br/nfe").first
+					destinatario_inscricao_estadual = xml.xpath("xs:enviNFe//xs:NFe//xs:infNFe//xs:dest//xs:enderDest//xs:IE","xs" => "http://www.portalfiscal.inf.br/nfe").first
+
+					if destinatario_cnpj.nil? and !destinatario_inscricao_estadual.nil?
+						destinatario_inscricao_estadual.remove
+					end
+				end
+
+				def regra_e18_10(xml)
+					inscricao_suframa = xml.xpath("xs:enviNFe//xs:NFe//xs:infNFe//xs:dest//xs:ISUF","xs" => "http://www.portalfiscal.inf.br/nfe").first
+					modelo = xml.xpath("xs:enviNFe//xs:NFe//xs:infNFe//xs:ide//xs:mod","xs" => "http://www.portalfiscal.inf.br/nfe").first
+
+					if modelo.content == '65' and !inscricao_suframa.nil?
+						inscricao_suframa.remove
+					end
+
 				end
 
 				def cria_mapa_tags()

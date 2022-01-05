@@ -7,11 +7,18 @@ module NF
 
 		module Generator
 
-			def self.autorizar_nota
+			def self.autorizar_nota(documento)
 				xml_builder = GeneratorHelper::XMLGenerator.new()
-				xml = xml_builder.autorizar_nota
-				validator = NF::Mock::Validator.new()
-				xml = validator.verifica_regras(xml)
+				
+				if documento.nil?
+					xml = xml_builder.autorizar_nota
+					validator = NF::Mock::Validator.new()
+					xml = validator.verifica_regras(xml)
+				else
+					validator = NF::Mock::Validator.new()
+					xml = validator.verifica_regras(documento)
+				end
+
 				xml
 			end
 

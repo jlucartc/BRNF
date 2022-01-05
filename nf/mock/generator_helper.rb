@@ -62,23 +62,23 @@ module NF
 
 						def constroi_tag(pai)
 							
-							tag_pai = Nokogiri::XML("<#{@mapa_tags[pai]["campo"]}>").elements.first
+							tag = Nokogiri::XML("<#{@mapa_tags[pai]["campo"]}>").elements.first
 							
 							if tem_filhos(pai)
-								filhos = busca_filhos(pai)
+								filhos = busca_filhos_de(pai)
 								filhos.each do |filho|
 									tag_filho = @mapa_tags[filho]
-									adiciona_filho_no_pai(tag_pai,tag_filho)
+									adiciona_tag_filho_em_tag_pai(tag,tag_filho)
 								end
 							else
-								tag_pai = preenche_tag(pai)
+								tag = preenche_tag(pai)
 							end
 
 							if !@mapa_tags[pai]["namespace"].nil?
-								tag_pai["xmlns"] = @mapa_tags[pai]["namespace"]
+								tag["xmlns"] = @mapa_tags[pai]["namespace"]
 							end
 
-							tag_pai
+							tag
 
 						end
 
@@ -90,28 +90,38 @@ module NF
 							end
 						end
 
-						def adiciona_filho_no_pai(tag_pai,dados_filho)
-							tipo = dados_filho["elemento"]
+						def adiciona_tag_filho_em_tag_pai(pai,filho)
+							tipo = filho["elemento"]
 							if ELEMENTOS_SAO_TAGS.include?(tipo)
-								tag_pai.add_child(constroi_tag(dados_filho["id"]))
+								pai.add_child(constroi_tag(filho["id"]))
 							elsif ELEMENTOS_SAO_ATRIBUTOS.include?(tipo)
-								tag_pai[dados_filho["campo"]] = Regexp.new(dados_filho["regex"]).random_example
+								if filho["regex"].nil?
+									pai[filho["campo"]] = ""
+								else
+									pai[filho["campo"]] = Regexp.new(filho["regex"]).random_example.gsub("\u0000",'') if !filho["regex"].nil?
+								end
 							elsif ELEMENTOS_SAO_OPCIONAIS.include?(tipo)
-								netos = busca_filhos(dados_filho["id"])
+								netos = busca_filhos_de(filho["id"])
 								netos.each do |neto|
-									tag_pai.add_child(constroi_tag(neto))
+									elemento_neto = @mapa_tags[neto]["elemento"]
+									if ELEMENTOS_SAO_OPCIONAIS.include?(elemento_neto)
+										# trata caso em que existem elementos opcionais aninhados
+										binding.pry
+									else
+										pai.add_child(constroi_tag(neto))
+									end
 								end
 							end
 						end
 
-						def preenche_tag(tag)
-							regex = @mapa_tags[tag]["regex"]
-							tag = Nokogiri::XML("<#{@mapa_tags[tag]["campo"]}>").elements.first
+						def preenche_tag(id)
+							regex = @mapa_tags[id]["regex"]
+							tag = Nokogiri::XML("<#{@mapa_tags[id]["campo"]}>").elements.first
 							tag.content = Regexp.new(regex).random_example.gsub("\u0000",'') unless regex.nil?
 							tag
 						end
 
-						def busca_filhos(pai)
+						def busca_filhos_de(pai)
 							@mapa_tags[pai]["filhos"]
 						end
 
@@ -145,7 +155,7 @@ module NF
 							tags = @mapa_tags.keys
 							filhos = {tags_filhos_ce: [],tags_filhos_cg: [],tags_filhos_cgo: [],tags_filhos_normais: []}
 							tags.each do |tag_pai|
-								lista_filhos = busca_filhos(tag_pai)
+								lista_filhos = busca_filhos_de(tag_pai)
 								lista_filhos.each do |filho|
 									dados_filho = @mapa_tags[filho]
 									case dados_filho["elemento"]
@@ -162,14 +172,6 @@ module NF
 								@mapa_tags[tag_pai]["filhos"] = ([filhos[:tags_filhos_ce].sample,filhos[:tags_filhos_cg].sample,filhos[:tags_filhos_cgo].sample].compact + filhos[:tags_filhos_normais]).sort
 								filhos = {tags_filhos_ce: [],tags_filhos_cg: [],tags_filhos_cgo: [],tags_filhos_normais: []}
 							end
-						end
-
-						def gera_exemplo(string_regex)
-							valor = ""
-							while valor.empty?
-								valor = Regexp.new(string_regex).random_example
-							end
-							valor
 						end
 
 				end
