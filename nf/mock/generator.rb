@@ -18,8 +18,6 @@ module NF
 					validator = NF::Mock::Validator.new()
 					xml = validator.verifica_autorizacao(documento)
 				end
-
-				xml
 			end
 
 			def self.consultar_status_servico(documento)
@@ -33,11 +31,19 @@ module NF
 					validator = NF::Mock::Validator.new()
 					xml = validator.verifica_consultar_status_servico(documento)
 				end
-
-				xml
 			end
 
 			def self.consultar_retorno_autorizacao(documento)
+				xml_builder = GeneratorHelper::XMLGenerator.new()
+				
+				if documento.nil?
+					xml = xml_builder.consultar_retorno_autorizacao
+					validator = NF::Mock::Validator.new()
+					xml = validator.verifica_consultar_retorno_autorizacao(xml)
+				else
+					validator = NF::Mock::Validator.new()
+					xml = validator.verifica_consultar_retorno_autorizacao(documento)
+				end
 			end
 
 			def self.inutilizar_numeracao(documento)
@@ -70,9 +76,6 @@ module NF
 					validator = NF::Mock::Validator.new()
 					xml = validator.verifica_carta_correcao(documento)
 				end
-			end
-
-			def self.autorizar_transportador(documento)
 			end
 
 			def self.confirmacao_da_operacao(documento)

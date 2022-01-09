@@ -35,6 +35,8 @@ module NF
 					end
 
 					def consultar_retorno_autorizacao
+						xml = Nokogiri::XML::Document.parse(constroi_tag("6").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
+						xml
 					end
 
 					def inutilizar_numeracao
@@ -53,9 +55,6 @@ module NF
 						xml = Nokogiri::XML::Document.parse(constroi_tag("76").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
 						xml = assina_mensagem(xml)
 						xml
-					end
-
-					def autorizar_transportador
 					end
 
 					def confirmacao_da_operacao
