@@ -50,6 +50,7 @@ RSpec.describe Gem do
 	xml_consultar_protocolo = NF::Mock::Generator.consultar_protocolo(nil)
 	xml_nfe_distribuicao_dfe = NF::Mock::Generator.nfe_distribuicao_dfe(nil)
 	xml_consultar_cadastro = NF::Mock::Generator.consultar_cadastro(nil)
+	# --- AUTORIZAR NOTA ---
 	indicador_operacao = xml_autorizacao.xpath("xs:enviNFe//xs:NFe//xs:infNFe//xs:ide//xs:idDest","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	destinatario_uf = xml_autorizacao.xpath("xs:enviNFe//xs:NFe//xs:infNFe//xs:dest//xs:enderDest//xs:UF","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	destinatario_cpf = xml_autorizacao.xpath("xs:enviNFe//xs:NFe//xs:infNFe//xs:dest//xs:CPF","xs" => "http://www.portalfiscal.inf.br/nfe").first
@@ -67,6 +68,7 @@ RSpec.describe Gem do
 	grupo_entrega_inscricao_estadual = xml_autorizacao.xpath("xs:enviNFe//xs:NFe//xs:infNFe//xs:entrega//xs:IE","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	indicador_consumidor_final = xml_autorizacao.xpath("xs:enviNFe//xs:NFe//xs:infNFe//xs:ide//xs:indFinal","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	inscricao_suframa = xml_autorizacao.xpath("xs:enviNFe//xs:NFe//xs:infNFe//xs:dest//xs:ISUF","xs" => "http://www.portalfiscal.inf.br/nfe").first
+	# --- CARTA CORRECAO ---
 	tipo_evento_carta_correcao = xml_evento_carta_correcao.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:tpEvento","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	versao_env_evento_carta_correcao = xml_evento_carta_correcao.xpath("//xs:envEvento//@versao","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	versao_det_evento_carta_correcao = xml_evento_carta_correcao.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//@versao","xs" => "http://www.portalfiscal.inf.br/nfe").first
@@ -92,6 +94,7 @@ RSpec.describe Gem do
 	qtde_item_carta_correcao = xml_evento_carta_correcao.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:qtdeItem","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	aut_xml_carta_correcao = xml_evento_carta_correcao.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:autXML","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	tp_autorizacao_carta_correcao = xml_evento_carta_correcao.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpAutorizacao","xs" => "http://www.portalfiscal.inf.br/nfe").first	
+	# --- CANCELAR NOTA ---
 	tipo_evento_cancelar_nota = xml_evento_cancelar_nota.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:tpEvento","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	ver_evento_cancelar_nota = xml_evento_cancelar_nota.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:verEvento","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	versao_det_evento_cancelar_nota = xml_evento_cancelar_nota.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//@versao","xs" => "http://www.portalfiscal.inf.br/nfe").first
@@ -117,7 +120,9 @@ RSpec.describe Gem do
 	qtde_item_cancelar_nota = xml_evento_cancelar_nota.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:qtdeItem","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	aut_xml_cancelar_nota = xml_evento_cancelar_nota.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:autXML","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	tp_autorizacao_cancelar_nota = xml_evento_cancelar_nota.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpAutorizacao","xs" => "http://www.portalfiscal.inf.br/nfe").first
+	# --- CONSULTA SERVICO ---
 	status_consulta_servico = xml_consultar_status_servico.xpath("//xs:consStatServ//@versao","xs" => "http://www.portalfiscal.inf.br/nfe").first
+	# --- CANCELAR NOTA SUBSTITUICAO ---
 	tpnf_cancelar_nota_substituicao = xml_evento_cancelar_nota_substituicao.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpNF","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	ie_cancelar_nota_substituicao = xml_evento_cancelar_nota_substituicao.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:IE","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	dest_cancelar_nota_substituicao = xml_evento_cancelar_nota_substituicao.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:dest","xs" => "http://www.portalfiscal.inf.br/nfe").first
@@ -145,6 +150,7 @@ RSpec.describe Gem do
 	det_evento_cancelar_nota_substituicao = xml_evento_cancelar_nota_substituicao.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	xconduso_cancelar_nota_substituicao = xml_evento_cancelar_nota_substituicao.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xCondUso","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	xcorrecao_cancelar_nota_substituicao = xml_evento_cancelar_nota_substituicao.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xCorrecao","xs" => "http://www.portalfiscal.inf.br/nfe").first
+	# --- PRORROGAR PRAZO 1 ---
 	versao_env_evento_prorrogar_prazo_1 = xml_evento_prorrogar_prazo_1.xpath("//xs:envEvento//@versao","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	tp_evento_prorrogar_prazo_1 = xml_evento_prorrogar_prazo_1.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:tpEvento","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	versao_det_evento_prorrogar_prazo_1 = xml_evento_prorrogar_prazo_1.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//@versao","xs" => "http://www.portalfiscal.inf.br/nfe").first
@@ -153,6 +159,7 @@ RSpec.describe Gem do
 	item_pedido_prorrogar_prazo_1 = xml_evento_prorrogar_prazo_1.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:itemPedido","xs" => "http://www.portalfiscal.inf.br/nfe")
 	num_item_prorrogar_prazo_1 = xml_evento_prorrogar_prazo_1.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//@numItem","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	qtde_item_prorrogar_prazo_1 = xml_evento_prorrogar_prazo_1.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:qtdeItem","xs" => "http://www.portalfiscal.inf.br/nfe").first
+	# --- PRORROGAR PRAZO 2 ---
 	versao_env_evento_prorrogar_prazo_2 = xml_evento_prorrogar_prazo_2.xpath("//xs:envEvento//@versao","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	tp_evento_prorrogar_prazo_2 = xml_evento_prorrogar_prazo_2.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:tpEvento","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	versao_det_evento_prorrogar_prazo_2 = xml_evento_prorrogar_prazo_2.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//@versao","xs" => "http://www.portalfiscal.inf.br/nfe").first
@@ -161,6 +168,7 @@ RSpec.describe Gem do
 	item_pedido_prorrogar_prazo_2 = xml_evento_prorrogar_prazo_2.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:itemPedido","xs" => "http://www.portalfiscal.inf.br/nfe")
 	num_item_prorrogar_prazo_2 = xml_evento_prorrogar_prazo_2.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//@numItem","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	qtde_item_prorrogar_prazo_2 = xml_evento_prorrogar_prazo_2.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:qtdeItem","xs" => "http://www.portalfiscal.inf.br/nfe").first
+	# --- ATOR INTERESSADO ---
 	n_prot_ator_interessado = xml_evento_ator_interessado.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:nProt","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	x_just_ator_interessado = xml_evento_ator_interessado.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xJust","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	ch_nfe_ref_ator_interessado = xml_evento_ator_interessado.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:chNFeRef","xs" => "http://www.portalfiscal.inf.br/nfe").first
@@ -184,6 +192,7 @@ RSpec.describe Gem do
 	ver_evento_ator_interessado = xml_evento_ator_interessado.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:verEvento","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	versao_det_evento_ator_interessado = xml_evento_ator_interessado.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//@versao","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	num_item_ator_interessado = xml_evento_ator_interessado.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//@numItem","xs" => "http://www.portalfiscal.inf.br/nfe").first
+	# --- CONFIRMACAO DA OPERACAO ---
 	c_orgao_autor_confirmacao_da_operacao = xml_evento_confirmacao_da_operacao.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:cOrgaoAutor","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	tp_autor_confirmacao_da_operacao = xml_evento_confirmacao_da_operacao.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpAutor","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	ver_aplic_confirmacao_da_operacao = xml_evento_confirmacao_da_operacao.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:verAplic","xs" => "http://www.portalfiscal.inf.br/nfe").first
@@ -209,6 +218,7 @@ RSpec.describe Gem do
 	num_item_det_evento_confirmacao_da_operacao = xml_evento_confirmacao_da_operacao.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//@numItem","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	desc_evento_confirmacao_da_operacao = xml_evento_confirmacao_da_operacao.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:descEvento","xs" => "http://www.portalfiscal.inf.br/nfe")
 	x_just_confirmacao_da_operacao = xml_evento_confirmacao_da_operacao.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xJust","xs" => "http://www.portalfiscal.inf.br/nfe")
+	# --- CIENCIA DA OPERACAO ---
 	c_orgao_autor_ciencia_da_operacao = xml_evento_ciencia_da_operacao.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:cOrgaoAutor","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	tp_autor_ciencia_da_operacao = xml_evento_ciencia_da_operacao.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpAutor","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	ver_aplic_ciencia_da_operacao = xml_evento_ciencia_da_operacao.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:verAplic","xs" => "http://www.portalfiscal.inf.br/nfe").first
@@ -234,6 +244,7 @@ RSpec.describe Gem do
 	num_item_det_evento_ciencia_da_operacao = xml_evento_ciencia_da_operacao.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//@numItem","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	desc_evento_ciencia_da_operacao = xml_evento_ciencia_da_operacao.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:descEvento","xs" => "http://www.portalfiscal.inf.br/nfe")
 	x_just_ciencia_da_operacao = xml_evento_ciencia_da_operacao.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xJust","xs" => "http://www.portalfiscal.inf.br/nfe")
+	# --- DESCONHECIMENTO DA OPERACAO ---
 	c_orgao_autor_desconhecimento_da_operacao = xml_evento_desconhecimento_da_operacao.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:cOrgaoAutor","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	tp_autor_desconhecimento_da_operacao = xml_evento_desconhecimento_da_operacao.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpAutor","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	ver_aplic_desconhecimento_da_operacao = xml_evento_desconhecimento_da_operacao.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:verAplic","xs" => "http://www.portalfiscal.inf.br/nfe").first
@@ -259,6 +270,7 @@ RSpec.describe Gem do
 	num_item_det_evento_desconhecimento_da_operacao = xml_evento_desconhecimento_da_operacao.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//@numItem","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	desc_evento_desconhecimento_da_operacao = xml_evento_desconhecimento_da_operacao.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:descEvento","xs" => "http://www.portalfiscal.inf.br/nfe")
 	x_just_desconhecimento_da_operacao = xml_evento_desconhecimento_da_operacao.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xJust","xs" => "http://www.portalfiscal.inf.br/nfe")
+	# --- OPERACAO NAO REALIZADA ---
 	c_orgao_autor_operacao_nao_realizada = xml_evento_operacao_nao_realizada.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:cOrgaoAutor","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	tp_autor_operacao_nao_realizada = xml_evento_operacao_nao_realizada.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpAutor","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	ver_aplic_operacao_nao_realizada = xml_evento_operacao_nao_realizada.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:verAplic","xs" => "http://www.portalfiscal.inf.br/nfe").first
@@ -284,6 +296,7 @@ RSpec.describe Gem do
 	num_item_det_evento_operacao_nao_realizada = xml_evento_operacao_nao_realizada.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//@numItem","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	desc_evento_operacao_nao_realizada = xml_evento_operacao_nao_realizada.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:descEvento","xs" => "http://www.portalfiscal.inf.br/nfe")
 	x_just_operacao_nao_realizada = xml_evento_operacao_nao_realizada.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xJust","xs" => "http://www.portalfiscal.inf.br/nfe")
+	# --- EMISSAO EM CONTINGENCIA ---
 	tipo_autor_emissao_em_contingencia = xml_evento_emissao_contingencia.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpAutor","xs" => "http://www.portalfiscal.inf.br/nfe")
 	n_prot_emissao_em_contingencia = xml_evento_emissao_contingencia.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:nProt","xs" => "http://www.portalfiscal.inf.br/nfe")
 	ch_nfe_ref_emissao_em_contingencia = xml_evento_emissao_contingencia.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:chNFeRef","xs" => "http://www.portalfiscal.inf.br/nfe")
@@ -302,6 +315,7 @@ RSpec.describe Gem do
 	qtde_item_emissao_em_contingencia = xml_evento_emissao_contingencia.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:qtdeItem","xs" => "http://www.portalfiscal.inf.br/nfe")
 	aut_xml_emissao_em_contingencia = xml_evento_emissao_contingencia.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:autXML","xs" => "http://www.portalfiscal.inf.br/nfe")
 	tp_autorizacao_emissao_em_contingencia = xml_evento_emissao_contingencia.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpAutorizacao","xs" => "http://www.portalfiscal.inf.br/nfe")
+	# --- CANCELAR PRAZO 1 ---
 	versao_env_evento_cancelar_prazo_1 = xml_evento_cancelamento_prazo_1.xpath("//xs:envEvento//@versao","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	tp_evento_cancelar_prazo_1 = xml_evento_cancelamento_prazo_1.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:tpEvento","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	versao_det_evento_cancelar_prazo_1 = xml_evento_cancelamento_prazo_1.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//@versao","xs" => "http://www.portalfiscal.inf.br/nfe").first
@@ -310,6 +324,7 @@ RSpec.describe Gem do
 	item_pedido_cancelar_prazo_1 = xml_evento_cancelamento_prazo_1.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:itemPedido","xs" => "http://www.portalfiscal.inf.br/nfe")
 	num_item_cancelar_prazo_1 = xml_evento_cancelamento_prazo_1.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//@numItem","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	qtde_item_cancelar_prazo_1 = xml_evento_cancelamento_prazo_1.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:qtdeItem","xs" => "http://www.portalfiscal.inf.br/nfe").first	
+	# --- CANCELAR PRAZO 2 ---
 	versao_env_evento_cancelar_prazo_2 = xml_evento_cancelamento_prazo_2.xpath("//xs:envEvento//@versao","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	tp_evento_cancelar_prazo_2 = xml_evento_cancelamento_prazo_2.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:tpEvento","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	versao_det_evento_cancelar_prazo_2 = xml_evento_cancelamento_prazo_2.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//@versao","xs" => "http://www.portalfiscal.inf.br/nfe").first
@@ -318,137 +333,104 @@ RSpec.describe Gem do
 	item_pedido_cancelar_prazo_2 = xml_evento_cancelamento_prazo_2.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:itemPedido","xs" => "http://www.portalfiscal.inf.br/nfe")
 	num_item_cancelar_prazo_2 = xml_evento_cancelamento_prazo_2.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//@numItem","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	qtde_item_cancelar_prazo_2 = xml_evento_cancelamento_prazo_2.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:qtdeItem","xs" => "http://www.portalfiscal.inf.br/nfe").first	
+	# --- CONSULTAR RETORNO AUTORIZACAO ---
 	versao_cons_reci_nfe_consultar_retorno_autorizacao = xml_consultar_retorno_autorizacao.xpath("//xs:consReciNFe//@versao","xs" => "http://www.portalfiscal.inf.br/nfe").first
+	# --- CONSULTA PROTOCOLO ---
 	versao_cons_sit_nfe_consulta_protocolo = xml_consultar_protocolo.xpath("//xs:consSitNFe//@versao","xs" => "http://www.portalfiscal.inf.br/nfe").first
+	# --- DISTRIBUICAO DFE ---
 	versao_dist_dfe_int_nfe_distribuicao_dfe = xml_nfe_distribuicao_dfe.xpath("//xs:distDFeInt//@versao","xs" => "http://www.portalfiscal.inf.br/nfe").first
+	# --- CONSULTAR CADASTRO ---
 	versao_cons_cad_consultar_cadastro = xml_consultar_cadastro.xpath("//xs:ConsCad//@versao","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	csts_operacao_isenta = ["40","41"]
 	csosns_operacao_isenta = ["103","300","400"]
-	puts xml_autorizacao
-	puts xml_inutilizacao
-	puts xml_evento_carta_correcao
-	puts xml_evento_cancelar_nota
-	puts xml_consultar_status_servico
-	puts xml_evento_cancelar_nota_substituicao
-	puts xml_evento_prorrogar_prazo_1
-	puts xml_evento_prorrogar_prazo_2
-	puts xml_evento_ator_interessado
-	puts xml_evento_confirmacao_da_operacao
-	puts xml_evento_ciencia_da_operacao
-	puts xml_evento_desconhecimento_da_operacao
-	puts xml_evento_emissao_contingencia
-	puts xml_evento_cancelamento_prazo_1
-	puts xml_evento_cancelamento_prazo_2
-	puts xml_consultar_retorno_autorizacao
-	puts xml_consultar_protocolo
-	puts xml_nfe_distribuicao_dfe
-	puts xml_consultar_cadastro
 
 	it "deve criar um xml válido para mensagem de autorizacao de notas" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_autorizacao))
-		puts "--- AUTORIZACAO --- \n\n#{schema.validate(xml_autorizacao)}"
 		expect(schema.valid?(xml_autorizacao)).to be(true)
 	end
 
 	it "deve criar um xml válido para mensagem de inutilizacao de notas" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_inutilizacao))
-		puts "--- INUTILIZACAO --- \n\n#{schema.validate(xml_inutilizacao)}"
 		expect(schema.valid?(xml_inutilizacao)).to be(true)
 	end
 
 	it "deve criar um xml válido para mensagem de evento de carta de correção" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_evento_carta_correcao))
-		puts "--- CARTA CORRECAO --- \n\n#{schema.validate(xml_evento_carta_correcao)}"
 		expect(schema.valid?(xml_evento_carta_correcao)).to be(true)
 	end
 
 	it "deve criar um xml válido para mensagem de cancelamento de nota" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_evento_cancelar_nota))
-		puts "--- CANCELAR NOTA --- \n\n#{schema.validate(xml_evento_cancelar_nota)}"
 		expect(schema.valid?(xml_evento_cancelar_nota)).to be(true)
 	end
 
 	it "deve criar um xml válido para mensagem de consulta de status" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_consultar_status_servico))
-		puts "--- CONSULTAR STATUS SERVICO --- \n\n#{schema.validate(xml_consultar_status_servico)}"
 		expect(schema.valid?(xml_consultar_status_servico)).to be(true)
 	end
 
 	it "deve criar um xml válido para mensagem de cancelamento de nota substituicao" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_evento_cancelar_nota_substituicao))
-		puts "--- CANCELAR NOTA SUBSTITUICAO --- \n\n#{schema.validate(xml_evento_cancelar_nota_substituicao)}"
 		expect(schema.valid?(xml_evento_cancelar_nota_substituicao)).to be(true)
 	end
 
 	it "deve criar um xml válido para mensagem de prorrogamento de prazo 1" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_evento_prorrogar_prazo_1))
-		puts "--- PRORROGAR PRAZO 1 --- \n\n#{schema.validate(xml_evento_prorrogar_prazo_1)}"
 		expect(schema.valid?(xml_evento_prorrogar_prazo_1)).to be(true)
 	end
 
 	it "deve criar um xml válido para mensagem de prorrogamento de prazo 2" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_evento_prorrogar_prazo_2))
-		puts "--- PRORROGAR PRAZO 2 --- \n\n#{schema.validate(xml_evento_prorrogar_prazo_2)}"
 		expect(schema.valid?(xml_evento_prorrogar_prazo_2)).to be(true)
 	end
 
 	it "deve criar um xml válido para mensagem de ator interessado" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_evento_ator_interessado))
-		puts "--- ATOR INTERESSADO --- \n\n#{schema.validate(xml_evento_ator_interessado)}"
 		expect(schema.valid?(xml_evento_ator_interessado)).to be(true)
 	end
 
 	it "deve criar um xml válido para mensagem de confirmacao da operacao" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_evento_confirmacao_da_operacao))
-		puts "--- CONFIRMACAO DA OPERACAO --- \n\n#{schema.validate(xml_evento_confirmacao_da_operacao)}"
 		expect(schema.valid?(xml_evento_confirmacao_da_operacao)).to be(true)
 	end
 
 	it "deve criar um xml válido para mensagem de ciencia da operacao" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_evento_ciencia_da_operacao))
-		puts "--- CIENCIA DA OPERACAO --- \n\n#{schema.validate(xml_evento_ciencia_da_operacao)}"
 		expect(schema.valid?(xml_evento_ciencia_da_operacao)).to be(true)
 	end
 
 	it "deve criar um xml válido para mensagem de desconhecimento da operacao" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_evento_desconhecimento_da_operacao))
-		puts "--- DESCONHECIMENTO DA OPERACAO --- \n\n#{schema.validate(xml_evento_desconhecimento_da_operacao)}"
 		expect(schema.valid?(xml_evento_desconhecimento_da_operacao)).to be(true)
 	end
 
 	it "deve criar um xml válido para mensagem de operacao não realizada" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_evento_operacao_nao_realizada))
-		puts "--- OPERACAO NAO REALIZADA --- \n\n#{schema.validate(xml_evento_operacao_nao_realizada)}"
 		expect(schema.valid?(xml_evento_operacao_nao_realizada)).to be(true)
 	end
 
 	it "deve criar um xml válido para mensagem de emissao em contingencia" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_evento_emissao_contingencia))
-		puts "--- EMISSAO EM CONTINGENCIA --- \n\n#{schema.validate(xml_evento_emissao_contingencia)}"
 		expect(schema.valid?(xml_evento_emissao_contingencia)).to be(true)
 	end
 
 	it "deve criar um xml válido para mensagem de consulta de retorno de autorização" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_consultar_retorno_autorizacao))
-		puts "--- CONSULTAR RETORNO AUTORIZACAO --- \n\n#{schema.validate(xml_consultar_retorno_autorizacao)}"
 		expect(schema.valid?(xml_consultar_retorno_autorizacao)).to be(true)
 	end
 
 	it "deve criar um xml válido para mensagem de consultar protocolo" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_consultar_protocolo))
-		puts "--- CONSULTAR PROTOCOLO --- \n\n#{schema.validate(xml_consultar_protocolo)}"
 		expect(schema.valid?(xml_consultar_protocolo)).to be(true)
 	end
 
 	it "deve criar um xml válido para mensagem de distribuicao dfe" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_nfe_distribuicao_dfe))
-		puts "--- DISTRIBUICAO DFE --- \n\n#{schema.validate(xml_nfe_distribuicao_dfe)}"
 		expect(schema.valid?(xml_nfe_distribuicao_dfe)).to be(true)
 	end
 
 	it "deve criar um xml válido para mensagem de consultar cadastro" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_consultar_cadastro))
-		puts "--- CONSULTAR CADASTRO --- \n\n#{schema.validate(xml_consultar_cadastro)}"
 		expect(schema.valid?(xml_consultar_cadastro)).to be(true)
 	end
 

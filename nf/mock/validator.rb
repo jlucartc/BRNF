@@ -14,7 +14,7 @@ module NF
 				@mapa_tags = cria_mapa_tags
 			end
 
-			def verifica_autorizacao(xml)
+			def valida_autorizar_nota(xml)
 				nfref_filho_unico(xml)
 				regra_e16a_10(xml)
 				regra_e16a_20(xml)
@@ -28,11 +28,31 @@ module NF
 				xml
 			end
 
-			def verifica_inutilizacao(xml)
+			def valida_consultar_status_servico(xml)
+				corrige_versao_consultar_status_servico(xml)
 				xml
 			end
 
-			def verifica_carta_correcao(xml)
+			def valida_consultar_retorno_autorizacao(xml)
+				corrige_versao_cons_reci_nfe_consultar_retorno_autorizacao(xml)
+				xml
+			end
+
+			def valida_inutilizar_numeracao(xml)
+				xml
+			end
+
+			def valida_nfe_distribuicao_dfe(xml)
+				corrige_versao_dist_dfe_int_nfe_distribuicao_dfe(xml)
+				xml
+			end
+
+			def valida_consultar_protocolo(xml)
+				corrige_versao_cons_sit_nfe_consultar_protocolo(xml)
+				xml
+			end
+
+			def valida_criar_carta_correcao(xml)
 				corrige_tipo_evento_carta_correcao(xml)
 				corrige_versao_carta_correcao(xml)
 				corrige_ver_evento_carta_correcao(xml)
@@ -61,7 +81,146 @@ module NF
 				xml
 			end
 
-			def verifica_cancelar_nota_substituicao(xml)
+			def valida_confirmacao_da_operacao(xml)
+				corrige_versao_env_evento_confirmacao_da_operacao(xml)
+				corrige_tp_evento_confirmacao_da_operacao(xml)
+				corrige_ver_evento_confirmacao_da_operacao(xml)
+				corrige_versao_det_evento_confirmacao_da_operacao(xml)
+				corrige_x_just_confirmacao_da_operacao(xml)
+				remove_num_item_det_evento_confirmacao_da_operacao(xml)
+				corrige_desc_evento_confirmacao_da_operacao(xml)
+				remove_c_orgao_autor_confirmacao_da_operacao(xml)
+				remove_tp_autor_confirmacao_da_operacao(xml)
+				remove_ver_aplic_confirmacao_da_operacao(xml)
+				remove_n_prot_confirmacao_da_operacao(xml)
+				remove_ch_nfe_ref_confirmacao_da_operacao(xml)
+				remove_x_correcao_confirmacao_da_operacao(xml)
+				remove_x_cond_uso_confirmacao_da_operacao(xml)
+				remove_dh_emi_confirmacao_da_operacao(xml)
+				remove_tp_nf_confirmacao_da_operacao(xml)
+				remove_ie_confirmacao_da_operacao(xml)
+				remove_dest_confirmacao_da_operacao(xml)
+				remove_v_nf_confirmacao_da_operacao(xml)
+				remove_v_icms_confirmacao_da_operacao(xml)
+				remove_v_st_confirmacao_da_operacao(xml)
+				remove_item_pedido_confirmacao_da_operacao(xml)
+				remove_qtde_item_confirmacao_da_operacao(xml)
+				remove_aut_xml_confirmacao_da_operacao(xml)
+				remove_tp_autorizacao_confirmacao_da_operacao(xml)
+				xml
+			end
+
+			def valida_ciencia_da_operacao(xml)
+				corrige_versao_env_evento_ciencia_da_operacao(xml)
+				corrige_tp_evento_ciencia_da_operacao(xml)
+				corrige_ver_evento_ciencia_da_operacao(xml)
+				corrige_versao_det_evento_ciencia_da_operacao(xml)
+				corrige_x_just_ciencia_da_operacao(xml)
+				remove_num_item_det_evento_ciencia_da_operacao(xml)
+				corrige_desc_evento_ciencia_da_operacao(xml)
+				remove_c_orgao_autor_ciencia_da_operacao(xml)
+				remove_tp_autor_ciencia_da_operacao(xml)
+				remove_ver_aplic_ciencia_da_operacao(xml)
+				remove_n_prot_ciencia_da_operacao(xml)
+				remove_ch_nfe_ref_ciencia_da_operacao(xml)
+				remove_x_correcao_ciencia_da_operacao(xml)
+				remove_x_cond_uso_ciencia_da_operacao(xml)
+				remove_dh_emi_ciencia_da_operacao(xml)
+				remove_tp_nf_ciencia_da_operacao(xml)
+				remove_ie_ciencia_da_operacao(xml)
+				remove_dest_ciencia_da_operacao(xml)
+				remove_v_nf_ciencia_da_operacao(xml)
+				remove_v_icms_ciencia_da_operacao(xml)
+				remove_v_st_ciencia_da_operacao(xml)
+				remove_item_pedido_ciencia_da_operacao(xml)
+				remove_qtde_item_ciencia_da_operacao(xml)
+				remove_aut_xml_ciencia_da_operacao(xml)
+				remove_tp_autorizacao_ciencia_da_operacao(xml)
+				xml
+			end
+
+			def valida_desconhecimento_da_operacao(xml)
+				corrige_versao_env_evento_desconhecimento_da_operacao(xml)
+				corrige_tp_evento_desconhecimento_da_operacao(xml)
+				corrige_ver_evento_desconhecimento_da_operacao(xml)
+				corrige_versao_det_evento_desconhecimento_da_operacao(xml)
+				corrige_x_just_desconhecimento_da_operacao(xml)
+				remove_num_item_det_evento_desconhecimento_da_operacao(xml)
+				corrige_desc_evento_desconhecimento_da_operacao(xml)
+				remove_c_orgao_autor_desconhecimento_da_operacao(xml)
+				remove_tp_autor_desconhecimento_da_operacao(xml)
+				remove_ver_aplic_desconhecimento_da_operacao(xml)
+				remove_n_prot_desconhecimento_da_operacao(xml)
+				remove_ch_nfe_ref_desconhecimento_da_operacao(xml)
+				remove_x_correcao_desconhecimento_da_operacao(xml)
+				remove_x_cond_uso_desconhecimento_da_operacao(xml)
+				remove_dh_emi_desconhecimento_da_operacao(xml)
+				remove_tp_nf_desconhecimento_da_operacao(xml)
+				remove_ie_desconhecimento_da_operacao(xml)
+				remove_dest_desconhecimento_da_operacao(xml)
+				remove_v_nf_desconhecimento_da_operacao(xml)
+				remove_v_icms_desconhecimento_da_operacao(xml)
+				remove_v_st_desconhecimento_da_operacao(xml)
+				remove_item_pedido_desconhecimento_da_operacao(xml)
+				remove_qtde_item_desconhecimento_da_operacao(xml)
+				remove_aut_xml_desconhecimento_da_operacao(xml)
+				remove_tp_autorizacao_desconhecimento_da_operacao(xml)
+				xml
+			end
+
+			def valida_operacao_nao_realizada(xml)
+				corrige_versao_env_evento_operacao_nao_realizada(xml)
+				corrige_tp_evento_operacao_nao_realizada(xml)
+				corrige_ver_evento_operacao_nao_realizada(xml)
+				corrige_versao_det_evento_operacao_nao_realizada(xml)
+				corrige_x_just_operacao_nao_realizada(xml)
+				remove_num_item_det_evento_operacao_nao_realizada(xml)
+				corrige_desc_evento_operacao_nao_realizada(xml)
+				remove_c_orgao_autor_operacao_nao_realizada(xml)
+				remove_tp_autor_operacao_nao_realizada(xml)
+				remove_ver_aplic_operacao_nao_realizada(xml)
+				remove_n_prot_operacao_nao_realizada(xml)
+				remove_ch_nfe_ref_operacao_nao_realizada(xml)
+				remove_x_correcao_operacao_nao_realizada(xml)
+				remove_x_cond_uso_operacao_nao_realizada(xml)
+				remove_dh_emi_operacao_nao_realizada(xml)
+				remove_tp_nf_operacao_nao_realizada(xml)
+				remove_ie_operacao_nao_realizada(xml)
+				remove_dest_operacao_nao_realizada(xml)
+				remove_v_nf_operacao_nao_realizada(xml)
+				remove_v_icms_operacao_nao_realizada(xml)
+				remove_v_st_operacao_nao_realizada(xml)
+				remove_item_pedido_operacao_nao_realizada(xml)
+				remove_qtde_item_operacao_nao_realizada(xml)
+				remove_aut_xml_operacao_nao_realizada(xml)
+				remove_tp_autorizacao_operacao_nao_realizada(xml)
+				xml
+			end
+
+			def valida_emissao_contingencia(xml)
+				corrige_tipo_autor_emissao_em_contingencia(xml)
+				corrige_n_prot_emissao_em_contingencia(xml)
+				remove_ch_nfe_ref_emissao_em_contingencia(xml)
+				remove_x_correcao_emissao_em_contingencia(xml)
+				remove_x_cond_uso_emissao_em_contingencia(xml)
+				remove_x_just_emissao_em_contingencia(xml)
+				corrige_versao_env_evento_emissao_em_contingencia(xml)
+				corrige_tp_evento_emissao_em_contingencia(xml)
+				corrige_ver_evento_emissao_em_contingencia(xml)
+				corrige_versao_det_evento_emissao_em_contingencia(xml)
+				corrige_num_item_det_evento_emissao_em_contingencia(xml)
+				corrige_desc_evento_emissao_em_contingencia(xml)
+				corrige_c_orgao_autor_emissao_em_contingencia(xml)
+				corrige_ver_aplic_emissao_em_contingencia(xml)
+				remove_item_pedido_emissao_em_contingencia(xml)
+				remove_qtde_item_emissao_em_contingencia(xml)
+				remove_aut_xml_emissao_em_contingencia(xml)
+				remove_tp_autorizacao_emissao_em_contingencia(xml)
+				corrige_c_orgao_emissao_em_contingencia(xml)
+				xml
+			end
+
+			def valida_cancelar_nota_substituicao(xml)
 				corrige_versao_env_evento_cancelar_nota_substituicao(xml)
 				corrige_versao_det_evento_cancelar_nota_substituicao(xml)
 				corrige_ver_evento_cancelar_nota_substituicao(xml)
@@ -92,7 +251,7 @@ module NF
 				xml
 			end
 
-			def verifica_cancelar_nota(xml)
+			def valida_cancelar_nota(xml)
 				corrige_tipo_evento_cancelar_nota(xml)
 				corrige_ver_evento_cancelar_nota(xml)
 				corrige_versao_det_evento_cancelar_nota(xml)
@@ -121,12 +280,7 @@ module NF
 				xml
 			end
 
-			def verifica_consultar_status_servico(xml)
-				corrige_versao_consultar_status_servico(xml)
-				xml
-			end
-
-			def verifica_prorrogar_prazo_1(xml)
+			def valida_prorrogar_prazo_1(xml)
 				corrige_tipo_evento_prorrogar_prazo_1(xml)
 				corrige_versao_env_evento_prorrogar_prazo_1(xml)
 				corrige_desc_evento_prorrogar_prazo_1(xml)
@@ -135,7 +289,7 @@ module NF
 				xml
 			end
 
-			def verifica_prorrogar_prazo_2(xml)
+			def valida_prorrogar_prazo_2(xml)
 				corrige_tipo_evento_prorrogar_prazo_2(xml)
 				corrige_versao_env_evento_prorrogar_prazo_2(xml)
 				corrige_desc_evento_prorrogar_prazo_2(xml)
@@ -144,7 +298,7 @@ module NF
 				xml
 			end
 
-			def verifica_ator_interessado(xml)
+			def valida_ator_interessado(xml)
 				remove_n_prot_ator_interessado(xml)
 				remove_x_just_ator_interessado(xml)
 				remove_ch_nfe_ref_ator_interessado(xml)
@@ -171,146 +325,7 @@ module NF
 				xml
 			end
 
-			def verifica_confirmacao_da_operacao(xml)
-				corrige_versao_env_evento_confirmacao_da_operacao(xml)
-				corrige_tp_evento_confirmacao_da_operacao(xml)
-				corrige_ver_evento_confirmacao_da_operacao(xml)
-				corrige_versao_det_evento_confirmacao_da_operacao(xml)
-				corrige_x_just_confirmacao_da_operacao(xml)
-				remove_num_item_det_evento_confirmacao_da_operacao(xml)
-				corrige_desc_evento_confirmacao_da_operacao(xml)
-				remove_c_orgao_autor_confirmacao_da_operacao(xml)
-				remove_tp_autor_confirmacao_da_operacao(xml)
-				remove_ver_aplic_confirmacao_da_operacao(xml)
-				remove_n_prot_confirmacao_da_operacao(xml)
-				remove_ch_nfe_ref_confirmacao_da_operacao(xml)
-				remove_x_correcao_confirmacao_da_operacao(xml)
-				remove_x_cond_uso_confirmacao_da_operacao(xml)
-				remove_dh_emi_confirmacao_da_operacao(xml)
-				remove_tp_nf_confirmacao_da_operacao(xml)
-				remove_ie_confirmacao_da_operacao(xml)
-				remove_dest_confirmacao_da_operacao(xml)
-				remove_v_nf_confirmacao_da_operacao(xml)
-				remove_v_icms_confirmacao_da_operacao(xml)
-				remove_v_st_confirmacao_da_operacao(xml)
-				remove_item_pedido_confirmacao_da_operacao(xml)
-				remove_qtde_item_confirmacao_da_operacao(xml)
-				remove_aut_xml_confirmacao_da_operacao(xml)
-				remove_tp_autorizacao_confirmacao_da_operacao(xml)
-				xml
-			end
-
-			def verifica_ciencia_da_operacao(xml)
-				corrige_versao_env_evento_ciencia_da_operacao(xml)
-				corrige_tp_evento_ciencia_da_operacao(xml)
-				corrige_ver_evento_ciencia_da_operacao(xml)
-				corrige_versao_det_evento_ciencia_da_operacao(xml)
-				corrige_x_just_ciencia_da_operacao(xml)
-				remove_num_item_det_evento_ciencia_da_operacao(xml)
-				corrige_desc_evento_ciencia_da_operacao(xml)
-				remove_c_orgao_autor_ciencia_da_operacao(xml)
-				remove_tp_autor_ciencia_da_operacao(xml)
-				remove_ver_aplic_ciencia_da_operacao(xml)
-				remove_n_prot_ciencia_da_operacao(xml)
-				remove_ch_nfe_ref_ciencia_da_operacao(xml)
-				remove_x_correcao_ciencia_da_operacao(xml)
-				remove_x_cond_uso_ciencia_da_operacao(xml)
-				remove_dh_emi_ciencia_da_operacao(xml)
-				remove_tp_nf_ciencia_da_operacao(xml)
-				remove_ie_ciencia_da_operacao(xml)
-				remove_dest_ciencia_da_operacao(xml)
-				remove_v_nf_ciencia_da_operacao(xml)
-				remove_v_icms_ciencia_da_operacao(xml)
-				remove_v_st_ciencia_da_operacao(xml)
-				remove_item_pedido_ciencia_da_operacao(xml)
-				remove_qtde_item_ciencia_da_operacao(xml)
-				remove_aut_xml_ciencia_da_operacao(xml)
-				remove_tp_autorizacao_ciencia_da_operacao(xml)
-				xml
-			end
-
-			def verifica_desconhecimento_da_operacao(xml)
-				corrige_versao_env_evento_desconhecimento_da_operacao(xml)
-				corrige_tp_evento_desconhecimento_da_operacao(xml)
-				corrige_ver_evento_desconhecimento_da_operacao(xml)
-				corrige_versao_det_evento_desconhecimento_da_operacao(xml)
-				corrige_x_just_desconhecimento_da_operacao(xml)
-				remove_num_item_det_evento_desconhecimento_da_operacao(xml)
-				corrige_desc_evento_desconhecimento_da_operacao(xml)
-				remove_c_orgao_autor_desconhecimento_da_operacao(xml)
-				remove_tp_autor_desconhecimento_da_operacao(xml)
-				remove_ver_aplic_desconhecimento_da_operacao(xml)
-				remove_n_prot_desconhecimento_da_operacao(xml)
-				remove_ch_nfe_ref_desconhecimento_da_operacao(xml)
-				remove_x_correcao_desconhecimento_da_operacao(xml)
-				remove_x_cond_uso_desconhecimento_da_operacao(xml)
-				remove_dh_emi_desconhecimento_da_operacao(xml)
-				remove_tp_nf_desconhecimento_da_operacao(xml)
-				remove_ie_desconhecimento_da_operacao(xml)
-				remove_dest_desconhecimento_da_operacao(xml)
-				remove_v_nf_desconhecimento_da_operacao(xml)
-				remove_v_icms_desconhecimento_da_operacao(xml)
-				remove_v_st_desconhecimento_da_operacao(xml)
-				remove_item_pedido_desconhecimento_da_operacao(xml)
-				remove_qtde_item_desconhecimento_da_operacao(xml)
-				remove_aut_xml_desconhecimento_da_operacao(xml)
-				remove_tp_autorizacao_desconhecimento_da_operacao(xml)
-				xml
-			end
-
-			def verifica_operacao_nao_realizada(xml)
-				corrige_versao_env_evento_operacao_nao_realizada(xml)
-				corrige_tp_evento_operacao_nao_realizada(xml)
-				corrige_ver_evento_operacao_nao_realizada(xml)
-				corrige_versao_det_evento_operacao_nao_realizada(xml)
-				corrige_x_just_operacao_nao_realizada(xml)
-				remove_num_item_det_evento_operacao_nao_realizada(xml)
-				corrige_desc_evento_operacao_nao_realizada(xml)
-				remove_c_orgao_autor_operacao_nao_realizada(xml)
-				remove_tp_autor_operacao_nao_realizada(xml)
-				remove_ver_aplic_operacao_nao_realizada(xml)
-				remove_n_prot_operacao_nao_realizada(xml)
-				remove_ch_nfe_ref_operacao_nao_realizada(xml)
-				remove_x_correcao_operacao_nao_realizada(xml)
-				remove_x_cond_uso_operacao_nao_realizada(xml)
-				remove_dh_emi_operacao_nao_realizada(xml)
-				remove_tp_nf_operacao_nao_realizada(xml)
-				remove_ie_operacao_nao_realizada(xml)
-				remove_dest_operacao_nao_realizada(xml)
-				remove_v_nf_operacao_nao_realizada(xml)
-				remove_v_icms_operacao_nao_realizada(xml)
-				remove_v_st_operacao_nao_realizada(xml)
-				remove_item_pedido_operacao_nao_realizada(xml)
-				remove_qtde_item_operacao_nao_realizada(xml)
-				remove_aut_xml_operacao_nao_realizada(xml)
-				remove_tp_autorizacao_operacao_nao_realizada(xml)
-				xml
-			end
-
-			def verifica_emissao_contingencia(xml)
-				corrige_tipo_autor_emissao_em_contingencia(xml)
-				corrige_n_prot_emissao_em_contingencia(xml)
-				remove_ch_nfe_ref_emissao_em_contingencia(xml)
-				remove_x_correcao_emissao_em_contingencia(xml)
-				remove_x_cond_uso_emissao_em_contingencia(xml)
-				remove_x_just_emissao_em_contingencia(xml)
-				corrige_versao_env_evento_emissao_em_contingencia(xml)
-				corrige_tp_evento_emissao_em_contingencia(xml)
-				corrige_ver_evento_emissao_em_contingencia(xml)
-				corrige_versao_det_evento_emissao_em_contingencia(xml)
-				corrige_num_item_det_evento_emissao_em_contingencia(xml)
-				corrige_desc_evento_emissao_em_contingencia(xml)
-				corrige_c_orgao_autor_emissao_em_contingencia(xml)
-				corrige_ver_aplic_emissao_em_contingencia(xml)
-				remove_item_pedido_emissao_em_contingencia(xml)
-				remove_qtde_item_emissao_em_contingencia(xml)
-				remove_aut_xml_emissao_em_contingencia(xml)
-				remove_tp_autorizacao_emissao_em_contingencia(xml)
-				corrige_c_orgao_emissao_em_contingencia(xml)
-				xml
-			end
-
-			def verifica_cancelamento_prazo_1(xml)
+			def valida_cancelamento_prazo_1(xml)
 				corrige_tipo_evento_cancelamento_prazo_1(xml)
 				corrige_versao_env_evento_cancelamento_prazo_1(xml)
 				corrige_desc_evento_cancelamento_prazo_1(xml)
@@ -319,7 +334,7 @@ module NF
 				xml
 			end
 
-			def verifica_cancelamento_prazo_2(xml)
+			def valida_cancelamento_prazo_2(xml)
 				corrige_tipo_evento_cancelamento_prazo_2(xml)
 				corrige_versao_env_evento_cancelamento_prazo_2(xml)
 				corrige_desc_evento_cancelamento_prazo_2(xml)
@@ -328,22 +343,7 @@ module NF
 				xml
 			end
 
-			def verifica_consultar_retorno_autorizacao(xml)
-				corrige_versao_cons_reci_nfe_consultar_retorno_autorizacao(xml)
-				xml
-			end
-
-			def verifica_consultar_protocolo(xml)
-				corrige_versao_cons_sit_nfe_consultar_protocolo(xml)
-				xml
-			end
-
-			def verifica_nfe_distribuicao_dfe(xml)
-				corrige_versao_dist_dfe_int_nfe_distribuicao_dfe(xml)
-				xml
-			end
-
-			def verifica_consultar_cadastro(xml)
+			def valida_consultar_cadastro(xml)
 				corrige_versao_cons_cad_consultar_cadastro(xml)
 				xml
 			end

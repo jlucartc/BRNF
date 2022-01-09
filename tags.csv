@@ -69,7 +69,7 @@ id;nome;tipo;pai;min;max;regex;namespace;ativo
 68;CNPJ;CE;64;1;1;^[0-9]{14}$;;1
 69;CPF;CE;64;1;1;^[0-9]{11}$;;1
 70;distNSU;CG;64;1;1;;;1
-71;ultNSU;E;70;1;1;^[0-9]{1,15}$;;1
+71;ultNSU;E;70;1;1;^[0-9]{15}$;;1
 72;consNSU;CG;64;1;1;;;1
 73;NSU;E;72;1;1;^[0-9]{15}$;;1
 74;consChNFe;CG;64;1;1;;;1

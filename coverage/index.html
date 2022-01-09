@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2022-01-09T02:10:28-03:00">2022-01-09T02:10:28-03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2022-01-09T19:04:11-03:00">2022-01-09T19:04:11-03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="green">
-  96.33%
+  98.8%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         532.4
+         574.61
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>1525</b> relevant lines,
-    <span class="green"><b>1469</b> lines covered</span> and
-    <span class="red"><b>56</b> lines missed. </span>
+    <b>1413</b> relevant lines,
+    <span class="green"><b>1396</b> lines covered</span> and
+    <span class="red"><b>17</b> lines missed. </span>
     (<span class="green">
-  96.33%
+  98.8%
 </span>
 )
   </div>
@@ -94,12 +94,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#bd8edf7d5e6e285b01607fa02cadde6bef232800" class="src_link" title="nf/mock/generator.rb">nf/mock/generator.rb</a></td>
-            <td class="red strong cell--number t-file__coverage">75.76 %</td>
-            <td class="cell--number">274</td>
-            <td class="cell--number">165</td>
-            <td class="cell--number">125</td>
-            <td class="cell--number">40</td>
-            <td class="cell--number">0.76</td>
+            <td class="green strong cell--number t-file__coverage">96.23 %</td>
+            <td class="cell--number">107</td>
+            <td class="cell--number">53</td>
+            <td class="cell--number">51</td>
+            <td class="cell--number">2</td>
+            <td class="cell--number">2.75</td>
             
           </tr>
         
@@ -110,17 +110,17 @@
             <td class="cell--number">184</td>
             <td class="cell--number">182</td>
             <td class="cell--number">2</td>
-            <td class="cell--number">2750.20</td>
+            <td class="cell--number">2750.21</td>
             
           </tr>
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#be385cb039c9694ce88669d85607c5eefc60533a" class="src_link" title="nf/mock/validator.rb">nf/mock/validator.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">98.78 %</td>
+            <td class="green strong cell--number t-file__coverage">98.87 %</td>
             <td class="cell--number">1748</td>
             <td class="cell--number">1150</td>
-            <td class="cell--number">1136</td>
-            <td class="cell--number">14</td>
+            <td class="cell--number">1137</td>
+            <td class="cell--number">13</td>
             <td class="cell--number">265.84</td>
             
           </tr>
@@ -1022,8 +1022,8 @@
   <div class="header">
     <h3>nf/mock/generator.rb</h3>
     <h4>
-      <span class="red">
-  75.76%
+      <span class="green">
+  96.23%
 </span>
 
       lines covered
@@ -1032,9 +1032,9 @@
     
 
     <div class="t-line-summary">
-      <b>165</b> relevant lines.
-      <span class="green"><b>125</b> lines covered</span> and
-      <span class="red"><b>40</b> lines missed.</span>
+      <b>53</b> relevant lines.
+      <span class="green"><b>51</b> lines covered</span> and
+      <span class="red"><b>2</b> lines missed.</span>
     </div>
 
     
@@ -1150,13 +1150,13 @@
 
             
 
-            <code class="ruby">			def self.consultar_cadastro(documento)</code>
+            <code class="ruby">			def self.gera_xml(documento,metodo)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="11">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="20" data-linenumber="11">
+            <span class="hits">20</span>
             
 
             
@@ -1177,8 +1177,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="13">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="20" data-linenumber="13">
+            <span class="hits">20</span>
             
 
             
@@ -1188,19 +1188,19 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="14">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="20" data-linenumber="14">
+            <span class="hits">20</span>
             
 
             
 
-            <code class="ruby">					xml = xml_builder.consultar_cadastro</code>
+            <code class="ruby">					xml = xml_builder.public_send(metodo)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="15">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="20" data-linenumber="15">
+            <span class="hits">20</span>
             
 
             
@@ -1210,13 +1210,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="16">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="20" data-linenumber="16">
+            <span class="hits">20</span>
             
 
             
 
-            <code class="ruby">					xml = validator.verifica_consultar_cadastro(xml)</code>
+            <code class="ruby">					xml = validator.public_send(&quot;valida_#{metodo}&quot;,xml)</code>
           </li>
         </div>
       
@@ -1249,7 +1249,7 @@
 
             
 
-            <code class="ruby">					xml = validator.verifica_consultar_cadastro(documento)</code>
+            <code class="ruby">					xml = validator.public_send(&quot;valida_#{metodo}&quot;,documento)</code>
           </li>
         </div>
       
@@ -1304,7 +1304,7 @@
 
             
 
-            <code class="ruby">				xml_builder = GeneratorHelper::XMLGenerator.new()</code>
+            <code class="ruby">				gera_xml(documento,__method__)</code>
           </li>
         </div>
       
@@ -1315,18 +1315,18 @@
 
             
 
-            <code class="ruby">				</code>
+            <code class="ruby">			end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="26">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="26">
+            
             
 
             
 
-            <code class="ruby">				if documento.nil?</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -1337,7 +1337,7 @@
 
             
 
-            <code class="ruby">					xml = xml_builder.autorizar_nota</code>
+            <code class="ruby">			def self.consultar_status_servico(documento)</code>
           </li>
         </div>
       
@@ -1348,18 +1348,18 @@
 
             
 
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
+            <code class="ruby">				gera_xml(documento,__method__)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="29">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="29">
+            
             
 
             
 
-            <code class="ruby">					xml = validator.verifica_autorizacao(xml)</code>
+            <code class="ruby">			end</code>
           </li>
         </div>
       
@@ -1370,210 +1370,12 @@
 
             
 
-            <code class="ruby">				else</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="31">
-            
-            
-
-            
-
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="32">
-            
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_autorizacao(documento)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="33">
-            
-            
-
-            
-
-            <code class="ruby">				end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="34">
-            
-            
-
-            
-
-            <code class="ruby">			end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="35">
-            
-            
-
-            
-
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="36">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">			def self.consultar_status_servico(documento)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="37">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				xml_builder = GeneratorHelper::XMLGenerator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="38">
-            
-            
-
-            
-
-            <code class="ruby">				</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="39">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				if documento.nil?</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="40">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					xml = xml_builder.consultar_status_servico</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="41">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="42">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_consultar_status_servico(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="43">
-            
-            
-
-            
-
-            <code class="ruby">				else</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="44">
-            
-            
-
-            
-
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="45">
-            
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_consultar_status_servico(documento)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="46">
-            
-            
-
-            
-
-            <code class="ruby">				end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="47">
-            
-            
-
-            
-
-            <code class="ruby">			end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="48">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="49">
+          <li class="covered" data-hits="1" data-linenumber="31">
             <span class="hits">1</span>
             
 
@@ -1584,117 +1386,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="50">
+          <li class="covered" data-hits="1" data-linenumber="32">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">				xml_builder = GeneratorHelper::XMLGenerator.new()</code>
+            <code class="ruby">				gera_xml(documento,__method__)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="51">
-            
-            
-
-            
-
-            <code class="ruby">				</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="52">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				if documento.nil?</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="53">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					xml = xml_builder.consultar_retorno_autorizacao</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="54">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="55">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_consultar_retorno_autorizacao(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="56">
-            
-            
-
-            
-
-            <code class="ruby">				else</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="57">
-            
-            
-
-            
-
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="58">
-            
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_consultar_retorno_autorizacao(documento)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="59">
-            
-            
-
-            
-
-            <code class="ruby">				end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="60">
+          <li class="never" data-hits="" data-linenumber="33">
             
             
 
@@ -1705,7 +1408,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="61">
+          <li class="never" data-hits="" data-linenumber="34">
             
             
 
@@ -1716,7 +1419,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="62">
+          <li class="covered" data-hits="1" data-linenumber="35">
             <span class="hits">1</span>
             
 
@@ -1727,18 +1430,29 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="63">
+          <li class="covered" data-hits="1" data-linenumber="36">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">				xml_builder = GeneratorHelper::XMLGenerator.new()</code>
+            <code class="ruby">				gera_xml(documento,__method__)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="64">
+          <li class="never" data-hits="" data-linenumber="37">
+            
+            
+
+            
+
+            <code class="ruby">			end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="38">
             
             
 
@@ -1749,24 +1463,310 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="65">
+          <li class="covered" data-hits="1" data-linenumber="39">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">				if documento.nil?</code>
+            <code class="ruby">			def self.nfe_distribuicao_dfe(documento)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="66">
+          <li class="covered" data-hits="1" data-linenumber="40">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">					xml = xml_builder.inutilizar_numeracao</code>
+            <code class="ruby">				gera_xml(documento,__method__)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="41">
+            
+            
+
+            
+
+            <code class="ruby">			end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="42">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="43">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">			def self.consultar_protocolo(documento)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="44">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				gera_xml(documento,__method__)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="45">
+            
+            
+
+            
+
+            <code class="ruby">			end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="46">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="47">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">			def self.criar_carta_correcao(documento)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="48">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				gera_xml(documento,__method__)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="49">
+            
+            
+
+            
+
+            <code class="ruby">			end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="50">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="51">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">			def self.confirmacao_da_operacao(documento)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="52">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				gera_xml(documento,__method__)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="53">
+            
+            
+
+            
+
+            <code class="ruby">			end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="54">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="55">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">			def self.ciencia_da_operacao(documento)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="56">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				gera_xml(documento,__method__)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="57">
+            
+            
+
+            
+
+            <code class="ruby">			end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="58">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="59">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">			def self.desconhecimento_da_operacao(documento)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="60">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				gera_xml(documento,__method__)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="61">
+            
+            
+
+            
+
+            <code class="ruby">			end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="62">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="63">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">			def self.operacao_nao_realizada(documento)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="64">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				gera_xml(documento,__method__)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="65">
+            
+            
+
+            
+
+            <code class="ruby">			end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="66">
+            
+            
+
+            
+
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -1777,7 +1777,7 @@
 
             
 
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
+            <code class="ruby">			def self.emissao_contingencia(documento)</code>
           </li>
         </div>
       
@@ -1788,7 +1788,7 @@
 
             
 
-            <code class="ruby">					xml = validator.verifica_inutilizacao(xml)					</code>
+            <code class="ruby">				gera_xml(documento,__method__)</code>
           </li>
         </div>
       
@@ -1799,40 +1799,40 @@
 
             
 
-            <code class="ruby">				else</code>
+            <code class="ruby">			end</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="70">
+          <li class="never" data-hits="" data-linenumber="70">
             
             
 
             
 
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="71">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="71">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">					xml = validator.verifica_inutilizacao(documento)</code>
+            
+
+            <code class="ruby">			def self.cancelar_nota_substituicao(documento)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="72">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="72">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">				end</code>
+            
+
+            <code class="ruby">				gera_xml(documento,__method__)</code>
           </li>
         </div>
       
@@ -1865,7 +1865,7 @@
 
             
 
-            <code class="ruby">			def self.nfe_distribuicao_dfe(documento)</code>
+            <code class="ruby">			def self.cancelar_nota(documento)</code>
           </li>
         </div>
       
@@ -1876,7 +1876,7 @@
 
             
 
-            <code class="ruby">				xml_builder = GeneratorHelper::XMLGenerator.new()</code>
+            <code class="ruby">				gera_xml(documento,__method__)</code>
           </li>
         </div>
       
@@ -1887,18 +1887,18 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">			end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="78">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="78">
+            
             
 
             
 
-            <code class="ruby">				if documento.nil?</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -1909,7 +1909,7 @@
 
             
 
-            <code class="ruby">					xml = xml_builder.nfe_distribuicao_dfe</code>
+            <code class="ruby">			def self.prorrogar_prazo_1(documento)</code>
           </li>
         </div>
       
@@ -1920,67 +1920,12 @@
 
             
 
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
+            <code class="ruby">				gera_xml(documento,__method__)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="81">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_nfe_distribuicao_dfe(xml)					</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="82">
-            
-            
-
-            
-
-            <code class="ruby">				else</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="83">
-            
-            
-
-            
-
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="84">
-            
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_nfe_distribuicao_dfe(documento)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="85">
-            
-            
-
-            
-
-            <code class="ruby">				end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="86">
+          <li class="never" data-hits="" data-linenumber="81">
             
             
 
@@ -1991,7 +1936,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="87">
+          <li class="never" data-hits="" data-linenumber="82">
             
             
 
@@ -2002,24 +1947,79 @@
         </div>
       
         <div>
+          <li class="covered" data-hits="1" data-linenumber="83">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">			def self.prorrogar_prazo_2(documento)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="84">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				gera_xml(documento,__method__)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="85">
+            
+            
+
+            
+
+            <code class="ruby">			end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="86">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="87">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">			def self.ator_interessado(documento)</code>
+          </li>
+        </div>
+      
+        <div>
           <li class="covered" data-hits="1" data-linenumber="88">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">			def self.consultar_protocolo(documento)</code>
+            <code class="ruby">				gera_xml(documento,__method__)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="89">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="89">
+            
             
 
             
 
-            <code class="ruby">				xml_builder = GeneratorHelper::XMLGenerator.new()</code>
+            <code class="ruby">			end</code>
           </li>
         </div>
       
@@ -2041,7 +2041,7 @@
 
             
 
-            <code class="ruby">				if documento.nil?</code>
+            <code class="ruby">			def self.cancelamento_prazo_1(documento)</code>
           </li>
         </div>
       
@@ -2052,78 +2052,12 @@
 
             
 
-            <code class="ruby">					xml = xml_builder.consultar_protocolo</code>
+            <code class="ruby">				gera_xml(documento,__method__)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="93">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="94">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_consultar_protocolo(xml)					</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="95">
-            
-            
-
-            
-
-            <code class="ruby">				else</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="96">
-            
-            
-
-            
-
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="97">
-            
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_consultar_protocolo(documento)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="98">
-            
-            
-
-            
-
-            <code class="ruby">				end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="99">
+          <li class="never" data-hits="" data-linenumber="93">
             
             
 
@@ -2134,1723 +2068,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="100">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="101">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">			def self.criar_carta_correcao(documento)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="102">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				xml_builder = GeneratorHelper::XMLGenerator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="103">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="104">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				if documento.nil?</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="105">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					xml = xml_builder.criar_carta_correcao</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="106">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="107">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_carta_correcao(xml)					</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="108">
-            
-            
-
-            
-
-            <code class="ruby">				else</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="109">
-            
-            
-
-            
-
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="110">
-            
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_carta_correcao(documento)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="111">
-            
-            
-
-            
-
-            <code class="ruby">				end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="112">
-            
-            
-
-            
-
-            <code class="ruby">			end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="113">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="114">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">			def self.confirmacao_da_operacao(documento)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="115">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				xml_builder = GeneratorHelper::XMLGenerator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="116">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="117">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				if documento.nil?</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="118">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					xml = xml_builder.confirmacao_da_operacao</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="119">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="120">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_confirmacao_da_operacao(xml)					</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="121">
-            
-            
-
-            
-
-            <code class="ruby">				else</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="122">
-            
-            
-
-            
-
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="123">
-            
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_confirmacao_da_operacao(documento)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="124">
-            
-            
-
-            
-
-            <code class="ruby">				end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="125">
-            
-            
-
-            
-
-            <code class="ruby">			end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="126">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="127">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">			def self.ciencia_da_operacao(documento)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="128">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				xml_builder = GeneratorHelper::XMLGenerator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="129">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="130">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				if documento.nil?</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="131">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					xml = xml_builder.ciencia_da_operacao</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="132">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="133">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_ciencia_da_operacao(xml)					</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="134">
-            
-            
-
-            
-
-            <code class="ruby">				else</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="135">
-            
-            
-
-            
-
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="136">
-            
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_ciencia_da_operacao(documento)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="137">
-            
-            
-
-            
-
-            <code class="ruby">				end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="138">
-            
-            
-
-            
-
-            <code class="ruby">			end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="139">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="140">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">			def self.desconhecimento_da_operacao(documento)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="141">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				xml_builder = GeneratorHelper::XMLGenerator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="142">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="143">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				if documento.nil?</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="144">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					xml = xml_builder.desconhecimento_da_operacao</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="145">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="146">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_desconhecimento_da_operacao(xml)					</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="147">
-            
-            
-
-            
-
-            <code class="ruby">				else</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="148">
-            
-            
-
-            
-
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="149">
-            
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_desconhecimento_da_operacao(documento)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="150">
-            
-            
-
-            
-
-            <code class="ruby">				end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="151">
-            
-            
-
-            
-
-            <code class="ruby">			end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="152">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="153">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">			def self.operacao_nao_realizada(documento)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="154">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				xml_builder = GeneratorHelper::XMLGenerator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="155">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="156">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				if documento.nil?</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="157">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					xml = xml_builder.operacao_nao_realizada</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="158">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="159">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_operacao_nao_realizada(xml)					</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="160">
-            
-            
-
-            
-
-            <code class="ruby">				else</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="161">
-            
-            
-
-            
-
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="162">
-            
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_operacao_nao_realizada(documento)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="163">
-            
-            
-
-            
-
-            <code class="ruby">				end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="164">
-            
-            
-
-            
-
-            <code class="ruby">			end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="165">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="166">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">			def self.emissao_contingencia(documento)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="167">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				xml_builder = GeneratorHelper::XMLGenerator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="168">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="169">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				if documento.nil?</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="170">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					xml = xml_builder.emissao_contingencia</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="171">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="172">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_emissao_contingencia(xml)					</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="173">
-            
-            
-
-            
-
-            <code class="ruby">				else</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="174">
-            
-            
-
-            
-
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="175">
-            
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_emissao_contingencia(documento)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="176">
-            
-            
-
-            
-
-            <code class="ruby">				end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="177">
-            
-            
-
-            
-
-            <code class="ruby">			end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="178">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="179">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">			def self.cancelar_nota_substituicao(documento)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="180">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				xml_builder = GeneratorHelper::XMLGenerator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="181">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="182">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				if documento.nil?</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="183">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					xml = xml_builder.cancelar_nota_substituicao</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="184">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="185">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_cancelar_nota_substituicao(xml)					</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="186">
-            
-            
-
-            
-
-            <code class="ruby">				else</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="187">
-            
-            
-
-            
-
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="188">
-            
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_cancelar_nota_substituicao(documento)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="189">
-            
-            
-
-            
-
-            <code class="ruby">				end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="190">
-            
-            
-
-            
-
-            <code class="ruby">			end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="191">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="192">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">			def self.cancelar_nota(documento)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="193">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				xml_builder = GeneratorHelper::XMLGenerator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="194">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="195">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				if documento.nil?</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="196">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					xml = xml_builder.cancelar_nota</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="197">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="198">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_cancelar_nota(xml)					</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="199">
-            
-            
-
-            
-
-            <code class="ruby">				else</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="200">
-            
-            
-
-            
-
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="201">
-            
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_cancelar_nota(documento)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="202">
-            
-            
-
-            
-
-            <code class="ruby">				end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="203">
-            
-            
-
-            
-
-            <code class="ruby">			end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="204">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="205">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">			def self.prorrogar_prazo_1(documento)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="206">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				xml_builder = GeneratorHelper::XMLGenerator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="207">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="208">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				if documento.nil?</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="209">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					xml = xml_builder.prorrogar_prazo_1</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="210">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="211">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_prorrogar_prazo_1(xml)					</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="212">
-            
-            
-
-            
-
-            <code class="ruby">				else</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="213">
-            
-            
-
-            
-
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="214">
-            
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_prorrogar_prazo_1(documento)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="215">
-            
-            
-
-            
-
-            <code class="ruby">				end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="216">
-            
-            
-
-            
-
-            <code class="ruby">			end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="217">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="218">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">			def self.prorrogar_prazo_2(documento)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="219">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				xml_builder = GeneratorHelper::XMLGenerator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="220">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="221">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				if documento.nil?</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="222">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					xml = xml_builder.prorrogar_prazo_2</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="223">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="224">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_prorrogar_prazo_2(xml)					</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="225">
-            
-            
-
-            
-
-            <code class="ruby">				else</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="226">
-            
-            
-
-            
-
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="227">
-            
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_prorrogar_prazo_2(documento)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="228">
-            
-            
-
-            
-
-            <code class="ruby">				end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="229">
-            
-            
-
-            
-
-            <code class="ruby">			end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="230">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="231">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">			def self.ator_interessado(documento)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="232">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				xml_builder = GeneratorHelper::XMLGenerator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="233">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="234">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				if documento.nil?</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="235">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					xml = xml_builder.ator_interessado</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="236">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="237">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_ator_interessado(xml)					</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="238">
-            
-            
-
-            
-
-            <code class="ruby">				else</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="239">
-            
-            
-
-            
-
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="240">
-            
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_ator_interessado(documento)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="241">
-            
-            
-
-            
-
-            <code class="ruby">				end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="242">
-            
-            
-
-            
-
-            <code class="ruby">			end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="243">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="244">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">			def self.cancelamento_prazo_1(documento)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="245">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				xml_builder = GeneratorHelper::XMLGenerator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="246">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="247">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				if documento.nil?</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="248">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					xml = xml_builder.cancelamento_prazo_1</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="249">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="250">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_cancelamento_prazo_1(xml)					</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="251">
-            
-            
-
-            
-
-            <code class="ruby">				else</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="252">
-            
-            
-
-            
-
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="253">
-            
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_cancelamento_prazo_1(documento)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="254">
-            
-            
-
-            
-
-            <code class="ruby">				end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="255">
-            
-            
-
-            
-
-            <code class="ruby">			end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="256">
+          <li class="never" data-hits="" data-linenumber="94">
             
             
 
@@ -3861,7 +2079,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="257">
+          <li class="covered" data-hits="1" data-linenumber="95">
             <span class="hits">1</span>
             
 
@@ -3872,117 +2090,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="258">
+          <li class="covered" data-hits="1" data-linenumber="96">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">				xml_builder = GeneratorHelper::XMLGenerator.new()</code>
+            <code class="ruby">				gera_xml(documento,__method__)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="259">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="260">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				if documento.nil?</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="261">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					xml = xml_builder.cancelamento_prazo_2</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="262">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="263">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_cancelamento_prazo_2(xml)					</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="264">
-            
-            
-
-            
-
-            <code class="ruby">				else</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="265">
-            
-            
-
-            
-
-            <code class="ruby">					validator = NF::Mock::Validator.new()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="266">
-            
-            
-
-            
-
-            <code class="ruby">					xml = validator.verifica_cancelamento_prazo_2(documento)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="267">
-            
-            
-
-            
-
-            <code class="ruby">				end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="268">
+          <li class="never" data-hits="" data-linenumber="97">
             
             
 
@@ -3993,7 +2112,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="269">
+          <li class="never" data-hits="" data-linenumber="98">
             
             
 
@@ -4004,7 +2123,51 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="270">
+          <li class="covered" data-hits="1" data-linenumber="99">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">			def self.consultar_cadastro(documento)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="100">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				gera_xml(documento,__method__)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="101">
+            
+            
+
+            
+
+            <code class="ruby">			end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="102">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="103">
             
             
 
@@ -4015,7 +2178,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="271">
+          <li class="never" data-hits="" data-linenumber="104">
             
             
 
@@ -4026,7 +2189,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="272">
+          <li class="never" data-hits="" data-linenumber="105">
             
             
 
@@ -4037,7 +2200,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="273">
+          <li class="never" data-hits="" data-linenumber="106">
             
             
 
@@ -4048,7 +2211,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="274">
+          <li class="never" data-hits="" data-linenumber="107">
             
             
 
@@ -5773,8 +3936,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="254" data-linenumber="154">
-            <span class="hits">254</span>
+          <li class="covered" data-hits="256" data-linenumber="154">
+            <span class="hits">256</span>
             
 
             
@@ -5784,8 +3947,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="254" data-linenumber="155">
-            <span class="hits">254</span>
+          <li class="covered" data-hits="256" data-linenumber="155">
+            <span class="hits">256</span>
             
 
             
@@ -5806,8 +3969,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="11" data-linenumber="157">
-            <span class="hits">11</span>
+          <li class="covered" data-hits="12" data-linenumber="157">
+            <span class="hits">12</span>
             
 
             
@@ -5828,8 +3991,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="247" data-linenumber="159">
-            <span class="hits">247</span>
+          <li class="covered" data-hits="249" data-linenumber="159">
+            <span class="hits">249</span>
             
 
             
@@ -5839,8 +4002,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="246" data-linenumber="160">
-            <span class="hits">246</span>
+          <li class="covered" data-hits="248" data-linenumber="160">
+            <span class="hits">248</span>
             
 
             
@@ -5850,8 +4013,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1231" data-linenumber="161">
-            <span class="hits">1231</span>
+          <li class="covered" data-hits="1230" data-linenumber="161">
+            <span class="hits">1230</span>
             
 
             
@@ -5894,8 +4057,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="246" data-linenumber="165">
-            <span class="hits">246</span>
+          <li class="covered" data-hits="248" data-linenumber="165">
+            <span class="hits">248</span>
             
 
             
@@ -5927,8 +4090,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1008" data-linenumber="168">
-            <span class="hits">1008</span>
+          <li class="covered" data-hits="1006" data-linenumber="168">
+            <span class="hits">1006</span>
             
 
             
@@ -5938,8 +4101,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1008" data-linenumber="169">
-            <span class="hits">1008</span>
+          <li class="covered" data-hits="1006" data-linenumber="169">
+            <span class="hits">1006</span>
             
 
             
@@ -6356,8 +4519,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1008" data-linenumber="207">
-            <span class="hits">1008</span>
+          <li class="covered" data-hits="1006" data-linenumber="207">
+            <span class="hits">1006</span>
             
 
             
@@ -6367,8 +4530,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1008" data-linenumber="208">
-            <span class="hits">1008</span>
+          <li class="covered" data-hits="1006" data-linenumber="208">
+            <span class="hits">1006</span>
             
 
             
@@ -6378,8 +4541,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1008" data-linenumber="209">
-            <span class="hits">1008</span>
+          <li class="covered" data-hits="1006" data-linenumber="209">
+            <span class="hits">1006</span>
             
 
             
@@ -6422,8 +4585,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="19694" data-linenumber="213">
-            <span class="hits">19694</span>
+          <li class="covered" data-hits="19696" data-linenumber="213">
+            <span class="hits">19696</span>
             
 
             
@@ -7366,7 +5529,7 @@
     <h3>nf/mock/validator.rb</h3>
     <h4>
       <span class="green">
-  98.78%
+  98.87%
 </span>
 
       lines covered
@@ -7376,8 +5539,8 @@
 
     <div class="t-line-summary">
       <b>1150</b> relevant lines.
-      <span class="green"><b>1136</b> lines covered</span> and
-      <span class="red"><b>14</b> lines missed.</span>
+      <span class="green"><b>1137</b> lines covered</span> and
+      <span class="red"><b>13</b> lines missed.</span>
     </div>
 
     
@@ -7570,7 +5733,7 @@
 
             
 
-            <code class="ruby">			def verifica_autorizacao(xml)</code>
+            <code class="ruby">			def valida_autorizar_nota(xml)</code>
           </li>
         </div>
       
@@ -7724,7 +5887,7 @@
 
             
 
-            <code class="ruby">			def verifica_inutilizacao(xml)</code>
+            <code class="ruby">			def valida_consultar_status_servico(xml)</code>
           </li>
         </div>
       
@@ -7735,18 +5898,18 @@
 
             
 
-            <code class="ruby">				xml</code>
+            <code class="ruby">				corrige_versao_consultar_status_servico(xml)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="33">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="33">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">			end</code>
+            
+
+            <code class="ruby">				xml</code>
           </li>
         </div>
       
@@ -7757,18 +5920,18 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">			end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="35">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="35">
+            
             
 
             
 
-            <code class="ruby">			def verifica_carta_correcao(xml)</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -7779,7 +5942,7 @@
 
             
 
-            <code class="ruby">				corrige_tipo_evento_carta_correcao(xml)</code>
+            <code class="ruby">			def valida_consultar_retorno_autorizacao(xml)</code>
           </li>
         </div>
       
@@ -7790,7 +5953,7 @@
 
             
 
-            <code class="ruby">				corrige_versao_carta_correcao(xml)</code>
+            <code class="ruby">				corrige_versao_cons_reci_nfe_consultar_retorno_autorizacao(xml)</code>
           </li>
         </div>
       
@@ -7801,29 +5964,29 @@
 
             
 
-            <code class="ruby">				corrige_ver_evento_carta_correcao(xml)</code>
+            <code class="ruby">				xml</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="39">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="39">
+            
             
 
             
 
-            <code class="ruby">				corrige_versao_det_evento_carta_correcao(xml)</code>
+            <code class="ruby">			end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="40">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="40">
+            
             
 
             
 
-            <code class="ruby">				corrige_descricao_carta_correcao(xml)</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -7834,7 +5997,7 @@
 
             
 
-            <code class="ruby">				corrige_condicao_uso_carta_correcao(xml)</code>
+            <code class="ruby">			def valida_inutilizar_numeracao(xml)</code>
           </li>
         </div>
       
@@ -7845,29 +6008,29 @@
 
             
 
-            <code class="ruby">				corrige_versao_env_evento_carta_correcao(xml)</code>
+            <code class="ruby">				xml</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="43">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="43">
+            
             
 
             
 
-            <code class="ruby">				remove_num_item_carta_correcao(xml)</code>
+            <code class="ruby">			end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="44">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="44">
+            
             
 
             
 
-            <code class="ruby">				remove_c_orgao_autor_carta_correcao(xml)</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -7878,7 +6041,7 @@
 
             
 
-            <code class="ruby">				remove_tipo_autor_carta_correcao(xml)</code>
+            <code class="ruby">			def valida_nfe_distribuicao_dfe(xml)</code>
           </li>
         </div>
       
@@ -7889,7 +6052,7 @@
 
             
 
-            <code class="ruby">				remove_ver_aplic_carta_correcao(xml)</code>
+            <code class="ruby">				corrige_versao_dist_dfe_int_nfe_distribuicao_dfe(xml)</code>
           </li>
         </div>
       
@@ -7900,29 +6063,29 @@
 
             
 
-            <code class="ruby">				remove_nprot_carta_correcao(xml)</code>
+            <code class="ruby">				xml</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="48">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="48">
+            
             
 
             
 
-            <code class="ruby">				remove_xjust_carta_correcao(xml)</code>
+            <code class="ruby">			end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="49">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="49">
+            
             
 
             
 
-            <code class="ruby">				remove_chnferef_carta_correcao(xml)</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -7933,7 +6096,7 @@
 
             
 
-            <code class="ruby">				remove_dhemi_carta_correcao(xml)</code>
+            <code class="ruby">			def valida_consultar_protocolo(xml)</code>
           </li>
         </div>
       
@@ -7944,7 +6107,7 @@
 
             
 
-            <code class="ruby">				remove_tpnf_carta_correcao(xml)</code>
+            <code class="ruby">				corrige_versao_cons_sit_nfe_consultar_protocolo(xml)</code>
           </li>
         </div>
       
@@ -7955,29 +6118,29 @@
 
             
 
-            <code class="ruby">				remove_ie_carta_correcao(xml)</code>
+            <code class="ruby">				xml</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="53">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="53">
+            
             
 
             
 
-            <code class="ruby">				remove_dest_carta_correcao(xml)</code>
+            <code class="ruby">			end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="54">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="54">
+            
             
 
             
 
-            <code class="ruby">				remove_vnf_carta_correcao(xml)</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -7988,7 +6151,7 @@
 
             
 
-            <code class="ruby">				remove_vicms_carta_correcao(xml)</code>
+            <code class="ruby">			def valida_criar_carta_correcao(xml)</code>
           </li>
         </div>
       
@@ -7999,7 +6162,7 @@
 
             
 
-            <code class="ruby">				remove_vst_carta_correcao(xml)</code>
+            <code class="ruby">				corrige_tipo_evento_carta_correcao(xml)</code>
           </li>
         </div>
       
@@ -8010,7 +6173,7 @@
 
             
 
-            <code class="ruby">				remove_item_pedido_carta_correcao(xml)</code>
+            <code class="ruby">				corrige_versao_carta_correcao(xml)</code>
           </li>
         </div>
       
@@ -8021,7 +6184,7 @@
 
             
 
-            <code class="ruby">				remove_qtde_item_carta_correcao(xml)</code>
+            <code class="ruby">				corrige_ver_evento_carta_correcao(xml)</code>
           </li>
         </div>
       
@@ -8032,7 +6195,7 @@
 
             
 
-            <code class="ruby">				remove_aut_xml_carta_correcao(xml)</code>
+            <code class="ruby">				corrige_versao_det_evento_carta_correcao(xml)</code>
           </li>
         </div>
       
@@ -8043,7 +6206,7 @@
 
             
 
-            <code class="ruby">				remove_tp_autorizacao_carta_correcao(xml)</code>
+            <code class="ruby">				corrige_descricao_carta_correcao(xml)</code>
           </li>
         </div>
       
@@ -8054,29 +6217,29 @@
 
             
 
-            <code class="ruby">				xml</code>
+            <code class="ruby">				corrige_condicao_uso_carta_correcao(xml)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="62">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="62">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">			end</code>
+            
+
+            <code class="ruby">				corrige_versao_env_evento_carta_correcao(xml)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="63">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="63">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">				remove_num_item_carta_correcao(xml)</code>
           </li>
         </div>
       
@@ -8087,7 +6250,7 @@
 
             
 
-            <code class="ruby">			def verifica_cancelar_nota_substituicao(xml)</code>
+            <code class="ruby">				remove_c_orgao_autor_carta_correcao(xml)</code>
           </li>
         </div>
       
@@ -8098,7 +6261,7 @@
 
             
 
-            <code class="ruby">				corrige_versao_env_evento_cancelar_nota_substituicao(xml)</code>
+            <code class="ruby">				remove_tipo_autor_carta_correcao(xml)</code>
           </li>
         </div>
       
@@ -8109,7 +6272,7 @@
 
             
 
-            <code class="ruby">				corrige_versao_det_evento_cancelar_nota_substituicao(xml)</code>
+            <code class="ruby">				remove_ver_aplic_carta_correcao(xml)</code>
           </li>
         </div>
       
@@ -8120,7 +6283,7 @@
 
             
 
-            <code class="ruby">				corrige_ver_evento_cancelar_nota_substituicao(xml)</code>
+            <code class="ruby">				remove_nprot_carta_correcao(xml)</code>
           </li>
         </div>
       
@@ -8131,7 +6294,7 @@
 
             
 
-            <code class="ruby">				corrige_descricao_cancelar_nota_substituicao(xml)</code>
+            <code class="ruby">				remove_xjust_carta_correcao(xml)</code>
           </li>
         </div>
       
@@ -8142,7 +6305,7 @@
 
             
 
-            <code class="ruby">				corrige_tipo_autor_cancelar_nota_substituicao(xml)</code>
+            <code class="ruby">				remove_chnferef_carta_correcao(xml)</code>
           </li>
         </div>
       
@@ -8153,7 +6316,7 @@
 
             
 
-            <code class="ruby">				corrige_tipo_evento_cancelar_nota_substituicao(xml)</code>
+            <code class="ruby">				remove_dhemi_carta_correcao(xml)</code>
           </li>
         </div>
       
@@ -8164,7 +6327,7 @@
 
             
 
-            <code class="ruby">				remove_num_item_cancelar_nota_substituicao(xml)</code>
+            <code class="ruby">				remove_tpnf_carta_correcao(xml)</code>
           </li>
         </div>
       
@@ -8175,7 +6338,7 @@
 
             
 
-            <code class="ruby">				remove_dhemi_cancelar_nota_substituicao(xml)</code>
+            <code class="ruby">				remove_ie_carta_correcao(xml)</code>
           </li>
         </div>
       
@@ -8186,7 +6349,7 @@
 
             
 
-            <code class="ruby">				remove_tpnf_cancelar_nota_substituicao(xml)</code>
+            <code class="ruby">				remove_dest_carta_correcao(xml)</code>
           </li>
         </div>
       
@@ -8197,7 +6360,7 @@
 
             
 
-            <code class="ruby">				remove_ie_cancelar_nota_substituicao(xml)</code>
+            <code class="ruby">				remove_vnf_carta_correcao(xml)</code>
           </li>
         </div>
       
@@ -8208,7 +6371,7 @@
 
             
 
-            <code class="ruby">				remove_dest_cancelar_nota_substituicao(xml)</code>
+            <code class="ruby">				remove_vicms_carta_correcao(xml)</code>
           </li>
         </div>
       
@@ -8219,7 +6382,7 @@
 
             
 
-            <code class="ruby">				remove_vnf_cancelar_nota_substituicao(xml)</code>
+            <code class="ruby">				remove_vst_carta_correcao(xml)</code>
           </li>
         </div>
       
@@ -8230,7 +6393,7 @@
 
             
 
-            <code class="ruby">				remove_vicms_cancelar_nota_substituicao(xml)</code>
+            <code class="ruby">				remove_item_pedido_carta_correcao(xml)</code>
           </li>
         </div>
       
@@ -8241,7 +6404,7 @@
 
             
 
-            <code class="ruby">				remove_vst_cancelar_nota_substituicao(xml)</code>
+            <code class="ruby">				remove_qtde_item_carta_correcao(xml)</code>
           </li>
         </div>
       
@@ -8252,7 +6415,7 @@
 
             
 
-            <code class="ruby">				remove_item_pedido_cancelar_nota_substituicao(xml)</code>
+            <code class="ruby">				remove_aut_xml_carta_correcao(xml)</code>
           </li>
         </div>
       
@@ -8263,7 +6426,7 @@
 
             
 
-            <code class="ruby">				remove_qtde_item_cancelar_nota_substituicao(xml)</code>
+            <code class="ruby">				remove_tp_autorizacao_carta_correcao(xml)</code>
           </li>
         </div>
       
@@ -8274,29 +6437,29 @@
 
             
 
-            <code class="ruby">				remove_xjust_cancelar_nota_substituicao(xml)</code>
+            <code class="ruby">				xml</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="82">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="82">
+            
             
 
             
 
-            <code class="ruby">				remove_c_orgao_autor_cancelar_nota_substituicao(xml)</code>
+            <code class="ruby">			end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="83">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="83">
+            
             
 
             
 
-            <code class="ruby">				remove_ver_aplic_cancelar_nota_substituicao(xml)</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -8307,7 +6470,7 @@
 
             
 
-            <code class="ruby">				remove_nprot_cancelar_nota_substituicao(xml)</code>
+            <code class="ruby">			def valida_confirmacao_da_operacao(xml)</code>
           </li>
         </div>
       
@@ -8318,7 +6481,7 @@
 
             
 
-            <code class="ruby">				remove_aut_xml_cancelar_nota_substituicao(xml)</code>
+            <code class="ruby">				corrige_versao_env_evento_confirmacao_da_operacao(xml)</code>
           </li>
         </div>
       
@@ -8329,7 +6492,7 @@
 
             
 
-            <code class="ruby">				remove_tp_autorizacao_cancelar_nota_substituicao(xml)</code>
+            <code class="ruby">				corrige_tp_evento_confirmacao_da_operacao(xml)</code>
           </li>
         </div>
       
@@ -8340,7 +6503,7 @@
 
             
 
-            <code class="ruby">				remove_xconduso_cancelar_nota_substituicao(xml)</code>
+            <code class="ruby">				corrige_ver_evento_confirmacao_da_operacao(xml)</code>
           </li>
         </div>
       
@@ -8351,7 +6514,7 @@
 
             
 
-            <code class="ruby">				remove_xcorrecao_cancelar_nota_substituicao(xml)</code>
+            <code class="ruby">				corrige_versao_det_evento_confirmacao_da_operacao(xml)</code>
           </li>
         </div>
       
@@ -8362,7 +6525,7 @@
 
             
 
-            <code class="ruby">				corrige_nprot_cancelar_nota_substituicao(xml)</code>
+            <code class="ruby">				corrige_x_just_confirmacao_da_operacao(xml)</code>
           </li>
         </div>
       
@@ -8373,7 +6536,7 @@
 
             
 
-            <code class="ruby">				corrige_xjust_cancelar_nota_substituicao(xml)</code>
+            <code class="ruby">				remove_num_item_det_evento_confirmacao_da_operacao(xml)</code>
           </li>
         </div>
       
@@ -8384,7 +6547,7 @@
 
             
 
-            <code class="ruby">				corrige_chnferef_cancelar_nota_substituicao(xml)</code>
+            <code class="ruby">				corrige_desc_evento_confirmacao_da_operacao(xml)</code>
           </li>
         </div>
       
@@ -8395,1002 +6558,12 @@
 
             
 
-            <code class="ruby">				xml</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="93">
-            
-            
-
-            
-
-            <code class="ruby">			end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="94">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="95">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">			def verifica_cancelar_nota(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="96">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				corrige_tipo_evento_cancelar_nota(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="97">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				corrige_ver_evento_cancelar_nota(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="98">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				corrige_versao_det_evento_cancelar_nota(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="99">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				corrige_versao_env_evento_cancelar_nota(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="100">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				corrige_descricao_cancelar_nota(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="101">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_num_item_cancelar_nota(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="102">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_c_orgao_autor_cancelar_nota(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="103">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_tipo_autor_cancelar_nota(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="104">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_ver_aplic_cancelar_nota(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="105">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_chnferef_cancelar_nota(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="106">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_xcorrecao_cancelar_nota(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="107">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_xconduso_cancelar_nota(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="108">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_xjust_cancelar_nota(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="109">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_dhemi_cancelar_nota(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="110">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_tpnf_cancelar_nota(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="111">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_ie_cancelar_nota(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="112">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_dest_cancelar_nota(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="113">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_vnf_cancelar_nota(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="114">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_vicms_cancelar_nota(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="115">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_vst_cancelar_nota(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="116">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_item_pedido_cancelar_nota(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="117">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_qtde_item_cancelar_nota(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="118">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_aut_xml_cancelar_nota(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="119">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_tp_autorizacao_cancelar_nota(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="120">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_nprot_cancelar_nota(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="121">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				xml</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="122">
-            
-            
-
-            
-
-            <code class="ruby">			end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="123">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="124">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">			def verifica_consultar_status_servico(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="125">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				corrige_versao_consultar_status_servico(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="126">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				xml</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="127">
-            
-            
-
-            
-
-            <code class="ruby">			end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="128">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="129">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">			def verifica_prorrogar_prazo_1(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="130">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				corrige_tipo_evento_prorrogar_prazo_1(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="131">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				corrige_versao_env_evento_prorrogar_prazo_1(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="132">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				corrige_desc_evento_prorrogar_prazo_1(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="133">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				corrige_nprot_prorrogar_prazo_1(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="134">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				corrige_qtde_item_prorrogar_prazo_1(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="135">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				xml</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="136">
-            
-            
-
-            
-
-            <code class="ruby">			end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="137">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="138">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">			def verifica_prorrogar_prazo_2(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="139">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				corrige_tipo_evento_prorrogar_prazo_2(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="140">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				corrige_versao_env_evento_prorrogar_prazo_2(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="141">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				corrige_desc_evento_prorrogar_prazo_2(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="142">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				corrige_nprot_prorrogar_prazo_2(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="143">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				corrige_qtde_item_prorrogar_prazo_2(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="144">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				xml</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="145">
-            
-            
-
-            
-
-            <code class="ruby">			end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="146">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="147">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">			def verifica_ator_interessado(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="148">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_n_prot_ator_interessado(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="149">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_x_just_ator_interessado(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="150">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_ch_nfe_ref_ator_interessado(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="151">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_x_correcao_ator_interessado(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="152">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_dh_emi_ator_interessado(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="153">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_tp_nf_ator_interessado(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="154">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_ie_ator_interessado(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="155">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_dest_ator_interessado(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="156">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_v_nf_ator_interessado(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="157">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_v_icms_ator_interessado(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="158">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_v_st_ator_interessado(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="159">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_item_pedido_ator_interessado(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="160">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_qtde_item_ator_interessado(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="161">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				corrige_desc_evento_ator_interessado(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="162">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				corrige_c_orgao_autor_ator_interessado(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="163">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				corrige_tp_autor_ator_interessado(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="164">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				corrige_ver_aplic_ator_interessado(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="165">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				corrige_x_cond_uso_ator_interessado(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="166">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				corrige_versao_env_evento_ator_interessado(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="167">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				corrige_tp_evento_ator_interessado(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="168">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				corrige_ver_evento_ator_interessado(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="169">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				corrige_versao_det_evento_ator_interessado(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="170">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_num_item_ator_interessado(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="171">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				xml</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="172">
-            
-            
-
-            
-
-            <code class="ruby">			end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="173">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="174">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">			def verifica_confirmacao_da_operacao(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="175">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				corrige_versao_env_evento_confirmacao_da_operacao(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="176">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				corrige_tp_evento_confirmacao_da_operacao(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="177">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				corrige_ver_evento_confirmacao_da_operacao(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="178">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				corrige_versao_det_evento_confirmacao_da_operacao(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="179">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				corrige_x_just_confirmacao_da_operacao(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="180">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				remove_num_item_det_evento_confirmacao_da_operacao(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="181">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">				corrige_desc_evento_confirmacao_da_operacao(xml)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="182">
-            <span class="hits">1</span>
-            
-
-            
-
             <code class="ruby">				remove_c_orgao_autor_confirmacao_da_operacao(xml)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="183">
+          <li class="covered" data-hits="1" data-linenumber="93">
             <span class="hits">1</span>
             
 
@@ -9401,7 +6574,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="184">
+          <li class="covered" data-hits="1" data-linenumber="94">
             <span class="hits">1</span>
             
 
@@ -9412,7 +6585,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="185">
+          <li class="covered" data-hits="1" data-linenumber="95">
             <span class="hits">1</span>
             
 
@@ -9423,7 +6596,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="186">
+          <li class="covered" data-hits="1" data-linenumber="96">
             <span class="hits">1</span>
             
 
@@ -9434,7 +6607,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="187">
+          <li class="covered" data-hits="1" data-linenumber="97">
             <span class="hits">1</span>
             
 
@@ -9445,7 +6618,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="188">
+          <li class="covered" data-hits="1" data-linenumber="98">
             <span class="hits">1</span>
             
 
@@ -9456,7 +6629,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="189">
+          <li class="covered" data-hits="1" data-linenumber="99">
             <span class="hits">1</span>
             
 
@@ -9467,7 +6640,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="190">
+          <li class="covered" data-hits="1" data-linenumber="100">
             <span class="hits">1</span>
             
 
@@ -9478,7 +6651,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="191">
+          <li class="covered" data-hits="1" data-linenumber="101">
             <span class="hits">1</span>
             
 
@@ -9489,7 +6662,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="192">
+          <li class="covered" data-hits="1" data-linenumber="102">
             <span class="hits">1</span>
             
 
@@ -9500,7 +6673,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="193">
+          <li class="covered" data-hits="1" data-linenumber="103">
             <span class="hits">1</span>
             
 
@@ -9511,7 +6684,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="194">
+          <li class="covered" data-hits="1" data-linenumber="104">
             <span class="hits">1</span>
             
 
@@ -9522,7 +6695,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="195">
+          <li class="covered" data-hits="1" data-linenumber="105">
             <span class="hits">1</span>
             
 
@@ -9533,7 +6706,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="196">
+          <li class="covered" data-hits="1" data-linenumber="106">
             <span class="hits">1</span>
             
 
@@ -9544,7 +6717,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="197">
+          <li class="covered" data-hits="1" data-linenumber="107">
             <span class="hits">1</span>
             
 
@@ -9555,7 +6728,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="198">
+          <li class="covered" data-hits="1" data-linenumber="108">
             <span class="hits">1</span>
             
 
@@ -9566,7 +6739,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="199">
+          <li class="covered" data-hits="1" data-linenumber="109">
             <span class="hits">1</span>
             
 
@@ -9577,7 +6750,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="200">
+          <li class="covered" data-hits="1" data-linenumber="110">
             <span class="hits">1</span>
             
 
@@ -9588,7 +6761,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="201">
+          <li class="never" data-hits="" data-linenumber="111">
             
             
 
@@ -9599,7 +6772,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="202">
+          <li class="never" data-hits="" data-linenumber="112">
             
             
 
@@ -9610,18 +6783,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="203">
+          <li class="covered" data-hits="1" data-linenumber="113">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">			def verifica_ciencia_da_operacao(xml)</code>
+            <code class="ruby">			def valida_ciencia_da_operacao(xml)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="204">
+          <li class="covered" data-hits="1" data-linenumber="114">
             <span class="hits">1</span>
             
 
@@ -9632,7 +6805,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="205">
+          <li class="covered" data-hits="1" data-linenumber="115">
             <span class="hits">1</span>
             
 
@@ -9643,7 +6816,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="206">
+          <li class="covered" data-hits="1" data-linenumber="116">
             <span class="hits">1</span>
             
 
@@ -9654,7 +6827,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="207">
+          <li class="covered" data-hits="1" data-linenumber="117">
             <span class="hits">1</span>
             
 
@@ -9665,7 +6838,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="208">
+          <li class="covered" data-hits="1" data-linenumber="118">
             <span class="hits">1</span>
             
 
@@ -9676,7 +6849,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="209">
+          <li class="covered" data-hits="1" data-linenumber="119">
             <span class="hits">1</span>
             
 
@@ -9687,7 +6860,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="210">
+          <li class="covered" data-hits="1" data-linenumber="120">
             <span class="hits">1</span>
             
 
@@ -9698,7 +6871,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="211">
+          <li class="covered" data-hits="1" data-linenumber="121">
             <span class="hits">1</span>
             
 
@@ -9709,7 +6882,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="212">
+          <li class="covered" data-hits="1" data-linenumber="122">
             <span class="hits">1</span>
             
 
@@ -9720,7 +6893,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="213">
+          <li class="covered" data-hits="1" data-linenumber="123">
             <span class="hits">1</span>
             
 
@@ -9731,7 +6904,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="214">
+          <li class="covered" data-hits="1" data-linenumber="124">
             <span class="hits">1</span>
             
 
@@ -9742,7 +6915,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="215">
+          <li class="covered" data-hits="1" data-linenumber="125">
             <span class="hits">1</span>
             
 
@@ -9753,7 +6926,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="216">
+          <li class="covered" data-hits="1" data-linenumber="126">
             <span class="hits">1</span>
             
 
@@ -9764,7 +6937,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="217">
+          <li class="covered" data-hits="1" data-linenumber="127">
             <span class="hits">1</span>
             
 
@@ -9775,7 +6948,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="218">
+          <li class="covered" data-hits="1" data-linenumber="128">
             <span class="hits">1</span>
             
 
@@ -9786,7 +6959,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="219">
+          <li class="covered" data-hits="1" data-linenumber="129">
             <span class="hits">1</span>
             
 
@@ -9797,7 +6970,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="220">
+          <li class="covered" data-hits="1" data-linenumber="130">
             <span class="hits">1</span>
             
 
@@ -9808,7 +6981,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="221">
+          <li class="covered" data-hits="1" data-linenumber="131">
             <span class="hits">1</span>
             
 
@@ -9819,7 +6992,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="222">
+          <li class="covered" data-hits="1" data-linenumber="132">
             <span class="hits">1</span>
             
 
@@ -9830,7 +7003,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="223">
+          <li class="covered" data-hits="1" data-linenumber="133">
             <span class="hits">1</span>
             
 
@@ -9841,7 +7014,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="224">
+          <li class="covered" data-hits="1" data-linenumber="134">
             <span class="hits">1</span>
             
 
@@ -9852,7 +7025,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="225">
+          <li class="covered" data-hits="1" data-linenumber="135">
             <span class="hits">1</span>
             
 
@@ -9863,7 +7036,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="226">
+          <li class="covered" data-hits="1" data-linenumber="136">
             <span class="hits">1</span>
             
 
@@ -9874,7 +7047,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="227">
+          <li class="covered" data-hits="1" data-linenumber="137">
             <span class="hits">1</span>
             
 
@@ -9885,7 +7058,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="228">
+          <li class="covered" data-hits="1" data-linenumber="138">
             <span class="hits">1</span>
             
 
@@ -9896,7 +7069,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="229">
+          <li class="covered" data-hits="1" data-linenumber="139">
             <span class="hits">1</span>
             
 
@@ -9907,7 +7080,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="230">
+          <li class="never" data-hits="" data-linenumber="140">
             
             
 
@@ -9918,7 +7091,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="231">
+          <li class="never" data-hits="" data-linenumber="141">
             
             
 
@@ -9929,18 +7102,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="232">
+          <li class="covered" data-hits="1" data-linenumber="142">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">			def verifica_desconhecimento_da_operacao(xml)</code>
+            <code class="ruby">			def valida_desconhecimento_da_operacao(xml)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="233">
+          <li class="covered" data-hits="1" data-linenumber="143">
             <span class="hits">1</span>
             
 
@@ -9951,7 +7124,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="234">
+          <li class="covered" data-hits="1" data-linenumber="144">
             <span class="hits">1</span>
             
 
@@ -9962,7 +7135,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="235">
+          <li class="covered" data-hits="1" data-linenumber="145">
             <span class="hits">1</span>
             
 
@@ -9973,7 +7146,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="236">
+          <li class="covered" data-hits="1" data-linenumber="146">
             <span class="hits">1</span>
             
 
@@ -9984,7 +7157,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="237">
+          <li class="covered" data-hits="1" data-linenumber="147">
             <span class="hits">1</span>
             
 
@@ -9995,7 +7168,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="238">
+          <li class="covered" data-hits="1" data-linenumber="148">
             <span class="hits">1</span>
             
 
@@ -10006,7 +7179,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="239">
+          <li class="covered" data-hits="1" data-linenumber="149">
             <span class="hits">1</span>
             
 
@@ -10017,7 +7190,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="240">
+          <li class="covered" data-hits="1" data-linenumber="150">
             <span class="hits">1</span>
             
 
@@ -10028,7 +7201,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="241">
+          <li class="covered" data-hits="1" data-linenumber="151">
             <span class="hits">1</span>
             
 
@@ -10039,7 +7212,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="242">
+          <li class="covered" data-hits="1" data-linenumber="152">
             <span class="hits">1</span>
             
 
@@ -10050,7 +7223,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="243">
+          <li class="covered" data-hits="1" data-linenumber="153">
             <span class="hits">1</span>
             
 
@@ -10061,7 +7234,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="244">
+          <li class="covered" data-hits="1" data-linenumber="154">
             <span class="hits">1</span>
             
 
@@ -10072,7 +7245,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="245">
+          <li class="covered" data-hits="1" data-linenumber="155">
             <span class="hits">1</span>
             
 
@@ -10083,7 +7256,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="246">
+          <li class="covered" data-hits="1" data-linenumber="156">
             <span class="hits">1</span>
             
 
@@ -10094,7 +7267,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="247">
+          <li class="covered" data-hits="1" data-linenumber="157">
             <span class="hits">1</span>
             
 
@@ -10105,7 +7278,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="248">
+          <li class="covered" data-hits="1" data-linenumber="158">
             <span class="hits">1</span>
             
 
@@ -10116,7 +7289,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="249">
+          <li class="covered" data-hits="1" data-linenumber="159">
             <span class="hits">1</span>
             
 
@@ -10127,7 +7300,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="250">
+          <li class="covered" data-hits="1" data-linenumber="160">
             <span class="hits">1</span>
             
 
@@ -10138,7 +7311,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="251">
+          <li class="covered" data-hits="1" data-linenumber="161">
             <span class="hits">1</span>
             
 
@@ -10149,7 +7322,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="252">
+          <li class="covered" data-hits="1" data-linenumber="162">
             <span class="hits">1</span>
             
 
@@ -10160,7 +7333,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="253">
+          <li class="covered" data-hits="1" data-linenumber="163">
             <span class="hits">1</span>
             
 
@@ -10171,7 +7344,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="254">
+          <li class="covered" data-hits="1" data-linenumber="164">
             <span class="hits">1</span>
             
 
@@ -10182,7 +7355,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="255">
+          <li class="covered" data-hits="1" data-linenumber="165">
             <span class="hits">1</span>
             
 
@@ -10193,7 +7366,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="256">
+          <li class="covered" data-hits="1" data-linenumber="166">
             <span class="hits">1</span>
             
 
@@ -10204,7 +7377,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="257">
+          <li class="covered" data-hits="1" data-linenumber="167">
             <span class="hits">1</span>
             
 
@@ -10215,7 +7388,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="258">
+          <li class="covered" data-hits="1" data-linenumber="168">
             <span class="hits">1</span>
             
 
@@ -10226,7 +7399,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="259">
+          <li class="never" data-hits="" data-linenumber="169">
             
             
 
@@ -10237,7 +7410,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="260">
+          <li class="never" data-hits="" data-linenumber="170">
             
             
 
@@ -10248,18 +7421,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="261">
+          <li class="covered" data-hits="1" data-linenumber="171">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">			def verifica_operacao_nao_realizada(xml)</code>
+            <code class="ruby">			def valida_operacao_nao_realizada(xml)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="262">
+          <li class="covered" data-hits="1" data-linenumber="172">
             <span class="hits">1</span>
             
 
@@ -10270,7 +7443,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="263">
+          <li class="covered" data-hits="1" data-linenumber="173">
             <span class="hits">1</span>
             
 
@@ -10281,7 +7454,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="264">
+          <li class="covered" data-hits="1" data-linenumber="174">
             <span class="hits">1</span>
             
 
@@ -10292,7 +7465,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="265">
+          <li class="covered" data-hits="1" data-linenumber="175">
             <span class="hits">1</span>
             
 
@@ -10303,7 +7476,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="266">
+          <li class="covered" data-hits="1" data-linenumber="176">
             <span class="hits">1</span>
             
 
@@ -10314,7 +7487,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="267">
+          <li class="covered" data-hits="1" data-linenumber="177">
             <span class="hits">1</span>
             
 
@@ -10325,7 +7498,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="268">
+          <li class="covered" data-hits="1" data-linenumber="178">
             <span class="hits">1</span>
             
 
@@ -10336,7 +7509,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="269">
+          <li class="covered" data-hits="1" data-linenumber="179">
             <span class="hits">1</span>
             
 
@@ -10347,7 +7520,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="270">
+          <li class="covered" data-hits="1" data-linenumber="180">
             <span class="hits">1</span>
             
 
@@ -10358,7 +7531,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="271">
+          <li class="covered" data-hits="1" data-linenumber="181">
             <span class="hits">1</span>
             
 
@@ -10369,7 +7542,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="272">
+          <li class="covered" data-hits="1" data-linenumber="182">
             <span class="hits">1</span>
             
 
@@ -10380,7 +7553,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="273">
+          <li class="covered" data-hits="1" data-linenumber="183">
             <span class="hits">1</span>
             
 
@@ -10391,7 +7564,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="274">
+          <li class="covered" data-hits="1" data-linenumber="184">
             <span class="hits">1</span>
             
 
@@ -10402,7 +7575,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="275">
+          <li class="covered" data-hits="1" data-linenumber="185">
             <span class="hits">1</span>
             
 
@@ -10413,7 +7586,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="276">
+          <li class="covered" data-hits="1" data-linenumber="186">
             <span class="hits">1</span>
             
 
@@ -10424,7 +7597,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="277">
+          <li class="covered" data-hits="1" data-linenumber="187">
             <span class="hits">1</span>
             
 
@@ -10435,7 +7608,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="278">
+          <li class="covered" data-hits="1" data-linenumber="188">
             <span class="hits">1</span>
             
 
@@ -10446,7 +7619,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="279">
+          <li class="covered" data-hits="1" data-linenumber="189">
             <span class="hits">1</span>
             
 
@@ -10457,7 +7630,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="280">
+          <li class="covered" data-hits="1" data-linenumber="190">
             <span class="hits">1</span>
             
 
@@ -10468,7 +7641,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="281">
+          <li class="covered" data-hits="1" data-linenumber="191">
             <span class="hits">1</span>
             
 
@@ -10479,7 +7652,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="282">
+          <li class="covered" data-hits="1" data-linenumber="192">
             <span class="hits">1</span>
             
 
@@ -10490,7 +7663,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="283">
+          <li class="covered" data-hits="1" data-linenumber="193">
             <span class="hits">1</span>
             
 
@@ -10501,7 +7674,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="284">
+          <li class="covered" data-hits="1" data-linenumber="194">
             <span class="hits">1</span>
             
 
@@ -10512,7 +7685,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="285">
+          <li class="covered" data-hits="1" data-linenumber="195">
             <span class="hits">1</span>
             
 
@@ -10523,7 +7696,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="286">
+          <li class="covered" data-hits="1" data-linenumber="196">
             <span class="hits">1</span>
             
 
@@ -10534,7 +7707,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="287">
+          <li class="covered" data-hits="1" data-linenumber="197">
             <span class="hits">1</span>
             
 
@@ -10545,7 +7718,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="288">
+          <li class="never" data-hits="" data-linenumber="198">
             
             
 
@@ -10556,7 +7729,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="289">
+          <li class="never" data-hits="" data-linenumber="199">
             
             
 
@@ -10567,18 +7740,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="290">
+          <li class="covered" data-hits="1" data-linenumber="200">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">			def verifica_emissao_contingencia(xml)</code>
+            <code class="ruby">			def valida_emissao_contingencia(xml)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="291">
+          <li class="covered" data-hits="1" data-linenumber="201">
             <span class="hits">1</span>
             
 
@@ -10589,7 +7762,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="292">
+          <li class="covered" data-hits="1" data-linenumber="202">
             <span class="hits">1</span>
             
 
@@ -10600,7 +7773,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="293">
+          <li class="covered" data-hits="1" data-linenumber="203">
             <span class="hits">1</span>
             
 
@@ -10611,7 +7784,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="294">
+          <li class="covered" data-hits="1" data-linenumber="204">
             <span class="hits">1</span>
             
 
@@ -10622,7 +7795,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="295">
+          <li class="covered" data-hits="1" data-linenumber="205">
             <span class="hits">1</span>
             
 
@@ -10633,7 +7806,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="296">
+          <li class="covered" data-hits="1" data-linenumber="206">
             <span class="hits">1</span>
             
 
@@ -10644,7 +7817,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="297">
+          <li class="covered" data-hits="1" data-linenumber="207">
             <span class="hits">1</span>
             
 
@@ -10655,7 +7828,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="298">
+          <li class="covered" data-hits="1" data-linenumber="208">
             <span class="hits">1</span>
             
 
@@ -10666,7 +7839,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="299">
+          <li class="covered" data-hits="1" data-linenumber="209">
             <span class="hits">1</span>
             
 
@@ -10677,7 +7850,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="300">
+          <li class="covered" data-hits="1" data-linenumber="210">
             <span class="hits">1</span>
             
 
@@ -10688,7 +7861,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="301">
+          <li class="covered" data-hits="1" data-linenumber="211">
             <span class="hits">1</span>
             
 
@@ -10699,7 +7872,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="302">
+          <li class="covered" data-hits="1" data-linenumber="212">
             <span class="hits">1</span>
             
 
@@ -10710,7 +7883,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="303">
+          <li class="covered" data-hits="1" data-linenumber="213">
             <span class="hits">1</span>
             
 
@@ -10721,7 +7894,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="304">
+          <li class="covered" data-hits="1" data-linenumber="214">
             <span class="hits">1</span>
             
 
@@ -10732,7 +7905,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="305">
+          <li class="covered" data-hits="1" data-linenumber="215">
             <span class="hits">1</span>
             
 
@@ -10743,7 +7916,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="306">
+          <li class="covered" data-hits="1" data-linenumber="216">
             <span class="hits">1</span>
             
 
@@ -10754,7 +7927,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="307">
+          <li class="covered" data-hits="1" data-linenumber="217">
             <span class="hits">1</span>
             
 
@@ -10765,7 +7938,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="308">
+          <li class="covered" data-hits="1" data-linenumber="218">
             <span class="hits">1</span>
             
 
@@ -10776,7 +7949,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="309">
+          <li class="covered" data-hits="1" data-linenumber="219">
             <span class="hits">1</span>
             
 
@@ -10787,7 +7960,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="310">
+          <li class="covered" data-hits="1" data-linenumber="220">
             <span class="hits">1</span>
             
 
@@ -10798,7 +7971,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="311">
+          <li class="never" data-hits="" data-linenumber="221">
             
             
 
@@ -10809,13 +7982,1003 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="312">
+          <li class="never" data-hits="" data-linenumber="222">
             
             
 
             
 
             <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="223">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">			def valida_cancelar_nota_substituicao(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="224">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				corrige_versao_env_evento_cancelar_nota_substituicao(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="225">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				corrige_versao_det_evento_cancelar_nota_substituicao(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="226">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				corrige_ver_evento_cancelar_nota_substituicao(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="227">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				corrige_descricao_cancelar_nota_substituicao(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="228">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				corrige_tipo_autor_cancelar_nota_substituicao(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="229">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				corrige_tipo_evento_cancelar_nota_substituicao(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="230">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_num_item_cancelar_nota_substituicao(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="231">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_dhemi_cancelar_nota_substituicao(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="232">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_tpnf_cancelar_nota_substituicao(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="233">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_ie_cancelar_nota_substituicao(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="234">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_dest_cancelar_nota_substituicao(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="235">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_vnf_cancelar_nota_substituicao(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="236">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_vicms_cancelar_nota_substituicao(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="237">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_vst_cancelar_nota_substituicao(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="238">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_item_pedido_cancelar_nota_substituicao(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="239">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_qtde_item_cancelar_nota_substituicao(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="240">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_xjust_cancelar_nota_substituicao(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="241">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_c_orgao_autor_cancelar_nota_substituicao(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="242">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_ver_aplic_cancelar_nota_substituicao(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="243">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_nprot_cancelar_nota_substituicao(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="244">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_aut_xml_cancelar_nota_substituicao(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="245">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_tp_autorizacao_cancelar_nota_substituicao(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="246">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_xconduso_cancelar_nota_substituicao(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="247">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_xcorrecao_cancelar_nota_substituicao(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="248">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				corrige_nprot_cancelar_nota_substituicao(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="249">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				corrige_xjust_cancelar_nota_substituicao(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="250">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				corrige_chnferef_cancelar_nota_substituicao(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="251">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				xml</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="252">
+            
+            
+
+            
+
+            <code class="ruby">			end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="253">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="254">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">			def valida_cancelar_nota(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="255">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				corrige_tipo_evento_cancelar_nota(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="256">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				corrige_ver_evento_cancelar_nota(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="257">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				corrige_versao_det_evento_cancelar_nota(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="258">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				corrige_versao_env_evento_cancelar_nota(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="259">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				corrige_descricao_cancelar_nota(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="260">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_num_item_cancelar_nota(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="261">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_c_orgao_autor_cancelar_nota(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="262">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_tipo_autor_cancelar_nota(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="263">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_ver_aplic_cancelar_nota(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="264">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_chnferef_cancelar_nota(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="265">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_xcorrecao_cancelar_nota(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="266">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_xconduso_cancelar_nota(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="267">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_xjust_cancelar_nota(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="268">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_dhemi_cancelar_nota(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="269">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_tpnf_cancelar_nota(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="270">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_ie_cancelar_nota(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="271">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_dest_cancelar_nota(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="272">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_vnf_cancelar_nota(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="273">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_vicms_cancelar_nota(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="274">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_vst_cancelar_nota(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="275">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_item_pedido_cancelar_nota(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="276">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_qtde_item_cancelar_nota(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="277">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_aut_xml_cancelar_nota(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="278">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_tp_autorizacao_cancelar_nota(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="279">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_nprot_cancelar_nota(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="280">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				xml</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="281">
+            
+            
+
+            
+
+            <code class="ruby">			end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="282">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="283">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">			def valida_prorrogar_prazo_1(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="284">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				corrige_tipo_evento_prorrogar_prazo_1(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="285">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				corrige_versao_env_evento_prorrogar_prazo_1(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="286">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				corrige_desc_evento_prorrogar_prazo_1(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="287">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				corrige_nprot_prorrogar_prazo_1(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="288">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				corrige_qtde_item_prorrogar_prazo_1(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="289">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				xml</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="290">
+            
+            
+
+            
+
+            <code class="ruby">			end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="291">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="292">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">			def valida_prorrogar_prazo_2(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="293">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				corrige_tipo_evento_prorrogar_prazo_2(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="294">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				corrige_versao_env_evento_prorrogar_prazo_2(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="295">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				corrige_desc_evento_prorrogar_prazo_2(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="296">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				corrige_nprot_prorrogar_prazo_2(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="297">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				corrige_qtde_item_prorrogar_prazo_2(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="298">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				xml</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="299">
+            
+            
+
+            
+
+            <code class="ruby">			end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="300">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="301">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">			def valida_ator_interessado(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="302">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_n_prot_ator_interessado(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="303">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_x_just_ator_interessado(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="304">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_ch_nfe_ref_ator_interessado(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="305">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_x_correcao_ator_interessado(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="306">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_dh_emi_ator_interessado(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="307">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_tp_nf_ator_interessado(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="308">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_ie_ator_interessado(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="309">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_dest_ator_interessado(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="310">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_v_nf_ator_interessado(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="311">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_v_icms_ator_interessado(xml)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="312">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">				remove_v_st_ator_interessado(xml)</code>
           </li>
         </div>
       
@@ -10826,7 +8989,7 @@
 
             
 
-            <code class="ruby">			def verifica_cancelamento_prazo_1(xml)</code>
+            <code class="ruby">				remove_item_pedido_ator_interessado(xml)</code>
           </li>
         </div>
       
@@ -10837,7 +9000,7 @@
 
             
 
-            <code class="ruby">				corrige_tipo_evento_cancelamento_prazo_1(xml)</code>
+            <code class="ruby">				remove_qtde_item_ator_interessado(xml)</code>
           </li>
         </div>
       
@@ -10848,7 +9011,7 @@
 
             
 
-            <code class="ruby">				corrige_versao_env_evento_cancelamento_prazo_1(xml)</code>
+            <code class="ruby">				corrige_desc_evento_ator_interessado(xml)</code>
           </li>
         </div>
       
@@ -10859,7 +9022,7 @@
 
             
 
-            <code class="ruby">				corrige_desc_evento_cancelamento_prazo_1(xml)</code>
+            <code class="ruby">				corrige_c_orgao_autor_ator_interessado(xml)</code>
           </li>
         </div>
       
@@ -10870,7 +9033,7 @@
 
             
 
-            <code class="ruby">				corrige_nprot_cancelamento_prazo_1(xml)</code>
+            <code class="ruby">				corrige_tp_autor_ator_interessado(xml)</code>
           </li>
         </div>
       
@@ -10881,7 +9044,7 @@
 
             
 
-            <code class="ruby">				corrige_qtde_item_cancelamento_prazo_1(xml)</code>
+            <code class="ruby">				corrige_ver_aplic_ator_interessado(xml)</code>
           </li>
         </div>
       
@@ -10892,29 +9055,29 @@
 
             
 
-            <code class="ruby">				xml</code>
+            <code class="ruby">				corrige_x_cond_uso_ator_interessado(xml)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="320">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="320">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">			end</code>
+            
+
+            <code class="ruby">				corrige_versao_env_evento_ator_interessado(xml)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="321">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="321">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">				corrige_tp_evento_ator_interessado(xml)</code>
           </li>
         </div>
       
@@ -10925,7 +9088,7 @@
 
             
 
-            <code class="ruby">			def verifica_cancelamento_prazo_2(xml)</code>
+            <code class="ruby">				corrige_ver_evento_ator_interessado(xml)</code>
           </li>
         </div>
       
@@ -10936,7 +9099,7 @@
 
             
 
-            <code class="ruby">				corrige_tipo_evento_cancelamento_prazo_2(xml)</code>
+            <code class="ruby">				corrige_versao_det_evento_ator_interessado(xml)</code>
           </li>
         </div>
       
@@ -10947,7 +9110,7 @@
 
             
 
-            <code class="ruby">				corrige_versao_env_evento_cancelamento_prazo_2(xml)</code>
+            <code class="ruby">				remove_num_item_ator_interessado(xml)</code>
           </li>
         </div>
       
@@ -10958,29 +9121,29 @@
 
             
 
-            <code class="ruby">				corrige_desc_evento_cancelamento_prazo_2(xml)</code>
+            <code class="ruby">				xml</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="326">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="326">
+            
             
 
             
 
-            <code class="ruby">				corrige_nprot_cancelamento_prazo_2(xml)</code>
+            <code class="ruby">			end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="327">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="327">
+            
             
 
             
 
-            <code class="ruby">				corrige_qtde_item_cancelamento_prazo_2(xml)</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -10991,29 +9154,29 @@
 
             
 
-            <code class="ruby">				xml</code>
+            <code class="ruby">			def valida_cancelamento_prazo_1(xml)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="329">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="329">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">			end</code>
+            
+
+            <code class="ruby">				corrige_tipo_evento_cancelamento_prazo_1(xml)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="330">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="330">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">				corrige_versao_env_evento_cancelamento_prazo_1(xml)</code>
           </li>
         </div>
       
@@ -11024,7 +9187,7 @@
 
             
 
-            <code class="ruby">			def verifica_consultar_retorno_autorizacao(xml)</code>
+            <code class="ruby">				corrige_desc_evento_cancelamento_prazo_1(xml)</code>
           </li>
         </div>
       
@@ -11035,7 +9198,7 @@
 
             
 
-            <code class="ruby">				corrige_versao_cons_reci_nfe_consultar_retorno_autorizacao(xml)</code>
+            <code class="ruby">				corrige_nprot_cancelamento_prazo_1(xml)</code>
           </li>
         </div>
       
@@ -11046,18 +9209,18 @@
 
             
 
-            <code class="ruby">				xml</code>
+            <code class="ruby">				corrige_qtde_item_cancelamento_prazo_1(xml)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="334">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="334">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">			end</code>
+            
+
+            <code class="ruby">				xml</code>
           </li>
         </div>
       
@@ -11068,18 +9231,18 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">			end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="336">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="336">
+            
             
 
             
 
-            <code class="ruby">			def verifica_consultar_protocolo(xml)</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -11090,7 +9253,7 @@
 
             
 
-            <code class="ruby">				corrige_versao_cons_sit_nfe_consultar_protocolo(xml)</code>
+            <code class="ruby">			def valida_cancelamento_prazo_2(xml)</code>
           </li>
         </div>
       
@@ -11101,29 +9264,29 @@
 
             
 
-            <code class="ruby">				xml</code>
+            <code class="ruby">				corrige_tipo_evento_cancelamento_prazo_2(xml)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="339">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="339">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">			end</code>
+            
+
+            <code class="ruby">				corrige_versao_env_evento_cancelamento_prazo_2(xml)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="340">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="340">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">				corrige_desc_evento_cancelamento_prazo_2(xml)</code>
           </li>
         </div>
       
@@ -11134,7 +9297,7 @@
 
             
 
-            <code class="ruby">			def verifica_nfe_distribuicao_dfe(xml)</code>
+            <code class="ruby">				corrige_nprot_cancelamento_prazo_2(xml)</code>
           </li>
         </div>
       
@@ -11145,7 +9308,7 @@
 
             
 
-            <code class="ruby">				corrige_versao_dist_dfe_int_nfe_distribuicao_dfe(xml)</code>
+            <code class="ruby">				corrige_qtde_item_cancelamento_prazo_2(xml)</code>
           </li>
         </div>
       
@@ -11189,7 +9352,7 @@
 
             
 
-            <code class="ruby">			def verifica_consultar_cadastro(xml)</code>
+            <code class="ruby">			def valida_consultar_cadastro(xml)</code>
           </li>
         </div>
       
@@ -25307,8 +23470,8 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="1630">
-            
+          <li class="covered" data-hits="1" data-linenumber="1630">
+            <span class="hits">1</span>
             
 
             
@@ -25406,8 +23569,8 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="1639">
-            
+          <li class="covered" data-hits="1" data-linenumber="1639">
+            <span class="hits">1</span>
             
 
             
@@ -25505,8 +23668,8 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="1648">
-            
+          <li class="covered" data-hits="1" data-linenumber="1648">
+            <span class="hits">1</span>
             
 
             
@@ -25615,8 +23778,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="1658">
-            <span class="hits">1</span>
+          <li class="missed" data-hits="0" data-linenumber="1658">
+            
             
 
             
@@ -25747,8 +23910,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="1670">
-            <span class="hits">1</span>
+          <li class="missed" data-hits="0" data-linenumber="1670">
+            
             
 
             
@@ -25758,8 +23921,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="1671">
-            <span class="hits">1</span>
+          <li class="missed" data-hits="0" data-linenumber="1671">
+            
             
 
             
@@ -26187,8 +24350,8 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="1710">
-            
+          <li class="covered" data-hits="1" data-linenumber="1710">
+            <span class="hits">1</span>
             
 
             
