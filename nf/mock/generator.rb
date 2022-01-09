@@ -63,6 +63,16 @@ module NF
 			end
 
 			def self.consultar_protocolo(documento)
+				xml_builder = GeneratorHelper::XMLGenerator.new()
+
+				if documento.nil?
+					xml = xml_builder.consultar_protocolo
+					validator = NF::Mock::Validator.new()
+					xml = validator.verifica_consultar_protocolo(xml)					
+				else
+					validator = NF::Mock::Validator.new()
+					xml = validator.verifica_consultar_protocolo(documento)
+				end
 			end
 
 			def self.criar_carta_correcao(documento)

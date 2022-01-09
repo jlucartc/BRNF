@@ -49,6 +49,8 @@ module NF
 					end
 
 					def consultar_protocolo
+						xml = Nokogiri::XML::Document.parse(constroi_tag("46").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
+						xml
 					end
 
 					def criar_carta_correcao

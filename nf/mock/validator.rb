@@ -333,12 +333,22 @@ module NF
 				xml
 			end
 
+			def verifica_consultar_protocolo(xml)
+				corrige_versao_cons_sit_nfe_consultar_protocolo(xml)
+				xml
+			end
+
 			private
+
+				def corrige_versao_cons_sit_nfe_consultar_protocolo(xml)
+					versao = xml.xpath("//xs:consSitNFe//@versao","xs" => "http://www.portalfiscal.inf.br/nfe").first
+					versao.content = '4.00'
+				end
 
 				def corrige_versao_cons_reci_nfe_consultar_retorno_autorizacao(xml)
 					versao = xml.xpath("//xs:consReciNFe//@versao","xs" => "http://www.portalfiscal.inf.br/nfe").first
 					versao.content = '4.00'
-				end		
+				end
 
 				def corrige_tipo_evento_cancelamento_prazo_1(xml)
 					tp_evento = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:tpEvento","xs" => "http://www.portalfiscal.inf.br/nfe").first
