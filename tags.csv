@@ -65,13 +65,13 @@ id;nome;tipo;pai;min;max;regex;namespace;ativo
 64;distDFeInt;Raiz;;;;;http://www.portalfiscal.inf.br/nfe;1
 65;versao;A;64;1;1;^[0-9]{1,2}\.[0-9]{2}$;;1
 66;tpAmb;E;64;1;1;^(1|2)$;;1
-67;cUFAutor;E;64;0;1;^[0-9]{2}$;;1
+67;cUFAutor;E;64;0;1;^11|12|13|14|15|16|17|21|22|23|24|25|26|27|28|29|31|32|33|35|41|42|43|50|51|52|53$;;1
 68;CNPJ;CE;64;1;1;^[0-9]{14}$;;1
 69;CPF;CE;64;1;1;^[0-9]{11}$;;1
 70;distNSU;CG;64;1;1;;;1
 71;ultNSU;E;70;1;1;^[0-9]{1,15}$;;1
 72;consNSU;CG;64;1;1;;;1
-73;NSU;E;72;1;1;^[0-9]{1,15}$;;1
+73;NSU;E;72;1;1;^[0-9]{15}$;;1
 74;consChNFe;CG;64;1;1;;;1
 75;chNFe;E;74;1;1;^[0-9]{44}$;;1
 76;envEvento;Raiz;;;;;http://www.portalfiscal.inf.br/nfe;1

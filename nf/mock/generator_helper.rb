@@ -46,6 +46,8 @@ module NF
 					end
 
 					def nfe_distribuicao_dfe
+						xml = Nokogiri::XML::Document.parse(constroi_tag("64").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
+						xml
 					end
 
 					def consultar_protocolo

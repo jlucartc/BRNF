@@ -60,6 +60,16 @@ module NF
 			end
 
 			def self.nfe_distribuicao_dfe(documento)
+				xml_builder = GeneratorHelper::XMLGenerator.new()
+
+				if documento.nil?
+					xml = xml_builder.nfe_distribuicao_dfe
+					validator = NF::Mock::Validator.new()
+					xml = validator.verifica_nfe_distribuicao_dfe(xml)					
+				else
+					validator = NF::Mock::Validator.new()
+					xml = validator.verifica_nfe_distribuicao_dfe(documento)
+				end
 			end
 
 			def self.consultar_protocolo(documento)

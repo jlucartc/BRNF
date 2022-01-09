@@ -27,6 +27,7 @@ RSpec.describe Gem do
 	schema_evento_cancelamento_prazo_2 = './schemas/producao/arquivos/envRemIndus_v1.00.xsd'
 	schema_consultar_retorno_autorizacao = './schemas/producao/arquivos/consReciNFe_v4.00.xsd'
 	schema_consultar_protocolo = './schemas/producao/arquivos/consSitNFe_v4.00.xsd'
+	schema_nfe_distribuicao_dfe = './schemas/producao/arquivos/distDFeInt_v1.01.xsd'
 	#xml_autorizacao = NF::Mock::Generator.autorizar_nota(File.open("nota_exemplo.xml") { |f| Nokogiri::XML(f) })
 	xml_autorizacao = NF::Mock::Generator.autorizar_nota(nil)
 	xml_inutilizacao = NF::Mock::Generator.inutilizar_numeracao(nil)
@@ -46,6 +47,7 @@ RSpec.describe Gem do
 	xml_evento_cancelamento_prazo_2 = NF::Mock::Generator.cancelamento_prazo_2(nil)
 	xml_consultar_retorno_autorizacao = NF::Mock::Generator.consultar_retorno_autorizacao(nil)
 	xml_consultar_protocolo = NF::Mock::Generator.consultar_protocolo(nil)
+	xml_nfe_distribuicao_dfe = NF::Mock::Generator.nfe_distribuicao_dfe(nil)
 	indicador_operacao = xml_autorizacao.xpath("xs:enviNFe//xs:NFe//xs:infNFe//xs:ide//xs:idDest","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	destinatario_uf = xml_autorizacao.xpath("xs:enviNFe//xs:NFe//xs:infNFe//xs:dest//xs:enderDest//xs:UF","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	destinatario_cpf = xml_autorizacao.xpath("xs:enviNFe//xs:NFe//xs:infNFe//xs:dest//xs:CPF","xs" => "http://www.portalfiscal.inf.br/nfe").first
@@ -316,6 +318,7 @@ RSpec.describe Gem do
 	qtde_item_cancelar_prazo_2 = xml_evento_cancelamento_prazo_2.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:qtdeItem","xs" => "http://www.portalfiscal.inf.br/nfe").first	
 	versao_cons_reci_nfe_consultar_retorno_autorizacao = xml_consultar_retorno_autorizacao.xpath("//xs:consReciNFe//@versao","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	versao_cons_sit_nfe_consulta_protocolo = xml_consultar_protocolo.xpath("//xs:consSitNFe//@versao","xs" => "http://www.portalfiscal.inf.br/nfe").first
+	versao_dist_dfe_int_nfe_distribuicao_dfe = xml_nfe_distribuicao_dfe.xpath("//xs:distDFeInt//@versao","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	csts_operacao_isenta = ["40","41"]
 	csosns_operacao_isenta = ["103","300","400"]
 	puts xml_autorizacao
@@ -335,6 +338,7 @@ RSpec.describe Gem do
 	puts xml_evento_cancelamento_prazo_2
 	puts xml_consultar_retorno_autorizacao
 	puts xml_consultar_protocolo
+	puts xml_nfe_distribuicao_dfe
 
 	it "deve criar um xml válido para mensagem de autorizacao de notas" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_autorizacao))
@@ -430,6 +434,19 @@ RSpec.describe Gem do
 		schema = Nokogiri::XML::Schema(File.open(schema_consultar_protocolo))
 		puts "--- CONSULTAR PROTOCOLO --- \n\n#{schema.validate(xml_consultar_protocolo)}"
 		expect(schema.valid?(xml_consultar_protocolo)).to be(true)
+	end
+
+	it "deve criar um xml válido para mensagem de distribuicao dfe" do |test|
+		schema = Nokogiri::XML::Schema(File.open(schema_nfe_distribuicao_dfe))
+		puts "--- DISTRIBUICAO DFE --- \n\n#{schema.validate(xml_nfe_distribuicao_dfe)}"
+		expect(schema.valid?(xml_nfe_distribuicao_dfe)).to be(true)
+	end
+
+	# --- DISTRIBUICAO DFE ---
+
+		it "deve conter valor '1.01' no atributo 'versao' da tag distDFeInt em distribuicao dfe" do |test|
+		condicao = versao_dist_dfe_int_nfe_distribuicao_dfe.content == '1.01'
+		expect(condicao).to be(true)
 	end
 
 	# --- CONSULTAR PROTOCOLO ---

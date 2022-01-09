@@ -338,7 +338,17 @@ module NF
 				xml
 			end
 
+			def verifica_nfe_distribuicao_dfe(xml)
+				corrige_versao_dist_dfe_int_nfe_distribuicao_dfe(xml)
+				xml
+			end
+
 			private
+
+				def corrige_versao_dist_dfe_int_nfe_distribuicao_dfe(xml)
+					versao = xml.xpath("//xs:distDFeInt//@versao","xs" => "http://www.portalfiscal.inf.br/nfe").first
+					versao.content = '1.01'
+				end
 
 				def corrige_versao_cons_sit_nfe_consultar_protocolo(xml)
 					versao = xml.xpath("//xs:consSitNFe//@versao","xs" => "http://www.portalfiscal.inf.br/nfe").first
