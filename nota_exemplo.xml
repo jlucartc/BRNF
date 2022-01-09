@@ -1,417 +1,429 @@
 <?xml version="1.0"?>
 <enviNFe xmlns="http://www.portalfiscal.inf.br/nfe" versao="4.00">
-  <idLote>1</idLote>
+  <idLote>430</idLote>
   <indSinc>1</indSinc>
   <NFe>
-    <infNFe versao="4.00" Id="NFe25044144263097061289733228218236699390011305">
+    <infNFe versao="4.00" Id="NFe05798084729720238970459338601191900587594076">
       <ide>
-        <cUF>52</cUF>
-        <cNF>58194473</cNF>
-        <natOp>45</natOp>
+        <cUF>35</cUF>
+        <cNF>97358703</cNF>
+        <natOp>=</natOp>
         <mod>55</mod>
-        <serie>0</serie>
-        <nNF>75</nNF>
-        <dhEmi>2032-02-29T22:40:54+12:00</dhEmi>
-        <dhSaiEnt>2024-02-29T23:32:02+12:00</dhSaiEnt>
+        <serie>561</serie>
+        <nNF>51</nNF>
+        <dhEmi>2005-12-31T15:21:14+10:00</dhEmi>
+        <dhSaiEnt>2096-02-29T20:30:14-11:00</dhSaiEnt>
         <tpNF>1</tpNF>
         <idDest>2</idDest>
-        <cMunFG>8121891</cMunFG>
-        <tpImp>4</tpImp>
-        <tpEmis>3</tpEmis>
-        <cDV>8</cDV>
-        <tpAmb>2</tpAmb>
+        <cMunFG>2587581</cMunFG>
+        <tpImp>5</tpImp>
+        <tpEmis>6</tpEmis>
+        <cDV>6</cDV>
+        <tpAmb>1</tpAmb>
         <finNFe>2</finNFe>
-        <indFinal>1</indFinal>
-        <indPres>1</indPres>
-        <procEmi>1</procEmi>
-        <verProc>"8866</verProc>
-        <dhCont>2047-08-31T04:26:21+12:00</dhCont>
-        <xJust>8439471065532219483216)6344969270</xJust>
+        <indFinal>0</indFinal>
+        <indPres>0</indPres>
+        <procEmi>0</procEmi>
+        <verProc>nIk{</verProc>
+        <dhCont>2056-02-29T22:28:54-10:00</dhCont>
+        <xJust>037yU@1v9F?v}QFe</xJust>
         <NFref>
-          <refNFe>23701910122579581811197993966280530390403531</refNFe>
+          <refNFe>83028986151153448216829627558613180798912110</refNFe>
         </NFref>
       </ide>
       <emit>
-        <CPF>55106391733</CPF>
-        <xNome>37343531</xNome>
-        <xFant>74</xFant>
+        <CNPJ>01326578087696</CNPJ>
+        <xNome>PM</xNome>
+        <xFant>Hm</xFant>
         <enderEmit>
-          <xLgr>"89</xLgr>
-          <nro>5714</nro>
-          <xCpl>'443</xCpl>
-          <xBairro>4848,18</xBairro>
-          <cMun>7488209</cMun>
-          <xMun>1259".</xMun>
-          <UF>AP</UF>
-          <CEP>40426662</CEP>
+          <xLgr>Drh</xLgr>
+          <nro>s</nro>
+          <xCpl>!</xCpl>
+          <xBairro>=9</xBairro>
+          <cMun>7654950</cMun>
+          <xMun>BiM</xMun>
+          <UF>RN</UF>
+          <CEP>32011427</CEP>
           <cPais>1058</cPais>
-          <xPais>BRASIL</xPais>
-          <fone>455863</fone>
+          <xPais>Brasil</xPais>
+          <fone>5411118</fone>
         </enderEmit>
         <IE>ISENTO</IE>
-        <IEST>19</IEST>
-        <IM>"</IM>
-        <CNAE>8012761</CNAE>
+        <IEST>784</IEST>
+        <IM>.</IM>
+        <CNAE>7643215</CNAE>
         <CRT>2</CRT>
       </emit>
       <avulsa>
-        <CNPJ>25458888801946</CNPJ>
-        <xOrgao>9182,48</xOrgao>
-        <matr>46</matr>
-        <xAgente>78961545</xAgente>
-        <fone>381326</fone>
-        <UF>AC</UF>
-        <nDAR>44871110</nDAR>
-        <dEmi>2026-10-30</dEmi>
-        <vDAR>0</vDAR>
-        <repEmi>16</repEmi>
-        <dPag>2066-05-31</dPag>
+        <CNPJ>65589143967550</CNPJ>
+        <xOrgao>+~e</xOrgao>
+        <matr>+C</matr>
+        <xAgente>Z</xAgente>
+        <fone>9707501</fone>
+        <UF>SP</UF>
+        <nDAR>H%e</nDAR>
+        <dEmi>2095-12-23</dEmi>
+        <vDAR>7</vDAR>
+        <repEmi>+h</repEmi>
+        <dPag>2076-10-26</dPag>
       </avulsa>
       <dest>
-        <CNPJ>58075092495898</CNPJ>
-        <xNome>3923515</xNome>
+        <CPF>86690353720</CPF>
+        <xNome>BO</xNome>
         <enderDest>
-          <xLgr>&amp;25</xLgr>
-          <nro>59</nro>
-          <xCpl>1045!</xCpl>
-          <xBairro>8433</xBairro>
-          <cMun>2704221</cMun>
-          <xMun>460,</xMun>
-          <UF>MA</UF>
-          <CEP>12685397</CEP>
-          <cPais>7919</cPais>
-          <xPais>691978</xPais>
-          <fone>986274</fone>
+          <xLgr>bl</xLgr>
+          <nro>?c9</nro>
+          <xCpl>$</xCpl>
+          <xBairro>*4</xBairro>
+          <cMun>2501783</cMun>
+          <xMun>jh.</xMun>
+          <UF>CE</UF>
+          <CEP>56949766</CEP>
+          <cPais>1414</cPais>
+          <xPais>;$</xPais>
+          <fone>963324</fone>
         </enderDest>
         <indIEDest>2</indIEDest>
-        <IE>2310</IE>
-        <ISUF>425377745</ISUF>
-        <IM>30</IM>
-        <email>8150</email>
+        <IE>41</IE>
+        <ISUF>15637548</ISUF>
+        <IM>$</IM>
+        <email>0</email>
       </dest>
       <retirada>
-        <CPF>55499023036</CPF>
-        <xLgr>-(</xLgr>
-        <nro>427886</nro>
-        <xCpl>81284691</xCpl>
-        <xBairro>!771</xBairro>
-        <cMun>7783095</cMun>
-        <xMun>8350</xMun>
-        <UF>PE</UF>
+        <CNPJ/>
+        <xLgr>mN</xLgr>
+        <nro>9</nro>
+        <xCpl>I</xCpl>
+        <xBairro>~K</xBairro>
+        <cMun>2171518</cMun>
+        <xMun>ns</xMun>
+        <UF>ES</UF>
       </retirada>
       <entrega>
-        <CPF>27941358108</CPF>
-        <xLgr>rb</xLgr>
-        <nro>azk</nro>
-        <xCpl>G5O</xCpl>
-        <xBairro>yTjg</xBairro>
-        <cMun>9011936</cMun>
-        <xMun>uxR5</xMun>
+        <CPF>98197650964</CPF>
+        <xLgr>5Zu</xLgr>
+        <nro>U</nro>
+        <xCpl>v</xCpl>
+        <xBairro>mLQx</xBairro>
+        <cMun>1068119</cMun>
+        <xMun>uoSx</xMun>
         <UF>MT</UF>
       </entrega>
       <autXML>
-        <CPF>43004576832</CPF>
+        <CPF>52789064132</CPF>
       </autXML>
-      <det nItem="9">
+      <det nItem="668">
         <prod>
-          <cProd>80</cProd>
+          <cProd>Zbbr</cProd>
           <cEAN/>
-          <xProd>38</xProd>
-          <NCM>54184740</NCM>
-          <NVE>WM2934</NVE>
-          <EXTIPI>00</EXTIPI>
-          <CFOP>1387</CFOP>
-          <uCom>4599</uCom>
-          <qCom>0.9737</qCom>
-          <vUnCom>851.6</vUnCom>
-          <vProd>0.86</vProd>
-          <cEANTrib>69530030245911</cEANTrib>
-          <uTrib>81</uTrib>
-          <qTrib>0.804</qTrib>
-          <vUnTrib>34</vUnTrib>
-          <vFrete>0.67</vFrete>
-          <vSeg>0.68</vSeg>
-          <vDesc>1</vDesc>
-          <vOutro>0.45</vOutro>
+          <xProd>;F</xProd>
+          <NCM>30719601</NCM>
+          <NVE>QU7178</NVE>
+          <EXTIPI>451</EXTIPI>
+          <CFOP>6829</CFOP>
+          <uCom>OR</uCom>
+          <qCom>0</qCom>
+          <vUnCom>66</vUnCom>
+          <vProd>143</vProd>
+          <cEANTrib>6678642824616</cEANTrib>
+          <uTrib>%i</uTrib>
+          <qTrib>0.11</qTrib>
+          <vUnTrib>0.229</vUnTrib>
+          <vFrete>0.07</vFrete>
+          <vSeg>26.33</vSeg>
+          <vDesc>0.43</vDesc>
+          <vOutro>0.98</vOutro>
           <indTot>0</indTot>
           <DI>
-            <nDI>731186</nDI>
-            <dDI>2011-11-07</dDI>
-            <xLocDesemb>70</xLocDesemb>
-            <UFDesemb>GO</UFDesemb>
-            <dDesemb>2072-02-29</dDesemb>
-            <tpViaTransp>9</tpViaTransp>
-            <vAFRMM>0</vAFRMM>
-            <tpIntermedio>1</tpIntermedio>
-            <CNPJ>96686971310669</CNPJ>
-            <UFTerceiro>DF</UFTerceiro>
-            <cExportador>*</cExportador>
+            <nDI>vED</nDI>
+            <dDI>2009-12-30</dDI>
+            <xLocDesemb>:D(L</xLocDesemb>
+            <UFDesemb>PB</UFDesemb>
+            <dDesemb>2087-10-17</dDesemb>
+            <tpViaTransp>3</tpViaTransp>
+            <vAFRMM>637</vAFRMM>
+            <tpIntermedio>2</tpIntermedio>
+            <CNPJ>53564574808508</CNPJ>
+            <UFTerceiro>PI</UFTerceiro>
+            <cExportador>%25</cExportador>
             <adi>
-              <nAdicao>5</nAdicao>
-              <nSeqAdic>888</nSeqAdic>
-              <cFabricante>83746596</cFabricante>
-              <vDescDI>49.37</vDescDI>
-              <nDraw>18586418239</nDraw>
+              <nAdicao>351</nAdicao>
+              <nSeqAdic>2</nSeqAdic>
+              <cFabricante>D~</cFabricante>
+              <vDescDI>0.24</vDescDI>
+              <nDraw>x</nDraw>
             </adi>
           </DI>
           <detExport>
-            <nDraw>23181750453</nDraw>
+            <nDraw>TV!H</nDraw>
             <exportInd>
-              <nRE>949450751897</nRE>
-              <chNFe>35704232764324314091015086077879682227227013</chNFe>
-              <qExport>0.27</qExport>
+              <nRE>012250315559</nRE>
+              <chNFe>82265069302046249461446732373900031701162448</chNFe>
+              <qExport>0.6</qExport>
             </exportInd>
           </detExport>
-          <xPed>10</xPed>
-          <nItemPed>551371</nItemPed>
-          <nFCI>A132E1A8-12EE-0FB4-BC57-8D94EA324818</nFCI>
+          <xPed>8</xPed>
+          <nItemPed>515026</nItemPed>
+          <nFCI>057BD54E-31FB-4B7E-1C78-FAD053CB42DD</nFCI>
           <rastro>
-            <nLote>2r</nLote>
-            <qLote>0</qLote>
-            <dFab>2028-02-29</dFab>
-            <dVal>2069-08-09</dVal>
+            <nLote>bF</nLote>
+            <qLote>0.848</qLote>
+            <dFab>2040-02-29</dFab>
+            <dVal>2016-02-29</dVal>
           </rastro>
-          <nRECOPI>61471500441938513046</nRECOPI>
+          <arma>
+            <tpArma>1</tpArma>
+            <nSerie>(jf7</nSerie>
+            <nCano>/</nCano>
+            <descr>Rt</descr>
+          </arma>
         </prod>
         <imposto>
-          <vTotTrib>0</vTotTrib>
+          <vTotTrib>0.40</vTotTrib>
+          <ICMS>
+            <ICMS10>
+              <orig>6</orig>
+              <CST>10</CST>
+              <modBC>1</modBC>
+              <vBC>0.57</vBC>
+              <pICMS>92.163</pICMS>
+              <vICMS>0.87</vICMS>
+              <modBCST>0</modBCST>
+              <pMVAST>0.61</pMVAST>
+              <pRedBCST>0.8537</pRedBCST>
+              <vBCST>549</vBCST>
+              <pICMSST>0</pICMSST>
+              <vICMSST>0.90</vICMSST>
+              <vBCFCPST>372</vBCFCPST>
+              <pFCPST>58.0911</pFCPST>
+              <vFCPST>0</vFCPST>
+            </ICMS10>
+          </ICMS>
           <IPI>
-            <clEnq>,</clEnq>
-            <CNPJProd>46875681490783</CNPJProd>
-            <cSelo>29"</cSelo>
-            <qSelo>008</qSelo>
-            <cEnq>75</cEnq>
-            <IPINT>
-              <CST>03</CST>
-            </IPINT>
+            <CNPJProd>75790737151989</CNPJProd>
+            <cSelo>P</cSelo>
+            <qSelo>03</qSelo>
+            <cEnq>|</cEnq>
+            <IPITrib>
+              <CST>00</CST>
+              <qUnid>4</qUnid>
+              <vUnid>5</vUnid>
+              <vIPI>0</vIPI>
+            </IPITrib>
           </IPI>
-          <ISSQN>
-            <vBC>0.66</vBC>
-            <vAliq>0</vAliq>
-            <vISSQN>93</vISSQN>
-            <cMunFG>2856513</cMunFG>
-            <cListServ>23.01</cListServ>
-            <vDeducao>0.13</vDeducao>
-            <vOutro>0.21</vOutro>
-            <vDescIncond>6</vDescIncond>
-            <vDescCond>0.06</vDescCond>
-            <vISSRet>0.64</vISSRet>
-            <indISS>4</indISS>
-            <cServico>iQ</cServico>
-            <cMun>1335655</cMun>
-            <cPais>817</cPais>
-            <nProcesso>ZQF</nProcesso>
-            <indIncentivo>2</indIncentivo>
-          </ISSQN>
+          <II>
+            <vBC>0.48</vBC>
+            <vDespAdu>604</vDespAdu>
+            <vII>650</vII>
+            <vIOF>0</vIOF>
+          </II>
           <PIS>
-            <PISOutr>
-              <CST>54</CST>
-              <vBC>89.54</vBC>
-              <pPIS>0</pPIS>
-              <vPIS>0</vPIS>
-            </PISOutr>
+            <PISNT>
+              <CST>04</CST>
+            </PISNT>
           </PIS>
           <PISST>
-            <qBCProd>64</qBCProd>
-            <vAliqProd>197.3466</vAliqProd>
-            <vPIS>0.67</vPIS>
+            <vBC>0.30</vBC>
+            <pPIS>0</pPIS>
+            <vPIS>0</vPIS>
           </PISST>
           <COFINS>
             <COFINSAliq>
-              <CST>01</CST>
+              <CST>02</CST>
               <vBC>0</vBC>
-              <pCOFINS>0.267</pCOFINS>
-              <vCOFINS>5.38</vCOFINS>
+              <pCOFINS>0.2021</pCOFINS>
+              <vCOFINS>3</vCOFINS>
             </COFINSAliq>
           </COFINS>
           <COFINSST>
-            <qBCProd>0</qBCProd>
-            <vAliqProd>0.9766</vAliqProd>
-            <vCOFINS>35.60</vCOFINS>
+            <vBC>0</vBC>
+            <pCOFINS>4</pCOFINS>
+            <vCOFINS>67.76</vCOFINS>
           </COFINSST>
           <ICMSUFDest>
-            <vBCUFDest>0.52</vBCUFDest>
-            <vBCFCPUFDest>19.91</vBCFCPUFDest>
-            <pFCPUFDest>0</pFCPUFDest>
+            <vBCUFDest>99.64</vBCUFDest>
+            <vBCFCPUFDest>0.39</vBCFCPUFDest>
+            <pFCPUFDest>0.376</pFCPUFDest>
             <pICMSUFDest>0</pICMSUFDest>
-            <pICMSInter>7.00</pICMSInter>
-            <pICMSInterPart>0.1690</pICMSInterPart>
-            <vFCPUFDest>0</vFCPUFDest>
-            <vICMSUFDest>0</vICMSUFDest>
-            <vICMSUFRemet>596.16</vICMSUFRemet>
+            <pICMSInter>4.00</pICMSInter>
+            <pICMSInterPart>0</pICMSInterPart>
+            <vFCPUFDest>0.70</vFCPUFDest>
+            <vICMSUFDest>129</vICMSUFDest>
+            <vICMSUFRemet>0</vICMSUFRemet>
           </ICMSUFDest>
         </imposto>
         <impostoDevol>
-          <pDevol>4.38</pDevol>
+          <pDevol>62.01</pDevol>
           <IPI>
-            <vIPIDevol>531.89</vIPIDevol>
+            <vIPIDevol>0</vIPIDevol>
           </IPI>
         </impostoDevol>
-        <infAdProd>62</infAdProd>
+        <infAdProd>=jq</infAdProd>
       </det>
       <total>
         <ICMSTot>
           <vBC>0</vBC>
-          <vICMS>0</vICMS>
-          <vICMSDeson>0</vICMSDeson>
-          <vFCPUFDest>0.04</vFCPUFDest>
-          <vICMSUFDest>0.31</vICMSUFDest>
-          <vICMSUFRemet>0.11</vICMSUFRemet>
-          <vFCP>4</vFCP>
-          <vBCST>83</vBCST>
-          <vST>0</vST>
-          <vFCPST>8</vFCPST>
-          <vFCPSTRet>0.39</vFCPSTRet>
-          <vProd>352</vProd>
-          <vFrete>0.44</vFrete>
+          <vICMS>0.50</vICMS>
+          <vICMSDeson>6.19</vICMSDeson>
+          <vFCPUFDest>0</vFCPUFDest>
+          <vICMSUFDest>0.98</vICMSUFDest>
+          <vICMSUFRemet>9</vICMSUFRemet>
+          <vFCP>1</vFCP>
+          <vBCST>0.28</vBCST>
+          <vST>0.52</vST>
+          <vFCPST>3.64</vFCPST>
+          <vFCPSTRet>0</vFCPSTRet>
+          <vProd>13.42</vProd>
+          <vFrete>0</vFrete>
           <vSeg>0</vSeg>
-          <vDesc>0</vDesc>
-          <vII>0</vII>
-          <vIPI>0</vIPI>
-          <vIPIDevol>6</vIPIDevol>
-          <vPIS>0</vPIS>
-          <vCOFINS>509.56</vCOFINS>
+          <vDesc>0.16</vDesc>
+          <vII>30.18</vII>
+          <vIPI>0.07</vIPI>
+          <vIPIDevol>0.10</vIPIDevol>
+          <vPIS>0.49</vPIS>
+          <vCOFINS>8</vCOFINS>
           <vOutro>0</vOutro>
-          <vNF>25.70</vNF>
-          <vTotTrib>0</vTotTrib>
+          <vNF>0.18</vNF>
+          <vTotTrib>0.29</vTotTrib>
         </ICMSTot>
         <ISSQNtot>
-          <vServ>4.98</vServ>
-          <vBC>3.46</vBC>
-          <vISS>0.51</vISS>
-          <vPIS>0.99</vPIS>
-          <vCOFINS>0.95</vCOFINS>
-          <dCompet>2037-11-19</dCompet>
-          <vDeducao>18</vDeducao>
-          <vOutro>0.27</vOutro>
-          <vDescIncond>0.79</vDescIncond>
-          <vDescCond>4</vDescCond>
-          <vISSRet>0.60</vISSRet>
-          <cRegTrib>3</cRegTrib>
+          <vServ>87.93</vServ>
+          <vBC>0.10</vBC>
+          <vISS>82</vISS>
+          <vPIS>0.41</vPIS>
+          <vCOFINS>0.25</vCOFINS>
+          <dCompet>2044-02-29</dCompet>
+          <vDeducao>0.76</vDeducao>
+          <vOutro>0.12</vOutro>
+          <vDescIncond>0.52</vDescIncond>
+          <vDescCond>0.97</vDescCond>
+          <vISSRet>973</vISSRet>
+          <cRegTrib>2</cRegTrib>
         </ISSQNtot>
         <retTrib>
-          <vRetPIS>0.69</vRetPIS>
-          <vRetCOFINS>0.48</vRetCOFINS>
-          <vRetCSLL>0.52</vRetCSLL>
-          <vBCIRRF>8.38</vBCIRRF>
-          <vIRRF>216.72</vIRRF>
-          <vBCRetPrev>0.85</vBCRetPrev>
-          <vRetPrev>0.57</vRetPrev>
+          <vRetPIS>0.86</vRetPIS>
+          <vRetCOFINS>0.35</vRetCOFINS>
+          <vRetCSLL>0.29</vRetCSLL>
+          <vBCIRRF>0.06</vBCIRRF>
+          <vIRRF>9</vIRRF>
+          <vBCRetPrev>0.47</vBCRetPrev>
+          <vRetPrev>0.49</vRetPrev>
         </retTrib>
       </total>
       <transp>
         <modFrete>1</modFrete>
         <transporta>
-          <CNPJ>00650511600841</CNPJ>
-          <xNome>179</xNome>
-          <IE>01</IE>
-          <xEnder>8.7783</xEnder>
-          <xMun>7076%*</xMun>
-          <UF>SE</UF>
+          <CPF>02963394654</CPF>
+          <xNome>/VY$</xNome>
+          <IE>34</IE>
+          <xEnder>Y`s</xEnder>
+          <xMun>Z</xMun>
+          <UF>ES</UF>
         </transporta>
         <retTransp>
-          <vServ>0.53</vServ>
-          <vBCRet>0.57</vBCRet>
-          <pICMSRet>0.988</pICMSRet>
-          <vICMSRet>0.33</vICMSRet>
-          <CFOP>6929</CFOP>
-          <cMunFG>7692437</cMunFG>
+          <vServ>0</vServ>
+          <vBCRet>0</vBCRet>
+          <pICMSRet>0</pICMSRet>
+          <vICMSRet>0</vICMSRet>
+          <CFOP>3206</CFOP>
+          <cMunFG>5642265</cMunFG>
         </retTransp>
-        <balsa>34</balsa>
+        <vagao>Z</vagao>
         <vol>
-          <qVol>4</qVol>
-          <esp>14</esp>
-          <marca>761536</marca>
-          <nVol>88</nVol>
-          <pesoL>2.329</pesoL>
-          <pesoB>0.024</pesoB>
+          <qVol>26</qVol>
+          <esp>h</esp>
+          <marca>HC</marca>
+          <nVol>j</nVol>
+          <pesoL>0.677</pesoL>
+          <pesoB>0.921</pesoB>
           <lacres>
-            <nLacre>46</nLacre>
+            <nLacre>xf}s</nLacre>
           </lacres>
         </vol>
       </transp>
       <cobr>
         <fat>
-          <nFat>60</nFat>
-          <vOrig>7</vOrig>
-          <vDesc>0.39</vDesc>
-          <vLiq>0.57</vLiq>
+          <nFat>*xK</nFat>
+          <vOrig>0.69</vOrig>
+          <vDesc>0.11</vDesc>
+          <vLiq>364.33</vLiq>
         </fat>
         <dup>
-          <nDup>33</nDup>
-          <dVenc>2099-11-02</dVenc>
-          <vDup>0.83</vDup>
+          <nDup>#</nDup>
+          <dVenc>2036-02-29</dVenc>
+          <vDup>218</vDup>
         </dup>
       </cobr>
       <pag>
         <detPag>
-          <tPag>90</tPag>
-          <vPag>931</vPag>
+          <tPag>14</tPag>
+          <vPag>0</vPag>
           <card>
             <tpIntegra>1</tpIntegra>
-            <CNPJ>08315217218713</CNPJ>
-            <tBand>08</tBand>
-            <cAut>97</cAut>
+            <CNPJ>95482884327585</CNPJ>
+            <tBand>09</tBand>
+            <cAut>Yt</cAut>
           </card>
         </detPag>
-        <vTroco>0</vTroco>
+        <vTroco>0.82</vTroco>
       </pag>
       <infAdic>
-        <infAdFisco>58</infAdFisco>
-        <infCpl>47418229</infCpl>
-        <obsCont xCampo="44">
-          <xTexto>91814347</xTexto>
+        <infAdFisco>4``</infAdFisco>
+        <infCpl>^b}</infCpl>
+        <obsCont xCampo="K)">
+          <xTexto>[</xTexto>
         </obsCont>
         <procRef>
-          <nProc>48498</nProc>
-          <indProc>1</indProc>
+          <nProc>Wej</nProc>
+          <indProc>3</indProc>
+          <tpAto>10</tpAto>
         </procRef>
       </infAdic>
       <exporta>
-        <UFSaidaPais>RS</UFSaidaPais>
-        <xLocExporta>9</xLocExporta>
-        <xLocDespacho>86</xLocDespacho>
+        <UFSaidaPais>RR</UFSaidaPais>
+        <xLocExporta>r/G.</xLocExporta>
+        <xLocDespacho>[kVb</xLocDespacho>
       </exporta>
       <compra>
-        <xNEmp>412260</xNEmp>
-        <xPed>36)"74</xPed>
-        <xCont>788569</xCont>
+        <xNEmp>YDJN</xNEmp>
+        <xPed>G</xPed>
+        <xCont>r</xCont>
       </compra>
       <cana>
-        <safra>39#9455</safra>
-        <ref>10/2068</ref>
-        <forDia dia="5">
-          <qtde>2.88</qtde>
+        <safra>Rzt?</safra>
+        <ref>11/2640</ref>
+        <forDia dia="10">
+          <qtde>0</qtde>
         </forDia>
         <qTotMes>0</qTotMes>
-        <qTotAnt>0.4</qTotAnt>
-        <qTotGer>0</qTotGer>
+        <qTotAnt>0.5</qTotAnt>
+        <qTotGer>7</qTotGer>
         <deduc>
-          <xDed>71!2561</xDed>
-          <vDed>0.47</vDed>
+          <xDed>q$</xDed>
+          <vDed>69</vDed>
         </deduc>
-        <vFor>0.90</vFor>
-        <vTotDed>0.14</vTotDed>
-        <vLiqFor>0.54</vLiqFor>
+        <vFor>0</vFor>
+        <vTotDed>0</vTotDed>
+        <vLiqFor>0.88</vLiqFor>
       </cana>
     </infNFe>
     <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
       <SignedInfo>
         <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
         <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
-        <Reference URI="58907391">
+        <Reference URI="#NFe05798084729720238970459338601191900587594076">
           <Transforms>
             <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
             <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
           </Transforms>
           <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
-          <DigestValue/>
+          <DigestValue>sYijFwAEjaAVZuFITarUYtITh7c=</DigestValue>
         </Reference>
       </SignedInfo>
-      <SignatureValue/>
+      <SignatureValue>LdWb1rmGV1ba54lBql2kheYF08r4kUmCGNSc3+lJqpPjVUHaiQgkh4+G6ecoGByVu0zR9C/ds6fgS9jwGQtR7U6ou1M/rBFA+TSjIIUqvHiy0hcEIH7cnH7aVqw0JbmH91tHTwUe1j8hq5ij5w81WnsYjmO0CyJhsq78jyyneXqS9T0mn+5Ugr0gsUM6U6ZwKj634f9osfZw2ePmZejhupZhE8hzBcQdpg6ZHQ6siO/5jwYZQwxBR8WJqC8NTiUlC556PYT7+6u4p2oY7v8FgqcuZaiExOu62FA1U2JzmOnJ7Qfa72PvQnQvpQHkk15/P7ya1OnpPQphcq7RHcSoyQ==</SignatureValue>
       <KeyInfo>
         <X509Data>
-          <X509Certificate/>
+          <X509Certificate>MIIEowIBAAKCAQEA0UZe4NlOvhIcwzg4OXl6ZPribMbUQcR+N+Vo3RoDCAyN1sMb+LCE99CZ1OWWGhR2nCJaSeqglyPcWfNh9s4KdC/NQVa8LHyyolglElq7CwgmJYvQHZKF7w0F3avloGbwBmi6PZ0Z1lOMPxB87g/26AtPDDwNQ8eQsNvXTOMSMBpEbgPhMzliNZjTcJYf/a/Zn23pzBaz72MtzhLsizS3+hcHuls8jQQZMxjGYfSoDH0cM55uBRcakpJ0F8ksDqBd8qdCPfsCgQbmpr3ECCpkoBxTfSiMYtKMA1oRQ8ek+pFLcrM7Yj6KnULYW4We9/gRb4+g4FTeOKIGcFYyKa9fmQIDAQABAoIBAGpdBsnnCLNoB0BdaY4kpMWAEebRY34NvUzxh0ug9dt4bfqybZwHM320gwsGqTSWI/aVKyiYXIiUzGDXZ3oGHKASz5Ke38MImc4TWLwsaxZfTOwWVG9DUlk+WDXjMTFGQEYxoj7AgypAim5fFe/1Izuqy8FfICrL2klZYuMMIelZ9RMf03++ai96lVRv+b6zmJsKiLxhh8xiwCMsjX4FQOUEiPPnNXNtvzjK48CmHcA1vpdzJHKkv/STQjdGGitVmLMX9gcIs4IrWI+9BHAsV5IfWKxiAeCZjPhKPZE+nMiogfcfwl/jGD9W15MWITENOs5wd88IFXIGTr57iw3XZuUCgYEA6jDAHfOP+3/D2wgtei002C/J3Bdcg/4T1V3IYalFzVR1D6GVTYF16bVlmgLXnQHELZeLzTuzSGFuehSlucjBVE9r1hgsexAqQimAEo6wIus9hOCdREqbs01MY70gw1iMFdVsB/OE2Z8EZGkuJtoUA6tJkUQglhgSyG6cJudn+T8CgYEA5MOeHCTNGfZsbqC0GofRb4UXHdS+VgxrqbT08Ve7ife2MqhioBISQALMZqeyhnJ9XMgJWDp9ZuASMZcrJtHnpTBnbehgtIiI4Q8SLQzMCo0PPFVW3xbP6py2XNqlg1vu2tmipe2C4l6uq9JTYNncvPhtFit67pDhAt4aCnLu2ScCgYEA3I3nEQ4mRqyQLsLn2Y2jnAp9qGrT9XcfBK4bHmbF11e4G22I6AKJov30XvRYTYSxVmLIBhQ4h21DF3REk9COyrE1lN8VXRzfP4pIFLIPDgPP30mOsxc0xcuBqtkedvr4i0OBR4e/URiikVJBZdOyT7ZMRaQMsG6hmeQZ6cW7tQ8CgYA1cdorexGLwj187wCEvjxY0IAhEQXStp4kjMk45SVES2H+ncZE3VP0LnMwfHdB39eX6If+W9PWR/0YJtgG/r0eo5tWWxbUtp077zhw2++De4cWsl1US1ER38DfGpnWgZDhAj10hHOyjSpDrCScmOlwIJ3jsw7KU4CuGdN9o3JXuwKBgGHTtwcDD9K/Nm8282b2pqgKaXUc45IUukDlicRjx1QLOlIA/QwwaOyjrlTeIESY0qBomYRbcucT++lX9I/fRYGXrB+KRGn4OkCp5EPWxK3ClUF/W7kcFLwfUL+VayLsW1NcOCRZM2ZI5pt+dyaJvbzFIQ5Chb/QPF5FnFqhlNas</X509Certificate>
         </X509Data>
       </KeyInfo>
     </Signature>

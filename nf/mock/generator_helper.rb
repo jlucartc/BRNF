@@ -2,6 +2,8 @@ require 'csv'
 require 'regexp-examples'
 require 'pry'
 require 'nokogiri'
+require 'digest'
+require 'base64'
 
 module NF
 
@@ -13,25 +15,32 @@ module NF
 
 				class XMLGenerator
 
-					ELEMENTOS_SAO_TAGS = ["E","G","CE","CG","Raiz"]
-					ELEMENTOS_SAO_ATRIBUTOS = ["A"]
-					ELEMENTOS_SAO_OPCIONAIS = ["GO","CGO"]
+					TAGS = ["E","G","CE","CG","Raiz"]
+					ATRIBUTOS = ["A"]
+					OPCIONAIS = ["GO","CGO"]
 
 					def initialize
 						cria_mapa_tags
 					end
 
 					def autorizar_nota
-						Nokogiri::XML::Document.parse(constroi_tag("1").to_xml.gsub(/>[\s\n\t]*</,"><"))
+						xml = Nokogiri::XML::Document.parse(constroi_tag("1").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
+						xml = assina_mensagem(xml)
+						xml
 					end
 
 					def consultar_status_servico
+						xml = Nokogiri::XML::Document.parse(constroi_tag("51").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
+						xml
 					end
 
 					def consultar_retorno_autorizacao
 					end
 
 					def inutilizar_numeracao
+						xml = Nokogiri::XML::Document.parse(constroi_tag("10").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
+						xml = assina_mensagem(xml)
+						xml
 					end
 
 					def nfe_distribuicao_dfe
@@ -41,45 +50,141 @@ module NF
 					end
 
 					def criar_carta_correcao
+						xml = Nokogiri::XML::Document.parse(constroi_tag("76").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
+						xml = assina_mensagem(xml)
+						xml
 					end
 
 					def autorizar_transportador
 					end
 
-					def criar_manifestacao
+					def confirmacao_da_operacao
+						xml = Nokogiri::XML::Document.parse(constroi_tag("76").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
+						xml = assina_mensagem(xml)
+						xml
 					end
 
-					def emitir_nota_contingencia
+					def ciencia_da_operacao
+						xml = Nokogiri::XML::Document.parse(constroi_tag("76").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
+						xml = assina_mensagem(xml)
+						xml
+					end
+
+					def desconhecimento_da_operacao
+						xml = Nokogiri::XML::Document.parse(constroi_tag("76").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
+						xml = assina_mensagem(xml)
+						xml
+					end
+
+					def operacao_nao_realizada
+						xml = Nokogiri::XML::Document.parse(constroi_tag("76").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
+						xml = assina_mensagem(xml)
+						xml
+					end
+
+
+					def emissao_contingencia
+						xml = Nokogiri::XML::Document.parse(constroi_tag("76").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
+						xml = assina_mensagem(xml)
+						xml
+					end
+
+					def cancelar_nota_substituicao
+						xml = Nokogiri::XML::Document.parse(constroi_tag("76").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
+						xml = assina_mensagem(xml)
+						xml
 					end
 
 					def cancelar_nota
+						xml = Nokogiri::XML::Document.parse(constroi_tag("76").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
+						xml = assina_mensagem(xml)
+						xml
 					end
 
-					def prorrogar_prazo
+					def prorrogar_prazo_1
+						xml = Nokogiri::XML::Document.parse(constroi_tag("76").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
+						xml = assina_mensagem(xml)
+						xml
+					end
+
+					def prorrogar_prazo_2
+						xml = Nokogiri::XML::Document.parse(constroi_tag("76").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
+						xml = assina_mensagem(xml)
+						xml
+					end
+
+					def ator_interessado
+						xml = Nokogiri::XML::Document.parse(constroi_tag("76").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
+						xml = assina_mensagem(xml)
+						xml
+					end
+
+					def cancelamento_prazo_1
+						xml = Nokogiri::XML::Document.parse(constroi_tag("76").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
+						xml = assina_mensagem(xml)
+						xml
+					end
+
+					def cancelamento_prazo_2
+						xml = Nokogiri::XML::Document.parse(constroi_tag("76").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
+						xml = assina_mensagem(xml)
+						xml
 					end
 
 					private
 
-						def constroi_tag(pai)
+						def constroi_tag(tag)
 							
-							tag = Nokogiri::XML("<#{@mapa_tags[pai]["campo"]}>").elements.first
-							
-							if tem_filhos(pai)
-								filhos = busca_filhos_de(pai)
-								filhos.each do |filho|
-									tag_filho = @mapa_tags[filho]
-									adiciona_tag_filho_em_tag_pai(tag,tag_filho)
+							tag_xml = Nokogiri::XML("<#{@mapa_tags[tag]["nome"]}>").elements.first
+							tag_tipo = @mapa_tags[tag]["tipo"]
+							resultado = []
+
+							tag_xml = adiciona_namespace(tag_xml,tag)
+							tag_xml = adiciona_atributos(tag_xml,tag)
+
+							if tem_filhos(tag)
+								tag_filhos = busca_filhos_de(tag)
+								if OPCIONAIS.include?(tag_tipo)
+									tag_filhos.each do |filho|
+										resultado += constroi_tag(filho)
+									end
+								elsif TAGS.include?(tag_tipo)
+									tag_filhos.each do |filho|
+										constroi_tag(filho).each do |item|
+											tag_xml.add_child(item)
+										end
+									end
+									resultado << tag_xml
 								end
 							else
-								tag = preenche_tag(pai)
+								tag_xml = preenche_tag(tag_xml,tag)
+								resultado << tag_xml
 							end
 
-							if !@mapa_tags[pai]["namespace"].nil?
-								tag["xmlns"] = @mapa_tags[pai]["namespace"]
+							resultado
+
+						end
+
+						def adiciona_namespace(xml,tag_id)
+							xml['xmlns'] = @mapa_tags[tag_id]["namespace"] if !@mapa_tags[tag_id]["namespace"].nil?
+							xml
+						end
+
+						def adiciona_atributos(xml,tag_id)
+							
+							atributos = busca_atributos_de(tag_id)
+							
+							atributos.each do |atributo|
+								atributo = @mapa_tags[atributo]
+									if atributo["regex"].nil?
+										xml[atributo["nome"]] = ""
+									else
+										xml[atributo["nome"]] = Regexp.new(atributo["regex"]).random_example.gsub("\u0000",'') if !atributo["regex"].nil?
+									end
 							end
 
-							tag
-
+							xml
+						
 						end
 
 						def tem_filhos(pai)
@@ -90,39 +195,18 @@ module NF
 							end
 						end
 
-						def adiciona_tag_filho_em_tag_pai(pai,filho)
-							tipo = filho["elemento"]
-							if ELEMENTOS_SAO_TAGS.include?(tipo)
-								pai.add_child(constroi_tag(filho["id"]))
-							elsif ELEMENTOS_SAO_ATRIBUTOS.include?(tipo)
-								if filho["regex"].nil?
-									pai[filho["campo"]] = ""
-								else
-									pai[filho["campo"]] = Regexp.new(filho["regex"]).random_example.gsub("\u0000",'') if !filho["regex"].nil?
-								end
-							elsif ELEMENTOS_SAO_OPCIONAIS.include?(tipo)
-								netos = busca_filhos_de(filho["id"])
-								netos.each do |neto|
-									elemento_neto = @mapa_tags[neto]["elemento"]
-									if ELEMENTOS_SAO_OPCIONAIS.include?(elemento_neto)
-										# trata caso em que existem elementos opcionais aninhados
-										binding.pry
-									else
-										pai.add_child(constroi_tag(neto))
-									end
-								end
-							end
-						end
-
-						def preenche_tag(id)
-							regex = @mapa_tags[id]["regex"]
-							tag = Nokogiri::XML("<#{@mapa_tags[id]["campo"]}>").elements.first
-							tag.content = Regexp.new(regex).random_example.gsub("\u0000",'') unless regex.nil?
-							tag
+						def preenche_tag(xml,tag_id)
+							regex = @mapa_tags[tag_id]["regex"]
+							xml.content = Regexp.new(regex).random_example.gsub("\u0000",'') unless regex.nil?
+							xml
 						end
 
 						def busca_filhos_de(pai)
 							@mapa_tags[pai]["filhos"]
+						end
+
+						def busca_atributos_de(pai)
+							@mapa_tags[pai]["atributos"]
 						end
 
 						def cria_mapa_tags()
@@ -132,18 +216,23 @@ module NF
 								if tag["ativo"] == "1"
 									dados_tag = {}
 									dados_tag["id"] = tag["id"]
-									dados_tag["campo"] = tag["campo"]
-									dados_tag["elemento"] = tag["elemento"]
+									dados_tag["nome"] = tag["nome"]
+									dados_tag["tipo"] = tag["tipo"]
 									dados_tag["pai"] = tag["pai"]
 									dados_tag["min"] = tag["min"]
 									dados_tag["max"] = tag["max"]
 									dados_tag["regex"] = tag["regex"]
 									dados_tag["namespace"] = tag["namespace"]
 									dados_tag["filhos"] = []
+									dados_tag["atributos"] = []
 									mapa_tags["#{tag["id"]}"] = dados_tag
 
 									if mapa_tags.key?(tag["pai"])
-										mapa_tags[tag["pai"]]["filhos"] << tag["id"]
+										if ATRIBUTOS.include?(tag["tipo"])
+											mapa_tags[tag["pai"]]["atributos"] << tag["id"]
+										else
+											mapa_tags[tag["pai"]]["filhos"] << tag["id"]
+										end
 									end
 								end
 							end
@@ -158,7 +247,7 @@ module NF
 								lista_filhos = busca_filhos_de(tag_pai)
 								lista_filhos.each do |filho|
 									dados_filho = @mapa_tags[filho]
-									case dados_filho["elemento"]
+									case dados_filho["tipo"]
 									when "CE"
 										filhos[:tags_filhos_ce] << filho
 									when "CG"
@@ -169,9 +258,24 @@ module NF
 										filhos[:tags_filhos_normais] << filho
 									end
 								end
-								@mapa_tags[tag_pai]["filhos"] = ([filhos[:tags_filhos_ce].sample,filhos[:tags_filhos_cg].sample,filhos[:tags_filhos_cgo].sample].compact + filhos[:tags_filhos_normais]).sort
+								@mapa_tags[tag_pai]["filhos"] = ([filhos[:tags_filhos_ce].sample,filhos[:tags_filhos_cg].sample,filhos[:tags_filhos_cgo].sample].compact + filhos[:tags_filhos_normais]).sort_by{|item| item.to_i}
 								filhos = {tags_filhos_ce: [],tags_filhos_cg: [],tags_filhos_cgo: [],tags_filhos_normais: []}
 							end
+						end
+
+						def assina_mensagem(xml)
+							mensagem = xml.xpath("//*[@Id]").first.canonicalize
+							assinatura = xml.xpath("//xs:Signature","xs" => "http://www.w3.org/2000/09/xmldsig#")
+							digest = assinatura.xpath("//xs:DigestValue","xs" => "http://www.w3.org/2000/09/xmldsig#").first
+							signature_value = assinatura.xpath("//xs:SignatureValue","xs" => "http://www.w3.org/2000/09/xmldsig#").first 
+							reference = assinatura.xpath("//xs:Reference","xs"=>"http://www.w3.org/2000/09/xmldsig#").first
+							x509_certificate = assinatura.xpath("//xs:X509Certificate","xs"=>"http://www.w3.org/2000/09/xmldsig#").first
+							reference['URI'] = "##{xml.xpath("//*[@Id]").first['Id']}"
+							digest.content = Base64.encode64(Digest::SHA1.digest(mensagem)).gsub(/\n/,'')
+							chave = OpenSSL::PKey::RSA.new(2048)
+							signature_value.content = Base64.encode64(chave.sign(OpenSSL::Digest::SHA1.new,mensagem)).gsub(/\n/,'')
+							x509_certificate.content = chave.to_pem.gsub(/[-]{5}[\sA-Z]+[-]{5}/,'').gsub(/\n/,'')
+							xml
 						end
 
 				end
