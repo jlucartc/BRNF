@@ -343,7 +343,17 @@ module NF
 				xml
 			end
 
+			def verifica_consultar_cadastro(xml)
+				corrige_versao_cons_cad_consultar_cadastro(xml)
+				xml
+			end
+
 			private
+
+				def corrige_versao_cons_cad_consultar_cadastro(xml)
+					versao = xml.xpath("//xs:ConsCad//@versao","xs" => "http://www.portalfiscal.inf.br/nfe").first
+					versao.content = '2.00'
+				end
 
 				def corrige_versao_dist_dfe_int_nfe_distribuicao_dfe(xml)
 					versao = xml.xpath("//xs:distDFeInt//@versao","xs" => "http://www.portalfiscal.inf.br/nfe").first

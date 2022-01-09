@@ -28,6 +28,7 @@ RSpec.describe Gem do
 	schema_consultar_retorno_autorizacao = './schemas/producao/arquivos/consReciNFe_v4.00.xsd'
 	schema_consultar_protocolo = './schemas/producao/arquivos/consSitNFe_v4.00.xsd'
 	schema_nfe_distribuicao_dfe = './schemas/producao/arquivos/distDFeInt_v1.01.xsd'
+	schema_consultar_cadastro = './schemas/producao/arquivos/consCad_v2.00.xsd'
 	#xml_autorizacao = NF::Mock::Generator.autorizar_nota(File.open("nota_exemplo.xml") { |f| Nokogiri::XML(f) })
 	xml_autorizacao = NF::Mock::Generator.autorizar_nota(nil)
 	xml_inutilizacao = NF::Mock::Generator.inutilizar_numeracao(nil)
@@ -48,6 +49,7 @@ RSpec.describe Gem do
 	xml_consultar_retorno_autorizacao = NF::Mock::Generator.consultar_retorno_autorizacao(nil)
 	xml_consultar_protocolo = NF::Mock::Generator.consultar_protocolo(nil)
 	xml_nfe_distribuicao_dfe = NF::Mock::Generator.nfe_distribuicao_dfe(nil)
+	xml_consultar_cadastro = NF::Mock::Generator.consultar_cadastro(nil)
 	indicador_operacao = xml_autorizacao.xpath("xs:enviNFe//xs:NFe//xs:infNFe//xs:ide//xs:idDest","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	destinatario_uf = xml_autorizacao.xpath("xs:enviNFe//xs:NFe//xs:infNFe//xs:dest//xs:enderDest//xs:UF","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	destinatario_cpf = xml_autorizacao.xpath("xs:enviNFe//xs:NFe//xs:infNFe//xs:dest//xs:CPF","xs" => "http://www.portalfiscal.inf.br/nfe").first
@@ -319,6 +321,7 @@ RSpec.describe Gem do
 	versao_cons_reci_nfe_consultar_retorno_autorizacao = xml_consultar_retorno_autorizacao.xpath("//xs:consReciNFe//@versao","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	versao_cons_sit_nfe_consulta_protocolo = xml_consultar_protocolo.xpath("//xs:consSitNFe//@versao","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	versao_dist_dfe_int_nfe_distribuicao_dfe = xml_nfe_distribuicao_dfe.xpath("//xs:distDFeInt//@versao","xs" => "http://www.portalfiscal.inf.br/nfe").first
+	versao_cons_cad_consultar_cadastro = xml_consultar_cadastro.xpath("//xs:ConsCad//@versao","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	csts_operacao_isenta = ["40","41"]
 	csosns_operacao_isenta = ["103","300","400"]
 	puts xml_autorizacao
@@ -339,6 +342,7 @@ RSpec.describe Gem do
 	puts xml_consultar_retorno_autorizacao
 	puts xml_consultar_protocolo
 	puts xml_nfe_distribuicao_dfe
+	puts xml_consultar_cadastro
 
 	it "deve criar um xml válido para mensagem de autorizacao de notas" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_autorizacao))
@@ -442,9 +446,22 @@ RSpec.describe Gem do
 		expect(schema.valid?(xml_nfe_distribuicao_dfe)).to be(true)
 	end
 
+	it "deve criar um xml válido para mensagem de consultar cadastro" do |test|
+		schema = Nokogiri::XML::Schema(File.open(schema_consultar_cadastro))
+		puts "--- CONSULTAR CADASTRO --- \n\n#{schema.validate(xml_consultar_cadastro)}"
+		expect(schema.valid?(xml_consultar_cadastro)).to be(true)
+	end
+
+	# -- CONSULTA CADASTRO ---
+
+	it "deve conter valor '2.00' no atributo 'versao' da tag ConsCad em consultar cadastro" do |test|
+		condicao = versao_cons_cad_consultar_cadastro.content == '2.00'
+		expect(condicao).to be(true)
+	end
+
 	# --- DISTRIBUICAO DFE ---
 
-		it "deve conter valor '1.01' no atributo 'versao' da tag distDFeInt em distribuicao dfe" do |test|
+	it "deve conter valor '1.01' no atributo 'versao' da tag distDFeInt em distribuicao dfe" do |test|
 		condicao = versao_dist_dfe_int_nfe_distribuicao_dfe.content == '1.01'
 		expect(condicao).to be(true)
 	end

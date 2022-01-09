@@ -7,6 +7,19 @@ module NF
 
 		module Generator
 
+			def self.consultar_cadastro(documento)
+				xml_builder = GeneratorHelper::XMLGenerator.new()
+				
+				if documento.nil?
+					xml = xml_builder.consultar_cadastro
+					validator = NF::Mock::Validator.new()
+					xml = validator.verifica_consultar_cadastro(xml)
+				else
+					validator = NF::Mock::Validator.new()
+					xml = validator.verifica_consultar_cadastro(documento)
+				end
+			end
+
 			def self.autorizar_nota(documento)
 				xml_builder = GeneratorHelper::XMLGenerator.new()
 				

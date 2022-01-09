@@ -23,6 +23,11 @@ module NF
 						cria_mapa_tags
 					end
 
+					def consultar_cadastro
+						xml = Nokogiri::XML::Document.parse(constroi_tag("56").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
+						xml
+					end
+
 					def autorizar_nota
 						xml = Nokogiri::XML::Document.parse(constroi_tag("1").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
 						xml = assina_mensagem(xml)
