@@ -90,7 +90,6 @@ module NF
 						xml
 					end
 
-
 					def emissao_contingencia
 						xml = Nokogiri::XML::Document.parse(constroi_tag("76").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
 						xml = assina_mensagem(xml)
@@ -151,7 +150,7 @@ module NF
 							tag_xml = adiciona_atributos(tag_xml,tag)
 
 							if tem_filhos(tag)
-								tag_filhos = busca_filhos_de(tag)
+								tag_filhos = busca_filhos_de(tag) - busca_atributos_de(tag)
 								if OPCIONAIS.include?(tag_tipo)
 									tag_filhos.each do |filho|
 										resultado += constroi_tag(filho)
@@ -231,16 +230,17 @@ module NF
 									dados_tag["max"] = tag["max"]
 									dados_tag["regex"] = tag["regex"]
 									dados_tag["namespace"] = tag["namespace"]
+									dados_tag["xpath_namespace"] = tag["namespace"]
+									dados_tag["inferivel"] = tag["inferivel"]
+									dados_tag["xpath"] = tag["xpath"]
 									dados_tag["filhos"] = []
 									dados_tag["atributos"] = []
 									mapa_tags["#{tag["id"]}"] = dados_tag
 
 									if mapa_tags.key?(tag["pai"])
-										if ATRIBUTOS.include?(tag["tipo"])
-											mapa_tags[tag["pai"]]["atributos"] << tag["id"]
-										else
-											mapa_tags[tag["pai"]]["filhos"] << tag["id"]
-										end
+										mapa_tags["#{tag["id"]}"]["xpath_namespace"] = mapa_tags[tag["pai"]]["xpath_namespace"] if mapa_tags["#{tag["id"]}"]["xpath_namespace"].nil?
+										mapa_tags[tag["pai"]]["filhos"] << tag["id"]
+										mapa_tags[tag["pai"]]["atributos"] << tag["id"] if ATRIBUTOS.include?(tag["tipo"])
 									end
 								end
 							end

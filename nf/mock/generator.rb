@@ -7,19 +7,6 @@ module NF
 
 		module Generator
 
-			def self.gera_xml(documento,metodo)
-				xml_builder = GeneratorHelper::XMLGenerator.new()
-				
-				if documento.nil?
-					xml = xml_builder.public_send(metodo)
-					validator = NF::Mock::Validator.new()
-					xml = validator.public_send("valida_#{metodo}",xml)
-				else
-					validator = NF::Mock::Validator.new()
-					xml = validator.public_send("valida_#{metodo}",documento)
-				end
-			end
-
 			def self.autorizar_nota(documento)
 				gera_xml(documento,__method__)
 			end
@@ -98,6 +85,19 @@ module NF
 
 			def self.consultar_cadastro(documento)
 				gera_xml(documento,__method__)
+			end
+
+			def self.gera_xml(documento,metodo)
+				xml_builder = GeneratorHelper::XMLGenerator.new()
+				
+				if documento.nil?
+					xml = xml_builder.public_send(metodo)
+					validator = NF::Mock::Validator.new()
+					xml = validator.public_send("valida_#{metodo}",xml)
+				else
+					validator = NF::Mock::Validator.new()
+					xml = validator.public_send("valida_#{metodo}",documento)
+				end
 			end
 
 		end

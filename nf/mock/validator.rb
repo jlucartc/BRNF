@@ -5,15 +5,7 @@ module NF
 	module Mock
 
 		class Validator
-
-			TAGS = ["E","G","CE","CG","Raiz"]
-			ATRIBUTOS = ["A"]
-			OPCIONAIS = ["GO","CGO"]
-
-			def initialize
-				@mapa_tags = cria_mapa_tags
-			end
-
+			
 			def valida_autorizar_nota(xml)
 				nfref_filho_unico(xml)
 				regra_e16a_10(xml)
@@ -22,8 +14,6 @@ module NF
 				regra_e17_30(xml)
 				regra_x25a_10(xml)
 				regra_x25b_10(xml)
-				#regra_ie_transp(xml)
-				#regra_ie_dest(xml)
 				regra_e18_10(xml)
 				xml
 			end
@@ -1673,31 +1663,12 @@ module NF
 					end
 				end
 
-				def regra_ie_transp(xml)
-					transportador_cpf = xml.xpath("xs:enviNFe//xs:NFe//xs:infNFe//xs:transp//xs:transporta//xs:CPF","xs" => "http://www.portalfiscal.inf.br/nfe").first
-					transportador_inscricao_estadual = xml.xpath("xs:enviNFe//xs:NFe//xs:infNFe//xs:transp//xs:transporta//xs:IE","xs" => "http://www.portalfiscal.inf.br/nfe").first
-
-					if !transportador_cpf.nil? and !transportador_inscricao_estadual.nil?
-						transportador_inscricao_estadual.remove
-					end
-
-				end
-
 				def regra_e17_30(xml)
 					modelo = xml.xpath("xs:enviNFe//xs:NFe//xs:infNFe//xs:ide//xs:mod","xs" => "http://www.portalfiscal.inf.br/nfe").first
 					destinatario_indicador = xml.xpath("xs:enviNFe//xs:NFe//xs:infNFe//xs:dest//xs:indIEDest","xs" => "http://www.portalfiscal.inf.br/nfe").first
 					destinatario_inscricao_estadual = xml.xpath("xs:enviNFe//xs:NFe//xs:infNFe//xs:dest//xs:IE","xs" => "http://www.portalfiscal.inf.br/nfe").first
 
 					if modelo.content == '55' and !destinatario_indicador.nil? and destinatario_indicador.content == "2"
-						destinatario_inscricao_estadual.remove
-					end
-				end
-
-				def regra_ie_dest(xml)
-					destinatario_cnpj = xml.xpath("xs:enviNFe//xs:NFe//xs:infNFe//xs:dest//xs:CNPJ","xs" => "http://www.portalfiscal.inf.br/nfe").first
-					destinatario_inscricao_estadual = xml.xpath("xs:enviNFe//xs:NFe//xs:infNFe//xs:dest//xs:IE","xs" => "http://www.portalfiscal.inf.br/nfe").first
-
-					if destinatario_cnpj.nil? and !destinatario_inscricao_estadual.nil?
 						destinatario_inscricao_estadual.remove
 					end
 				end
@@ -1710,35 +1681,6 @@ module NF
 						inscricao_suframa.remove
 					end
 
-				end
-
-				def cria_mapa_tags()
-					tags = CSV.read('tags.csv',col_sep:";",headers:true)
-					tag_map = {}
-					tags.each do |tag|
-						dados_tag = {}
-						dados_tag["id"] = tag["id"]
-						dados_tag["nome"] = tag["nome"]
-						dados_tag["tipo"] = tag["tipo"]
-						dados_tag["pai"] = tag["pai"]
-						dados_tag["min"] = tag["min"]
-						dados_tag["max"] = tag["max"]
-						dados_tag["regex"] = tag["regex"]
-						dados_tag["namespace"] = tag["namespace"]
-						dados_tag["filhos"] = []
-						dados_tag["atributos"] = []
-						tag_map["#{tag["id"]}"] = dados_tag
-
-						if tag_map.key?(tag["pai"])
-							if ATRIBUTOS.include?(tag["tipo"])
-								tag_map[tag["pai"]]["atributos"] << tag["id"]
-							else
-								tag_map[tag["pai"]]["filhos"] << tag["id"]
-							end
-						end
-
-					end
-					tag_map
 				end
 
 		end
