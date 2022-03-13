@@ -56,8 +56,8 @@ module NF
 									cpf:"CPF",
 									modelo:"mod",
 									serie:"serie",
-									numero_nota:"nNF"
-									chave_cte:"refCTe"
+									numero_nota:"nNF",
+									chave_cte:"refCTe",
 									numero_ecf:"nECF",
 									numero_coo:"nCOO"
 								},
@@ -169,7 +169,7 @@ module NF
 									valor_seguro:"vSeg",
 									valor_desconto:"vDesc",
 									valor_outro:"vOutro",
-									indicador_total:"indTot"
+									indicador_total:"indTot",
 									detalhes_importacao:[{
 										numero_documento:"nDI",
 										data_registro_documento:"dDI",
@@ -181,7 +181,7 @@ module NF
 										tipo_intermedio:"tpIntermedio",
 										cnpj:"CNPJ",
 										uf_terceiro:"UFTerceiro",
-										codigo_exportador:"cExportador"
+										codigo_exportador:"cExportador",
 										adicoes:[{
 											numero_adicao:"nAdicao",
 											numero_sequencial_adicao:"nSeqAdic",
@@ -277,7 +277,7 @@ module NF
 											valor_icms_desonerado:"vICMSDeson",
 											motivo_desoneracao:"motDesICMS",
 											percentual_reducao_efetiva:"pRedBCEfet",
-											percentual_operacao_propria:"pBCOp"
+											percentual_operacao_propria:"pBCOp",
 											valor_base_calculo_fcp_substituicao_retido:"vBCFCPSTRet",
 											percentual_fcp_substituicao_retido:"pFCPSTRet",
 											valor_fcp_substituicao_retido:"vFCPSTRet",
@@ -346,7 +346,7 @@ module NF
 									base_calculo_retencao_icms:"vBCRet",
 									aliquota_retencao:"pICMSRet",
 									cfop:"CFOP",
-									codigo_municipio:"cMunFG"
+									codigo_municipio:"cMunFG",
 									placa:"placa",
 									uf:"UF",
 									rntc:"RNTC",
@@ -354,7 +354,7 @@ module NF
 										placa:"placa",
 										uf:"UF",
 										rntc:"RNTC",
-									}]
+									}],
 									vagao:"vagao",
 									balsa:"balsa",
 									volumes:[{
@@ -373,7 +373,7 @@ module NF
 									fatura:"nFat",
 									valor_total:"vOrig",
 									valor_desconto:"vDesc",
-									valor_liquido:"vLiq"
+									valor_liquido:"vLiq",
 									parcelas:[{
 										numero_parcela:"nDup",
 										vencimento:"dVenc",
