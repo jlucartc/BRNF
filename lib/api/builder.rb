@@ -1,6 +1,6 @@
 require_relative './builder_helper.rb'
 
-module NF
+module BRNF
 
 	module API
 

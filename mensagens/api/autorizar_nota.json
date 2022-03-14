@@ -7,7 +7,7 @@
 	"paths":{
 		"/autorizar_nota":{
 			"post":{
-				"description":"Mensagem de autorizacao de nota",
+				"description":"Mensagem genérica de autorizacao de nota",
 				"requestBody":{
 					"required":true,
 					"content":{
@@ -17,6 +17,7 @@
 								"required":["lote","codigo_numerico","natureza","modelo","serie","numero_nota","tipo_operacao","ambiente","finalidade","consumidor","indicador_presencial","emissor","destinatario","produtos","responsavel_tecnico"],
 								"properties":{
 									"lote":{"type":"string","description":"Numero que identifica o lote das notas."},
+									"codigo_uf":{"type":"string","description":"Código do IBGE referente à UF do emitente"},
 									"codigo_numerico":{"type":"string","description":"8 digitos arbitrários que compoem a chave."},
 									"natureza":{"type":"string","description":"Informa o tipo de operação (venda,devolucao,remessa,etc)."},
 									"modelo":{"type":"string","description":"Informa se a nota é NFCE ou NFE."},
@@ -30,7 +31,6 @@
 									"indicador_presencial":{"type":"string","description":"Determina se o comprador realizou a operação de forma presencial ou remota."},
 									"versao_aplicacao":{"type":"string","description":"Versão da aplicação de emissao de notas."},
 									"justificativa_contingencia":{"type":"string","description":"Informa o motivo da contigência."},
-									"codigo_uf":{"type":"string","description":"Código do IBGE referente à UF do emitente"},
 									"ano_mes":{"type":"string","description":"Ano e mês no formato AAMM"},
 									"modelo_referenciado":{"type":"string","description":"Modelo da nota"},
 									"serie_referenciada":{"type":"string","description":"Série da nota"},
@@ -249,7 +249,7 @@
 														}
 													}
 												},
-												"veiculo":{
+												"veiculos":{
 													"type":"object",
 													"required":["tipo_operacao","chassi","codigo_cor","descricao_cor","potencia","cilindradas","peso_liquido","peso_bruto","serie","tipo_combustivel","numero_motor","capacidade_maxima_tracao","distancia_eixos","ano_modelo","ano_fabricacao","tipo_pintura","tipo_veiculo","especie_veiculo","condicao_vin","condicao_veiculo","codigo_marca_modelo","codigo_cor_denatran","lotacao","restricao"],
 													"properties":{
@@ -279,7 +279,7 @@
 														"restricao":{"type":"string","description":"Define se há algum tipo de restrição no veículo."}
 													}
 												},
-												"medicamento":{
+												"medicamentos":{
 													"type":"object",
 													"required":["codigo_produto_anvisa","preco_maximo_consumidor"],
 													"properties":{
@@ -301,7 +301,7 @@
 														}
 													}
 												},
-												"combustivel":{
+												"combustiveis":{
 													"type":"object",
 													"required":["codigo_produto_anp","descricao_anp","uf_consumo"],
 													"properties":{
@@ -323,7 +323,7 @@
 														"valor_encerrante_fim":{"type":"string"}
 													}
 												},
-												"nrecopi":{"type":"string","description":"Número do RECOPI(Reconhecimento e Controle das Operações com Papel Imune)"},
+												"papel":{"type":"string","description":"Número do RECOPI(Reconhecimento e Controle das Operações com Papel Imune)"},
 												"imposto":{
 													"type":"object",
 													"required":["icms"],
@@ -332,10 +332,12 @@
 															"type":"object",
 															"required":["codigo"],
 															"properties":{
+																"origem":{"type":"string","description":"Especifica a origem do produto."},
 																"codigo":{"type":"string","description":"Código tributário do ICMS. Pode ser CST para empresas fora do simples naacional e CSOSN para empresas do simples nacional."},
-																"modalidade":{"type":"string"},
+																"modalidade":{"type":"string","Modalidade de cálculo do ICMS"},
 																"percentual_mva_substituicao":{"type":"string"},
 																"percentual_reducao_substituicao":{"type":"string"},
+																"valor_icms_desonerado":{"type":"string","description":"Valor desonerado. Caso não seja informado, será considerado como zero caso o campo 'motivo_desoneracao' não seja informado. Do contrário, será considerado como 100% do valor do ICMS."},
 																"motivo_desoneracao":{"type":"string"},
 																"percentual_reducao":{"type":"string"},
 																"percentual_diferimento":{"type":"string"},
@@ -382,9 +384,9 @@
 															"type":"object",
 															"required":["valor_despesas_aduaneiras"],
 															"properties":{
-																"valor_despesas_aduaneiras":{"type":"string"},
-																"valor_ii":{"type":"string"},
-																"valor_iof":{"type":"string"}
+																"valor_despesas_aduaneiras":{"type":"string","Valor de despesas aduaneiras."},
+																"valor_ii":{"type":"string","description":"Valor pré-calculado do imposto. Caso não seja informado, esse valor será calculado a partir dos dados informados."},
+																"valor_iof":{"type":"string","description":"Valor pré-calculado do imposto. Caso não seja informado, esse valor será calculado a partir dos dados informados."}
 															}
 														},
 														"issqn":{
@@ -400,7 +402,8 @@
 																"valor_iss_retido":{"type":"string"},
 																"indicador_iss":{"type":"string","description":"Indica se há ou não incentivo fiscal."},
 																"codigo_servico":{"type":"string"},
-																"codigo_municipio":{"type":"string"},
+																"codigo_municipio_fato_gerador":{"type":"string"},
+																"codigo_municipio_incidencia":{"type":"string"},
 																"codigo_pais":{"type":"string","description":"Código do BACEN(Banco Central) para o país onde o serviço foi prestado."},
 																"numero_processo":{"type":"string"},
 																"indicador_incentivo":{"type":"string","description":"Indica se há ou não incentivo fiscal."}

@@ -1,7 +1,7 @@
 require_relative './generator_helper.rb'
 require_relative './validator.rb'
 
-module NF
+module BRNF
 
 	module Mock
 
@@ -92,10 +92,10 @@ module NF
 				
 				if documento.nil?
 					xml = xml_builder.public_send(metodo)
-					validator = NF::Mock::Validator.new()
+					validator = BRNF::Mock::Validator.new()
 					xml = validator.public_send("valida_#{metodo}",xml)
 				else
-					validator = NF::Mock::Validator.new()
+					validator = BRNF::Mock::Validator.new()
 					xml = validator.public_send("valida_#{metodo}",documento)
 				end
 			end

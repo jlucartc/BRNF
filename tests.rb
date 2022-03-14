@@ -1,11 +1,13 @@
 require 'simplecov'
 SimpleCov.start
 
-require './nf/api/builder.rb'
-require './nf/mock/generator.rb'
+#require './nf/api/builder.rb'
+#require './nf/mock/generator.rb'
+require './lib/brnf.rb'
 require 'nokogiri'
 require 'pry'
 require 'openssl'
+require 'pry'
 
 RSpec.describe Gem do
 
@@ -29,27 +31,27 @@ RSpec.describe Gem do
 	schema_consultar_protocolo = './schemas/producao/arquivos/consSitNFe_v4.00.xsd'
 	schema_nfe_distribuicao_dfe = './schemas/producao/arquivos/distDFeInt_v1.01.xsd'
 	schema_consultar_cadastro = './schemas/producao/arquivos/consCad_v2.00.xsd'
-	#xml_autorizacao = NF::Mock::Generator.autorizar_nota(File.open("nota_exemplo.xml") { |f| Nokogiri::XML(f) })
-	xml_autorizacao = NF::Mock::Generator.autorizar_nota(nil)
-	xml_inutilizacao = NF::Mock::Generator.inutilizar_numeracao(nil)
-	xml_evento_carta_correcao = NF::Mock::Generator.criar_carta_correcao(nil)
-	xml_evento_cancelar_nota = NF::Mock::Generator.cancelar_nota(nil)
-	xml_consultar_status_servico = NF::Mock::Generator.consultar_status_servico(nil)
-	xml_evento_cancelar_nota_substituicao = NF::Mock::Generator.cancelar_nota_substituicao(nil)
-	xml_evento_prorrogar_prazo_1 = NF::Mock::Generator.prorrogar_prazo_1(nil)
-	xml_evento_prorrogar_prazo_2 = NF::Mock::Generator.prorrogar_prazo_2(nil)
-	xml_evento_ator_interessado = NF::Mock::Generator.ator_interessado(nil)
-	xml_evento_confirmacao_da_operacao = NF::Mock::Generator.confirmacao_da_operacao(nil)
-	xml_evento_ciencia_da_operacao = NF::Mock::Generator.ciencia_da_operacao(nil)
-	xml_evento_desconhecimento_da_operacao = NF::Mock::Generator.desconhecimento_da_operacao(nil)
-	xml_evento_operacao_nao_realizada = NF::Mock::Generator.operacao_nao_realizada(nil)
-	xml_evento_emissao_contingencia = NF::Mock::Generator.emissao_contingencia(nil)
-	xml_evento_cancelamento_prazo_1 = NF::Mock::Generator.cancelamento_prazo_1(nil)
-	xml_evento_cancelamento_prazo_2 = NF::Mock::Generator.cancelamento_prazo_2(nil)
-	xml_consultar_retorno_autorizacao = NF::Mock::Generator.consultar_retorno_autorizacao(nil)
-	xml_consultar_protocolo = NF::Mock::Generator.consultar_protocolo(nil)
-	xml_nfe_distribuicao_dfe = NF::Mock::Generator.nfe_distribuicao_dfe(nil)
-	xml_consultar_cadastro = NF::Mock::Generator.consultar_cadastro(nil)
+	#xml_autorizacao = BRNF::Mock::Generator.autorizar_nota(File.open("nota_exemplo.xml") { |f| Nokogiri::XML(f) })
+	xml_autorizacao = BRNF::Mock::Generator.autorizar_nota(nil)
+	xml_inutilizacao = BRNF::Mock::Generator.inutilizar_numeracao(nil)
+	xml_evento_carta_correcao = BRNF::Mock::Generator.criar_carta_correcao(nil)
+	xml_evento_cancelar_nota = BRNF::Mock::Generator.cancelar_nota(nil)
+	xml_consultar_status_servico = BRNF::Mock::Generator.consultar_status_servico(nil)
+	xml_evento_cancelar_nota_substituicao = BRNF::Mock::Generator.cancelar_nota_substituicao(nil)
+	xml_evento_prorrogar_prazo_1 = BRNF::Mock::Generator.prorrogar_prazo_1(nil)
+	xml_evento_prorrogar_prazo_2 = BRNF::Mock::Generator.prorrogar_prazo_2(nil)
+	xml_evento_ator_interessado = BRNF::Mock::Generator.ator_interessado(nil)
+	xml_evento_confirmacao_da_operacao = BRNF::Mock::Generator.confirmacao_da_operacao(nil)
+	xml_evento_ciencia_da_operacao = BRNF::Mock::Generator.ciencia_da_operacao(nil)
+	xml_evento_desconhecimento_da_operacao = BRNF::Mock::Generator.desconhecimento_da_operacao(nil)
+	xml_evento_operacao_nao_realizada = BRNF::Mock::Generator.operacao_nao_realizada(nil)
+	xml_evento_emissao_contingencia = BRNF::Mock::Generator.emissao_contingencia(nil)
+	xml_evento_cancelamento_prazo_1 = BRNF::Mock::Generator.cancelamento_prazo_1(nil)
+	xml_evento_cancelamento_prazo_2 = BRNF::Mock::Generator.cancelamento_prazo_2(nil)
+	xml_consultar_retorno_autorizacao = BRNF::Mock::Generator.consultar_retorno_autorizacao(nil)
+	xml_consultar_protocolo = BRNF::Mock::Generator.consultar_protocolo(nil)
+	xml_nfe_distribuicao_dfe = BRNF::Mock::Generator.nfe_distribuicao_dfe(nil)
+	xml_consultar_cadastro = BRNF::Mock::Generator.consultar_cadastro(nil)
 	# --- AUTORIZAR NOTA ---
 	indicador_operacao = xml_autorizacao.xpath("xs:enviNFe//xs:NFe//xs:infNFe//xs:ide//xs:idDest","xs" => "http://www.portalfiscal.inf.br/nfe").first
 	destinatario_uf = xml_autorizacao.xpath("xs:enviNFe//xs:NFe//xs:infNFe//xs:dest//xs:enderDest//xs:UF","xs" => "http://www.portalfiscal.inf.br/nfe").first

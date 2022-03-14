@@ -1,4 +1,5 @@
-web_services = [
+module WebServices
+WEB_SERVICES = [
 	{uf:"AM",tipo:"normal",ambiente:"producao",servico:"NfeInutilizacao",versao:"4.00",url:"https://nfe.sefaz.am.gov.br/services2/services/NfeInutilizacao"},
 	{uf:"AM",tipo:"normal",ambiente:"producao",servico:"NfeConsultaProtocolo",versao:"4.00",url:"https://nfe.sefaz.am.gov.br/services2/services/NfeConsulta4"},
 	{uf:"AM",tipo:"normal",ambiente:"producao",servico:"NfeStatusServico",versao:"4.00",url:"https://nfe.sefaz.am.gov.br/services2/services/NfeStatusServico4"},
@@ -754,3 +755,4 @@ web_services = [
 	{uf:"TO",tipo:"contingencia",ambiente:"homologacao",servico:"NFeRetAutorizacao",versao:"4.00",url:"https://hom.svc.fazenda.gov.br/NFeRetAutorizacao4/NFeRetAutorizacao4.asmx"},
 	{uf:"TO",tipo:"contingencia",ambiente:"homologacao",servico:"NfeConsultaCadastro",versao:"4.00",url:""}
 ]
+end
