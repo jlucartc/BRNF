@@ -1,4 +1,5 @@
 require_relative './builder_helper.rb'
+require_relative './../validator/validator.rb'
 
 module BRNF
 
@@ -91,10 +92,11 @@ module BRNF
 				
 				if mensagem.nil?
 					xml = xml_builder.public_send(metodo,mensagem)
-					validator = BRNF::Mock::Validator.new()
+					binding.pry
+					validator = BRNF::Validator.new()
 					xml = validator.public_send("valida_#{metodo}",xml)
 				else
-					validator = BRNF::Mock::Validator.new()
+					validator = BRNF::Validator.new()
 					xml = validator.public_send("valida_#{metodo}",mensagem)
 				end
 			end
