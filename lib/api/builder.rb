@@ -5,100 +5,94 @@ module BRNF
 
 	module API
 
-		module Builder
+		class Builder
 
-			def self.autorizar_nota(mensagem)
+			def autorizar_nota(mensagem)
 				gera_xml(mensagem,__method__)
 			end
 
-			def self.consultar_status_servico(mensagem)
+			def consultar_status_servico(mensagem)
 				gera_xml(mensagem,__method__)
 			end
 
-			def self.consultar_retorno_autorizacao(mensagem)
+			def consultar_retorno_autorizacao(mensagem)
 				gera_xml(mensagem,__method__)
 			end
 
-			def self.inutilizar_numeracao(mensagem)
+			def inutilizar_numeracao(mensagem)
 				gera_xml(mensagem,__method__)
 			end
 
-			def self.nfe_distribuicao_dfe(mensagem)
+			def nfe_distribuicao_dfe(mensagem)
 				gera_xml(mensagem,__method__)
 			end
 
-			def self.consultar_protocolo(mensagem)
+			def consultar_protocolo(mensagem)
 				gera_xml(mensagem,__method__)
 			end
 
-			def self.criar_carta_correcao(mensagem)
+			def criar_carta_correcao(mensagem)
 				gera_xml(mensagem,__method__)
 			end
 
-			def self.confirmacao_da_operacao(mensagem)
+			def confirmacao_da_operacao(mensagem)
 				gera_xml(mensagem,__method__)
 			end
 
-			def self.ciencia_da_operacao(mensagem)
+			def ciencia_da_operacao(mensagem)
 				gera_xml(mensagem,__method__)
 			end
 
-			def self.desconhecimento_da_operacao(mensagem)
+			def desconhecimento_da_operacao(mensagem)
 				gera_xml(mensagem,__method__)
 			end
 
-			def self.operacao_nao_realizada(mensagem)
+			def operacao_nao_realizada(mensagem)
 				gera_xml(mensagem,__method__)
 			end
 
-			def self.emissao_contingencia(mensagem)
+			def emissao_contingencia(mensagem)
 				gera_xml(mensagem,__method__)
 			end
 
-			def self.cancelar_nota_substituicao(mensagem)
+			def cancelar_nota_substituicao(mensagem)
 				gera_xml(mensagem,__method__)
 			end
 
-			def self.cancelar_nota(mensagem)
+			def cancelar_nota(mensagem)
 				gera_xml(mensagem,__method__)
 			end
 
-			def self.prorrogar_prazo_1(mensagem)
+			def prorrogar_prazo_1(mensagem)
 				gera_xml(mensagem,__method__)
 			end
 
-			def self.prorrogar_prazo_2(mensagem)
+			def prorrogar_prazo_2(mensagem)
 				gera_xml(mensagem,__method__)
 			end
 
-			def self.ator_interessado(mensagem)
+			def ator_interessado(mensagem)
 				gera_xml(mensagem,__method__)
 			end
 
-			def self.cancelamento_prazo_1(mensagem)
+			def cancelamento_prazo_1(mensagem)
 				gera_xml(mensagem,__method__)
 			end
 			
-			def self.cancelamento_prazo_2(mensagem)
+			def cancelamento_prazo_2(mensagem)
 				gera_xml(mensagem,__method__)
 			end
 
-			def self.consultar_cadastro(mensagem)
+			def consultar_cadastro(mensagem)
 				gera_xml(mensagem,__method__)
 			end
 
-			def self.gera_xml(mensagem,metodo)
-				xml_builder = BuilderHelper::XMLBuilder.new()
-				
-				if mensagem.nil?
-					xml = xml_builder.public_send(metodo,mensagem)
-					binding.pry
-					validator = BRNF::Validator.new()
-					xml = validator.public_send("valida_#{metodo}",xml)
-				else
-					validator = BRNF::Validator.new()
-					xml = validator.public_send("valida_#{metodo}",mensagem)
-				end
+			private
+
+			def gera_xml(mensagem,metodo)
+				xml_builder = BuilderHelper::XMLInflator.new()
+				validator = BRNF::Validator.new()
+				xml = validator.public_send("valida_#{metodo}",mensagem)
 			end
 
 		end

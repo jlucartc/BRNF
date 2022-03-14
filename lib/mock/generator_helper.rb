@@ -5,6 +5,7 @@ require 'nokogiri'
 require 'digest'
 require 'base64'
 require 'openssl'
+require_relative './../builder/xml_builder.rb'
 
 
 module GeneratorHelper
@@ -17,127 +18,107 @@ module GeneratorHelper
 
 		def initialize
 			cria_mapa_tags
+			@builder = BRNF::XMLBuilder.new
 		end
 
 		def consultar_cadastro
-			xml = Nokogiri::XML::Document.parse(constroi_tag("56").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
-			xml
+			@builder.build_xml("56")
 		end
 
 		def autorizar_nota
-			xml = Nokogiri::XML::Document.parse(constroi_tag("1").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
-			xml = assina_mensagem(xml)
-			xml
+			xml = @builder.build_xml("1")
+			@builder.sign_message(xml)
 		end
 
 		def consultar_status_servico
-			xml = Nokogiri::XML::Document.parse(constroi_tag("51").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
-			xml
+			xml = @builder.build_xml("51")
 		end
 
 		def consultar_retorno_autorizacao
-			xml = Nokogiri::XML::Document.parse(constroi_tag("6").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
-			xml
+			xml = @builder.build_xml("6")
 		end
 
 		def inutilizar_numeracao
-			xml = Nokogiri::XML::Document.parse(constroi_tag("10").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
-			xml = assina_mensagem(xml)
-			xml
+			xml = @builder.build_xml("10")
+			@builder.sign_message(xml)
 		end
 
 		def nfe_distribuicao_dfe
-			xml = Nokogiri::XML::Document.parse(constroi_tag("64").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
-			xml
+			xml = @builder.build_xml("64")
 		end
 
 		def consultar_protocolo
-			xml = Nokogiri::XML::Document.parse(constroi_tag("46").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
-			xml
+			xml = @builder.build_xml("46")
 		end
 
 		def criar_carta_correcao
-			xml = Nokogiri::XML::Document.parse(constroi_tag("76").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
-			xml = assina_mensagem(xml)
-			xml
+			xml = @builder.build_xml("76")
+			@builder.sign_message(xml)
 		end
 
 		def confirmacao_da_operacao
-			xml = Nokogiri::XML::Document.parse(constroi_tag("76").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
-			xml = assina_mensagem(xml)
-			xml
+			xml = @builder.build_xml("76")
+			@builder.sign_message(xml)
 		end
 
 		def ciencia_da_operacao
-			xml = Nokogiri::XML::Document.parse(constroi_tag("76").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
-			xml = assina_mensagem(xml)
-			xml
+			xml = @builder.build_xml("76")
+			@builder.sign_message(xml)
 		end
 
 		def desconhecimento_da_operacao
-			xml = Nokogiri::XML::Document.parse(constroi_tag("76").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
-			xml = assina_mensagem(xml)
-			xml
+			xml = @builder.build_xml("76")
+			@builder.sign_message(xml)
 		end
 
 		def operacao_nao_realizada
-			xml = Nokogiri::XML::Document.parse(constroi_tag("76").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
-			xml = assina_mensagem(xml)
-			xml
+			xml = @builder.build_xml("76")
+			@builder.sign_message(xml)
 		end
 
 		def emissao_contingencia
-			xml = Nokogiri::XML::Document.parse(constroi_tag("76").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
-			xml = assina_mensagem(xml)
-			xml
+			xml = @builder.build_xml("76")
+			@builder.sign_message(xml)
 		end
 
 		def cancelar_nota_substituicao
-			xml = Nokogiri::XML::Document.parse(constroi_tag("76").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
-			xml = assina_mensagem(xml)
-			xml
+			xml = @builder.build_xml("76")
+			@builder.sign_message(xml)
 		end
 
 		def cancelar_nota
-			xml = Nokogiri::XML::Document.parse(constroi_tag("76").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
-			xml = assina_mensagem(xml)
-			xml
+			xml = @builder.build_xml("76")
+			@builder.sign_message(xml)
 		end
 
 		def prorrogar_prazo_1
-			xml = Nokogiri::XML::Document.parse(constroi_tag("76").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
-			xml = assina_mensagem(xml)
-			xml
+			xml = @builder.build_xml("76")
+			@builder.sign_message(xml)
 		end
 
 		def prorrogar_prazo_2
-			xml = Nokogiri::XML::Document.parse(constroi_tag("76").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
-			xml = assina_mensagem(xml)
-			xml
+			xml = @builder.build_xml("76")
+			@builder.sign_message(xml)
 		end
 
 		def ator_interessado
-			xml = Nokogiri::XML::Document.parse(constroi_tag("76").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
-			xml = assina_mensagem(xml)
-			xml
+			xml = @builder.build_xml("76")
+			@builder.sign_message(xml)
 		end
 
 		def cancelamento_prazo_1
-			xml = Nokogiri::XML::Document.parse(constroi_tag("76").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
-			xml = assina_mensagem(xml)
-			xml
+			xml = @builder.build_xml("76")
+			@builder.sign_message(xml)
 		end
 
 		def cancelamento_prazo_2
-			xml = Nokogiri::XML::Document.parse(constroi_tag("76").first.to_xml.gsub(/>[\s\n\t]*</,"><"))
-			xml = assina_mensagem(xml)
-			xml
+			xml = @builder.build_xml("76")
+			@builder.sign_message(xml)
 		end
 
 		private
 
 			def constroi_tag(tag)
-				
 				tag_xml = Nokogiri::XML("<#{@mapa_tags[tag]["nome"]}>").elements.first
 				tag_tipo = @mapa_tags[tag]["tipo"]
 				resultado = []
@@ -149,7 +130,7 @@ module GeneratorHelper
 					tag_filhos = busca_filhos_de(tag) - busca_atributos_de(tag)
 					if OPCIONAIS.include?(tag_tipo)
 						tag_filhos.each do |filho|
-							resultado += constroi_tag(filho)
+							resultado += BRNF::XMLBuilder.build_xml(filho)
 						end
 					elsif TAGS.include?(tag_tipo)
 						tag_filhos.each do |filho|
@@ -165,7 +146,6 @@ module GeneratorHelper
 				end
 
 				resultado
-
 			end
 
 			def adiciona_namespace(xml,tag_id)
@@ -174,9 +154,7 @@ module GeneratorHelper
 			end
 
 			def adiciona_atributos(xml,tag_id)
-				
-				atributos = busca_atributos_de(tag_id)
-				
+				atributos = busca_atributos_de(tag_id)			
 				atributos.each do |atributo|
 					atributo = @mapa_tags[atributo]
 						if atributo["regex"].nil?
@@ -185,9 +163,7 @@ module GeneratorHelper
 							xml[atributo["nome"]] = Regexp.new(atributo["regex"]).random_example.gsub("\u0000",'') if !atributo["regex"].nil?
 						end
 				end
-
 				xml
-			
 			end
 
 			def tem_filhos(pai)
