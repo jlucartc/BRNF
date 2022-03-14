@@ -7,83 +7,83 @@ module BRNF
 
 		module Generator
 
-			def self.autorizar_nota(documento)
+			def self.autorizar_nota(documento: nil)
 				gera_xml(documento,__method__)
 			end
 
-			def self.consultar_status_servico(documento)
+			def self.consultar_status_servico(documento: nil)
 				gera_xml(documento,__method__)
 			end
 
-			def self.consultar_retorno_autorizacao(documento)
+			def self.consultar_retorno_autorizacao(documento: nil)
 				gera_xml(documento,__method__)
 			end
 
-			def self.inutilizar_numeracao(documento)
+			def self.inutilizar_numeracao(documento: nil)
 				gera_xml(documento,__method__)
 			end
 
-			def self.nfe_distribuicao_dfe(documento)
+			def self.nfe_distribuicao_dfe(documento: nil)
 				gera_xml(documento,__method__)
 			end
 
-			def self.consultar_protocolo(documento)
+			def self.consultar_protocolo(documento: nil)
 				gera_xml(documento,__method__)
 			end
 
-			def self.criar_carta_correcao(documento)
+			def self.criar_carta_correcao(documento: nil)
 				gera_xml(documento,__method__)
 			end
 
-			def self.confirmacao_da_operacao(documento)
+			def self.confirmacao_da_operacao(documento: nil)
 				gera_xml(documento,__method__)
 			end
 
-			def self.ciencia_da_operacao(documento)
+			def self.ciencia_da_operacao(documento: nil)
 				gera_xml(documento,__method__)
 			end
 
-			def self.desconhecimento_da_operacao(documento)
+			def self.desconhecimento_da_operacao(documento: nil)
 				gera_xml(documento,__method__)
 			end
 
-			def self.operacao_nao_realizada(documento)
+			def self.operacao_nao_realizada(documento: nil)
 				gera_xml(documento,__method__)
 			end
 
-			def self.emissao_contingencia(documento)
+			def self.emissao_contingencia(documento: nil)
 				gera_xml(documento,__method__)
 			end
 
-			def self.cancelar_nota_substituicao(documento)
+			def self.cancelar_nota_substituicao(documento: nil)
 				gera_xml(documento,__method__)
 			end
 
-			def self.cancelar_nota(documento)
+			def self.cancelar_nota(documento: nil)
 				gera_xml(documento,__method__)
 			end
 
-			def self.prorrogar_prazo_1(documento)
+			def self.prorrogar_prazo_1(documento: nil)
 				gera_xml(documento,__method__)
 			end
 
-			def self.prorrogar_prazo_2(documento)
+			def self.prorrogar_prazo_2(documento: nil)
 				gera_xml(documento,__method__)
 			end
 
-			def self.ator_interessado(documento)
+			def self.ator_interessado(documento: nil)
 				gera_xml(documento,__method__)
 			end
 
-			def self.cancelamento_prazo_1(documento)
+			def self.cancelamento_prazo_1(documento: nil)
 				gera_xml(documento,__method__)
 			end
 			
-			def self.cancelamento_prazo_2(documento)
+			def self.cancelamento_prazo_2(documento: nil)
 				gera_xml(documento,__method__)
 			end
 
-			def self.consultar_cadastro(documento)
+			def self.consultar_cadastro(documento: nil)
 				gera_xml(documento,__method__)
 			end
 

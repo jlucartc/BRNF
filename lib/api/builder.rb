@@ -87,14 +87,14 @@ module BRNF
 			end
 
 			def self.gera_xml(mensagem,metodo)
-				xml_builder = BuilderHelper::XMLGenerator.new()
+				xml_builder = BuilderHelper::XMLBuilder.new()
 				
 				if mensagem.nil?
 					xml = xml_builder.public_send(metodo,mensagem)
-					validator = NF::Mock::Validator.new()
+					validator = BRNF::Mock::Validator.new()
 					xml = validator.public_send("valida_#{metodo}",xml)
 				else
-					validator = NF::Mock::Validator.new()
+					validator = BRNF::Mock::Validator.new()
 					xml = validator.public_send("valida_#{metodo}",mensagem)
 				end
 			end

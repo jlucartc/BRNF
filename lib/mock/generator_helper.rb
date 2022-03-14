@@ -4,6 +4,7 @@ require 'pry'
 require 'nokogiri'
 require 'digest'
 require 'base64'
+require 'openssl'
 
 
 module GeneratorHelper

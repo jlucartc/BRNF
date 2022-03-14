@@ -372,18 +372,18 @@ module BRNF
 
 				def corrige_desc_evento_cancelamento_prazo_1(xml)
 					desc_evento = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:descEvento","xs" => "http://www.portalfiscal.inf.br/nfe")
-					desc_evento[1..-1].remove
+					desc_evento[1..-1].remove if !desc_evento[1..-1].nil?
 					desc_evento.first.content = 'Pedido de Prorrogacao'
 				end
 
 				def corrige_nprot_cancelamento_prazo_1(xml)
 					nprot = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:nProt","xs" => "http://www.portalfiscal.inf.br/nfe")
-					nprot[1..-1].remove
+					nprot[1..-1].remove if !nprot[1..-1].nil?
 				end
 
 				def corrige_qtde_item_cancelamento_prazo_1(xml)
 					qtde_item = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:qtdeItem","xs" => "http://www.portalfiscal.inf.br/nfe")
-					qtde_item[0..-2].remove
+					qtde_item[0..-2].remove if !qtde_item[0..-2].nil?
 				end
 
 				def corrige_tipo_evento_cancelamento_prazo_2(xml)
@@ -398,18 +398,18 @@ module BRNF
 
 				def corrige_desc_evento_cancelamento_prazo_2(xml)
 					desc_evento = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:descEvento","xs" => "http://www.portalfiscal.inf.br/nfe")
-					desc_evento[1..-1].remove
+					desc_evento[1..-1].remove if !desc_evento[1..-1].nil?
 					desc_evento.first.content = 'Pedido de Prorrogacao'
 				end
 
 				def corrige_nprot_cancelamento_prazo_2(xml)
 					nprot = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:nProt","xs" => "http://www.portalfiscal.inf.br/nfe")
-					nprot[1..-1].remove
+					nprot[1..-1].remove if !nprot[1..-1].nil?
 				end
 
 				def corrige_qtde_item_cancelamento_prazo_2(xml)
 					qtde_item = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:qtdeItem","xs" => "http://www.portalfiscal.inf.br/nfe")
-					qtde_item[0..-2].remove
+					qtde_item[0..-2].remove if !qtde_item[0..-2].nil?
 				end
 
 				def corrige_c_orgao_emissao_em_contingencia(xml)
@@ -419,32 +419,32 @@ module BRNF
 
 				def remove_tp_autorizacao_emissao_em_contingencia(xml)
 				  tp_autorizacao = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpAutorizacao","xs" => "http://www.portalfiscal.inf.br/nfe")
-					tp_autorizacao.remove
+					tp_autorizacao.remove if tp_autorizacao.any?
 				end
 
 				def remove_aut_xml_emissao_em_contingencia(xml)
 				  aut_xml = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:autXML","xs" => "http://www.portalfiscal.inf.br/nfe")
-					aut_xml.remove
+					aut_xml.remove if aut_xml.any?
 				end
 
 				def corrige_c_orgao_autor_emissao_em_contingencia(xml)
 				  c_orgao_autor = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:cOrgaoAutor","xs" => "http://www.portalfiscal.inf.br/nfe")
-					c_orgao_autor[1..-1].remove
+					c_orgao_autor[1..-1].remove if !c_orgao_autor[1..-1].nil?
 				end
 				
 				def corrige_ver_aplic_emissao_em_contingencia(xml)
 				  ver_aplic = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:verAplic","xs" => "http://www.portalfiscal.inf.br/nfe")
-					ver_aplic[1..-1].remove
+					ver_aplic[1..-1].remove if !ver_aplic[1..-1].nil?
 				end
 
 				def remove_item_pedido_emissao_em_contingencia(xml)
 				  item_pedido = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:itemPedido","xs" => "http://www.portalfiscal.inf.br/nfe")
-					item_pedido.remove
+					item_pedido.remove if item_pedido.any?
 				end
 				
 				def remove_qtde_item_emissao_em_contingencia(xml)
 					qtde_item = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:qtdeItem","xs" => "http://www.portalfiscal.inf.br/nfe")
-					qtde_item.remove	
+					qtde_item.remove if qtde_item.any?
 				end
 
 				def corrige_tipo_autor_emissao_em_contingencia(xml)
@@ -455,27 +455,27 @@ module BRNF
 				
 				def corrige_n_prot_emissao_em_contingencia(xml)
 					nprot = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:nProt","xs" => "http://www.portalfiscal.inf.br/nfe")
-					nprot.remove
+					nprot.remove if nprot.any?
 				end
 				
 				def remove_ch_nfe_ref_emissao_em_contingencia(xml)
 				  chnferef = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:chNFeRef","xs" => "http://www.portalfiscal.inf.br/nfe")
-				  chnferef.remove
+				  chnferef.remove if chnferef.any?
 				end
 				
 				def remove_x_correcao_emissao_em_contingencia(xml)
 				  x_correcao = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xCorrecao","xs" => "http://www.portalfiscal.inf.br/nfe")
-					x_correcao.remove
+					x_correcao.remove if x_correcao.any?
 				end
 				
 				def remove_x_cond_uso_emissao_em_contingencia(xml)
 				  x_cond_uso = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xCondUso","xs" => "http://www.portalfiscal.inf.br/nfe")
-					x_cond_uso.remove
+					x_cond_uso.remove if x_cond_uso.any?
 				end
 				
 				def remove_x_just_emissao_em_contingencia(xml)
 				  x_just = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xJust","xs" => "http://www.portalfiscal.inf.br/nfe")
-					x_just.remove
+					x_just.remove if x_just.any?
 				end
 				
 				def corrige_versao_env_evento_emissao_em_contingencia(xml)
@@ -500,18 +500,18 @@ module BRNF
 				
 				def corrige_num_item_det_evento_emissao_em_contingencia(xml)
 				  num_item = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//@numItem","xs" => "http://www.portalfiscal.inf.br/nfe").first
-					num_item.remove
+					num_item.remove if num_item.any?
 				end
 				
 				def corrige_desc_evento_emissao_em_contingencia(xml)
 					desc_evento = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:descEvento","xs" => "http://www.portalfiscal.inf.br/nfe")
-					desc_evento[1..-1].remove
+					desc_evento[1..-1].remove if !desc_evento[1..-1].nil?
 					desc_evento.first.content = 'EPEC'
 				end
 
 				def corrige_x_just_operacao_nao_realizada(xml)
 				  x_just = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xJust","xs" => "http://www.portalfiscal.inf.br/nfe")
-					x_just[1..-1].remove
+					x_just[1..-1].remove if !x_just[1..-1].nil?
 				end
 
 				def corrige_versao_env_evento_operacao_nao_realizada(xml)
@@ -536,108 +536,108 @@ module BRNF
 				
 				def remove_num_item_det_evento_operacao_nao_realizada(xml)
 				  num_item = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//@numItem","xs" => "http://www.portalfiscal.inf.br/nfe").first
-					num_item.remove
+					num_item.remove if num_item.any?
 				end
 				
 				def corrige_desc_evento_operacao_nao_realizada(xml)
 					desc_evento = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:descEvento","xs" => "http://www.portalfiscal.inf.br/nfe")
-					desc_evento[1..-1].remove
+					desc_evento[1..-1].remove if !desc_evento[1..-1].nil?
 					desc_evento.first.content = 'Desconhecimento da Operacao'
 				end
 
 				def remove_c_orgao_autor_operacao_nao_realizada(xml)
 				  c_orgao_autor = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:cOrgaoAutor","xs" => "http://www.portalfiscal.inf.br/nfe")
-					c_orgao_autor.remove
+					c_orgao_autor.remove if c_orgao_autor.any?
 				end
 				
 				def remove_tp_autor_operacao_nao_realizada(xml)
 				  tp_autor = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpAutor","xs" => "http://www.portalfiscal.inf.br/nfe")
-					tp_autor.remove
+					tp_autor.remove if tp_autor.any?
 				end
 				
 				def remove_ver_aplic_operacao_nao_realizada(xml)
 				  ver_aplic = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:verAplic","xs" => "http://www.portalfiscal.inf.br/nfe")
-					ver_aplic.remove
+					ver_aplic.remove if ver_aplic.any?
 				end
 				
 				def remove_n_prot_operacao_nao_realizada(xml)
 					nprot = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:nProt","xs" => "http://www.portalfiscal.inf.br/nfe")
-					nprot.remove
+					nprot.remove if nprot.any?
 				end
 				
 				def remove_ch_nfe_ref_operacao_nao_realizada(xml)
 				  chnferef = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:chNFeRef","xs" => "http://www.portalfiscal.inf.br/nfe")
-				  chnferef.remove
+				  chnferef.remove if chnferef.any?
 				end
 				
 				def remove_x_correcao_operacao_nao_realizada(xml)
 				  x_correcao = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xCorrecao","xs" => "http://www.portalfiscal.inf.br/nfe")
-					x_correcao.remove
+					x_correcao.remove if x_correcao.any?
 				end
 				
 				def remove_x_cond_uso_operacao_nao_realizada(xml)
 				  x_cond_uso = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xCondUso","xs" => "http://www.portalfiscal.inf.br/nfe")
-					x_cond_uso.remove
+					x_cond_uso.remove if x_cond_uso.any?
 				end
 				
 				def remove_dh_emi_operacao_nao_realizada(xml)
 				  dhemi = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:dhEmi","xs" => "http://www.portalfiscal.inf.br/nfe")
-					dhemi.remove
+					dhemi.remove if dhemi.any?
 				end
 				
 				def remove_tp_nf_operacao_nao_realizada(xml)
 				  tpnf = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpNF","xs" => "http://www.portalfiscal.inf.br/nfe")
-					tpnf.remove
+					tpnf.remove if tpnf.any?
 				end
 				
 				def remove_ie_operacao_nao_realizada(xml)
 				  ie = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:IE","xs" => "http://www.portalfiscal.inf.br/nfe")
-					ie.remove
+					ie.remove if ie.any?
 				end
 				
 				def remove_dest_operacao_nao_realizada(xml)
 				  dest = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:dest","xs" => "http://www.portalfiscal.inf.br/nfe")
-					dest.remove
+					dest.remove if dest.any?
 				end
 				
 				def remove_v_nf_operacao_nao_realizada(xml)
 				  vnf = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:vNF","xs" => "http://www.portalfiscal.inf.br/nfe")
-					vnf.remove
+					vnf.remove if vnf.any?
 				end
 				
 				def remove_v_icms_operacao_nao_realizada(xml)
 				  vicms = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:vICMS","xs" => "http://www.portalfiscal.inf.br/nfe")
-					vicms.remove
+					vicms.remove if vicms.any?
 				end
 				
 				def remove_v_st_operacao_nao_realizada(xml)
 				  vst = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:vST","xs" => "http://www.portalfiscal.inf.br/nfe")
-					vst.remove
+					vst.remove if vst.any?
 				end
 				
 				def remove_item_pedido_operacao_nao_realizada(xml)
 				  item_pedido = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:itemPedido","xs" => "http://www.portalfiscal.inf.br/nfe")
-					item_pedido.remove
+					item_pedido.remove if item_pedido.any?
 				end
 				
 				def remove_qtde_item_operacao_nao_realizada(xml)
 					qtde_item = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:qtdeItem","xs" => "http://www.portalfiscal.inf.br/nfe")
-					qtde_item.remove
+					qtde_item.remove if qtde_item.any?
 				end
 				
 				def remove_aut_xml_operacao_nao_realizada(xml)
 				 	aut_xml = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:autXML","xs" => "http://www.portalfiscal.inf.br/nfe")
-					aut_xml.remove
+					aut_xml.remove if aut_xml.any?
 				end
 				
 				def remove_tp_autorizacao_operacao_nao_realizada(xml)
 				  tp_autorizacao = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpAutorizacao","xs" => "http://www.portalfiscal.inf.br/nfe")
-					tp_autorizacao.remove
+					tp_autorizacao.remove if tp_autorizacao.any?
 				end
 
 				def corrige_x_just_desconhecimento_da_operacao(xml)
 				  x_just = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xJust","xs" => "http://www.portalfiscal.inf.br/nfe")
-					x_just[1..-1].remove
+					x_just[1..-1].remove if !x_just[1..-1].nil?
 				end
 
 				def corrige_versao_env_evento_desconhecimento_da_operacao(xml)
@@ -662,108 +662,108 @@ module BRNF
 				
 				def remove_num_item_det_evento_desconhecimento_da_operacao(xml)
 				  num_item = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//@numItem","xs" => "http://www.portalfiscal.inf.br/nfe").first
-					num_item.remove
+					num_item.remove if num_item.any?
 				end
 				
 				def corrige_desc_evento_desconhecimento_da_operacao(xml)
 					desc_evento = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:descEvento","xs" => "http://www.portalfiscal.inf.br/nfe")
-					desc_evento[1..-1].remove
+					desc_evento[1..-1].remove if !desc_evento[1..-1].nil?
 					desc_evento.first.content = 'Desconhecimento da Operacao'
 				end
 
 				def remove_c_orgao_autor_desconhecimento_da_operacao(xml)
 				  c_orgao_autor = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:cOrgaoAutor","xs" => "http://www.portalfiscal.inf.br/nfe")
-					c_orgao_autor.remove
+					c_orgao_autor.remove if c_orgao_autor.any?
 				end
 				
 				def remove_tp_autor_desconhecimento_da_operacao(xml)
 				  tp_autor = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpAutor","xs" => "http://www.portalfiscal.inf.br/nfe")
-					tp_autor.remove
+					tp_autor.remove if tp_autor.any?
 				end
 				
 				def remove_ver_aplic_desconhecimento_da_operacao(xml)
 				  ver_aplic = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:verAplic","xs" => "http://www.portalfiscal.inf.br/nfe")
-					ver_aplic.remove
+					ver_aplic.remove if ver_aplic.any?
 				end
 				
 				def remove_n_prot_desconhecimento_da_operacao(xml)
 					nprot = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:nProt","xs" => "http://www.portalfiscal.inf.br/nfe")
-					nprot.remove
+					nprot.remove if nprot.any?
 				end
 				
 				def remove_ch_nfe_ref_desconhecimento_da_operacao(xml)
 				  chnferef = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:chNFeRef","xs" => "http://www.portalfiscal.inf.br/nfe")
-				  chnferef.remove
+				  chnferef.remove if chnferef.any?
 				end
 				
 				def remove_x_correcao_desconhecimento_da_operacao(xml)
 				  x_correcao = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xCorrecao","xs" => "http://www.portalfiscal.inf.br/nfe")
-					x_correcao.remove
+					x_correcao.remove if x_correcao.any?
 				end
 				
 				def remove_x_cond_uso_desconhecimento_da_operacao(xml)
 				  x_cond_uso = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xCondUso","xs" => "http://www.portalfiscal.inf.br/nfe")
-					x_cond_uso.remove
+					x_cond_uso.remove if x_cond_uso.any?
 				end
 				
 				def remove_dh_emi_desconhecimento_da_operacao(xml)
 				  dhemi = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:dhEmi","xs" => "http://www.portalfiscal.inf.br/nfe")
-					dhemi.remove
+					dhemi.remove if dhemi.any?
 				end
 				
 				def remove_tp_nf_desconhecimento_da_operacao(xml)
 				  tpnf = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpNF","xs" => "http://www.portalfiscal.inf.br/nfe")
-					tpnf.remove
+					tpnf.remove if tpnf.any?
 				end
 				
 				def remove_ie_desconhecimento_da_operacao(xml)
 				  ie = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:IE","xs" => "http://www.portalfiscal.inf.br/nfe")
-					ie.remove
+					ie.remove if ie.any?
 				end
 				
 				def remove_dest_desconhecimento_da_operacao(xml)
 				  dest = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:dest","xs" => "http://www.portalfiscal.inf.br/nfe")
-					dest.remove
+					dest.remove if dest.any?
 				end
 				
 				def remove_v_nf_desconhecimento_da_operacao(xml)
 				  vnf = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:vNF","xs" => "http://www.portalfiscal.inf.br/nfe")
-					vnf.remove
+					vnf.remove if vnf.any?
 				end
 				
 				def remove_v_icms_desconhecimento_da_operacao(xml)
 				  vicms = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:vICMS","xs" => "http://www.portalfiscal.inf.br/nfe")
-					vicms.remove
+					vicms.remove if vicms.any?
 				end
 				
 				def remove_v_st_desconhecimento_da_operacao(xml)
 				  vst = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:vST","xs" => "http://www.portalfiscal.inf.br/nfe")
-					vst.remove
+					vst.remove if vst.any?
 				end
 				
 				def remove_item_pedido_desconhecimento_da_operacao(xml)
 				  item_pedido = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:itemPedido","xs" => "http://www.portalfiscal.inf.br/nfe")
-					item_pedido.remove
+					item_pedido.remove if item_pedido.any?
 				end
 				
 				def remove_qtde_item_desconhecimento_da_operacao(xml)
 					qtde_item = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:qtdeItem","xs" => "http://www.portalfiscal.inf.br/nfe")
-					qtde_item.remove	
+					qtde_item.remove if qtde_item.any?
 				end
 				
 				def remove_aut_xml_desconhecimento_da_operacao(xml)
 				 	aut_xml = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:autXML","xs" => "http://www.portalfiscal.inf.br/nfe")
-					aut_xml.remove
+					aut_xml.remove if aut_xml.any?
 				end
 				
 				def remove_tp_autorizacao_desconhecimento_da_operacao(xml)
 				  tp_autorizacao = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpAutorizacao","xs" => "http://www.portalfiscal.inf.br/nfe")
-					tp_autorizacao.remove
+					tp_autorizacao.remove if tp_autorizacao.any?
 				end
 
 				def corrige_x_just_ciencia_da_operacao(xml)
 				  x_just = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xJust","xs" => "http://www.portalfiscal.inf.br/nfe")
-					x_just[1..-1].remove
+					x_just[1..-1].remove if !x_just[1..-1].nil?
 				end
 
 				def corrige_versao_env_evento_ciencia_da_operacao(xml)
@@ -793,103 +793,103 @@ module BRNF
 				
 				def corrige_desc_evento_ciencia_da_operacao(xml)
 					desc_evento = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:descEvento","xs" => "http://www.portalfiscal.inf.br/nfe")
-					desc_evento[1..-1].remove
+					desc_evento[1..-1].remove if !desc_evento[1..-1].nil?
 					desc_evento.first.content = 'Ciencia da Operacao'
 				end
 
 				def remove_c_orgao_autor_ciencia_da_operacao(xml)
 				  c_orgao_autor = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:cOrgaoAutor","xs" => "http://www.portalfiscal.inf.br/nfe")
-					c_orgao_autor.remove
+					c_orgao_autor.remove if c_orgao_autor.any?
 				end
 				
 				def remove_tp_autor_ciencia_da_operacao(xml)
 				  tp_autor = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpAutor","xs" => "http://www.portalfiscal.inf.br/nfe")
-					tp_autor.remove
+					tp_autor.remove if tp_autor.any?
 				end
 				
 				def remove_ver_aplic_ciencia_da_operacao(xml)
 				  ver_aplic = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:verAplic","xs" => "http://www.portalfiscal.inf.br/nfe")
-					ver_aplic.remove
+					ver_aplic.remove if ver_aplic.any?
 				end
 				
 				def remove_n_prot_ciencia_da_operacao(xml)
 					nprot = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:nProt","xs" => "http://www.portalfiscal.inf.br/nfe")
-					nprot.remove
+					nprot.remove if nprot.any?
 				end
 				
 				def remove_ch_nfe_ref_ciencia_da_operacao(xml)
 				  chnferef = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:chNFeRef","xs" => "http://www.portalfiscal.inf.br/nfe")
-				  chnferef.remove
+				  chnferef.remove if chnferef.any?
 				end
 				
 				def remove_x_correcao_ciencia_da_operacao(xml)
 				  x_correcao = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xCorrecao","xs" => "http://www.portalfiscal.inf.br/nfe")
-					x_correcao.remove
+					x_correcao.remove if x_correcao.any?
 				end
 				
 				def remove_x_cond_uso_ciencia_da_operacao(xml)
 				  x_cond_uso = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xCondUso","xs" => "http://www.portalfiscal.inf.br/nfe")
-					x_cond_uso.remove
+					x_cond_uso.remove if x_cond_uso.any?
 				end
 				
 				def remove_dh_emi_ciencia_da_operacao(xml)
 				  dhemi = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:dhEmi","xs" => "http://www.portalfiscal.inf.br/nfe")
-					dhemi.remove
+					dhemi.remove if dhemi.any?
 				end
 				
 				def remove_tp_nf_ciencia_da_operacao(xml)
 				  tpnf = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpNF","xs" => "http://www.portalfiscal.inf.br/nfe")
-					tpnf.remove
+					tpnf.remove if tpnf.any?
 				end
 				
 				def remove_ie_ciencia_da_operacao(xml)
 				  ie = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:IE","xs" => "http://www.portalfiscal.inf.br/nfe")
-					ie.remove
+					ie.remove if ie.any?
 				end
 				
 				def remove_dest_ciencia_da_operacao(xml)
 				  dest = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:dest","xs" => "http://www.portalfiscal.inf.br/nfe")
-					dest.remove
+					dest.remove if dest.any?
 				end
 				
 				def remove_v_nf_ciencia_da_operacao(xml)
 				  vnf = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:vNF","xs" => "http://www.portalfiscal.inf.br/nfe")
-					vnf.remove
+					vnf.remove if vnf.any?
 				end
 				
 				def remove_v_icms_ciencia_da_operacao(xml)
 				  vicms = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:vICMS","xs" => "http://www.portalfiscal.inf.br/nfe")
-					vicms.remove
+					vicms.remove if vicms.any?
 				end
 				
 				def remove_v_st_ciencia_da_operacao(xml)
 				  vst = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:vST","xs" => "http://www.portalfiscal.inf.br/nfe")
-					vst.remove
+					vst.remove if vst.any?
 				end
 				
 				def remove_item_pedido_ciencia_da_operacao(xml)
 				  item_pedido = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:itemPedido","xs" => "http://www.portalfiscal.inf.br/nfe")
-					item_pedido.remove
+					item_pedido.remove if item_pedido.any?
 				end
 				
 				def remove_qtde_item_ciencia_da_operacao(xml)
 					qtde_item = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:qtdeItem","xs" => "http://www.portalfiscal.inf.br/nfe")
-					qtde_item.remove	
+					qtde_item.remove if qtde_item.any?
 				end
 				
 				def remove_aut_xml_ciencia_da_operacao(xml)
 				 	aut_xml = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:autXML","xs" => "http://www.portalfiscal.inf.br/nfe")
-					aut_xml.remove
+					aut_xml.remove if aut_xml.any?
 				end
 				
 				def remove_tp_autorizacao_ciencia_da_operacao(xml)
 				  tp_autorizacao = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpAutorizacao","xs" => "http://www.portalfiscal.inf.br/nfe")
-					tp_autorizacao.remove
+					tp_autorizacao.remove if tp_autorizacao.any?
 				end
 
 				def corrige_x_just_confirmacao_da_operacao(xml)
 				  x_just = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xJust","xs" => "http://www.portalfiscal.inf.br/nfe")
-					x_just[1..-1].remove
+					x_just[1..-1].remove if !x_just[1..-1].nil?
 				end
 
 				def corrige_versao_env_evento_confirmacao_da_operacao(xml)
@@ -914,103 +914,103 @@ module BRNF
 				
 				def remove_num_item_det_evento_confirmacao_da_operacao(xml)
 				  num_item = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//@numItem","xs" => "http://www.portalfiscal.inf.br/nfe").first
-					num_item.remove
+					num_item.remove if num_item.any?
 				end
 				
 				def corrige_desc_evento_confirmacao_da_operacao(xml)
 					desc_evento = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:descEvento","xs" => "http://www.portalfiscal.inf.br/nfe")
-					desc_evento[1..-1].remove
+					desc_evento[1..-1].remove if !desc_evento[1..-1].nil?
 					desc_evento.first.content = 'Confirmacao da Operacao'
 				end
 
 				def remove_c_orgao_autor_confirmacao_da_operacao(xml)
 				  c_orgao_autor = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:cOrgaoAutor","xs" => "http://www.portalfiscal.inf.br/nfe")
-					c_orgao_autor.remove
+					c_orgao_autor.remove if c_orgao_autor.any?
 				end
 				
 				def remove_tp_autor_confirmacao_da_operacao(xml)
 				  tp_autor = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpAutor","xs" => "http://www.portalfiscal.inf.br/nfe")
-					tp_autor.remove
+					tp_autor.remove if tp_autor.any?
 				end
 				
 				def remove_ver_aplic_confirmacao_da_operacao(xml)
 				  ver_aplic = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:verAplic","xs" => "http://www.portalfiscal.inf.br/nfe")
-					ver_aplic.remove
+					ver_aplic.remove if ver_aplic.any?
 				end
 				
 				def remove_n_prot_confirmacao_da_operacao(xml)
 					nprot = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:nProt","xs" => "http://www.portalfiscal.inf.br/nfe")
-					nprot.remove
+					nprot.remove if nprot.any?
 				end
 				
 				def remove_ch_nfe_ref_confirmacao_da_operacao(xml)
 				  chnferef = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:chNFeRef","xs" => "http://www.portalfiscal.inf.br/nfe")
-				  chnferef.remove
+				  chnferef.remove if chnferef.any?
 				end
 				
 				def remove_x_correcao_confirmacao_da_operacao(xml)
 				  x_correcao = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xCorrecao","xs" => "http://www.portalfiscal.inf.br/nfe")
-					x_correcao.remove
+					x_correcao.remove if x_correcao.any?
 				end
 				
 				def remove_x_cond_uso_confirmacao_da_operacao(xml)
 				  x_cond_uso = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xCondUso","xs" => "http://www.portalfiscal.inf.br/nfe")
-					x_cond_uso.remove
+					x_cond_uso.remove if x_cond_uso.any?
 				end
 				
 				def remove_dh_emi_confirmacao_da_operacao(xml)
 				  dhemi = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:dhEmi","xs" => "http://www.portalfiscal.inf.br/nfe")
-					dhemi.remove
+					dhemi.remove if dhemi.any?
 				end
 				
 				def remove_tp_nf_confirmacao_da_operacao(xml)
 				  tpnf = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpNF","xs" => "http://www.portalfiscal.inf.br/nfe")
-					tpnf.remove
+					tpnf.remove if tpnf.any?
 				end
 				
 				def remove_ie_confirmacao_da_operacao(xml)
 				  ie = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:IE","xs" => "http://www.portalfiscal.inf.br/nfe")
-					ie.remove
+					ie.remove if ie.any?
 				end
 				
 				def remove_dest_confirmacao_da_operacao(xml)
 				  dest = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:dest","xs" => "http://www.portalfiscal.inf.br/nfe")
-					dest.remove
+					dest.remove if dest.any?
 				end
 				
 				def remove_v_nf_confirmacao_da_operacao(xml)
 				  vnf = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:vNF","xs" => "http://www.portalfiscal.inf.br/nfe")
-					vnf.remove
+					vnf.remove if vnf.any?
 				end
 				
 				def remove_v_icms_confirmacao_da_operacao(xml)
 				  vicms = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:vICMS","xs" => "http://www.portalfiscal.inf.br/nfe")
-					vicms.remove
+					vicms.remove if vicms.any?
 				end
 				
 				def remove_v_st_confirmacao_da_operacao(xml)
 				  vst = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:vST","xs" => "http://www.portalfiscal.inf.br/nfe")
-					vst.remove
+					vst.remove if vst.any?
 				end
 				
 				def remove_item_pedido_confirmacao_da_operacao(xml)
 				  item_pedido = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:itemPedido","xs" => "http://www.portalfiscal.inf.br/nfe")
-					item_pedido.remove
+					item_pedido.remove if item_pedido.any?
 				end
 				
 				def remove_qtde_item_confirmacao_da_operacao(xml)
 					qtde_item = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:qtdeItem","xs" => "http://www.portalfiscal.inf.br/nfe")
-					qtde_item.remove	
+					qtde_item.remove if qtde_item.any?
 				end
 				
 				def remove_aut_xml_confirmacao_da_operacao(xml)
 				 	aut_xml = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:autXML","xs" => "http://www.portalfiscal.inf.br/nfe")
-					aut_xml.remove
+					aut_xml.remove if aut_xml.any?
 				end
 				
 				def remove_tp_autorizacao_confirmacao_da_operacao(xml)
 				  tp_autorizacao = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpAutorizacao","xs" => "http://www.portalfiscal.inf.br/nfe")
-					tp_autorizacao.remove
+					tp_autorizacao.remove if tp_autorizacao.any?
 				end
 
 				def corrige_versao_env_evento_ator_interessado(xml)
@@ -1035,99 +1035,99 @@ module BRNF
 
 				def remove_num_item_ator_interessado(xml)
 				  num_item = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//@numItem","xs" => "http://www.portalfiscal.inf.br/nfe")
-					num_item.remove
+					num_item.remove if num_item.any?
 				end
 
 				def corrige_desc_evento_ator_interessado(xml)
 				  desc_evento = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:descEvento","xs" => "http://www.portalfiscal.inf.br/nfe")
-					desc_evento[1..-1].remove
+					desc_evento[1..-1].remove if !desc_evento[1..-1].nil?
 					desc_evento.first.content = 'Ator interessado na NF-e'	
 				end
 
 				def corrige_c_orgao_autor_ator_interessado(xml)
 				  c_orgao_autor = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:cOrgaoAutor","xs" => "http://www.portalfiscal.inf.br/nfe")
-					c_orgao_autor[1..-1].remove
+					c_orgao_autor[1..-1].remove if !c_orgao_autor[1..-1].nil?
 				end
 
 				def corrige_tp_autor_ator_interessado(xml)
 				  tp_autor = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpAutor","xs" => "http://www.portalfiscal.inf.br/nfe")
-					tp_autor[1..-1].remove
+					tp_autor[1..-1].remove if !tp_autor[1..-1].nil?
 					tp_autor.first.content = /[1-3]/.random_example
 				end
 
 				def corrige_ver_aplic_ator_interessado(xml)
 				  ver_aplic = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:verAplic","xs" => "http://www.portalfiscal.inf.br/nfe")
-					ver_aplic[1..-1].remove
+					ver_aplic[1..-1].remove if !ver_aplic[1..-1].nil?
 				end
 
 				def corrige_x_cond_uso_ator_interessado(xml)
 				  x_cond_uso = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xCondUso","xs" => "http://www.portalfiscal.inf.br/nfe")
-					x_cond_uso[0..-2].remove
+					x_cond_uso[0..-2].remove if !x_cond_uso[0..-2].nil?
 				end
 
 				def remove_n_prot_ator_interessado(xml)
 					nprot = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:nProt","xs" => "http://www.portalfiscal.inf.br/nfe")
-					nprot.remove
+					nprot.remove if nprot.any?
 				end
 
 				def remove_x_just_ator_interessado(xml)
 				  x_just = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xJust","xs" => "http://www.portalfiscal.inf.br/nfe")
-					x_just.remove
+					x_just.remove if x_just.any?
 				end
 
 				def remove_ch_nfe_ref_ator_interessado(xml)
 				  chnferef = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:chNFeRef","xs" => "http://www.portalfiscal.inf.br/nfe")
-				  chnferef.remove
+				  chnferef.remove if chnferef.any?
 				end
 
 				def remove_x_correcao_ator_interessado(xml)
 				  x_correcao = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xCorrecao","xs" => "http://www.portalfiscal.inf.br/nfe")
-					x_correcao.remove
+					x_correcao.remove if x_correcao.any?
 				end
 
 				def remove_dh_emi_ator_interessado(xml)
 				  dhemi = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:dhEmi","xs" => "http://www.portalfiscal.inf.br/nfe")
-					dhemi.remove
+					dhemi.remove if dhemi.any?
 				end
 
 				def remove_tp_nf_ator_interessado(xml)
 				  tpnf = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpNF","xs" => "http://www.portalfiscal.inf.br/nfe")
-					tpnf.remove
+					tpnf.remove if tpnf.any?
 				end
 
 				def remove_ie_ator_interessado(xml)
 				  ie = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:IE","xs" => "http://www.portalfiscal.inf.br/nfe")
-					ie.remove
+					ie.remove if ie.any?
 				end
 
 				def remove_dest_ator_interessado(xml)
 				  dest = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:dest","xs" => "http://www.portalfiscal.inf.br/nfe")
-					dest.remove
+					dest.remove if dest.any?
 				end
 
 				def remove_v_nf_ator_interessado(xml)
 				  vnf = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:vNF","xs" => "http://www.portalfiscal.inf.br/nfe")
-					vnf.remove
+					vnf.remove if vnf.any?
 				end
 
 				def remove_v_icms_ator_interessado(xml)
 				  vicms = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:vICMS","xs" => "http://www.portalfiscal.inf.br/nfe")
-					vicms.remove				
+					vicms.remove if vicms.any?	
 				end
 
 				def remove_v_st_ator_interessado(xml)
 				  vst = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:vST","xs" => "http://www.portalfiscal.inf.br/nfe")
-					vst.remove	
+					vst.remove if vst.any?
 				end
 
 				def remove_item_pedido_ator_interessado(xml)
 				  item_pedido = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:itemPedido","xs" => "http://www.portalfiscal.inf.br/nfe")
-					item_pedido.remove
+					item_pedido.remove if item_pedido.any?
 				end
 
 				def remove_qtde_item_ator_interessado(xml)
 					qtde_item = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:qtdeItem","xs" => "http://www.portalfiscal.inf.br/nfe")
-					qtde_item.remove				
+					qtde_item.remove if qtde_item.any?
 				end
 
 
@@ -1143,18 +1143,18 @@ module BRNF
 
 				def corrige_desc_evento_prorrogar_prazo_2(xml)
 					desc_evento = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:descEvento","xs" => "http://www.portalfiscal.inf.br/nfe")
-					desc_evento[1..-1].remove
+					desc_evento[1..-1].remove if !desc_evento[1..-1].nil?
 					desc_evento.first.content = 'Pedido de Prorrogacao'
 				end
 
 				def corrige_nprot_prorrogar_prazo_2(xml)
 					nprot = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:nProt","xs" => "http://www.portalfiscal.inf.br/nfe")
-					nprot[1..-1].remove
+					nprot[1..-1].remove if !nprot[1..-1].nil?
 				end
 
 				def corrige_qtde_item_prorrogar_prazo_2(xml)
 					qtde_item = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:qtdeItem","xs" => "http://www.portalfiscal.inf.br/nfe")
-					qtde_item[0..-2].remove
+					qtde_item[0..-2].remove if !qtde_item[0..-2].nil?
 				end
 
 				def corrige_tipo_evento_prorrogar_prazo_1(xml)
@@ -1169,45 +1169,45 @@ module BRNF
 
 				def corrige_desc_evento_prorrogar_prazo_1(xml)
 					desc_evento = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:descEvento","xs" => "http://www.portalfiscal.inf.br/nfe")
-					desc_evento[1..-1].remove
+					desc_evento[1..-1].remove if !desc_evento[1..-1].nil?
 					desc_evento.first.content = 'Pedido de Prorrogacao'
 				end
 
 				def corrige_nprot_prorrogar_prazo_1(xml)
 					nprot = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:nProt","xs" => "http://www.portalfiscal.inf.br/nfe")
-					nprot[1..-1].remove
+					nprot[1..-1].remove if !nprot[1..-1].nil?
 				end
 
 				def corrige_qtde_item_prorrogar_prazo_1(xml)
 					qtde_item = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:qtdeItem","xs" => "http://www.portalfiscal.inf.br/nfe")
-					qtde_item[0..-2].remove
+					qtde_item[0..-2].remove if !qtde_item[0..-2].nil?
 				end
 
 				def corrige_xjust_cancelar_nota_substituicao(xml)
 				  det_evento = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento","xs" => "http://www.portalfiscal.inf.br/nfe").first
-				  chnferef = det_evento.children[2].remove
+				  chnferef = det_evento.children[2].remove if !det_evento.children[2].nil?
 					det_evento.add_child(chnferef)
 				end
 
 				def corrige_nprot_cancelar_nota_substituicao(xml)
 				  det_evento = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento","xs" => "http://www.portalfiscal.inf.br/nfe").first
-				  chnferef = det_evento.children[3].remove
+				  chnferef = det_evento.children[3].remove if !det_evento.children[3].nil?
 					det_evento.add_child(chnferef)
 				end
 
 				def remove_xconduso_cancelar_nota_substituicao(xml)
 				  x_cond_uso = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xCondUso","xs" => "http://www.portalfiscal.inf.br/nfe")
-					x_cond_uso.remove
+					x_cond_uso.remove if x_cond_uso.any?
 				end
 				
 				def remove_xcorrecao_cancelar_nota_substituicao(xml)
 				  x_correcao = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xCorrecao","xs" => "http://www.portalfiscal.inf.br/nfe")
-					x_correcao.remove
+					x_correcao.remove if x_correcao.any?
 				end
 				
 				def corrige_chnferef_cancelar_nota_substituicao(xml)
 				  det_evento = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento","xs" => "http://www.portalfiscal.inf.br/nfe").first
-				  chnferef = det_evento.children[1].remove
+				  chnferef = det_evento.children[1].remove if !det_evento.children[1].nil?
 				  det_evento.add_child(chnferef)
 				end
 
@@ -1233,7 +1233,7 @@ module BRNF
 
 				def remove_num_item_cancelar_nota_substituicao(xml)
 				  num_item = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//@numItem","xs" => "http://www.portalfiscal.inf.br/nfe").first
-					num_item.remove
+					num_item.remove if num_item.any?
 				end
 
 				def corrige_descricao_cancelar_nota_substituicao(xml)
@@ -1250,77 +1250,77 @@ module BRNF
 
 				def remove_dhemi_cancelar_nota_substituicao(xml)
 				  dhemi = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:dhEmi","xs" => "http://www.portalfiscal.inf.br/nfe")
-					dhemi.remove
+					dhemi.remove if dhemi.any?
 				end
 
 				def remove_tpnf_cancelar_nota_substituicao(xml)
 				  tpnf = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpNF","xs" => "http://www.portalfiscal.inf.br/nfe")
-					tpnf.remove
+					tpnf.remove if tpnf.any?
 				end
 
 				def remove_ie_cancelar_nota_substituicao(xml)
 				  ie = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:IE","xs" => "http://www.portalfiscal.inf.br/nfe")
-					ie.remove
+					ie.remove if ie.any?
 				end
 
 				def remove_dest_cancelar_nota_substituicao(xml)
 				  dest = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:dest","xs" => "http://www.portalfiscal.inf.br/nfe")
-					dest.remove
+					dest.remove if dest.any?
 				end
 
 				def remove_vnf_cancelar_nota_substituicao(xml)
 				  vnf = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:vNF","xs" => "http://www.portalfiscal.inf.br/nfe")
-					vnf.remove
+					vnf.remove if vnf.any?
 				end
 
 				def remove_vicms_cancelar_nota_substituicao(xml)
 				  vicms = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:vICMS","xs" => "http://www.portalfiscal.inf.br/nfe")
-					vicms.remove
+					vicms.remove if vicms.any?
 				end
 
 				def remove_vst_cancelar_nota_substituicao(xml)
 				  vst = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:vST","xs" => "http://www.portalfiscal.inf.br/nfe")
-					vst.remove
+					vst.remove if vst.any?
 				end
 
 				def remove_item_pedido_cancelar_nota_substituicao(xml)
 				  item_pedido = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:itemPedido","xs" => "http://www.portalfiscal.inf.br/nfe")
-					item_pedido.remove
+					item_pedido.remove if item_pedido.any?
 				end
 
 				def remove_qtde_item_cancelar_nota_substituicao(xml)
 				  qtde_item = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:qtdeItem","xs" => "http://www.portalfiscal.inf.br/nfe")
-					qtde_item.remove
+					qtde_item.remove if qtde_item.any?
 				end
 
 				def remove_xjust_cancelar_nota_substituicao(xml)
 				  xjust = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xJust","xs" => "http://www.portalfiscal.inf.br/nfe")
-					xjust[0..-2].remove
+					xjust[0..-2].remove if !xjust[0..-2].nil?
 				end
 
 				def remove_c_orgao_autor_cancelar_nota_substituicao(xml)
 				  c_orgao_autores = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:cOrgaoAutor","xs" => "http://www.portalfiscal.inf.br/nfe")
-					c_orgao_autores[0..-2].remove
+					c_orgao_autores[0..-2].remove if !c_orgao_autores[0..-2].nil?
 				end
 
 				def remove_ver_aplic_cancelar_nota_substituicao(xml)
 				  ver_aplic = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:verAplic","xs" => "http://www.portalfiscal.inf.br/nfe")
-					ver_aplic[0..-2].remove
+					ver_aplic[0..-2].remove if !ver_aplic[0..-2].nil?
 				end
 
 				def remove_nprot_cancelar_nota_substituicao(xml)
 				  nprot = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:nProt","xs" => "http://www.portalfiscal.inf.br/nfe")
-					nprot[0..-2].remove
+					nprot[0..-2].remove if !nprot[0..-2].nil?
 				end
 
 				def remove_aut_xml_cancelar_nota_substituicao(xml)
 				 	aut_xml = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:autXML","xs" => "http://www.portalfiscal.inf.br/nfe")
-					aut_xml.remove
+					aut_xml.remove if aut_xml.any?
 				end
 
 				def remove_tp_autorizacao_cancelar_nota_substituicao(xml)
 				  tp_autorizacao = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpAutorizacao","xs" => "http://www.portalfiscal.inf.br/nfe")
-					tp_autorizacao.remove
+					tp_autorizacao.remove if tp_autorizacao.any?
 				end
 
 
@@ -1371,97 +1371,97 @@ module BRNF
 
 				def remove_c_orgao_autor_cancelar_nota(xml)
 				  c_orgao_autores = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:cOrgaoAutor","xs" => "http://www.portalfiscal.inf.br/nfe")
-					c_orgao_autores.remove
+					c_orgao_autores.remove if c_orgao_autores.any?
 				end
 
 				def remove_ver_aplic_cancelar_nota(xml)
 					versoes_aplic = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:verAplic","xs" => "http://www.portalfiscal.inf.br/nfe")
-					versoes_aplic.remove
+					versoes_aplic.remove if versoes_aplic.any?
 				end
 
 				def remove_tipo_autor_cancelar_nota(xml)
 				 	tipo_autores = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpAutor","xs" => "http://www.portalfiscal.inf.br/nfe")
-					tipo_autores.remove
+					tipo_autores.remove if tipo_autores.any?
 				end
 
 				def remove_chnferef_cancelar_nota(xml)
 					chnferef = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:chNFeRef","xs" => "http://www.portalfiscal.inf.br/nfe")
-					chnferef.remove
+					chnferef.remove if chnferef.any?
 				end
 
 				def remove_xcorrecao_cancelar_nota(xml)
 					xcorrecao = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xCorrecao","xs" => "http://www.portalfiscal.inf.br/nfe")
-					xcorrecao.remove
+					xcorrecao.remove if xcorrecao.any?
 				end
 
 				def remove_xconduso_cancelar_nota(xml)
 					xconduso = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xCondUso","xs" => "http://www.portalfiscal.inf.br/nfe")
-					xconduso.remove
+					xconduso.remove if xconduso.any?
 				end
 
 				def remove_xjust_cancelar_nota(xml)
 					xjust = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xJust","xs" => "http://www.portalfiscal.inf.br/nfe")
-					xjust[1..-1].remove
+					xjust[1..-1].remove if xjust.any?
 				end
 
 				def remove_nprot_cancelar_nota(xml)
 					nprot = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:nProt","xs" => "http://www.portalfiscal.inf.br/nfe")
-					nprot[1..-1].remove
+					nprot[1..-1].remove if nprot.any?
 				end
 
 				def remove_dhemi_cancelar_nota(xml)
 					dhemi = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:dhEmi","xs" => "http://www.portalfiscal.inf.br/nfe")
-					dhemi.remove
+					dhemi.remove if dhemi.any?
 				end
 				
 				def remove_tpnf_cancelar_nota(xml)
 					tpnf = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpNF","xs" => "http://www.portalfiscal.inf.br/nfe")
-					tpnf.remove
+					tpnf.remove if tpnf.any?
 				end
 				
 				def remove_ie_cancelar_nota(xml)
 					ie = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:IE","xs" => "http://www.portalfiscal.inf.br/nfe")
-					ie.remove
+					ie.remove if ie.any?
 				end
 				
 				def remove_dest_cancelar_nota(xml)
 					dest = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:dest","xs" => "http://www.portalfiscal.inf.br/nfe")
-					dest.remove
+					dest.remove if dest.any?
 				end
 				
 				def remove_vnf_cancelar_nota(xml)
 					vnf = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:vNF","xs" => "http://www.portalfiscal.inf.br/nfe")
-					vnf.remove
+					vnf.remove if vnf.any?
 				end
 				
 				def remove_vicms_cancelar_nota(xml)
 					vicms = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:vICMS","xs" => "http://www.portalfiscal.inf.br/nfe")
-					vicms.remove
+					vicms.remove if vicms.any?
 				end
 				
 				def remove_vst_cancelar_nota(xml)
 					vst = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:vST","xs" => "http://www.portalfiscal.inf.br/nfe")
-					vst.remove
+					vst.remove if vst.any?
 				end
 				
 				def remove_item_pedido_cancelar_nota(xml)
 					item_pedido = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:itemPedido","xs" => "http://www.portalfiscal.inf.br/nfe")
-					item_pedido.remove
+					item_pedido.remove if item_pedido.any?
 				end
 				
 				def remove_qtde_item_cancelar_nota(xml)
 					qtde_item = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:qtdeItem","xs" => "http://www.portalfiscal.inf.br/nfe")
-					qtde_item.remove
+					qtde_item.remove if qtde_item.any?
 				end
 				
 				def remove_aut_xml_cancelar_nota(xml)
 					aut_xml = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:autXML","xs" => "http://www.portalfiscal.inf.br/nfe")
-					aut_xml.remove
+					aut_xml.remove if aut_xml.any?
 				end
 				
 				def remove_tp_autorizacao_cancelar_nota(xml)
 					tp_autorizacao = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpAutorizacao","xs" => "http://www.portalfiscal.inf.br/nfe")
-					tp_autorizacao.remove
+					tp_autorizacao.remove if tp_autorizacao.any?
 				end
 
 
@@ -1521,87 +1521,87 @@ module BRNF
 
 				def remove_c_orgao_autor_carta_correcao(xml)
 				  c_orgao_autores = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:cOrgaoAutor","xs" => "http://www.portalfiscal.inf.br/nfe")
-					c_orgao_autores.remove
+					c_orgao_autores.remove if c_orgao_autores.any?
 				end
 
 				def remove_tipo_autor_carta_correcao(xml)
 				 	tipo_autores = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpAutor","xs" => "http://www.portalfiscal.inf.br/nfe")
-					tipo_autores.remove
+					tipo_autores.remove if tipo_autores.any?
 				end
 
 				def remove_ver_aplic_carta_correcao(xml)
 					versoes_aplic = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:verAplic","xs" => "http://www.portalfiscal.inf.br/nfe")
-					versoes_aplic.remove
+					versoes_aplic.remove if versoes_aplic.any?
 				end
 
 				def remove_nprot_carta_correcao(xml)
 					n_prots = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:nProt","xs" => "http://www.portalfiscal.inf.br/nfe")
-					n_prots.remove
+					n_prots.remove if n_prots.any?
 				end
 
 				def remove_xjust_carta_correcao(xml)
 					x_justs = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xJust","xs" => "http://www.portalfiscal.inf.br/nfe")
-					x_justs.remove
+					x_justs.remove if x_justs.any?
 				end
 
 				def remove_chnferef_carta_correcao(xml)
 					chnferef = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:chNFeRef","xs" => "http://www.portalfiscal.inf.br/nfe")
-					chnferef.remove
+					chnferef.remove if chnferef.any?
 				end
 
 				def remove_dhemi_carta_correcao(xml)
 					dhemis = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:dhEmi","xs" => "http://www.portalfiscal.inf.br/nfe")
-					dhemis.remove
+					dhemis.remove if dhemis.any?
 				end
 
 				def remove_tpnf_carta_correcao(xml)
 					tpnfs = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpNF","xs" => "http://www.portalfiscal.inf.br/nfe")
-					tpnfs.remove									
+					tpnfs.remove if tpnfs.any?						
 				end
 
 				def remove_ie_carta_correcao(xml)
 					ies = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:IE","xs" => "http://www.portalfiscal.inf.br/nfe")
-					ies.remove									
+					ies.remove if ies.any?			
 				end
 
 				def remove_dest_carta_correcao(xml)
 					dests = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:dest","xs" => "http://www.portalfiscal.inf.br/nfe")
-					dests.remove									
+					dests.remove if dests.any?					
 				end
 
 				def remove_vnf_carta_correcao(xml)
 					vnfs = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:vNF","xs" => "http://www.portalfiscal.inf.br/nfe")
-					vnfs.remove									
+					vnfs.remove	if vnfs.any?			
 				end
 
 				def remove_vicms_carta_correcao(xml)
 					vicmss = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:vICMS","xs" => "http://www.portalfiscal.inf.br/nfe")
-					vicmss.remove									
+					vicmss.remove if vicmss.any?						
 				end
 
 				def remove_vst_carta_correcao(xml)
 					vsts = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:vST","xs" => "http://www.portalfiscal.inf.br/nfe")
-					vsts.remove									
+					vsts.remove	if vsts.any?		
 				end
 
 				def remove_item_pedido_carta_correcao(xml)
 					itens_pedidos = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:itemPedido","xs" => "http://www.portalfiscal.inf.br/nfe")
-					itens_pedidos.remove									
+					itens_pedidos.remove if itens_pedidos.any?				
 				end
 
 				def remove_qtde_item_carta_correcao(xml)
 					qtde_itens = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:qtdeItem","xs" => "http://www.portalfiscal.inf.br/nfe")
-					qtde_itens.remove									
+					qtde_itens.remove	if qtde_itens.any?
 				end
 
 				def remove_aut_xml_carta_correcao(xml)
 					aut_xmls = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:autXML","xs" => "http://www.portalfiscal.inf.br/nfe")
-					aut_xmls.remove
+					aut_xmls.remove if aut_xmls.any?
 				end
 
 				def remove_tp_autorizacao_carta_correcao(xml)
 					tp_autorizacoes = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpAutorizacao","xs" => "http://www.portalfiscal.inf.br/nfe")
-					tp_autorizacoes.remove									
+					tp_autorizacoes.remove	if tp_autorizacoes.any?								
 				end
 
 
@@ -1669,7 +1669,7 @@ module BRNF
 					destinatario_inscricao_estadual = xml.xpath("xs:enviNFe//xs:NFe//xs:infNFe//xs:dest//xs:IE","xs" => "http://www.portalfiscal.inf.br/nfe").first
 
 					if modelo.content == '55' and !destinatario_indicador.nil? and destinatario_indicador.content == "2"
-						destinatario_inscricao_estadual.remove
+						destinatario_inscricao_estadual.remove if !destinatario_inscricao_estadual.nil?
 					end
 				end
 

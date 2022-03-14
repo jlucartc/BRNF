@@ -6,3 +6,20 @@
 
 ## Future improvements
 - Random invoice data still doesn't have any configuration options, like selecting certain groups or filling in part of the xml with your own data. This will be included in the future.
+
+## How to use?
+
+### Generating random data
+
+To generate random data, just call the method that returns the message for the desired service.
+e.g.: To issue a new invoice, your should call the method `autorizar_nota`:
+
+```ruby
+	require_relative './lib/brnf.rb'
+
+	# If you want a brand new invoice, that's the method call:
+	xml = BRNF::Mock::Generator.autorizar_nota()
+
+	# If you wanna validate your own invoice xml, use this:
+	xml = BRNF::Mock::Generator.autorizar_nota(documento: File.open("your_invoice.xml"){ |f| Nokogiri::XML(f) })
+```
