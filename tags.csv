@@ -250,7 +250,7 @@ id;nome;tipo;pai;min;max;regex;namespace;ativo;inferivel;xpath;campo_mensagem
 249;dest;G;163;0;1;;;1;0;//xs:enviNFe//xs:NFe//xs:infNFe//xs:dest;destinatario
 250;CNPJ;CE;249;1;1;^[0-9]{14}$;;1;0;//xs:enviNFe//xs:NFe//xs:infNFe//xs:dest//xs:CNPJ;cpf_cnpj
 251;CPF;CE;249;1;1;^[0-9]{11}$;;1;0;//xs:enviNFe//xs:NFe//xs:infNFe//xs:dest//xs:CPF;cpf_cnpj
-252;idEstrangeiro;CE;249;1;1;^([a-zA-Z0-9:\.\+\-\/\(\)]{0}|[a-zA-Z0-9:\.\+\-\/\(\)]{5}|[a-zA-Z0-9:\.\+\-\/\(\)]{20})$;;1;0;//xs:enviNFe//xs:NFe//xs:infNFe//xs:dest//xs:idEstrangeiro;id_estrangeiro
+252;idEstrangeiro;CE;249;0;1;^([a-zA-Z0-9:\.\+\-\/\(\)]{0}|[a-zA-Z0-9:\.\+\-\/\(\)]{5}|[a-zA-Z0-9:\.\+\-\/\(\)]{20})$;;1;0;//xs:enviNFe//xs:NFe//xs:infNFe//xs:dest//xs:idEstrangeiro;id_estrangeiro
 253;xNome;E;249;0;1;"^[!a-zA-Z0-9#$%()*+,-.\/:;=?@\[\]^`{|}~]{1}[! a-zA-Z0-9#$%()*+,-.\/:;=?@\[\]^`{|}~]{0,58}[!a-zA-Z0-9#$%()*+,-.\/:;=?@\[\]^`{|}~]{1}$";;1;0;//xs:enviNFe//xs:NFe//xs:infNFe//xs:dest//xs:xNome;nome_razao_social
 254;enderDest;G;249;0;1;;;1;0;//xs:enviNFe//xs:NFe//xs:infNFe//xs:dest//xs:enderDest;
 255;xLgr;E;254;1;1;"^[!a-zA-Z0-9#$%()*+,-.\/:;=?@\[\]^`{|}~]{1}[! a-zA-Z0-9#$%()*+,-.\/:;=?@\[\]^`{|}~]{0,58}[!a-zA-Z0-9#$%()*+,-.\/:;=?@\[\]^`{|}~]{1}$";;1;0;//xs:enviNFe//xs:NFe//xs:infNFe//xs:dest//xs:enderDest//xs:xLgr;logradouro

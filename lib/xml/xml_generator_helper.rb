@@ -8,7 +8,7 @@ require 'openssl'
 require_relative './../builder/xml_builder.rb'
 
 
-module GeneratorHelper
+module XMLGeneratorHelper
 
 	class XMLGenerator
 

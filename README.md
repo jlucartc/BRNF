@@ -18,10 +18,10 @@ e.g.: To issue a new invoice, your should call the method `autorizar_nota`:
 	require_relative './lib/brnf.rb'
 
 	# If you want a brand new invoice, that's the method call:
-	generator = BRNF::Mock::Generator.new
+	generator = BRNF::XML.new
 	xml = generator.autorizar_nota()
 
 	# If you wanna validate your own invoice xml, use this:
-	generator = BRNF::Mock::Generator.new
+	generator = BRNF::XML.new
 	xml = generator.autorizar_nota(documento: File.open("your_invoice.xml"){ |f| Nokogiri::XML(f) })
 ```

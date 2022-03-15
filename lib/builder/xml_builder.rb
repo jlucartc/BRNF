@@ -8,42 +8,43 @@ module BRNF
 		attr_reader :mapa_tags
 
 		class MapaTags
-			attr_reader :body
-			attr_reader :reverse_body
+			attr_reader :map
+			attr_reader :reverse_map
 
-			def initialize(hash)
-				@body = hash
-				generate_reverse_body
+			def initialize(hash,reverse_map: nil)
+				@map = hash
+				@reverse_map = reverse_map
+				generate_reverse_map if @reverse_map.nil?
 			end
 
 			def get_index_list(tag)
-				@reverse_body[tag.to_s]
+				@reverse_map[tag.to_s]
 			end
 
 			def get_tag(index)
-				@body[index.to_s]
+				@map[index.to_s]
 			end
 
 			def get_keys
-				@body.keys
+				@map.keys
 			end
 
 			def get_reverse_keys
-				@reverse_body.keys
+				@reverse_map.keys
 			end
 
 			private
 
-			def generate_reverse_body
-				@reverse_body = @body.map{|key,value| value }
-				@reverse_body = @reverse_body.group_by{|item| item["nome"]}
-				@reverse_body = @reverse_body.map{|chave,valor| [chave,{"indices": valor.map{|item| item["id"] }, "tags": valor}]}.to_h
+			def generate_reverse_map
+				@reverse_map = @map.map{|key,value| value }
+				@reverse_map = @reverse_map.group_by{|item| item["nome"]}
+				@reverse_map = @reverse_map.map{|chave,valor| [chave,{"indices" => valor.map{|item| item["id"] }, "tags" => valor}]}.to_h
 			end
 		end
 
 		def initialize(fill: true)
 			@should_fill_with_data = fill
-			create_mapa_tags
+			create_mapa_tags()
 			@mapa_tags = MapaTags.new(@mapa_tags) if @mapa_tags.class != MapaTags
 		end
 
@@ -175,7 +176,9 @@ module BRNF
 				@mapa_tags = mapa_tags
 				remove_tags_mutex
 			else
-				@mapa_tags = MapaTags.new(JSON.parse(File.open("#{__dir__}/../mapa_tags.json",'r').read));
+				map = JSON.parse(File.open("#{__dir__}/../map.json",'r').read)
+				reverse_map = JSON.parse(File.open("#{__dir__}/../reverse_map.json",'r').read)
+				@mapa_tags = MapaTags.new(map,reverse_map: reverse_map);
 			end
 		end
 

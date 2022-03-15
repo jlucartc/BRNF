@@ -45,7 +45,7 @@
 									"emissor":{
 										"description":"Dados do emissor da nota fiscal",
 										"type":"object",
-										"required":["nome_razao_social","cpf_cnpj","logradouro","numero","bairro","codigo_municipio","nome_municipio","uf","cep","inscricao_estadual"],
+										"required":["nome_razao_social","cpf_cnpj","logradouro","numero","bairro","codigo_municipio","nome_municipio","uf","cep","regime_tributario","inscricao_estadual"],
 										"properties":{
 											"cpf_cnpj":{"type":"string","description":"CPF ou CNPJ do emissor"},
 											"nome_razao_social":{"type":"string","description":"Nome ou razão social do emissor"},
@@ -71,7 +71,7 @@
 									"destinatario":{
 										"description":"Dados do destinatario da nota fiscal",
 										"type":"object",
-										"required":["cpf_cnpj","id_estrangeiro","nome_razao_social","logradouro","numero","bairro","codigo_municipio","nome_municipio","uf","contribuinte"],
+										"required":["cpf_cnpj","nome_razao_social","logradouro","numero","bairro","codigo_municipio","nome_municipio","uf","contribuinte"],
 										"properties":{
 											"cpf_cnpj":{"type":"string","description":"CPF ou CNPJ do destinatário."},
 											"id_estrangeiro":{"type":"string","description":"Identificador de destinatário estrangeiro. Aceita número de passaporte ou outro documento legal."},
@@ -154,7 +154,7 @@
 										"type":"array",
 										"items":{
 											"type":"object",
-											"required":["codigo_produto","codigo_ean","descricao_produto","ncm","cfop","quantidade","preco","codifo_ean_tributo","indicador_total"],
+											"required":["codigo_produto","descricao_produto","ncm","cfop","quantidade","preco","imposto"],
 											"properties":{
 												"codigo_produto":{"type":"string","description":"Código de identificação do produto."},
 												"codigo_ean":{"type":"string","description":"Código EAN/GTIN do produto."},
@@ -332,7 +332,7 @@
 													"properties":{
 														"icms":{
 															"type":"object",
-															"required":["codigo"],
+															"required":["codigo","origem"],
 															"properties":{
 																"origem":{"type":"string","description":"Especifica a origem do produto."},
 																"codigo":{"type":"string","description":"Código tributário do ICMS. Pode ser CST para empresas fora do simples naacional e CSOSN para empresas do simples nacional."},

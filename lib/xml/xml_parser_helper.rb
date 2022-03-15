@@ -5,7 +5,7 @@ require 'nokogiri'
 require 'json'
 require_relative './../builder/xml_builder.rb'
 
-module BuilderHelper
+module XMLParserHelper
 
 	class XMLInflator
 
