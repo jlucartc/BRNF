@@ -11,7 +11,7 @@
 
 ### Generating random data
 
-To generate random data, just call the method that returns the message for the desired service.
+To generate random data, just call the method that builds the XML for the desired service.
 e.g.: To issue a new invoice, your should call the method `autorizar_nota`:
 
 ```ruby
