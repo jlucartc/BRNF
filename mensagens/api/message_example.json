@@ -45,13 +45,13 @@
 			"icms":{
 				"origem":"0",
 				"codigo":"102"
-			},
-		},
+			}
+		}
 	}],
 	"responsavel_tecnico": {
 		"cnpj":"11111111111",
 		"nome":"RESPONSAVEL TECNICO",
 		"email":"admin@gmail.com",
-		"fone":"00000000000",
-	},
+		"fone":"00000000000"
+	}
 }

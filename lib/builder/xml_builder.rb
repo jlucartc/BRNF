@@ -4,20 +4,21 @@ module BRNF
 		ATTR = ["A"]
 		OPTIONAL = ["GO","CGO"]
 
-
 		attr_reader :mapa_tags
 
 		class MapaTags
 			attr_reader :map
 			attr_reader :reverse_map
+			attr_reader :message_map
 
-			def initialize(hash,reverse_map: nil)
+			def initialize(hash,reverse_map: nil,message_map: nil)
 				@map = hash
 				@reverse_map = reverse_map
 				generate_reverse_map if @reverse_map.nil?
+				generate_message_map if @message_map.nil?
 			end
 
-			def get_index_list(tag)
+			def get_candidate_tags_list(tag)
 				@reverse_map[tag.to_s]
 			end
 
@@ -33,12 +34,93 @@ module BRNF
 				@reverse_map.keys
 			end
 
+			def get_message_field_tags(tag_name,ancestor_id)
+				if ancestor_id.nil?
+					@message_map[tag_name].sort_by{|item| item["id"].to_i}.first
+				else
+					if has_ancestor(tag_name,ancestor_id)
+						get_closest_tags_to_ancestor(tag_name,ancestor_id)
+					end
+				end
+			end
+
 			private
+
+			def has_ancestor(child_tag_name,ancestor_id)
+				tags = @message_map[child_tag_name]
+				tags = [@map[child_tag_name]].compact if tags.nil?
+				if tags.nil?
+					false
+				else
+					tags = tags.map do |tag|
+						if tag["pai"] == ancestor_id
+							true
+						else
+							if tag["pai"].nil?
+								false
+							else
+								has_ancestor(tag["pai"],ancestor_id)
+							end
+						end
+					end
+				end
+
+				tags = tags.uniq
+				tags.first != tags.last ? true : tags.first
+			end
+
+			def get_closest_tags_to_ancestor(child_tag_name,ancestor_id, count: 0)
+				tags = @message_map[child_tag_name]
+				tags = [@map[child_tag_name]] if tags.nil?
+				tags_distance = calculate_parent_child_distance(tags,ancestor_id)
+
+				closest_tags = []
+				tags_distance.each_with_index do |distance,index|
+					closest_tags << tags[index] if distance == tags_distance.filter{|item| item >= 0 }.sort.first
+				end
+				closest_tags
+			end
+
+			def calculate_parent_child_distance(tag_list,ancestor_id,current_parent_id: nil, count: 0)
+				if current_parent_id.nil?
+					tags_distance = tag_list.map do |tag|
+						if tag["pai"] == ancestor_id
+							count
+						else
+							if tag["pai"].nil?
+								-(count+1)
+							else
+								calculate_parent_child_distance(tag_list,ancestor_id,current_parent_id: tag["pai"], count: count+1)
+							end
+						end
+					end
+					tags_distance
+				else
+					current_parent = @map[current_parent_id]
+					if current_parent.nil?
+						-(count+1)
+					elsif current_parent["pai"] == ancestor_id
+						count
+					else
+						if current_parent["pai"].nil?
+							-(count+1)
+						else
+							calculate_parent_child_distance(tag_list,ancestor_id,current_parent_id: current_parent["pai"], count: count+1)
+						end
+					end
+				end
+			end
+
+			def generate_message_map
+				@message_map = @map.filter{|key,value| !value['campo_mensagem'].nil?}
+				@message_map = @message_map.map{|key,value| value}
+				@message_map = @message_map.group_by{|item| item["campo_mensagem"]}
+			end
 
 			def generate_reverse_map
 				@reverse_map = @map.map{|key,value| value }
 				@reverse_map = @reverse_map.group_by{|item| item["nome"]}
-				@reverse_map = @reverse_map.map{|chave,valor| [chave,{"indices" => valor.map{|item| item["id"] }, "tags" => valor}]}.to_h
+				@reverse_map = @reverse_map.map{|key,value| [key,{"indices" => value.map{|item| item["id"] }, "tags" => value}]}.to_h
 			end
 		end
 
@@ -69,8 +151,12 @@ module BRNF
 
 		private
 
+		def create_xml_tag(tag_name)
+			Nokogiri::XML("<#{tag_name}>").elements.first
+		end
+
 		def build_tag(tag_number)
-			tag_xml = Nokogiri::XML("<#{@mapa_tags.get_tag(tag_number)["nome"]}>").elements.first
+			tag_xml = create_xml_tag(@mapa_tags.get_tag(tag_number)["nome"])
 			tag_tipo = @mapa_tags.get_tag(tag_number)["tipo"]
 			resultado = []
 
@@ -143,7 +229,7 @@ module BRNF
 			@mapa_tags.get_tag(parent_tag_id)["atributos"]
 		end
 
-		def create_mapa_tags(from_scratch: false)
+		def create_mapa_tags(from_scratch: true)
 			if from_scratch
 				tags = CSV.read('tags.csv',col_sep:";",headers:true)
 				mapa_tags = {}
@@ -178,6 +264,7 @@ module BRNF
 			else
 				map = JSON.parse(File.open("#{__dir__}/../map.json",'r').read)
 				reverse_map = JSON.parse(File.open("#{__dir__}/../reverse_map.json",'r').read)
+				message_map = JSON.parse(File.open("#{__dir__}/../message_map.json",'r').read)
 				@mapa_tags = MapaTags.new(map,reverse_map: reverse_map);
 			end
 		end
