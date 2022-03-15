@@ -3,6 +3,7 @@ require 'regexp-examples'
 require 'pry'
 require 'nokogiri'
 require 'json'
+require_relative './../builder/xml_builder.rb'
 
 module BuilderHelper
 
@@ -16,44 +17,12 @@ module BuilderHelper
 			def initialize(tag_number,children,repeats)
 				self.tag_number = tag_number
 				self.children = children
-				self.repeats
+				self.repeats = repeats
 			end
 		end
-
-		class MapaTags
-
-			attr_reader :body
-			attr_reader :reverse_body
-
-			def initialize(map_hash)
-				@body = map_hash
-				generate_reverse_body
-			end
-
-			def get_index(tag)
-				@reverse_body[tag.to_s]
-			end
-
-			def get_tag(index)
-				@body[index.to_s]
-			end
-
-			private
-
-			def generate_reverse_body
-				@reverse_body = @body.map{|key,value| value }
-				@reverse_body = @reverse_body.group_by{|item| item["nome"]}
-				@reverse_body = @reverse_body.map{|chave,valor| [chave,{"indices": valor.map{|item| item["id"] }, "tags": valor}]}.to_h
-			end
-
-		end
-
-		TAGS = ["E","G","CE","CG","Raiz"]
-		ATRIBUTOS = ["A"]
-		OPCIONAIS = ["GO","CGO"]
 
 		def initialize
-			carrega_mapa_tags
+			@builder = BRNF::XMLBuilder.new(fill: false)
 		end
 
 		def consultar_cadastro(mensagem)
@@ -67,9 +36,11 @@ module BuilderHelper
 		end
 
 		def autorizar_nota(mensagem)
+			xml = @builder.build_xml("1")
+
 			mensagem = {
 				lote:"idLote",
-				identificacao:{
+				identificacao: Grupo.new(1,{
 					codigo_uf:"cUF",
 					codigo_numerico:"cNF",
 					modelo:"mod",
@@ -462,8 +433,14 @@ module BuilderHelper
 						fone:"fone",
 						id_csrt:"idCSRT"
 					},false)
-				}
+				},false)
 			}
+
+			mensagem.each do |campo|
+				puts campo
+			end
+
+			binding.pry
 		end
 
 		def consultar_status_servico(mensagem)
@@ -711,12 +688,6 @@ module BuilderHelper
 		end
 
 		def cancelamento_prazo_2(mensagem)
-		end
-
-		private
-
-		def carrega_mapa_tags
-			@mapa_tags = MapaTags.new(JSON.parse(File.open("#{__dir__}/../mapa_tags.json",'r').read));
 		end
 
 	end

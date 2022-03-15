@@ -30,13 +30,15 @@
 									"consumidor":{"type":"string","description":"Determina se a operação esta sendo feita com o consumidor final ou não."},
 									"indicador_presencial":{"type":"string","description":"Determina se o comprador realizou a operação de forma presencial ou remota."},
 									"versao_aplicacao":{"type":"string","description":"Versão da aplicação de emissao de notas."},
-									"justificativa_contingencia":{"type":"string","description":"Informa o motivo da contigência."},
-									"ano_mes":{"type":"string","description":"Ano e mês no formato AAMM"},
+									"justificativa_contingencia":{"type":"string","description":"Informa o motivo da contigência. Caso não seja informado, uma mensagem padrão será gerada."},
+									"ano_mes_referenciado":{"type":"string","description":"Ano e mês no formato AAMM"},
 									"modelo_referenciado":{"type":"string","description":"Modelo da nota"},
 									"serie_referenciada":{"type":"string","description":"Série da nota"},
-									"numero_nota_referenciada":{"type":"string","description":"Número da nota"},
-									"cpf_cnpj":{"type":"string","description":"CPF ou CNPJ do emitente"},
-									"inscricao_estadual":{"type":"string","description":"Inscrição estadual do emitente"},
+									"chave_nota_referenciada":{"type":"string","description":"Chave da nota"},
+									"inscricao_estadual_referenciada":{"type":"string","description":"Inscrição estadual do emitente"},
+									"cpf_cnpj_referenciado":{"type":"string","description":"CPF ou CNPJ do emitente"},
+									"codigo_uf_referenciado":{"type":"string","description":"Código da UF do emitente da nota referenciada"},
+									"numero_documento_referenciado":{"type":"string","description":"Número do documento fiscal referenciada"},
 									"chave_cte":{"type":"string","description":"Chave de acesso do CT-e"},
 									"numero_ecf":{"type":"string","description":"Número de sequência do Emissor de Cupom Fiscal(ECF)"},
 									"numero_coo":{"type":"string","description":"Número do Contador de Ordem de Operação(COO)"},
@@ -337,6 +339,8 @@
 																"modalidade":{"type":"string","Modalidade de cálculo do ICMS"},
 																"percentual_mva_substituicao":{"type":"string"},
 																"percentual_reducao_substituicao":{"type":"string"},
+																"valor_icms_desonerado_substituicao":{"type":"string","description":"Valor desonerado. Caso não seja informado, será considerado como zero caso o campo 'motivo_desoneracao' não seja informado. Do contrário, será considerado como 100% do valor do ICMS."},
+																"motivo_desoneracao_substituicao":{"type":"string"},
 																"valor_icms_desonerado":{"type":"string","description":"Valor desonerado. Caso não seja informado, será considerado como zero caso o campo 'motivo_desoneracao' não seja informado. Do contrário, será considerado como 100% do valor do ICMS."},
 																"motivo_desoneracao":{"type":"string"},
 																"percentual_reducao":{"type":"string"},
@@ -346,7 +350,11 @@
 																"percentual_credito":{"type":"string"},
 																"modalidade_substituicao":{"type":"string"},
 																"percentual_substituicao_retido":{"type":"string"},
-																"valor_icms_substituto":{"type":"string"}
+																"percentual_fundo_combate_pobreza":{"type":"string"},
+																"percentual_fundo_combate_pobreza_substituicao":{"type":"string"},
+																"valor_icms_substituto":{"type":"string"},
+																"valor_base_calculo_fundo_combate_pobreza_retido":{"type":"string"},
+																"percentual_fundo_combate_pobreza_retido":{"type":"string"}
 															}
 														},
 														"pis":{
@@ -355,7 +363,7 @@
 															"properties":{
 																"codigo":{"type":"string","description":"Código tributário do PIS."},
 																"aliquota_percentual":{"type":"string","description":"Percentual cobrado por produto."},
-																"aliquota_reais":{"type":"string","description":"Imposto por produto em R$."}
+																"aliquota_valor":{"type":"string","description":"Imposto por produto em R$."}
 															}
 														},
 														"cofins":{
@@ -364,7 +372,7 @@
 															"properties":{
 																"codigo":{"type":"string","description":"Código tributário do COFINS."},
 																"aliquota_percentual":{"type":"string","description":"Percentual cobrado por produto."},
-																"aliquota_reais":{"type":"string","description":"Imposto por produto em R$."}
+																"aliquota_valor":{"type":"string","description":"Imposto por produto em R$."}
 															}
 														},
 														"ipi":{
@@ -377,7 +385,7 @@
 																"codigo_enquadramento":{"type":"string","description":"Código de enquadramento legal do IPI"},
 																"codigo":{"type":"string","description":"Código tributário do IPI."},
 																"aliquota_percentual":{"type":"string","description":"Percentual do imposto cobrado por produto."},
-																"aliquota_reais":{"type":"string","description":"Valor em R$ de imposto cobrado por unidade tributável do produto."}
+																"aliquota_valor":{"type":"string","description":"Valor em R$ de imposto cobrado por unidade tributável do produto."}
 															}
 														},
 														"ii":{
@@ -431,7 +439,7 @@
 											"base_calculo_retencao_icms":{"type":"string"},
 											"aliquota_retencao":{"type":"string"},
 											"cfop":{"type":"string"},
-											"codigo_municipio":{"type":"string"},
+											"codigo_municipio_fato_gerador":{"type":"string"},
 											"placa":{"type":"string"},
 											"uf_trator":{"type":"string"},
 											"rntc":{"type":"string"},

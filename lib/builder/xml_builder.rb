@@ -1,5 +1,11 @@
 module BRNF
 	class XMLBuilder
+		TAGS = ["E","G","CE","CG","Raiz"]
+		ATTR = ["A"]
+		OPTIONAL = ["GO","CGO"]
+
+
+		attr_reader :mapa_tags
 
 		class MapaTags
 			attr_reader :body
@@ -35,10 +41,6 @@ module BRNF
 			end
 		end
 
-		TAGS = ["E","G","CE","CG","Raiz"]
-		ATRIBUTOS = ["A"]
-		OPCIONAIS = ["GO","CGO"]
-
 		def initialize(fill: true)
 			@should_fill_with_data = fill
 			create_mapa_tags
@@ -48,6 +50,23 @@ module BRNF
 		def build_xml(tag)
 			Nokogiri::XML::Document.parse(build_tag(tag.to_s).first.to_xml.gsub(/>[\s\n\t]*</,"><"))
 		end
+
+		def sign_message(xml)
+			content = xml.xpath("//*[@Id]").first.canonicalize
+			signature = xml.xpath("//xs:Signature","xs" => "http://www.w3.org/2000/09/xmldsig#")
+			digest = signature.xpath("//xs:DigestValue","xs" => "http://www.w3.org/2000/09/xmldsig#").first
+			signature_value = signature.xpath("//xs:SignatureValue","xs" => "http://www.w3.org/2000/09/xmldsig#").first 
+			reference = signature.xpath("//xs:Reference","xs"=>"http://www.w3.org/2000/09/xmldsig#").first
+			x509_certificate = signature.xpath("//xs:X509Certificate","xs"=>"http://www.w3.org/2000/09/xmldsig#").first
+			reference['URI'] = "##{xml.xpath("//*[@Id]").first['Id']}"
+			digest.content = Base64.encode64(Digest::SHA1.digest(content)).gsub(/\n/,'')
+			key = OpenSSL::PKey::RSA.new(2048)
+			signature_value.content = Base64.encode64(key.sign(OpenSSL::Digest::SHA1.new,content)).gsub(/\n/,'')
+			x509_certificate.content = key.to_pem.gsub(/[-]{5}[\sA-Z]+[-]{5}/,'').gsub(/\n/,'')
+			xml
+		end
+
+		private
 
 		def build_tag(tag_number)
 			tag_xml = Nokogiri::XML("<#{@mapa_tags.get_tag(tag_number)["nome"]}>").elements.first
@@ -59,7 +78,7 @@ module BRNF
 
 			if has_children(tag_number)
 				tag_filhos = get_children_of(tag_number) - get_attr_of(tag_number)
-				if OPCIONAIS.include?(tag_tipo)
+				if OPTIONAL.include?(tag_tipo)
 					tag_filhos.each do |filho|
 						resultado += build_tag(filho)
 					end
@@ -112,7 +131,11 @@ module BRNF
 		end
 
 		def get_children_of(parent_tag_id)
-			@mapa_tags.get_tag(parent_tag_id)["filhos"]
+			if @mapa_tags.class == MapaTags
+				@mapa_tags.get_tag(parent_tag_id)["filhos"]
+			else
+				@mapa_tags[parent_tag_id]["filhos"]
+			end
 		end
 
 		def get_attr_of(parent_tag_id)
@@ -137,6 +160,7 @@ module BRNF
 						dados_tag["xpath_namespace"] = tag["namespace"]
 						dados_tag["inferivel"] = tag["inferivel"]
 						dados_tag["xpath"] = tag["xpath"]
+						dados_tag["campo_mensagem"] = tag["campo_mensagem"]
 						dados_tag["filhos"] = []
 						dados_tag["atributos"] = []
 						mapa_tags["#{tag["id"]}"] = dados_tag
@@ -144,7 +168,7 @@ module BRNF
 						if mapa_tags.key?(tag["pai"])
 							mapa_tags["#{tag["id"]}"]["xpath_namespace"] = mapa_tags[tag["pai"]]["xpath_namespace"] if mapa_tags["#{tag["id"]}"]["xpath_namespace"].nil?
 							mapa_tags[tag["pai"]]["filhos"] << tag["id"]
-							mapa_tags[tag["pai"]]["atributos"] << tag["id"] if ATRIBUTOS.include?(tag["tipo"])
+							mapa_tags[tag["pai"]]["atributos"] << tag["id"] if ATTR.include?(tag["tipo"])
 						end
 					end
 				end
@@ -176,21 +200,6 @@ module BRNF
 				@mapa_tags[parent_tag_id]["filhos"] = ([filhos[:tags_filhos_ce].sample,filhos[:tags_filhos_cg].sample,filhos[:tags_filhos_cgo].sample].compact + filhos[:tags_filhos_normais]).sort_by{|item| item.to_i}
 				filhos = {tags_filhos_ce: [],tags_filhos_cg: [],tags_filhos_cgo: [],tags_filhos_normais: []}
 			end
-		end
-
-		def sign_message(xml)
-			mensagem = xml.xpath("//*[@Id]").first.canonicalize
-			assinatura = xml.xpath("//xs:Signature","xs" => "http://www.w3.org/2000/09/xmldsig#")
-			digest = assinatura.xpath("//xs:DigestValue","xs" => "http://www.w3.org/2000/09/xmldsig#").first
-			signature_value = assinatura.xpath("//xs:SignatureValue","xs" => "http://www.w3.org/2000/09/xmldsig#").first 
-			reference = assinatura.xpath("//xs:Reference","xs"=>"http://www.w3.org/2000/09/xmldsig#").first
-			x509_certificate = assinatura.xpath("//xs:X509Certificate","xs"=>"http://www.w3.org/2000/09/xmldsig#").first
-			reference['URI'] = "##{xml.xpath("//*[@Id]").first['Id']}"
-			digest.content = Base64.encode64(Digest::SHA1.digest(mensagem)).gsub(/\n/,'')
-			chave = OpenSSL::PKey::RSA.new(2048)
-			signature_value.content = Base64.encode64(chave.sign(OpenSSL::Digest::SHA1.new,mensagem)).gsub(/\n/,'')
-			x509_certificate.content = chave.to_pem.gsub(/[-]{5}[\sA-Z]+[-]{5}/,'').gsub(/\n/,'')
-			xml
 		end
 
 	end
