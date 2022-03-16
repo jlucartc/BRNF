@@ -7,6 +7,8 @@
 ## Future improvements
 - Random invoice data still doesn't have any configuration options, like selecting certain groups or filling in part of the xml with your own data. This will be included in the future.
 
+- It would be nice to allow using a hash with default values. That would give more freedom to the users, since their business requirements wouldn't be affected by the default values specified by the gem code, and it would be safer in case of misuse of the api (e.g. forgeting to fill in a field when sending a message).
+
 ## How to use?
 
 ### Generating random data
