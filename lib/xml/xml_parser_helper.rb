@@ -32,8 +32,7 @@ module XMLParserHelper
 				servico:"xServ",
 				uf:"UF",
 				inscricao_estadual:"IE",
-				cnpj:"CNPJ",
-				cpf:"CPF"
+				cpf_cnpj:"CNPJ",
 			}
 		end
 
@@ -67,7 +66,7 @@ module XMLParserHelper
 					serie_referenciada:"serie",
 					numero_nota_referenciada:"nNF",
 					cpf_cnpj:"CNPJ/CPF",
-					inscricao_estadual:"IE",
+					inscricao_estadual_referenciada:"IE",
 					chave_cte:"refCTe",
 					numero_ecf:"nECF",
 					numero_coo:"nCOO",
@@ -481,8 +480,7 @@ module XMLParserHelper
 				ambiente:"tpAmb",
 				servico:"xServ",
 				codigo_uf_autor:"cUFAutor",
-				cnpj:"CNPJ",
-				cpf:"CPF",
+				cpf_cnpj:"CNPJ",
 				ultimo_nsu:"ultNSU",
 				consulta_nsu:"NSU",
 				chave_nota:"chNFe"
@@ -583,7 +581,7 @@ module XMLParserHelper
 					uf:"UF",
 					cnpj:"CNPJ",
 					cpf:"CPF",
-					identificador_estrangeiro:"idEstrangeiro",
+					id_estrangeiro:"idEstrangeiro",
 					inscricao_estadual:"IE",
 					valor_nota:"vNF",
 					valor_icms:"vICMS",

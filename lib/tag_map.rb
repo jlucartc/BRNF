@@ -5,7 +5,8 @@ module BRNF
 		attr_reader :reverse_map
 		attr_reader :message_map
 
-		def initialize()
+		def initialize(keep_mutex_tags: false)
+			@keep_mutex_tags = keep_mutex_tags
 			create_tag_map
 			@reverse_map = generate_reverse_map if @reverse_map.nil?
 			@message_map = generate_message_map if @message_map.nil?
@@ -168,7 +169,7 @@ module BRNF
 					end
 				end
 				@map = mapa_tags
-				remove_tags_mutex
+				remove_tags_mutex if !@keep_mutex_tags
 			else
 				@map = JSON.parse(File.open("#{__dir__}/../map.json",'r').read)
 				@reverse_map = JSON.parse(File.open("#{__dir__}/../reverse_map.json",'r').read)
