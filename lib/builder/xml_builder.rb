@@ -97,5 +97,6 @@ module BRNF
 			xml.content = Regexp.new(regex).random_example.gsub("\u0000",'') unless regex.nil?
 			xml
 		end
+
 	end
 end

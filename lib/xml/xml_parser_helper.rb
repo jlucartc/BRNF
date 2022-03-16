@@ -4,6 +4,7 @@ require 'pry'
 require 'nokogiri'
 require 'json'
 require_relative './../builder/xml_builder.rb'
+require_relative './../tag_map.rb'
 
 module XMLParserHelper
 
@@ -23,10 +24,11 @@ module XMLParserHelper
 
 		def initialize
 			@builder = BRNF::XMLBuilder.new(fill: false)
+			@map = BRNF::TagMap.new
 		end
 
-		def consultar_cadastro(mensagem)
-			mensagem = {
+		def consultar_cadastro(message)
+			message_schema = {
 				servico:"xServ",
 				uf:"UF",
 				inscricao_estadual:"IE",
@@ -35,11 +37,15 @@ module XMLParserHelper
 			}
 		end
 
-		def autorizar_nota(mensagem)
+		def autorizar_nota(message)
 			xml = @builder.build_xml("1")
-			fill_xml(mensagem,xml,parent_id: "1")
+			fill_xml(message,xml,parent_id: "1")
+			choose_mutex_tags(message,xml)
+			fill_constant_fields(xml)
 
-			mensagem = {
+			binding.pry
+
+			message_schema = {
 				lote:"idLote",
 				identificacao: Grupo.new(1,{
 					codigo_uf:"cUF",
@@ -440,23 +446,23 @@ module XMLParserHelper
 			xml
 		end
 
-		def consultar_status_servico(mensagem)
-			mensagem = {
+		def consultar_status_servico(message)
+			message_schema = {
 				ambiente:"tpAmb",
 				codigo_uf:"cUF",
 				servico:"xServ"
 			}
 		end
 
-		def consultar_retorno_autorizacao(mensagem)
-			mensagem = {
+		def consultar_retorno_autorizacao(message)
+			message_schema = {
 				ambiente:"tpAmb",
 				recibo:"nRec"
 			}
 		end
 
-		def inutilizar_numeracao(mensagem)
-			mensagem = {
+		def inutilizar_numeracao(message)
+			message_schema = {
 				ambiente:"tpAmb",
 				servico:"xServ",
 				codigo_uf:"cUF",
@@ -470,8 +476,8 @@ module XMLParserHelper
 			}
 		end
 
-		def nfe_distribuicao_dfe(mensagem)
-			mensagem = {
+		def nfe_distribuicao_dfe(message)
+			message_schema = {
 				ambiente:"tpAmb",
 				servico:"xServ",
 				codigo_uf_autor:"cUFAutor",
@@ -483,16 +489,16 @@ module XMLParserHelper
 			}
 		end
 
-		def consultar_protocolo(mensagem)
-			mensagem = {
+		def consultar_protocolo(message)
+			message_schema = {
 				ambiente:"tpAmb",
 				servico:"xServ",
 				chave_nota:"chNFe"
 			}
 		end
 
-		def criar_carta_correcao(mensagem)
-			mensagem = {
+		def criar_carta_correcao(message)
+			message_schema = {
 				lote:"idLote",
 				codigo_orgao:"cOrgao",
 				ambiente:"tpAmb",
@@ -505,8 +511,8 @@ module XMLParserHelper
 			}
 		end
 
-		def confirmacao_da_operacao(mensagem)
-			mensagem = {
+		def confirmacao_da_operacao(message)
+			message_schema = {
 				lote:"idLote",
 				codigo_orgao:"cOrgao",
 				ambiente:"tpAmb",
@@ -518,8 +524,8 @@ module XMLParserHelper
 			}
 		end
 
-		def ciencia_da_operacao(mensagem)
-			mensagem = {
+		def ciencia_da_operacao(message)
+			message_schema = {
 				lote:"idLote",
 				codigo_orgao:"cOrgao",
 				ambiente:"tpAmb",
@@ -531,8 +537,8 @@ module XMLParserHelper
 			}
 		end
 
-		def desconhecimento_da_operacao(mensagem)
-			mensagem = {
+		def desconhecimento_da_operacao(message)
+			message_schema = {
 				lote:"idLote",
 				codigo_orgao:"cOrgao",
 				ambiente:"tpAmb",
@@ -544,8 +550,8 @@ module XMLParserHelper
 			}
 		end
 
-		def operacao_nao_realizada(mensagem)
-			mensagem = {
+		def operacao_nao_realizada(message)
+			message_schema = {
 				lote:"idLote",
 				codigo_orgao:"cOrgao",
 				ambiente:"tpAmb",
@@ -557,8 +563,8 @@ module XMLParserHelper
 			}
 		end
 
-		def emissao_contingencia(mensagem)
-			mensagem = {
+		def emissao_contingencia(message)
+			message_schema = {
 				lote:"idLote",
 				codigo_orgao:"cOrgao",
 				ambiente:"tpAmb",
@@ -586,8 +592,8 @@ module XMLParserHelper
 			}
 		end
 
-		def cancelar_nota_substituicao(mensagem)
-			mensagem = {
+		def cancelar_nota_substituicao(message)
+			message_schema = {
 				lote:"idLote",
 				codigo_orgao:"cOrgao",
 				ambiente:"tpAmb",
@@ -605,8 +611,8 @@ module XMLParserHelper
 			}
 		end
 
-		def cancelar_nota(mensagem)
-			mensagem = {
+		def cancelar_nota(message)
+			message_schema = {
 				lote:"idLote",
 				codigo_orgao:"cOrgao",
 				ambiente:"tpAmb",
@@ -620,8 +626,8 @@ module XMLParserHelper
 			}
 		end
 
-		def prorrogar_prazo_1(mensagem)
-			mensagem = {
+		def prorrogar_prazo_1(message)
+			message_schema = {
 				lote:"idLote",
 				codigo_orgao:"cOrgao",
 				ambiente:"tpAmb",
@@ -638,8 +644,8 @@ module XMLParserHelper
 			}
 		end
 
-		def prorrogar_prazo_2(mensagem)
-			mensagem = {
+		def prorrogar_prazo_2(message)
+			message_schema = {
 				lote:"idLote",
 				codigo_orgao:"cOrgao",
 				ambiente:"tpAmb",
@@ -656,8 +662,8 @@ module XMLParserHelper
 			}
 		end
 
-		def ator_interessado(mensagem)
-			mensagem = {
+		def ator_interessado(message)
+			message_schema = {
 				lote:"idLote",
 				codigo_orgao:"cOrgao",
 				ambiente:"tpAmb",
@@ -681,16 +687,27 @@ module XMLParserHelper
 			}
 		end
 
-		def cancelamento_prazo_1(mensagem)
+		def cancelamento_prazo_1(message)
 		end
 
-		def cancelamento_prazo_2(mensagem)
+		def cancelamento_prazo_2(message)
 		end
 
 		private
 
 		def create_xml_tag(tag_name)
 			Nokogiri::XML("<#{tag_name}>").elements.first
+		end
+
+		def choose_mutex_tags(message,xml)
+		end
+
+		def fill_constant_fields(xml)
+			tags = @map.get_constant_regex_tags
+			tags.each do |tag|
+				xml_tag = xml.xpath(tag["xpath"],"xs" => tag["xpath_namespace"]).first
+				xml_tag.content = Regexp.new(tag["regex"]).random_example.gsub("\u0000",'') if !xml_tag.nil?
+			end
 		end
 
 		def fill_xml(msg,xml,parent_id: nil,parent_tag_reference: nil)
@@ -736,6 +753,7 @@ module XMLParserHelper
 						end
 					elsif value.class == Array
 						if has_only_strings(value)
+							binding.pry
 							# recupera 'tag' e a partir dela recupera o parent, para que
 							# a tag referente ao array(que será parent_tag_reference) possa ser adicionada ao documento
 							tags = search_xml_tags(xml,parent_id,key)
@@ -762,13 +780,17 @@ module XMLParserHelper
 		end
 
 		def search_elements(xml,parent_id,key)
-			@builder.mapa_tags.get_message_field_tags(key,parent_id)
+			@map.get_message_field_tags(key,parent_id)
 		end
 
 		def search_xml_tags(xml,parent_id,key)
-			tags = @builder.mapa_tags.get_message_field_tags(key,parent_id)
-			tags = tags.map{|tag| xml.xpath(tag["xpath"],"xs" => tag["xpath_namespace"]).first }.compact
-			tags
+			begin
+				tags = @map.get_message_field_tags(key,parent_id)
+				tags = tags.map{|tag| xml.xpath(tag["xpath"],"xs" => tag["xpath_namespace"]).first }.compact
+				tags
+			rescue Exception => e
+				binding.pry
+			end
 		end
 
 		def has_only_strings(array)

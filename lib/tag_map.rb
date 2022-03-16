@@ -5,11 +5,10 @@ module BRNF
 		attr_reader :reverse_map
 		attr_reader :message_map
 
-		def initialize(reverse_map: nil,message_map: nil)
+		def initialize()
 			create_tag_map
-			@reverse_map = reverse_map
-			generate_reverse_map if @reverse_map.nil?
-			generate_message_map if @message_map.nil?
+			@reverse_map = generate_reverse_map if @reverse_map.nil?
+			@message_map = generate_message_map if @message_map.nil?
 		end
 
 		def get_tag(index)
@@ -40,6 +39,23 @@ module BRNF
 
 		def get_attributes_of(parent_tag_id)
 			get_tag(parent_tag_id)["attributes"]
+		end
+
+		def get_inferrable_tags()
+			@map.values.filter{|tag| tag["inferrable"] == "1" }
+		end
+
+		def get_inferrable_empty_tags(xml)
+			get_inferrable_tags
+			.filter{|tag| tag = xml.xpath(tag["xpath"],"xs" => tag["xpath_namespace"]).first if !tag["xpath"].nil? and !tag["xpath_namespace"].nil?; !tag.nil? and !tag.content.nil?}
+		end
+
+		def get_constant_regex_tags
+			@map.values.filter{|tag| !tag["regex"].nil? and tag["regex"].match(/^(.*\[.*\])+|(.*\|.*)+$/).nil? }
+		end
+
+		def get_mutex_parents
+			@map.values.filter{|tag| ['CE','CG','CGO'].include?(tag["type"]) }.map{|tag| get_tag(tag["parent"]) }.compact.uniq
 		end
 
 		private
@@ -111,7 +127,7 @@ module BRNF
 
 		def generate_message_map
 			@message_map = @map.filter{|key,value| !value['message_field'].nil?}
-			@message_map = @message_map.map{|key,value| value}
+			@message_map = @message_map.map{|key,value| value }
 			@message_map = @message_map.group_by{|item| item["message_field"]}
 		end
 
@@ -139,7 +155,7 @@ module BRNF
 						dados_tag["xpath_namespace"] = tag["namespace"]
 						dados_tag["inferrable"] = tag["inferrable"]
 						dados_tag["xpath"] = tag["xpath"]
-						dados_tag["mensagem_field"] = tag["message_field"]
+						dados_tag["message_field"] = tag["message_field"]
 						dados_tag["children"] = []
 						dados_tag["attributes"] = []
 						mapa_tags["#{tag["id"]}"] = dados_tag
