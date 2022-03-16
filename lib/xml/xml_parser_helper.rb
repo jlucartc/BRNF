@@ -698,7 +698,7 @@ module XMLParserHelper
 				msg.each do |key,value|
 					if value.class == String
 						tag = search_element(key)
-						if ATTR.include?(tag["tipo"])
+						if ATTR.include?(tag["type"])
 							parent_tag_reference[key] = value
 						else
 							tag = create_xml_tag(key)
