@@ -478,7 +478,6 @@ module XMLParserHelper
 		def nfe_distribuicao_dfe(message)
 			message_schema = {
 				ambiente:"tpAmb",
-				servico:"xServ",
 				codigo_uf_autor:"cUFAutor",
 				cpf_cnpj:"CNPJ",
 				ultimo_nsu:"ultNSU",
@@ -595,8 +594,7 @@ module XMLParserHelper
 				lote:"idLote",
 				codigo_orgao:"cOrgao",
 				ambiente:"tpAmb",
-				cnpj:"CNPJ",
-				cpf:"CPF",
+				cpf_cnpj:"CNPJ",
 				chave_nota:"chNFe",
 				tipo_evento:"tpEvento",
 				numero_sequencial_evento:"nSeqEvento",

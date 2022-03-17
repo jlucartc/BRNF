@@ -349,91 +349,109 @@ RSpec.describe Gem do
 
 	it "deve criar um xml válido para mensagem de autorizacao de notas" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_autorizacao))
+		puts schema.validate(xml_autorizacao) if !schema.valid?(xml_autorizacao)
 		expect(schema.valid?(xml_autorizacao)).to be(true)
 	end
 
 	it "deve criar um xml válido para mensagem de inutilizacao de notas" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_inutilizacao))
+		puts schema.validate(xml_inutilizacao) if !schema.valid?(xml_inutilizacao)
 		expect(schema.valid?(xml_inutilizacao)).to be(true)
 	end
 
 	it "deve criar um xml válido para mensagem de evento de carta de correção" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_evento_carta_correcao))
+		puts schema.validate(xml_evento_carta_correcao) if !schema.valid?(xml_evento_carta_correcao)
 		expect(schema.valid?(xml_evento_carta_correcao)).to be(true)
 	end
 
 	it "deve criar um xml válido para mensagem de cancelamento de nota" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_evento_cancelar_nota))
+		puts schema.validate(xml_evento_cancelar_nota) if !schema.valid?(xml_evento_cancelar_nota)
 		expect(schema.valid?(xml_evento_cancelar_nota)).to be(true)
 	end
 
 	it "deve criar um xml válido para mensagem de consulta de status" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_consultar_status_servico))
+		puts schema.validate(xml_consultar_status_servico) if !schema.valid?(xml_consultar_status_servico)
 		expect(schema.valid?(xml_consultar_status_servico)).to be(true)
 	end
 
 	it "deve criar um xml válido para mensagem de cancelamento de nota substituicao" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_evento_cancelar_nota_substituicao))
+		puts schema.validate(xml_evento_cancelar_nota_substituicao) if !schema.valid?(xml_evento_cancelar_nota_substituicao)
 		expect(schema.valid?(xml_evento_cancelar_nota_substituicao)).to be(true)
 	end
 
 	it "deve criar um xml válido para mensagem de prorrogamento de prazo 1" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_evento_prorrogar_prazo_1))
+		puts schema.validate(xml_evento_prorrogar_prazo_1) if !schema.valid?(xml_evento_prorrogar_prazo_1)
 		expect(schema.valid?(xml_evento_prorrogar_prazo_1)).to be(true)
 	end
 
 	it "deve criar um xml válido para mensagem de prorrogamento de prazo 2" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_evento_prorrogar_prazo_2))
+		puts schema.validate(xml_evento_prorrogar_prazo_2) if !schema.valid?(xml_evento_prorrogar_prazo_2)
 		expect(schema.valid?(xml_evento_prorrogar_prazo_2)).to be(true)
 	end
 
 	it "deve criar um xml válido para mensagem de ator interessado" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_evento_ator_interessado))
+		puts schema.validate(xml_evento_ator_interessado) if !schema.valid?(xml_evento_ator_interessado)
 		expect(schema.valid?(xml_evento_ator_interessado)).to be(true)
 	end
 
 	it "deve criar um xml válido para mensagem de confirmacao da operacao" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_evento_confirmacao_da_operacao))
+		puts schema.validate(xml_evento_confirmacao_da_operacao) if !schema.valid?(xml_evento_confirmacao_da_operacao)
 		expect(schema.valid?(xml_evento_confirmacao_da_operacao)).to be(true)
 	end
 
 	it "deve criar um xml válido para mensagem de ciencia da operacao" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_evento_ciencia_da_operacao))
+		puts schema.validate(xml_evento_ciencia_da_operacao) if !schema.valid?(xml_evento_ciencia_da_operacao)
 		expect(schema.valid?(xml_evento_ciencia_da_operacao)).to be(true)
 	end
 
 	it "deve criar um xml válido para mensagem de desconhecimento da operacao" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_evento_desconhecimento_da_operacao))
+		puts schema.validate(xml_evento_desconhecimento_da_operacao) if !schema.valid?(xml_evento_desconhecimento_da_operacao)
 		expect(schema.valid?(xml_evento_desconhecimento_da_operacao)).to be(true)
 	end
 
 	it "deve criar um xml válido para mensagem de operacao não realizada" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_evento_operacao_nao_realizada))
+		puts schema.validate(xml_evento_operacao_nao_realizada) if !schema.valid?(xml_evento_operacao_nao_realizada)
 		expect(schema.valid?(xml_evento_operacao_nao_realizada)).to be(true)
 	end
 
 	it "deve criar um xml válido para mensagem de emissao em contingencia" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_evento_emissao_contingencia))
+		puts schema.validate(xml_evento_emissao_contingencia) if !schema.valid?(xml_evento_emissao_contingencia)
 		expect(schema.valid?(xml_evento_emissao_contingencia)).to be(true)
 	end
 
 	it "deve criar um xml válido para mensagem de consulta de retorno de autorização" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_consultar_retorno_autorizacao))
+		puts schema.validate(xml_consultar_retorno_autorizacao) if !schema.valid?(xml_consultar_retorno_autorizacao)
 		expect(schema.valid?(xml_consultar_retorno_autorizacao)).to be(true)
 	end
 
 	it "deve criar um xml válido para mensagem de consultar protocolo" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_consultar_protocolo))
+		puts schema.validate(xml_consultar_protocolo) if !schema.valid?(xml_consultar_protocolo)
 		expect(schema.valid?(xml_consultar_protocolo)).to be(true)
 	end
 
 	it "deve criar um xml válido para mensagem de distribuicao dfe" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_nfe_distribuicao_dfe))
+		puts schema.validate(xml_nfe_distribuicao_dfe) if !schema.valid?(xml_nfe_distribuicao_dfe)
 		expect(schema.valid?(xml_nfe_distribuicao_dfe)).to be(true)
 	end
 
 	it "deve criar um xml válido para mensagem de consultar cadastro" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_consultar_cadastro))
+		puts schema.validate(xml_consultar_cadastro) if !schema.valid?(xml_consultar_cadastro)
 		expect(schema.valid?(xml_consultar_cadastro)).to be(true)
 	end
 

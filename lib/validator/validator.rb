@@ -5,6 +5,8 @@ module BRNF
 	class Validator
 		
 		def valida_autorizar_nota(xml)
+			remove_ie_retirada_pessoa_fisica_autorizar_nota(xml)
+			remove_ie_entrega_pessoa_fisica_autorizar_nota(xml)
 			nfref_filho_unico(xml)
 			regra_e16a_10(xml)
 			regra_e16a_20(xml)
@@ -1602,6 +1604,17 @@ module BRNF
 				tp_autorizacoes.remove	if tp_autorizacoes.any?								
 			end
 
+			def remove_ie_retirada_pessoa_fisica_autorizar_nota(xml)
+				cpf = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:retirada//xs:CPF","xs" => "http://www.portalfiscal.inf.br/nfe").first 
+				ie = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:retirada//xs:IE","xs" => "http://www.portalfiscal.inf.br/nfe").first
+				ie.remove if !ie.nil? and !cpf.nil?
+			end
+			
+			def remove_ie_entrega_pessoa_fisica_autorizar_nota(xml)
+				cpf = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:entrega//xs:CPF","xs" => "http://www.portalfiscal.inf.br/nfe").first
+				ie = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:entrega//xs:IE","xs" => "http://www.portalfiscal.inf.br/nfe").first
+				ie.remove if !ie.nil? and !cpf.nil?
+			end
 
 			def nfref_filho_unico(xml)
 				nfref = xml.xpath("//xs:enviNFe//xs:NFe//xs:ide//xs:NFref","xs" => "http://www.portalfiscal.inf.br/nfe").first

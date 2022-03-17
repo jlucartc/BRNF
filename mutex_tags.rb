@@ -3,7 +3,7 @@ module BRNF
 	module MutexTags
 
 	MUTEX_PARENTS_IDS = [
-		{"id"=>"58","lambda" => lambda{|msg,map,xml| 
+		{"id"=>"58","lambda" => lambda{|msg,xml| 
 			cpf_cnpj = msg[:cpf_cnpj]
 			ie = msg[:inscricao_estadual]
 
@@ -33,7 +33,7 @@ module BRNF
 
 			sibling_xml_tag.after(child_xml_tag)
 		}},
-		{"id"=>"64","lambda" => lambda{|msg,map,xml| 
+		{"id"=>"64","lambda" => lambda{|msg,xml| 
 			cpf_cnpj = msg[:cpf_cnpj]
 			ultimo_nsu = msg[:ultimo_nsu]
 			chave_nota = msg[:chave_nota]
@@ -83,7 +83,7 @@ module BRNF
 				dist_nsu_xml_tag.remove if !dist_nsu_xml_tag.nil?
 			end
 		}},
-		{"id"=>"81","lambda" => lambda{|msg,map,xml| 
+		{"id"=>"81","lambda" => lambda{|msg,xml| 
 			cpf_cnpj = msg[:cpf_cnpj]
 
 			sibling_xml_tag = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:tpAmb","xs" => "http://www.portalfiscal.inf.br/nfe").first
@@ -100,7 +100,7 @@ module BRNF
 
 			sibling_xml_tag.after(child_xml_tag)
 		}},
-		{"id"=>"138","lambda" => lambda{|msg,map,xml| 
+		{"id"=>"138","lambda" => lambda{|msg,xml| 
 			cpf_cnpj = msg[:cpf_cnpj]
 			id_estrangeiro = msg[:id_estrangeiro]
 
@@ -136,7 +136,7 @@ module BRNF
 
 			sibling_xml_tag.after(child_xml_tag)
 		}},
-		{"id"=>"158","lambda" => lambda{|msg,map,xml| 
+		{"id"=>"158","lambda" => lambda{|msg,xml| 
 			cpf_cnpj = msg[:cpf_cnpj]
 
 			parent_xml_tag = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:autXML","xs" => "http://www.portalfiscal.inf.br/nfe").first
@@ -155,7 +155,7 @@ module BRNF
 
 			parent_xml_tag.add_child(child_xml_tag)
 		}},
-		{"id"=>"191","lambda" => lambda{|msg,map,xml| 
+		{"id"=>"191","lambda" => lambda{|msg,xml| 
 			ano_mes = msg[:ano_mes_referenciado]
 			cpf_cnpj = msg[:cpf_cnpj_referenciado]
 			inscricao_estadual = msg[:inscricao_estadual_referenciada]
@@ -196,7 +196,7 @@ module BRNF
 				parent_xml_tag.add_child(refecf_xml_tag)
 			end
 		}},
-		{"id"=>"200","lambda" => lambda{|msg,map,xml|
+		{"id"=>"200","lambda" => lambda{|msg,xml|
 			cpf_cnpj = msg[:cpf_cnpj_referenciado]
 
 			parent_xml_tag = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:ide//xs:NFref//xs:refNFP","xs" => "http://www.portalfiscal.inf.br/nfe").first
@@ -224,7 +224,7 @@ module BRNF
 				parent_xml_tag.add_child(numero_documento_xml_tag)
 			end
 		}},
-		{"id"=>"214","lambda" => lambda{|msg,map,xml| 
+		{"id"=>"214","lambda" => lambda{|msg,xml| 
 			cpf_cnpj = msg[:emissor][:cpf_cnpj]
 
 			sibling_xml_tag = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:emit//xs:xNome","xs" => "http://www.portalfiscal.inf.br/nfe").first
@@ -241,7 +241,7 @@ module BRNF
 
 			sibling_xml_tag.before(child_xml_tag)
 		}},
-		{"id"=>"249","lambda" => lambda{|msg,map,xml| 
+		{"id"=>"249","lambda" => lambda{|msg,xml| 
 			cpf_cnpj = msg[:destinatario][:cpf_cnpj]
 			id_estrangeiro = msg[:destinatario][:id_estrangeiro]
 
@@ -277,7 +277,7 @@ module BRNF
 
 			sibling_xml_tag.before(child)
 		}},
-		{"id"=>"271","lambda" => lambda{|msg,map,xml| 
+		{"id"=>"271","lambda" => lambda{|msg,xml| 
 			retirada = msg[:retirada]
 
 			if !retirada.nil?
@@ -298,7 +298,7 @@ module BRNF
 				sibling_xml_tag.before(child_xml_tag)
 			end
 		}},
-		{"id"=>"288","lambda" => lambda{|msg,map,xml|
+		{"id"=>"288","lambda" => lambda{|msg,xml|
 			entrega = msg[:entrega]
 
 			if !entrega.nil?
@@ -319,7 +319,7 @@ module BRNF
 				sibling_xml_tag.add_child(child_xml_tag)
 			end
 		}},
-		{"id"=>"305","lambda" => lambda{|msg,map,xml|
+		{"id"=>"305","lambda" => lambda{|msg,xml|
 			autorizacoes = msg[:autorizacoes]
 
 			if !autorizacoes.nil?
@@ -347,7 +347,7 @@ module BRNF
 				end
 			end
 		}},
-		{"id"=>"310","lambda" => lambda{|msg,map,xml|
+		{"id"=>"310","lambda" => lambda{|msg,xml|
 			produtos = msg[:produtos]
 
 			produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det","xs"=>"http://www.portalfiscal.inf.br/nfe")
@@ -697,7 +697,7 @@ module BRNF
 				end
 			end
 		}},
-		{"id"=>"434","lambda" => lambda{|msg,map,xml|
+		{"id"=>"434","lambda" => lambda{|msg,xml|
 			produtos = msg[:produtos]
 
 			produtos.each_with_index do |produto,index|
@@ -727,7 +727,7 @@ module BRNF
 				end
 			end
 		}},
-		{"id"=>"437","lambda" => lambda{|msg,map,xml|
+		{"id"=>"437","lambda" => lambda{|msg,xml|
 			produtos = msg[:produtos]
 
 			produtos.each_with_index do |produto,index|
@@ -804,7 +804,7 @@ module BRNF
 				end
 			end
 		}},
-		{"id"=>"707","lambda" => lambda{|msg,map,xml|
+		{"id"=>"707","lambda" => lambda{|msg,xml|
 			produtos = msg[:produtos]
 
 			produtos.each_with_index do |produto,index|
@@ -865,7 +865,7 @@ module BRNF
 				end
 			end
 		}},
-		{"id"=>"713","lambda" => lambda{|msg,map,xml|
+		{"id"=>"713","lambda" => lambda{|msg,xml|
 			produtos = msg[:produtos]
 
 			produtos.each_with_index do |produto,index|
@@ -894,7 +894,7 @@ module BRNF
 				end
 			end
 		}},
-		{"id"=>"736","lambda" => lambda{|msg,map,xml|
+		{"id"=>"736","lambda" => lambda{|msg,xml|
 			produtos = msg[:produtos]
 
 			produtos.each_with_index do |produto,index|
@@ -923,7 +923,7 @@ module BRNF
 				end
 			end
 		}},
-		{"id"=>"764","lambda" => lambda{|msg,map,xml|
+		{"id"=>"764","lambda" => lambda{|msg,xml|
 			produtos = msg[:produtos]
 
 			produtos.each_with_index do |produto,index|
@@ -1009,7 +1009,7 @@ module BRNF
 				end
 			end
 		}},
-		{"id"=>"777","lambda" => lambda{|msg,map,xml|
+		{"id"=>"777","lambda" => lambda{|msg,xml|
 			produtos = msg[:produtos]
 
 			produtos.each_with_index do |produto,index|
@@ -1036,7 +1036,7 @@ module BRNF
 				end
 			end
 		}},
-		{"id"=>"786","lambda" => lambda{|msg,map,xml|
+		{"id"=>"786","lambda" => lambda{|msg,xml|
 			produtos = msg[:produtos]
 
 			produtos.each_with_index do |produto,index|
@@ -1064,7 +1064,7 @@ module BRNF
 				end
 			end
 		}},
-		{"id"=>"794","lambda" => lambda{|msg,map,xml|
+		{"id"=>"794","lambda" => lambda{|msg,xml|
 			produtos = msg[:produtos]
 
 			produtos.each_with_index do |produto,index|
@@ -1149,7 +1149,7 @@ module BRNF
 				end
 			end
 		}},
-		{"id"=>"807","lambda" => lambda{|msg,map,xml|
+		{"id"=>"807","lambda" => lambda{|msg,xml|
 			produtos = msg[:produtos]
 
 			produtos.each_with_index do |produto,index|
@@ -1179,7 +1179,7 @@ module BRNF
 				end
 			end
 		}},
-		{"id"=>"816","lambda" => lambda{|msg,map,xml|
+		{"id"=>"816","lambda" => lambda{|msg,xml|
 			produtos = msg[:produtos]
 
 			produtos.each_with_index do |produto,index|
@@ -1206,7 +1206,7 @@ module BRNF
 				end
 			end
 		}},
-		{"id"=>"885","lambda" => lambda{|msg,map,xml|
+		{"id"=>"885","lambda" => lambda{|msg,xml|
 
 			transporte = msg[:transporte]
 			reboques = transporte[:reboques]
@@ -1243,7 +1243,7 @@ module BRNF
 				transporte_xml_tag.add_child(volume_xml_tag)
 			end
 		}},
-		{"id"=>"887","lambda" => lambda{|msg,map,xml|
+		{"id"=>"887","lambda" => lambda{|msg,xml|
 			cpf_cnpj = msg[:transporte][:cpf_cnpj]
 			transporta_xml_tag = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:transp//xs:transporta","xs"=>"http://www.portalfiscal.inf.br/nfe").first
 			
