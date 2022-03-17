@@ -4,12 +4,14 @@ module BRNF
 		attr_reader :map
 		attr_reader :reverse_map
 		attr_reader :message_map
+		attr_reader :xpath_map
 
 		def initialize(keep_mutex_tags: false)
 			@keep_mutex_tags = keep_mutex_tags
 			create_tag_map
 			@reverse_map = generate_reverse_map if @reverse_map.nil?
 			@message_map = generate_message_map if @message_map.nil?
+			@xpath_map = generate_xpath_map if @xpath_map.nil?
 		end
 
 		def get_tag(index)
@@ -18,6 +20,10 @@ module BRNF
 
 		def get_keys
 			@map.keys
+		end
+
+		def get_tag_by_xpath(xpath)
+			@xpath_map[xpath].first
 		end
 
 		def get_reverse_keys
@@ -128,14 +134,19 @@ module BRNF
 
 		def generate_message_map
 			@message_map = @map.filter{|key,value| !value['message_field'].nil?}
-			@message_map = @message_map.map{|key,value| value }
+			@message_map = @message_map.values
 			@message_map = @message_map.group_by{|item| item["message_field"]}
 		end
 
 		def generate_reverse_map
-			@reverse_map = @map.map{|key,value| value }
+			@reverse_map = @map.values
 			@reverse_map = @reverse_map.group_by{|item| item["name"]}
 			@reverse_map = @reverse_map.map{|key,value| [key,{"indexes" => value.map{|item| item["id"] }, "tags" => value}]}.to_h
+		end
+
+		def generate_xpath_map
+			@xpath_map = @map.values
+			@xpath_map = @xpath_map.group_by{|item| item["xpath"]}
 		end
 
 		def create_tag_map(from_scratch: true)
