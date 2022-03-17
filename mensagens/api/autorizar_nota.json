@@ -428,8 +428,7 @@
 										"required":["modalidade_frete"],
 										"properties":{
 											"modalidade_frete":{"type":"string"},
-											"cnpj":{"type":"string"},
-											"cpf":{"type":"string"},
+											"cpf_cnpj":{"type":"string"},
 											"nome_razao_social":{"type":"string"},
 											"inscricao_estadual":{"type":"string"},
 											"endereco":{"type":"string"},

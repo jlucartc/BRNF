@@ -1078,7 +1078,7 @@ module BRNF
 			parent_xml_tag = xml.xpath("#{parent["xpath"]}","xs" => "#{parent["xpath_namespace"]}").first
 			parent_xml_tag.add_child(child) if !parent_xml_tag.nil?
 		}}
-		{"id"=>"310","lambda" => lambda{|this_tag_id: "310",msg,map,xml|
+		{"id"=>"310","lambda" => lambda{|msg,map,xml|
 			produtos = msg[:produtos]
 
 			produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det","xs"=>"http://www.portalfiscal.inf.br/nfe")
@@ -1774,30 +1774,235 @@ module BRNF
 			produtos = msg[:produtos]
 
 			produtos.each_with_index do |produto,index|
+
+				pis = produto[:imposto][:pis]
+				pisst_xml_tag = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det[@nItem=#{index+1}]//xs:imposto//xs:PISST","xs"=>"http://www.portalfiscal.inf.br/nfe").first
+
+				if !pisst_xml_tag.nil?
+					base_calculo_xml_tag = Nokogiri::XML("<vBC>").elements.first
+					aliquota_percentual = Nokogiri::XML("<pPIS>").elements.first
+					quantidade_xml_tag = Nokogiri::XML("<qBCProd>").elements.first
+					aliquota_valor_xml_tag = Nokogiri::XML("<vAliqProd>").elements.first
+					vpis_xml_tag = Nokogiri::XML("<vPIS>").elements.first
+
+					if !pis[:aliquota_percentual].nil?
+						pisst_xml_tag.add_child(base_calculo_xml_tag)
+						pisst_xml_tag.add_child(aliquota_percentual_xml_tag)
+						pisst_xml_tag.add_child(vpis_xml_tag)
+					elsif !pis[:aliquota_valor].nil?
+						pisst_xml_tag.add_child(quantidade_xml_tag)
+						pisst_xml_tag.add_child(aliquota_valor)
+						pisst_xml_tag.add_child(vpis_xml_tag)
+					end
+
+				end
 			end
 		}}
 		{"id"=>"794","lambda" => lambda{|msg,map,xml|
 			produtos = msg[:produtos]
 
 			produtos.each_with_index do |produto,index|
+
+				cofins = produto[:imposto][:cofins]
+				cofins_xml_tag = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det[@nItem=#{index+1}]//xs:imposto//xs:COFINS","xs"=>"http://www.portalfiscal.inf.br/nfe").first
+
+				if !cofins_xml_tag.nil?
+					cofins_aliq_xml_tag = Nokogiri::XML("<COFINSAliq>").elements.first
+					cofins_qtde_xml_tag = Nokogiri::XML("<COFINSQtde>").elements.first
+					cofins_nt_xml_tag = Nokogiri::XML("<COFINSNT>").elements.first
+					cofins_outr_xml_tag = Nokogiri::XML("<COFINSOutr>").elements.first
+
+					case cofins[:codigo]
+					when "01"
+						cofins_xml_tag.add_child(cofins_aliq_xml_tag)
+					when "02"
+						cofins_xml_tag.add_child(cofins_aliq_xml_tag)
+					when "03"
+						cofins_xml_tag.add_child(cofins_qtde_xml_tag)
+					when "04"
+						cofins_xml_tag.add_child(cofins_nt_xml_tag)
+					when "05"
+						cofins_xml_tag.add_child(cofins_nt_xml_tag)
+					when "06"
+						cofins_xml_tag.add_child(cofins_nt_xml_tag)
+					when "07"
+						cofins_xml_tag.add_child(cofins_nt_xml_tag)
+					when "08"
+						cofins_xml_tag.add_child(cofins_nt_xml_tag)
+					when "09"
+						cofins_xml_tag.add_child(cofins_nt_xml_tag)
+					when "49"
+						cofins_xml_tag.add_child(cofins_outr_xml_tag)
+					when "50"
+						cofins_xml_tag.add_child(cofins_outr_xml_tag)
+					when "51"
+						cofins_xml_tag.add_child(cofins_outr_xml_tag)
+					when "52"
+						cofins_xml_tag.add_child(cofins_outr_xml_tag)
+					when "53"
+						cofins_xml_tag.add_child(cofins_outr_xml_tag)
+					when "54"
+						cofins_xml_tag.add_child(cofins_outr_xml_tag)
+					when "55"
+						cofins_xml_tag.add_child(cofins_outr_xml_tag)
+					when "56"
+						cofins_xml_tag.add_child(cofins_outr_xml_tag)
+					when "60"
+						cofins_xml_tag.add_child(cofins_outr_xml_tag)
+					when "61"
+						cofins_xml_tag.add_child(cofins_outr_xml_tag)
+					when "62"
+						cofins_xml_tag.add_child(cofins_outr_xml_tag)
+					when "63"
+						cofins_xml_tag.add_child(cofins_outr_xml_tag)
+					when "64"
+						cofins_xml_tag.add_child(cofins_outr_xml_tag)
+					when "65"
+						cofins_xml_tag.add_child(cofins_outr_xml_tag)
+					when "66"
+						cofins_xml_tag.add_child(cofins_outr_xml_tag)
+					when "67"
+						cofins_xml_tag.add_child(cofins_outr_xml_tag)
+					when "70"
+						cofins_xml_tag.add_child(cofins_outr_xml_tag)
+					when "71"
+						cofins_xml_tag.add_child(cofins_outr_xml_tag)
+					when "72"
+						cofins_xml_tag.add_child(cofins_outr_xml_tag)
+					when "73"
+						cofins_xml_tag.add_child(cofins_outr_xml_tag)
+					when "74"
+						cofins_xml_tag.add_child(cofins_outr_xml_tag)
+					when "75"
+						cofins_xml_tag.add_child(cofins_outr_xml_tag)
+					when "98"
+						cofins_xml_tag.add_child(cofins_outr_xml_tag)
+					when "99"
+						cofins_xml_tag.add_child(cofins_outr_xml_tag)
+					end
+				end
 			end
 		}}
 		{"id"=>"807","lambda" => lambda{|msg,map,xml|
 			produtos = msg[:produtos]
 
 			produtos.each_with_index do |produto,index|
+
+				cofins = produto[:imposto][:cofins]
+				cofins_outr_xml_tag = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det[@nItem=#{index+1}]//xs:imposto//xs:COFINS//xs:COFINSOutr","xs"=>"http://www.portalfiscal.inf.br/nfe").first
+
+				if !cofins_outr_xml_tag.nil?
+					codigo_xml_tag = Nokogiri::XML("<CST>").elements.first
+					base_calculo_xml_tag = Nokogiri::XML("<vBC>").elements.first
+					aliquota_percentual_xml_tag = Nokogiri::XML("<pCOFINS>").elements.first
+					quantidade_xml_tag = Nokogiri::XML("<qBCProd>").elements.first
+					aliquota_valor_xml_tag = Nokogiri::XML("<vAliqProd>").elements.first
+					valor_cofins_xml_tag = Nokogiri::XML("<vCOFINS>").elements.first
+
+					cofins_outr_xml_tag.add_child(codigo_xml_tag)
+
+					if !cofins[:aliquota_percentual].nil?
+						cofins_outr_xml_tag.add_child(base_calculo_xml_tag)
+						cofins_outr_xml_tag.add_child(aliquota_percentual_xml_tag)
+					elsif !cofins[:aliquota_valor].nil?
+						cofins_outr_xml_tag.add_child(quantidade_xml_tag)
+						cofins_outr_xml_tag.add_child(aliquota_valor_xml_tag)
+					end
+
+					cofins_outr_xml_tag.add_child(valor_cofins_xml_tag)
+				end
 			end
 		}}
 		{"id"=>"816","lambda" => lambda{|msg,map,xml|
 			produtos = msg[:produtos]
 
 			produtos.each_with_index do |produto,index|
+
+				cofins = produto[:imposto][:cofins]
+				cofinsst_xml_tag = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det[@nItem=#{index+1}]//xs:imposto//xs:COFINS//xs:COFINSST","xs"=>"http://www.portalfiscal.inf.br/nfe").first
+
+				if !cofinsst_xml_tag.nil?
+					base_calculo_xml_tag = Nokogiri::XML("<vBC>").elements.first
+					aliquota_percentual_xml_tag = Nokogiri::XML("<pCOFINS>").elements.first
+					quantidade_xml_tag = Nokogiri::XML("<qBCProd>").elements.first
+					aliquota_valor_xml_tag = Nokogiri::XML("<vAliqProd>").elements.first
+					valor_cofins_xml_tag = Nokogiri::XML("<vCOFINS>").elements.first
+
+					if !cofins[:aliquota_percentual].nil?
+						cofinsst_xml_tag.add_child(base_calculo_xml_tag)
+						cofinsst_xml_tag.add_child(aliquota_percentual_xml_tag)
+					elsif !cofins[:aliquota_valor].nil?
+						cofinsst_xml_tag.add_child(quantidade_xml_tag)
+						cofinsst_xml_tag.add_child(aliquota_valor_xml_tag)
+					end
+
+					cofinsst_xml_tag.add_child(valor_cofins_xml_tag)
+				end
 			end
 		}}
-		{"id"=>"885","lambda" => lambda{|msg,map,xml| }}
-		{"id"=>"887","lambda" => lambda{|msg,map,xml| }}
-		{"id"=>"911","lambda" => lambda{|msg,map,xml| }}
-		{"id"=>"913","lambda" => lambda{|msg,map,xml| }}
+		{"id"=>"885","lambda" => lambda{|msg,map,xml|
+
+			transporte = msg[:transporte]
+			reboques = transporte[:reboques]
+			volumes = transporte[:volumes]
+			lacres = volumes[:lacres]
+
+			transporte_xml_tag = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:transp","xs"=>"http://www.portalfiscal.inf.br/nfe").first
+			modalidade_frete_xml_tag = Nokogiri::XML("<modFrete>").elements.first
+			grupo_transporta_xml_tag = Nokogiri::XML("<transporta>").elements.first
+			grupo_ret_transp_xml_tag = Nokogiri::XML("<retTransp>").elements.first
+			grupo_veic_transp_xml_tag = Nokogiri::XML("<veicTransp>").elements.first
+			vagao_xml_tag = Nokogiri::XML("<vagao>").elements.first
+			balsa_xml_tag = Nokogiri::XML("<balsa>").elements.first
+
+			transporte_xml_tag.add_child(modalidade_frete_xml_tag)
+			transporte_xml_tag.add_child(grupo_transporta_xml_tag)
+			transporte_xml_tag.add_child(grupo_ret_transp_xml_tag)
+
+			if !transporte[:placa].nil?
+				transporte_xml_tag.add_child(grupo_veic_transp_xml_tag)
+				
+				reboques.each do |reboque|
+					reboque_xml_tag = Nokogiri::XML("<reboque>").elements.first
+					transporte_xml_tag.add_child(reboque_xml_tag)
+				end
+			if !transporte[:vagao].nil?
+				transporte_xml_tag.add_child(vagao_xml_tag)
+			elsif !transporte[:balsa].nil?
+				transporte_xml_tag.add_child(balsa_xml_tag)
+			end
+
+			volumes.each do |volume|
+				volume_xml_tag = Nokogiri::XML("<vol>").elements.first
+				transporte_xml_tag.add_child(volume_xml_tag)
+			end
+		}}
+		{"id"=>"887","lambda" => lambda{|msg,map,xml|
+			cpf_cnpj = msg[:transporte][:cpf_cnpj]
+			transporta_xml_tag = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:transp//xs:transporta","xs"=>"http://www.portalfiscal.inf.br/nfe").first
+			
+			if !transporta_xml_tag.nil?
+
+				if cpf_cnpj.length == 11
+					cpf_cnpj_xml_tag = Nokogiri::XML("<CNPJ>").elements.first
+				elsif cpf_cnpj.length == 9
+					cpf_cnpj_xml_tag = Nokogiri::XML("<CPF>").elements.first
+				end
+				
+				nome_fantasia_xml_tag = Nokogiri::XML("<xNome>").elements.first
+				inscricao_estadual_xml_tag = Nokogiri::XML("<IE>").elements.first
+				endereco_xml_tag = Nokogiri::XML("<xEnder>").elements.first
+				nome_municipio_xml_tag = Nokogiri::XML("<xMun>").elements.first
+				uf_transportador_xml_tag = Nokogiri::XML("<UF>").elements.first
+
+				transporta_xml_tag.add_child(cpf_cnpj_xml_tag)
+				transporta_xml_tag.add_child(nome_fantasia_xml_tag)
+				transporta_xml_tag.add_child(inscricao_estadual_xml_tag)
+				transporta_xml_tag.add_child(endereco_xml_tag)
+				transporta_xml_tag.add_child(nome_municipio_xml_tag)
+				transporta_xml_tag.add_child(uf_transportador_xml_tag)
+			end	
+		}}
 	]
 
 end

@@ -905,7 +905,7 @@ id;name;type;parent;min;max;regex;namespace;active;inferrable;xpath;message_fiel
 904;placa;E;903;1;1;^[A-Z]{2,3}[0-9]{4}|[A-Z]{3,4}[0-9]{3}$;;1;0;//xs:enviNFe//xs:NFe//xs:infNFe//xs:transp//xs:veicTransp//xs:placa;placa
 905;UF;E;903;1;1;^(RO|AC|AM|RR|PA|AP|TO|MA|PI|CE|RN|PB|PE|AL|SE|BA|MG|ES|RJ|SP|PR|SC|RS|MS|MT|GO|DF|EX)$;;1;0;//xs:enviNFe//xs:NFe//xs:infNFe//xs:transp//xs:veicTransp//xs:UF;uf_trator
 906;RNTC;E;903;0;1;"^[!a-zA-Z0-9#$%()*+,-.\/:;=?@\[\]^`{|}~]{1}[! a-zA-Z0-9#$%()*+,-.\/:;=?@\[\]^`{|}~]{0,18}[!a-zA-Z0-9#$%()*+,-.\/:;=?@\[\]^`{|}~]{1}|[!a-zA-Z0-9#$%()*+,-.\/:;=?@\[\]^`{|}~]{1}$";;1;0;//xs:enviNFe//xs:NFe//xs:infNFe//xs:transp//xs:veicTransp//xs:RNTC;rntc
-907;reboque;G;902;0;5;;;1;0;//xs:enviNFe//xs:NFe//xs:infNFe//xs:transp//xs:reboque;
+907;reboque;G;902;0;5;;;1;0;//xs:enviNFe//xs:NFe//xs:infNFe//xs:transp//xs:reboque;reboques
 908;placa;E;907;1;1;^[A-Z]{2,3}[0-9]{4}|[A-Z]{3,4}[0-9]{3}$;;1;0;//xs:enviNFe//xs:NFe//xs:infNFe//xs:transp//xs:reboque//xs:placa;placa
 909;UF;E;907;1;1;^(RO|AC|AM|RR|PA|AP|TO|MA|PI|CE|RN|PB|PE|AL|SE|BA|MG|ES|RJ|SP|PR|SC|RS|MS|MT|GO|DF|EX)$;;1;0;//xs:enviNFe//xs:NFe//xs:infNFe//xs:transp//xs:reboque//xs:UF;uf
 910;RNTC;E;907;0;1;^[a-zA-Z0-9]{1,20}$;;1;0;//xs:enviNFe//xs:NFe//xs:infNFe//xs:transp//xs:reboque//xs:RNTC;rntc
