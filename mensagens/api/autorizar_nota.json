@@ -30,7 +30,7 @@
 									"consumidor":{"type":"string","description":"Determina se a operação esta sendo feita com o consumidor final ou não."},
 									"indicador_presencial":{"type":"string","description":"Determina se o comprador realizou a operação de forma presencial ou remota."},
 									"versao_aplicacao":{"type":"string","description":"Versão da aplicação de emissao de notas."},
-									"justificativa_contingencia":{"type":"string","description":"Informa o motivo da contigência. Caso não seja informado, uma mensagem padrão será gerada."},
+									"justificativa_contingencia":{"type":"string","description":"Informa o motivo da contigência."},
 									"ano_mes_referenciado":{"type":"string","description":"Ano e mês no formato AAMM"},
 									"modelo_referenciado":{"type":"string","description":"Modelo da nota"},
 									"serie_referenciada":{"type":"string","description":"Série da nota"},

@@ -32,7 +32,7 @@ RSpec.describe Gem do
 	schema_nfe_distribuicao_dfe = './schemas/producao/arquivos/distDFeInt_v1.01.xsd'
 	schema_consultar_cadastro = './schemas/producao/arquivos/consCad_v2.00.xsd'
 	generator = BRNF::XML.new
-	#xml_autorizacao = generator.autorizar_nota(File.open("nota_exemplo.xml") { |f| Nokogiri::XML(f) })
+	#xml_autorizacao = generator.autorizar_nota(documento: File.open("nota_exemplo.xml") { |f| Nokogiri::XML(f) })
 	xml_autorizacao = generator.autorizar_nota()
 	xml_inutilizacao = generator.inutilizar_numeracao()
 	xml_evento_carta_correcao = generator.criar_carta_correcao()

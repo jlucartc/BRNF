@@ -469,8 +469,8 @@ module XMLParserHelper
 				cnpj:"CNPJ",
 				modelo:"mod",
 				serie:"serie",
-				numeracao_inicial:"nNFIni",
-				numeracao_final:"nNFFin",
+				numero_inicial:"nNFIni",
+				numero_final:"nNFFin",
 				justificativa:"xJust"
 			}
 		end
@@ -582,9 +582,9 @@ module XMLParserHelper
 					cpf:"CPF",
 					id_estrangeiro:"idEstrangeiro",
 					inscricao_estadual:"IE",
-					valor_nota:"vNF",
-					valor_icms:"vICMS",
-					valor_icms_substituicao:"vST",
+					valor_total_nota:"vNF",
+					valor_total_icms:"vICMS",
+					valor_total_icms_substituicao:"vST",
 				},
 			}
 		end
@@ -635,7 +635,7 @@ module XMLParserHelper
 				protocolo:"nProt",
 				itens_pedido:[{
 					numero_item:"numItem",
-					qtd_item:"qtdeItem"
+					quantidade_item:"qtdeItem"
 				}]
 			}
 		end
