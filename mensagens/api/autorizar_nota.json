@@ -359,6 +359,8 @@
 																"valor_base_calculo_fcp_st_retido":{"type":"string"},
 																"percentual_fcp_st_retido":{"type":"string"},
 																"valor_fcp_st_retido":{"type":"string"},
+																"valor_base_calculo_destino":{"type":"string"},
+																"valor_icms_st_destino":{"type":"string"}
 															}
 														},
 														"pis":{
