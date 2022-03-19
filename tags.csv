@@ -526,14 +526,14 @@ id;name;type;parent;min;max;regex;namespace;active;inferrable;xpath;message_fiel
 525;orig;E;524;1;1;^[0-8]{1}$;;1;0;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMS60//xs:orig;origem
 526;CST;E;524;1;1;^60$;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMS60//xs:CST;codigo
 527;grupo_st_ret;GO;524;0;1;;;1;0;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMS60;
-528;vBCSTRet;E;527;1;1;^0|0\.[0-9]{2}|[1-9]{1}[0-9]{0,12}(\.[0-9]{2})?$;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMS60//xs:vBCSTRet;valor_base_calculo_st_retido
+528;vBCSTRet;E;527;1;1;^0|0\.[0-9]{2}|[1-9]{1}[0-9]{0,12}(\.[0-9]{2})?$;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMS60//xs:vBCSTRet;
 529;pST;E;527;1;1;^0\.[0-9]{2,4}|[1-9]{1}[0-9]{0,2}(\.[0-9]{2,4})?$;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMS60//xs:pST;percentual_consumidor_final
 530;vICMSSubstituto;E;527;0;1;^0|0\.[0-9]{2}|[1-9]{1}[0-9]{0,12}(\.[0-9]{2})?$;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMS60//xs:vICMSSubstituto;valor_icms_substituto
-531;vICMSSTRet;E;527;1;1;^0|0\.[0-9]{2}|[1-9]{1}[0-9]{0,12}(\.[0-9]{2})?$;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMS60//xs:vICMSSTRet;valor_icms_st_retido
+531;vICMSSTRet;E;527;1;1;^0|0\.[0-9]{2}|[1-9]{1}[0-9]{0,12}(\.[0-9]{2})?$;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMS60//xs:vICMSSTRet;
 532;grupo_fcp_st_ret;GO;524;0;1;;;1;0;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMS60;
-533;vBCFCPSTRet;E;532;1;1;^0|0\.[0-9]{2}|[1-9]{1}[0-9]{0,12}(\.[0-9]{2})?$;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMS60//xs:vBCFCPSTRet;valor_base_calculo_fcp_st_retido
+533;vBCFCPSTRet;E;532;1;1;^0|0\.[0-9]{2}|[1-9]{1}[0-9]{0,12}(\.[0-9]{2})?$;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMS60//xs:vBCFCPSTRet;
 534;pFCPSTRet;E;532;1;1;^0\.[0-9]{2,4}|[1-9]{1}[0-9]{0,2}(\.[0-9]{2,4})?$;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMS60//xs:pFCPSTRet;percentual_fcp_retido
-535;vFCPSTRet;E;532;1;1;^0|0\.[0-9]{2}|[1-9]{1}[0-9]{0,12}(\.[0-9]{2})?$;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMS60//xs:vFCPSTRet;valor_fcp_st_retido
+535;vFCPSTRet;E;532;1;1;^0|0\.[0-9]{2}|[1-9]{1}[0-9]{0,12}(\.[0-9]{2})?$;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMS60//xs:vFCPSTRet;
 536;grupo_icms_efet;GO;524;0;1;;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMS60;
 537;pRedBCEfet;E;536;1;1;^0\.[0-9]{2,4}|[1-9]{1}[0-9]{0,2}(\.[0-9]{2,4})?$;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMS60//xs:pRedBCEfet;percentual_reducao_efetiva
 538;vBCEfet;E;536;1;1;^0|0\.[0-9]{2}|[1-9]{1}[0-9]{0,12}(\.[0-9]{2})?$;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMS60//xs:vBCEfet;
@@ -615,7 +615,7 @@ id;name;type;parent;min;max;regex;namespace;active;inferrable;xpath;message_fiel
 614;orig;E;613;1;1;^[0-8]{1}$;;1;0;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMSST//xs:orig;origem
 615;CST;E;613;1;1;^(41|60)$;;1;0;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMSST//xs:CST;codigo
 616;vBCSTRet;E;613;1;1;^0|0\.[0-9]{2}|[1-9]{1}[0-9]{0,12}(\.[0-9]{2})?$;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMSST//xs:vBCSTRet;
-617;pST;E;613;0;1;^0|0\.[0-9]{2,4}|[1-9]{1}[0-9]{0,2}(\.[0-9]{2,4})?$;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMSST//xs:pST;
+617;pST;E;613;0;1;^0|0\.[0-9]{2,4}|[1-9]{1}[0-9]{0,2}(\.[0-9]{2,4})?$;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMSST//xs:pST;percentual_consumidor_final
 618;vICMSSubstituto;E;613;0;1;^(0|[1-9][0-9]{0,12})\.[0-9]{2}$;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMSST//xs:vICMSSubstituto;
 619;vICMSSTRet;E;613;1;1;^0|0\.[0-9]{2}|[1-9]{1}[0-9]{0,12}(\.[0-9]{2})?$;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMSST//xs:vICMSSTRet;
 620;grupo_fcp_st_ret;GO;613;0;1;;;1;0;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMSST;
@@ -670,7 +670,7 @@ id;name;type;parent;min;max;regex;namespace;active;inferrable;xpath;message_fiel
 669;CSOSN;E;667;1;1;^500$;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMSSN500//xs:CSOSN;codigo
 670;grupo_icms_st_ret;GO;667;0;1;;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMSSN500;
 671;vBCSTRet;E;670;1;1;^0|0\.[0-9]{2}|[1-9]{1}[0-9]{0,12}(\.[0-9]{2})?$;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMSSN500//xs:vBCSTRet;
-672;pST;E;670;1;1;^0\.[0-9]{2,4}|[1-9]{1}[0-9]{0,2}(\.[0-9]{2,4})?$;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMSSN500//xs:pST;
+672;pST;E;670;1;1;^0\.[0-9]{2,4}|[1-9]{1}[0-9]{0,2}(\.[0-9]{2,4})?$;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMSSN500//xs:pST;percentual_consumidor_final
 673;vICMSSubstituto;E;670;0;1;^0|0\.[0-9]{2}|[1-9]{1}[0-9]{0,12}(\.[0-9]{2})?$;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMSSN500//xs:vICMSSubstituto;
 674;vICMSSTRet;E;670;1;1;^0|0\.[0-9]{2}|[1-9]{1}[0-9]{0,12}(\.[0-9]{2})?$;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMSSN500//xs:vICMSSTRet;
 675;grupo_fcp_st_ret;GO;667;0;1;;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMSSN500;
@@ -729,7 +729,7 @@ id;name;type;parent;min;max;regex;namespace;active;inferrable;xpath;message_fiel
 728;vIOF;E;724;1;1;^0|0\.[0-9]{2}|[1-9]{1}[0-9]{0,12}(\.[0-9]{2})?$;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:II//xs:vIOF;valor_iof
 729;grupo_issqn;CGO;434;0;1;;;1;0;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto;
 730;IPI;G;729;0;1;;;0;0;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:IPI;
-731;clEnq;E;730;0;1;"^[!a-zA-Z0-9#$%()*+,-.\/:;=?@\[\]^`{|}~]{1}[! a-zA-Z0-9#$%()*+,-.\/:;=?@\[\]^`{|}~]{0,3}[!a-zA-Z0-9#$%()*+,-.\/:;=?@\[\]^`{|}~]{1}|[!a-zA-Z0-9#$%()*+,-.\/:;=?@\[\]^`{|}~]{1}$";;1;0;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:IPI//xs:clEnq;
+731;clEnq;E;730;0;1;"^[!a-zA-Z0-9#$%()*+,-.\/:;=?@\[\]^`{|}~]{1}[! a-zA-Z0-9#$%()*+,-.\/:;=?@\[\]^`{|}~]{0,3}[!a-zA-Z0-9#$%()*+,-.\/:;=?@\[\]^`{|}~]{1}|[!a-zA-Z0-9#$%()*+,-.\/:;=?@\[\]^`{|}~]{1}$";;0;0;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:IPI//xs:clEnq;
 732;CNPJProd;E;730;0;1;^[0-9]{14}$;;1;0;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:IPI//xs:CNPJProd;cnpj_produtor
 733;cSelo;E;730;0;1;"^[!a-zA-Z0-9#$%()*+,-.\/:;=?@\[\]^`{|}~]{1}[! a-zA-Z0-9#$%()*+,-.\/:;=?@\[\]^`{|}~]{0,58}[!a-zA-Z0-9#$%()*+,-.\/:;=?@\[\]^`{|}~]{1}|[!a-zA-Z0-9#$%()*+,-.\/:;=?@\[\]^`{|}~]{1}$";;1;0;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:IPI//xs:cSelo;
 734;qSelo;E;730;0;1;^[0-9]{1,12}$;;1;0;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:IPI//xs:qSelo;quantidade_selo
@@ -833,7 +833,7 @@ id;name;type;parent;min;max;regex;namespace;active;inferrable;xpath;message_fiel
 832;vICMSUFDest;E;824;1;1;^0|0\.[0-9]{2}|[1-9]{1}[0-9]{0,12}(\.[0-9]{2})?$;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMSUFDest//xs:vICMSUFDest;
 833;vICMSUFRemet;E;824;1;1;^0|0\.[0-9]{2}|[1-9]{1}[0-9]{0,12}(\.[0-9]{2})?$;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMSUFDest//xs:vICMSUFRemet;
 834;impostoDevol;G;308;0;1;;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:impostoDevol;
-835;pDevol;E;834;1;1;^0(\.[0-9]{2})?|100(\.00)?|[1-9]{1}[0-9]{0,1}(\.[0-9]{2})?$;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:impostoDevol//xs:pDevol;
+835;pDevol;E;834;1;1;^0(\.[0-9]{2})?|100(\.00)?|[1-9]{1}[0-9]{0,1}(\.[0-9]{2})?$;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:impostoDevol//xs:pDevol;percentual_mercadoria_devolvida
 836;IPI;G;834;1;1;;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:impostoDevol//xs:IPI;ipi
 837;vIPIDevol;E;836;1;1;^0|0\.[0-9]{2}|[1-9]{1}[0-9]{0,12}(\.[0-9]{2})?$;;1;1;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:impostoDevol//xs:IPI//xs:vIPIDevol;
 838;infAdProd;E;308;0;1;"^[!a-zA-Z0-9#$%()*+,-.\/:;=?@\[\]^`{|}~]{1}[! a-zA-Z0-9#$%()*+,-.\/:;=?@\[\]^`{|}~]{0,498}[!a-zA-Z0-9#$%()*+,-.\/:;=?@\[\]^`{|}~]{1}|[!a-zA-Z0-9#$%()*+,-.\/:;=?@\[\]^`{|}~]{1}$";;1;0;//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:infAdProd;

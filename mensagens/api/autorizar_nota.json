@@ -42,6 +42,20 @@
 									"chave_cte":{"type":"string","description":"Chave de acesso do CT-e"},
 									"numero_ecf":{"type":"string","description":"Número de sequência do Emissor de Cupom Fiscal(ECF)"},
 									"numero_coo":{"type":"string","description":"Número do Contador de Ordem de Operação(COO)"},
+									"data_prestacao_servico":{"type":"string"},
+									"codigo_regime_especial_tributacao":{"type":"string"},
+									"retencoes":{
+										"type":"object",
+										"properties":{
+											"valor_pis_retido":{"type":"string"},
+											"valor_cofins_retido":{"type":"string"},
+											"valor_csll_retido":{"type":"string"},
+											"valor_base_calculo_irrf":{"type":"string"},
+											"valor_irrf":{"type":"string"},
+											"valor_base_calculo_retencao_previdencia":{"type":"string"},
+											"valor_retencao_previdencia":{"type":"string"},
+										}
+									},
 									"emissor":{
 										"description":"Dados do emissor da nota fiscal",
 										"type":"object",
@@ -391,7 +405,8 @@
 																"codigo_enquadramento":{"type":"string","description":"Código de enquadramento legal do IPI"},
 																"codigo":{"type":"string","description":"Código tributário do IPI."},
 																"aliquota_percentual":{"type":"string","description":"Percentual do imposto cobrado por produto."},
-																"aliquota_valor":{"type":"string","description":"Valor em R$ de imposto cobrado por unidade tributável do produto."}
+																"aliquota_valor":{"type":"string","description":"Valor em R$ de imposto cobrado por unidade tributável do produto."},
+																"percentual_mercadoria_devolvida":{"type":"string"}
 															}
 														},
 														"ii":{
@@ -420,7 +435,7 @@
 																"codigo_municipio_incidencia":{"type":"string"},
 																"codigo_pais":{"type":"string","description":"Código do BACEN(Banco Central) para o país onde o serviço foi prestado."},
 																"numero_processo":{"type":"string"},
-																"indicador_incentivo":{"type":"string","description":"Indica se há ou não incentivo fiscal."}
+																"indicador_incentivo":{"type":"string","description":"Indica se há ou não incentivo fiscal."},
 															}
 														}
 													}
