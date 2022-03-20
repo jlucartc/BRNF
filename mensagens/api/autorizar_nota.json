@@ -626,13 +626,13 @@
 													"required":["dia","quantidade","quantidade_total_mes","quantidade_total_anterior","quantidade_total_geral"],
 													"properties":{
 														"dia":{"type":"string","description":"Dia do fornecimento."},
-														"quantidade":{"type":"string","description":"Quantidade fornecida."},
-														"quantidade_total_mes":{"type":"string","description":"Mês de fornecimento."},
-														"quantidade_total_anterior":{"type":"string"},
-														"quantidade_total_geral":{"type":"string"}
+														"quantidade":{"type":"string","description":"Quantidade fornecida."}
 													}
 												}
 											},
+											"quantidade_total_mes":{"type":"string","description":"Mês de fornecimento."},
+											"quantidade_total_anterior":{"type":"string"},
+											"quantidade_total_geral":{"type":"string"},
 											"deducoes":{
 												"type":"array",
 												"items":{
@@ -640,13 +640,13 @@
 													"required":["descricao","valor_deducao","valor_fornecimentos","valor_total_deducao","valor_liquido_fornecimentos"],
 													"properties":{
 														"descricao":{"type":"string"},
-														"valor_deducao":{"type":"string"},
-														"valor_fornecimentos":{"type":"string"},
-														"valor_total_deducao":{"type":"string"},
-														"valor_liquido_fornecimentos":{"type":"string"}
+														"valor_deducao":{"type":"string"}
 													}
 												}
-											}
+											},
+											"valor_fornecimentos":{"type":"string"},
+											"valor_total_deducao":{"type":"string"},
+											"valor_liquido_fornecimentos":{"type":"string"}
 										}
 									},
 									"responsavel_tecnico":{
@@ -662,7 +662,7 @@
 												"required":["id_csrt","csrt"],
 												"properties":{
 													"id_csrt":{"type":"string"},
-													"csrt":{"type":"string"}
+													"hash_csrt":{"type":"string"}
 												}
 											}
 										}
