@@ -560,7 +560,18 @@
 										"properties":{
 											"fisco":{"type":"string"},
 											"contribuinte":{"type":"string"},
-											"campos":{
+											"campos_contribuinte":{
+												"type":"array",
+												"items":{
+													"type":"object",
+													"required":["campo","conteudo"],
+													"properties":{
+														"campo":{"type":"string"},
+														"conteudo":{"type":"string"}
+													}
+												}
+											},
+											"campos_fisco":{
 												"type":"array",
 												"items":{
 													"type":"object",
@@ -578,7 +589,8 @@
 													"required":["numero_processo","origem_processo"],
 													"properties":{
 														"numero_processo":{"type":"string"},
-														"origem_processo":{"type":"string"}
+														"origem_processo":{"type":"string"},
+														"tipo_ato":{"type":"string"}
 													}
 												}
 											}
