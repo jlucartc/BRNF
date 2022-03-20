@@ -31,17 +31,25 @@
 									"indicador_presencial":{"type":"string","description":"Determina se o comprador realizou a operação de forma presencial ou remota."},
 									"versao_aplicacao":{"type":"string","description":"Versão da aplicação de emissao de notas."},
 									"justificativa_contingencia":{"type":"string","description":"Informa o motivo da contigência."},
-									"ano_mes_referenciado":{"type":"string","description":"Ano e mês no formato AAMM"},
-									"modelo_referenciado":{"type":"string","description":"Modelo da nota"},
-									"serie_referenciada":{"type":"string","description":"Série da nota"},
-									"chave_nota_referenciada":{"type":"string","description":"Chave da nota"},
-									"inscricao_estadual_referenciada":{"type":"string","description":"Inscrição estadual do emitente"},
-									"cpf_cnpj_referenciado":{"type":"string","description":"CPF ou CNPJ do emitente"},
-									"codigo_uf_referenciado":{"type":"string","description":"Código da UF do emitente da nota referenciada"},
-									"numero_documento_referenciado":{"type":"string","description":"Número do documento fiscal referenciada"},
-									"chave_cte":{"type":"string","description":"Chave de acesso do CT-e"},
-									"numero_ecf":{"type":"string","description":"Número de sequência do Emissor de Cupom Fiscal(ECF)"},
-									"numero_coo":{"type":"string","description":"Número do Contador de Ordem de Operação(COO)"},
+									"notas_referenciadas":{
+										"type":"array",
+										"items":{
+											"type":"object",
+											"properties":{
+												"ano_mes_referenciado":{"type":"string","description":"Ano e mês no formato AAMM"},
+												"modelo_referenciado":{"type":"string","description":"Modelo da nota"},
+												"serie_referenciada":{"type":"string","description":"Série da nota"},
+												"chave_nota_referenciada":{"type":"string","description":"Chave da nota"},
+												"inscricao_estadual_referenciada":{"type":"string","description":"Inscrição estadual do emitente"},
+												"cpf_cnpj_referenciado":{"type":"string","description":"CPF ou CNPJ do emitente"},
+												"codigo_uf_referenciado":{"type":"string","description":"Código da UF do emitente da nota referenciada"},
+												"numero_documento_referenciado":{"type":"string","description":"Número do documento fiscal referenciada"},
+												"chave_cte":{"type":"string","description":"Chave de acesso do CT-e"},
+												"numero_ecf":{"type":"string","description":"Número de sequência do Emissor de Cupom Fiscal(ECF)"},
+												"numero_coo":{"type":"string","description":"Número do Contador de Ordem de Operação(COO)"},
+											}
+										}
+									},
 									"data_prestacao_servico":{"type":"string"},
 									"codigo_regime_especial_tributacao":{"type":"string"},
 									"retencoes":{
