@@ -360,19 +360,19 @@
 																"percentual_reducao":{"type":"string"},
 																"percentual_mva_st":{"type":"string"},
 																"percentual_reducao_st":{"type":"string"},
-																"valor_icms_desonerado_st":{"type":"string","description":"Valor desonerado. Caso não seja informado, será considerado como zero caso o campo 'motivo_desoneracao' não seja informado. Do contrário, será considerado como 100% do valor do ICMS."},
-																"motivo_desoneracao_st":{"type":"string"},
 																"percentual_diferimento":{"type":"string"},
 																"percentual_operacao_propria":{"type":"string"},
 																"percentual_credito":{"type":"string"},
 																"modalidade_st":{"type":"string"},
+																"aliquota_icms":{"type":"string"},
+																"aliquota_icms_st":{"type":"string"},
 																"aliquota_fcp":{"type":"string"},
 																"aliquota_fcp_st":{"type":"string"},
+																"valor_base_calculo_fcp_st_retido":{"type":"string"},
 																"valor_base_calculo_st_retido":{"type":"string"},
 																"aliquota_consumidor_final":{"type":"string"},
 																"valor_icms_substituto":{"type":"string"},
 																"valor_icms_st_retido":{"type":"string"},
-																"valor_base_calculo_fcp_st_retido":{"type":"string"},
 																"aliquota_fcp_st_retido":{"type":"string"},
 																"valor_fcp_st_retido":{"type":"string"},
 																"valor_base_calculo_destino":{"type":"string"},
@@ -385,6 +385,7 @@
 																},
 																"icms_st_desonerado":{
 																	"type":"object",
+																	"required": ["valor_icms_st_desonerado","motivo_desoneracao_st"],
 																	"properties":{																
 																		"valor_icms_st_desonerado":{"type":"string","description":"Valor desonerado. Caso não seja informado, será considerado como zero caso o campo 'motivo_desoneracao' não seja informado. Do contrário, será considerado como 100% do valor do ICMS."},
 																		"motivo_desoneracao_st":{"type":"string"},
@@ -392,6 +393,7 @@
 																},
 																"icms_desonerado":{
 																	"type":"object",
+																	"required":["valor_icms_desonerado","motivo_desoneracao"],
 																	"properties":{																
 																		"valor_icms_desonerado":{"type":"string","description":"Valor desonerado. Caso não seja informado, será considerado como zero caso o campo 'motivo_desoneracao' não seja informado. Do contrário, será considerado como 100% do valor do ICMS."},
 																		"motivo_desoneracao":{"type":"string"},
