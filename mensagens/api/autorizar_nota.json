@@ -357,32 +357,46 @@
 																"origem":{"type":"string","description":"Especifica a origem do produto."},
 																"codigo":{"type":"string","description":"Código tributário do ICMS. Pode ser CST para empresas fora do simples naacional e CSOSN para empresas do simples nacional."},
 																"modalidade":{"type":"string","Modalidade de cálculo do ICMS"},
+																"percentual_reducao":{"type":"string"},
 																"percentual_mva_st":{"type":"string"},
 																"percentual_reducao_st":{"type":"string"},
 																"valor_icms_desonerado_st":{"type":"string","description":"Valor desonerado. Caso não seja informado, será considerado como zero caso o campo 'motivo_desoneracao' não seja informado. Do contrário, será considerado como 100% do valor do ICMS."},
 																"motivo_desoneracao_st":{"type":"string"},
-																"valor_icms_desonerado":{"type":"string","description":"Valor desonerado. Caso não seja informado, será considerado como zero caso o campo 'motivo_desoneracao' não seja informado. Do contrário, será considerado como 100% do valor do ICMS."},
-																"motivo_desoneracao":{"type":"string"},
-																"valor_icms_desonerado_st":{"type":"string","description":"Valor desonerado. Caso não seja informado, será considerado como zero caso o campo 'motivo_desoneracao' não seja informado. Do contrário, será considerado como 100% do valor do ICMS."},
-																"motivo_desoneracao_st":{"type":"string"},
-																"percentual_reducao":{"type":"string"},
 																"percentual_diferimento":{"type":"string"},
-																"percentual_reducao_efetiva":{"type":"string"},
 																"percentual_operacao_propria":{"type":"string"},
 																"percentual_credito":{"type":"string"},
 																"modalidade_st":{"type":"string"},
-																"percentual_st_retido":{"type":"string"},
-																"percentual_fcp":{"type":"string"},
-																"percentual_fcp_st":{"type":"string"},
+																"aliquota_fcp":{"type":"string"},
+																"aliquota_fcp_st":{"type":"string"},
 																"valor_base_calculo_st_retido":{"type":"string"},
-																"percentual_consumidor_final":{"type":"string"},
+																"aliquota_consumidor_final":{"type":"string"},
 																"valor_icms_substituto":{"type":"string"},
 																"valor_icms_st_retido":{"type":"string"},
 																"valor_base_calculo_fcp_st_retido":{"type":"string"},
-																"percentual_fcp_st_retido":{"type":"string"},
+																"aliquota_fcp_st_retido":{"type":"string"},
 																"valor_fcp_st_retido":{"type":"string"},
 																"valor_base_calculo_destino":{"type":"string"},
-																"valor_icms_st_destino":{"type":"string"}
+																"valor_icms_st_destino":{"type":"string"},
+																"icms_efetivo":{
+																	"type":"object",
+																	"properties":{
+																		"percentual_reducao_efetiva":{"type":"string"},
+																	}
+																},
+																"icms_st_desonerado":{
+																	"type":"object",
+																	"properties":{																
+																		"valor_icms_st_desonerado":{"type":"string","description":"Valor desonerado. Caso não seja informado, será considerado como zero caso o campo 'motivo_desoneracao' não seja informado. Do contrário, será considerado como 100% do valor do ICMS."},
+																		"motivo_desoneracao_st":{"type":"string"},
+																	}
+																},
+																"icms_desonerado":{
+																	"type":"object",
+																	"properties":{																
+																		"valor_icms_desonerado":{"type":"string","description":"Valor desonerado. Caso não seja informado, será considerado como zero caso o campo 'motivo_desoneracao' não seja informado. Do contrário, será considerado como 100% do valor do ICMS."},
+																		"motivo_desoneracao":{"type":"string"},
+																	}
+																}
 															}
 														},
 														"pis":{
