@@ -1,6 +1,6 @@
 require 'bigdecimal/util'
 
-module BRFN
+module BRNF
 
     module TagLambdas
 
@@ -8962,5 +8962,5 @@ module BRFN
       	}
       }
     end
-    
+
 end
