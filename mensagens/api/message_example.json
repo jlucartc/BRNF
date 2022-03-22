@@ -1,5 +1,6 @@
 {
 	"lote": "1",
+	"codigo_uf":"20",
 	"codigo_numerico": "12345678",
 	"natureza": "VENDA",
 	"modelo": "55",

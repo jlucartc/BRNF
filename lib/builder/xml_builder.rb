@@ -11,7 +11,8 @@ module BRNF
 			@tag_map = BRNF::TagMap.new
 		end
 
-		def build_xml(tag)
+		def build_xml(tag,keep_mutex_tags: false)
+			@tag_map = BRNF::TagMap.new(keep_mutex_tags: keep_mutex_tags)
 			Nokogiri::XML::Document.parse(build_tag(tag.to_s).first.to_xml.gsub(/>[\s\n\t]*</,"><"))
 		end
 
@@ -62,7 +63,6 @@ module BRNF
 				tag_xml = fill_tag(tag_xml,tag_number) if @should_fill_with_data
 				result << tag_xml
 			end
-
 			result
 		end
 

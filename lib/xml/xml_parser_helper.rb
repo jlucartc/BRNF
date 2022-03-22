@@ -5,6 +5,7 @@ require 'nokogiri'
 require 'json'
 require_relative './../builder/xml_builder.rb'
 require_relative './../tag_map.rb'
+require_relative './../tag_lambdas.rb'
 
 module XMLParserHelper
 
@@ -24,7 +25,8 @@ module XMLParserHelper
 
 		def initialize
 			@builder = BRNF::XMLBuilder.new(fill: false)
-			@map = BRNF::TagMap.new
+			@map = BRNF::TagMap.new(keep_mutex_tags: true)
+			@lambdas = BRNF::TagLambdas::LAMBDAS
 		end
 
 		def consultar_cadastro(message)
@@ -37,10 +39,9 @@ module XMLParserHelper
 		end
 
 		def autorizar_nota(message)
-			xml = @builder.build_xml("1")
-			fill_xml(message,xml,parent_id: "1")
-			choose_mutex_tags(message,xml)
+			xml = @builder.build_xml("1",keep_mutex_tags: true)
 			fill_constant_fields(xml)
+			fill_xml(message,xml)
 
 			binding.pry
 
@@ -695,9 +696,6 @@ module XMLParserHelper
 			Nokogiri::XML("<#{tag_name}>").elements.first
 		end
 
-		def choose_mutex_tags(message,xml)
-		end
-
 		def fill_constant_fields(xml)
 			tags = @map.get_constant_regex_tags
 			tags.each do |tag|
@@ -706,72 +704,9 @@ module XMLParserHelper
 			end
 		end
 
-		def fill_xml(msg,xml,parent_id: nil,parent_tag_reference: nil)
-			if !parent_tag_reference.nil?
-				msg.each do |key,value|
-					if value.class == String
-						tag = search_element(key)
-						if ATTR.include?(tag["type"])
-							parent_tag_reference[key] = value
-						else
-							tag = create_xml_tag(key)
-							tag.content = value
-							parent_tag_reference.add_child(tag)
-						end
-					elsif value.class == Array
-						if has_only_strings(value)
-							value.each do |item|
-								tag = create_xml_tag(key)
-								tag.content = item
-								parent_tag_reference.add_child(tag)
-							end
-						elsif has_only_hashes(value)
-							value.each do |item|
-								tag = create_xml_tag(key)
-								parent_tag_reference.add_child(tag)
-								fill_xml(item,xml,parent_id: parent_id, parent_tag_reference: tag)
-							end
-						end
-					elsif value.class == Hash
-						value.each do |item|
-							tag = create_xml_tag(key)
-							parent_tag_reference.add_child(tag)
-							fill_xml(item,xml,parent_id: parent_id, parent_tag_reference: tag)
-						end
-					end
-				end
-			else
-				msg.each do |key,value|
-					if value.class == String
-						tags = search_xml_tags(xml,parent_id,key)
-						tags.each do |tag|
-							tag.content = value
-						end
-					elsif value.class == Array
-						if has_only_strings(value)
-							binding.pry
-							# recupera 'tag' e a partir dela recupera o parent, para que
-							# a tag referente ao array(que será parent_tag_reference) possa ser adicionada ao documento
-							tags = search_xml_tags(xml,parent_id,key)
-							parent = tag.parent_node
-							value.each do |item|
-								new_child = build_tag(mapa.get_message_field_index(tag["name"]))
-								new_child.content = item
-								parent.add_child(new_child)
-							end
-						elsif has_only_hashes(value)
-							value.each do |item|
-								tag = search_elements(xml,parent_id,key).first
-								fill_xml(item,xml,parent_id: tag["id" ])
-							end
-						else
-							raise "Error: message only accepts array fields with only hashes or only strings."
-						end
-					elsif value.class == Hash
-						tag = search_elements(xml,parent_id,key).first
-						fill_xml(value,xml,parent_id: tag["id"])
-					end
-				end
+		def fill_xml(msg,xml)
+			@map.map.values.each do |tag|
+				@lambdas[tag["xpath"]].call(msg,xml) if !@lambdas[tag["xpath"]].nil?
 			end
 		end
 
