@@ -96,7 +96,7 @@ module BRNF
 
 		def generate_xml(mensagem,documento,metodo)
 			if documento.nil? and !mensagem.nil?
-				xml = @parser.autorizar_nota(mensagem)
+				xml = @parser.public_send(metodo,mensagem)
 				binding.pry
 				xml = @validator.public_send("valida_#{metodo}",mensagem)
 			elsif !documento.nil? and mensagem.nil?

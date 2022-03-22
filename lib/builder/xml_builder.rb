@@ -13,7 +13,7 @@ module BRNF
 
 		def build_xml(tag,keep_mutex_tags: false)
 			@tag_map = BRNF::TagMap.new(keep_mutex_tags: keep_mutex_tags)
-			Nokogiri::XML::Document.parse(build_tag(tag.to_s).first.to_xml.gsub(/>[\s\n\t]*</,"><"))
+			Nokogiri::XML::Document.parse(build_tag(tag).first.to_xml.gsub(/>[\s\n\t]*</,"><"))
 		end
 
 		def sign_message(xml)

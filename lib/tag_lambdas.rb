@@ -1059,21 +1059,15 @@ module BRNF
       		det_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det","xs" => "http://www.portalfiscal.inf.br/nfe")
       		det_xml_tags&.each{|det| det.remove }
 
-      		sibling_xml_tag = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:autXML","xs" => "http://www.portalfiscal.inf.br/nfe").last
+      		total_xml_tag = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:total","xs" => "http://www.portalfiscal.inf.br/nfe").last
 
       		produtos = msg["produtos"]
 
       		produtos&.each_with_index do |produto,produto_index|
-      			ultimo_det_xml_tag = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det","xs" => "http://www.portalfiscal.inf.br/nfe").last
-      			
       			det_xml_tag = Nokogiri::XML("<det>").elements.first
       			det_xml_tag["nItem"] = produto_index+1
       			
-      			if !ultimo_det_xml_tag.nil?
-      				ultimo_det_xml_tag&.after(det_xml_tag)
-      			else
-      				sibling_xml_tag&.after(det_xml_tag)
-      			end
+      			total_xml_tag&.before(det_xml_tag)
       		end
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod" => lambda{|msg,xml|
@@ -1086,19 +1080,19 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:cProd" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      		produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produtos_xml_tag,index|
+      		produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			codigo_produto_xml_tag = Nokogiri::XML("<cProd>").elements.first
       			codigo_produto_xml_tag&.content = produtos[index]["codigo_produto"]
-      			produto_xml_tag&.add_child(codigo_xml_tag)
+      			produto_xml_tag&.add_child(codigo_produto_xml_tag)
       		end
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:cEAN" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			cean_xml_tag = Nokogiri::XML("<cEAN>").elements.first
       			cean_xml_tag&.content = produtos[index]["cean"]
       			produto_xml_tag&.add_child(cean_xml_tag)
@@ -1106,9 +1100,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:xProd" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			descricao_produto_xml_tag = Nokogiri::XML("<xProd>").elements.first
       			descricao_produto_xml_tag&.content = produtos[index]["descricao_produto"]
       			produto_xml_tag&.add_child(descricao_produto_xml_tag)
@@ -1116,9 +1110,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:NCM" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			ncm_xml_tag = Nokogiri::XML("<NCM>").elements.first
       			ncm_xml_tag&.content = produtos[index]["ncm"]
       			produto_xml_tag&.add_child(ncm_xml_tag)
@@ -1126,9 +1120,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:NVE" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			nve_xml_tags = Nokogiri::XML("<NVE>").elements.first
       			
       			nve_xml_tags&.each_with_index do |nve_xml_tag,nve_index|
@@ -1139,9 +1133,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:CEST" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			cest_xml_tag = Nokogiri::XML("<CEST>").elements.first
       			cest_xml_tag&.content = produtos[index]["cest"]
       			produto_xml_tag&.add_child(cest_xml_tag)
@@ -1149,19 +1143,19 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:indEscala" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			indicador_escala_xml_tag = Nokogiri::XML("<indEscala>").elements.first
       			indicador_escala_xml_tag&.content = produtos[index]["indicador_escala"]
-      			produto_xml_tag&.add_child(indicador_escala)
+      			produto_xml_tag&.add_child(indicador_escala_xml_tag)
       		end
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:CNPJFab" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			cnpj_fabricante_xml_tag = Nokogiri::XML("<CNPJFab>").elements.first
       			cnpj_fabricante_xml_tag&.content = produtos[index]["cnpj_fabricante"]
       			produto_xml_tag&.add_child(cnpj_fabricante_xml_tag)
@@ -1169,9 +1163,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:EXTIPI" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			extipi_xml_tag = Nokogiri::XML("<EXTIPI>").elements.first
       			extipi_xml_tag&.content = produtos[index]["extipi"]
       			produto_xml_tag&.add_child(extipi_xml_tag)
@@ -1179,9 +1173,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:CFOP" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			cfop_xml_tag = Nokogiri::XML("<CFOP>").elements.first
       			cfop_xml_tag&.content = produtos[index]["cfop"]
       			produto_xml_tag&.add_child(cfop_xml_tag)
@@ -1189,9 +1183,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:uCom" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			unidade_comercial_xml_tag = Nokogiri::XML("<uCom>").elements.first
       			unidade_comercial_xml_tag&.content = produtos[index]["unidade_comercial"]
       			produto_xml_tag&.add_child(unidade_comercial_xml_tag)
@@ -1199,9 +1193,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:qCom" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			quantidade_xml_tag = Nokogiri::XML("<qCom>").elements.first
       			quantidade_xml_tag&.content = produtos[index]["quantidade"]
       			produto_xml_tag&.add_child(quantidade_xml_tag)
@@ -1209,9 +1203,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:vUnCom" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			preco_xml_tag = Nokogiri::XML("<vUnCom>").elements.first
       			preco_xml_tag&.content = produtos[index]["preco"]
       			produto_xml_tag&.add_child(preco_xml_tag)
@@ -1219,9 +1213,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:vProd" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			valor_produto_xml_tag = Nokogiri::XML("<vProd>").elements.first
       			valor_produto_xml_tag&.content = (produtos[index]["preco"].to_d * produtos[index]["quantidade"].to_d).truncate(2).to_digits
       			produto_xml_tag&.add_child(valor_produto_xml_tag)
@@ -1229,19 +1223,19 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:cEANTrib" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			codigo_ean_tributo_xml_tag = Nokogiri::XML("<cEANTrib>").elements.first
       			codigo_ean_tributo_xml_tag&.content = produtos[index]["codigo_ean_tributo"]
-      			produto_xml_tag&.add_child(codigo_ean_tributo)
+      			produto_xml_tag&.add_child(codigo_ean_tributo_xml_tag)
       		end
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:uTrib" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			unidade_tributada_xml_tag = Nokogiri::XML("<uTrib>").elements.first
       			unidade_tributada_xml_tag&.content = produtos[index]["unidade_comercial"]
       			produto_xml_tag&.add_child(unidade_tributada_xml_tag)
@@ -1249,9 +1243,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:qTrib" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			quantidade_tributada_xml_tag = Nokogiri::XML("<qTrib>").elements.first
       			quantidade_tributada_xml_tag&.content = produtos[index]["quantidade"]
       			produto_xml_tag&.add_child(quantidade_tributada_xml_tag)
@@ -1259,9 +1253,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:vUnTrib" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			valor_tributado_xml_tag = Nokogiri::XML("<vUnTrib>").elements.first
       			valor_tributado_xml_tag&.content = produtos[index]["preco"]
       			produto_xml_tag&.add_child(valor_tributado_xml_tag)
@@ -1269,9 +1263,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:vFrete" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			valor_frete_xml_tag = Nokogiri::XML("<vFrete>").elements.first
       			valor_frete_xml_tag&.content = produtos[index]["valor_frete"]
       			produto_xml_tag&.add_child(valor_frete_xml_tag)
@@ -1279,9 +1273,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:vSeg" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			valor_seguro_xml_tag = Nokogiri::XML("<vSeg>").elements.first
       			valor_seguro_xml_tag&.content = produtos[index]["valor_seguro"]
       			produto_xml_tag&.add_child(valor_seguro_xml_tag)
@@ -1289,9 +1283,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:vDesc" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			valor_desconto_xml_tag = Nokogiri::XML("<vDesc>").elements.first
       			valor_desconto_xml_tag&.content = produtos[index]["valor_desconto"]
       			produto_xml_tag&.add_child(valor_desconto_xml_tag)
@@ -1299,9 +1293,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:vOutro" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			valor_outro_xml_tag = Nokogiri::XML("<vOutro>").elements.first
       			valor_outro_xml_tag&.content = produtos[index]["valor_outro"]
       			produto_xml_tag&.add_child(valor_outro_xml_tag)
@@ -1309,9 +1303,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:indTot" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			indicador_total_xml_tag = Nokogiri::XML("<indTot>").elements.first
       			indicador_total_xml_tag&.content = produtos[index]["indicador_total"]
       			produto_xml_tag&.add_child(indicador_total_xml_tag)
@@ -1319,9 +1313,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
       			importacoes = produtos[produto_index]["importacoes"]
 
       			importacoes&.each do |importacao|
@@ -1332,9 +1326,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI//xs:nDI" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
       			importacoes = produtos[produto_index]["importacoes"]
       			importacoes_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI","xs" => "http://www.portalfiscal.inf.br/nfe")
 
@@ -1347,9 +1341,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI//xs:dDI" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
       			importacoes = produtos[produto_index]["importacoes"]
       			importacoes_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI","xs" => "http://www.portalfiscal.inf.br/nfe")
 
@@ -1362,9 +1356,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI//xs:xLocDesemb" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
       			importacoes = produtos[produto_index]["importacoes"]
       			importacoes_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI","xs" => "http://www.portalfiscal.inf.br/nfe")
 
@@ -1377,9 +1371,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI//xs:UFDesemb" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
       			importacoes = produtos[produto_index]["importacoes"]
       			importacoes_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI","xs" => "http://www.portalfiscal.inf.br/nfe")
 
@@ -1392,9 +1386,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI//xs:dDesemb" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
       			importacoes = produtos[produto_index]["importacoes"]
       			importacoes_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI","xs" => "http://www.portalfiscal.inf.br/nfe")
 
@@ -1407,9 +1401,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI//xs:tpViaTransp" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
       			importacoes = produtos[produto_index]["importacoes"]
       			importacoes_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI","xs" => "http://www.portalfiscal.inf.br/nfe")
 
@@ -1422,9 +1416,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI//xs:vAFRMM" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
       			importacoes = produtos[produto_index]["importacoes"]
       			importacoes_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI","xs" => "http://www.portalfiscal.inf.br/nfe")
 
@@ -1437,9 +1431,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI//xs:tpIntermedio" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
       			importacoes = produtos[produto_index]["importacoes"]
       			importacoes_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI","xs" => "http://www.portalfiscal.inf.br/nfe")
 
@@ -1452,9 +1446,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI//xs:CNPJ" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
       			importacoes = produtos[produto_index]["importacoes"]
       			importacoes_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI","xs" => "http://www.portalfiscal.inf.br/nfe")
 
@@ -1467,9 +1461,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI//xs:UFTerceiro" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
       			importacoes = produtos[produto_index]["importacoes"]
       			importacoes_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI","xs" => "http://www.portalfiscal.inf.br/nfe")
 
@@ -1482,9 +1476,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI//xs:cExportador" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
       			importacoes = produtos[produto_index]["importacoes"]
       			importacoes_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI","xs" => "http://www.portalfiscal.inf.br/nfe")
 
@@ -1497,9 +1491,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI//xs:adi" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
       			importacoes = produtos[produto_index]
       			importacoes_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI","xs" => "http://www.portalfiscal.inf.br/nfe")
 
@@ -1514,9 +1508,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI//xs:adi//xs:nAdicao" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
       			importacoes = produtos[produto_index]["importacoes"]
       			importacoes_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI","xs" => "http://www.portalfiscal.inf.br/nfe")
 
@@ -1534,9 +1528,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI//xs:adi//xs:nSeqAdic" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
       			importacoes = produtos[produto_index]["importacoes"]
       			importacoes_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI","xs" => "http://www.portalfiscal.inf.br/nfe")
 
@@ -1554,9 +1548,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI//xs:adi//xs:cFabricante" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
       			importacoes = produtos[produto_index]["importacoes"]
       			importacoes_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI","xs" => "http://www.portalfiscal.inf.br/nfe")
 
@@ -1574,9 +1568,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI//xs:adi//xs:vDescDI" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
       			importacoes = produtos[produto_index]["importacoes"]
       			importacoes_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI","xs" => "http://www.portalfiscal.inf.br/nfe")
 
@@ -1594,9 +1588,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI//xs:adi//xs:nDraw" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
       			importacoes = produtos[produto_index]["importacoes"]
       			importacoes_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:DI","xs" => "http://www.portalfiscal.inf.br/nfe")
 
@@ -1614,9 +1608,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:detExport" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
       			exportacoes = produtos[produto_index]["exportacoes"]
 
       			exportacoes&.each do |exportacao|
@@ -1627,9 +1621,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:detExport//xs:nDraw" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
       			exportacoes = produtos[produto_index]["exportacoes"]
       			exportacoes_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:detExport","xs" => "http://www.portalfiscal.inf.br/nfe")
 
@@ -1642,9 +1636,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:detExport//xs:exportInd" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
       			exportacoes = produtos[produto_index]["exportacoes"]
       			exportacoes_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:detExport","xs" => "http://www.portalfiscal.inf.br/nfe")
 
@@ -1656,9 +1650,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:detExport//xs:exportInd//xs:nRE" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
       			exportacoes = produtos[produto_index]["exportacoes"]
       			exportacoes_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:detExport","xs" => "http://www.portalfiscal.inf.br/nfe")
 
@@ -1672,9 +1666,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:detExport//xs:exportInd//xs:chNFe" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
       			exportacoes = produtos[produto_index]["exportacoes"]
       			exportacoes_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:detExport","xs" => "http://www.portalfiscal.inf.br/nfe")
 
@@ -1688,9 +1682,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:detExport//xs:exportInd//xs:qExport" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
       			exportacoes = produtos[produto_index]["exportacoes"]
       			exportacoes_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:detExport","xs" => "http://www.portalfiscal.inf.br/nfe")
 
@@ -1704,9 +1698,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:xPed" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			numero_pedido_xml_tag = Nokogiri::XML("<xPed>").elements.first
       			numero_pedido_xml_tag&.content = produtos[index]["numero_pedido"]
       			produto_xml_tag&.add_child(numero_pedido_xml_tag)
@@ -1714,9 +1708,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:nItemPed" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			numero_item_pedido_xml_tag = Nokogiri::XML("<nItemPed>").elements.first
       			numero_item_pedido_xml_tag&.content = produtos[index]["numero_item_pedido"]
       			produto_xml_tag&.add_child(numero_item_pedido_xml_tag)
@@ -1724,9 +1718,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:nFCI" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			numero_fci_xml_tag = Nokogiri::XML("<nFCI>").elements.first
       			numero_fci_xml_tag&.content = produtos[index]["numero_fci"]
       			produto_xml_tag&.add_child(numero_fci_xml_tag)
@@ -1734,9 +1728,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:rastro" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
       			rastros = produtos[produto_index]["rastreamento"]
 
       			rastros&.each do |rastro|
@@ -1747,9 +1741,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:rastro//xs:nLote" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
       			rastros = produtos[produto_index]["rastreamento"]
       			rastros_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:rastro","xs" => "http://www.portalfiscal.inf.br/nfe")
 
@@ -1762,9 +1756,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:rastro//xs:qLote" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
       			rastros = produtos[produto_index]["rastreamento"]
       			rastros_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:rastro","xs" => "http://www.portalfiscal.inf.br/nfe")
 
@@ -1777,9 +1771,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:rastro//xs:dFab" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
       			rastros = produtos[produto_index]["rastreamento"]
       			rastros_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:rastro","xs" => "http://www.portalfiscal.inf.br/nfe")
 
@@ -1791,35 +1785,35 @@ module BRNF
       		end
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:rastro//xs:dVal" => lambda{|msg,xml|
-      		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+        	produtos = msg["produtos"]
+        	produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
-      			rastros = produtos[produto_index]["rastreamento"]
-      			rastros_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:rastro","xs" => "http://www.portalfiscal.inf.br/nfe")
+        	produto_xml_tags&.each_with_index do |produto_xml_tag,produto_index|
+        			rastros = produtos[produto_index]["rastreamento"]
+        			rastros_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:rastro","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      			rastros_xml_tags&.each_with_index do |rastro_xml_tag,rastro_index|
-      				validade_xml_tag = Nokogiri::XML("<dVal>").elements.first
-      				validade_xml_tag&.content = rastros[rastro_index]["validade"]
-      				rastro_xml_tag&.add_child(validade_xml_tag)
-      			end
-      		end
+        			rastros_xml_tags&.each_with_index do |rastro_xml_tag,rastro_index|
+        				validade_xml_tag = Nokogiri::XML("<dVal>").elements.first
+        				validade_xml_tag&.content = rastros[rastro_index]["validade"]
+        				rastro_xml_tag&.add_child(validade_xml_tag)
+        			end
+        	end
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	  produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			veiculos_xml_tag = Nokogiri::XML("<veicProd>").elements.first
+      	  produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      		  veiculos_xml_tag = Nokogiri::XML("<veicProd>").elements.first
       			produto_xml_tag&.add_child(veiculos_xml_tag) if !produtos[index]["veiculos"].nil?
       		end
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd//xs:tpOp" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !veiculo_xml_tag.nil?
       				tipo_operacao_xml_tag = Nokogiri::XML("<tpOp>").elements.first
       				tipo_operacao_xml_tag&.content = produtos[index].dig("veiculos","tipo_operacao")
@@ -1829,10 +1823,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd//xs:chassi" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !veiculo_xml_tag.nil?
       				chassi_xml_tag = Nokogiri::XML("<chassi>").elements.first
       				chassi_xml_tag&.content = produtos[index].dig("veiculos","chassi")
@@ -1842,10 +1836,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd//xs:cCor" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !veiculo_xml_tag.nil?
       				codigo_cor_xml_tag = Nokogiri::XML("<cCor>").elements.first
       				codigo_cor_xml_tag&.content = produtos[index].dig("veiculos","codigo_cor")
@@ -1855,10 +1849,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd//xs:xCor" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !veiculo_xml_tag.nil?
       				descricao_cor_xml_tag = Nokogiri::XML("<xCor>").elements.first
       				descricao_cor_xml_tag&.content = produtos[index].dig("veiculos","descricao_cor")
@@ -1868,10 +1862,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd//xs:pot" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !veiculo_xml_tag.nil?
       				potencia_xml_tag = Nokogiri::XML("<pot>").elements.first
       				potencia_xml_tag&.content = produtos[index].dig("veiculos","potencia")
@@ -1881,10 +1875,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd//xs:cilin" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !veiculo_xml_tag.nil?
       				cilindradas_xml_tag = Nokogiri::XML("<cilin>").elements.first
       				cilindradas_xml_tag&.content = produtos[index].dig("veiculos","cilindradas")
@@ -1894,10 +1888,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd//xs:pesoL" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !veiculo_xml_tag.nil?
       				peso_liquido_xml_tag = Nokogiri::XML("<pesoL>").elements.first
       				peso_liquido_xml_tag&.content = produtos[index].dig("veiculos","peso_liquido")
@@ -1907,10 +1901,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd//xs:pesoB" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !veiculo_xml_tag.nil?
       				peso_bruto_xml_tag = Nokogiri::XML("<pesoB>").elements.first
       				peso_bruto_xml_tag&.content = produtos[index].dig("veiculos","peso_bruto")
@@ -1920,10 +1914,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd//xs:nSerie" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !veiculo_xml_tag.nil?
       				serie_xml_tag = Nokogiri::XML("<nSerie>").elements.first
       				serie_xml_tag&.content = produtos[index].dig("veiculos","serie")
@@ -1933,10 +1927,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd//xs:tpComb" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !veiculo_xml_tag.nil?
       				tipo_combustivel_xml_tag = Nokogiri::XML("<tpComb>").elements.first
       				tipo_combustivel_xml_tag&.content = produtos[index].dig("veiculos","tipo_combustivel")
@@ -1946,10 +1940,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd//xs:nMotor" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !veiculo_xml_tag.nil?
       				numero_motor_xml_tag = Nokogiri::XML("<nMotor>").elements.first
       				numero_motor_xml_tag&.content = produtos[index].dig("veiculos","numero_motor")
@@ -1959,10 +1953,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd//xs:CMT" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !veiculo_xml_tag.nil?
       				capacidade_maxima_tracao_xml_tag = Nokogiri::XML("<CMT>").elements.first
       				capacidade_maxima_tracao_xml_tag&.content = produtos[index].dig("veiculos","capacidade_maxima_tracao")
@@ -1972,10 +1966,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd//xs:dist" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !veiculo_xml_tag.nil?
       				distancia_eixos_xml_tag = Nokogiri::XML("<dist>").elements.first
       				distancia_eixos_xml_tag&.content = produtos[index].dig("veiculos","distancia_eixos")
@@ -1985,10 +1979,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd//xs:anoMod" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !veiculo_xml_tag.nil?
       				ano_modelo_xml_tag = Nokogiri::XML("<anoMod>").elements.first
       				ano_modelo_xml_tag&.content = produtos[index].dig("veiculos","ano_modelo")
@@ -1998,10 +1992,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd//xs:anoFab" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !veiculo_xml_tag.nil?
       				ano_fabricacao_xml_tag = Nokogiri::XML("<anoFab>").elements.first
       				ano_fabricacao_xml_tag&.content = produtos[index].dig("veiculos","ano_fabricacao")
@@ -2011,10 +2005,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd//xs:tpPint" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !veiculo_xml_tag.nil?
       				tipo_pintura_xml_tag = Nokogiri::XML("<tpPint>").elements.first
       				tipo_pintura_xml_tag&.content = produtos[index].dig("veiculos","tipo_pintura")
@@ -2024,10 +2018,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd//xs:tpVeic" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !veiculo_xml_tag.nil?
       				tipo_veiculo_xml_tag = Nokogiri::XML("<tpVeic>").elements.first
       				tipo_veiculo_xml_tag&.content = produtos[index].dig("veiculos","tipo_veiculo")
@@ -2037,10 +2031,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd//xs:espVeic" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !veiculo_xml_tag.nil?
       				especie_veiculo_xml_tag = Nokogiri::XML("<espVeic>").elements.first
       				especie_veiculo_xml_tag&.content = produtos[index].dig("veiculos","especie_veiculo")
@@ -2050,10 +2044,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd//xs:VIN" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !veiculo_xml_tag.nil?
       				condicao_vin_xml_tag = Nokogiri::XML("<VIN>").elements.first
       				condicao_vin_xml_tag&.content = produtos[index].dig("veiculos","condicao_vin")
@@ -2063,10 +2057,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd//xs:condVeic" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !veiculo_xml_tag.nil?
       				condicao_veiculo_xml_tag = Nokogiri::XML("<condVeic>").elements.first
       				condicao_veiculo_xml_tag&.content = produtos[index].dig("veiculos","condicao_veiculo")
@@ -2076,10 +2070,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd//xs:cMod" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !veiculo_xml_tag.nil?
       				codigo_marca_modelo_xml_tag = Nokogiri::XML("<cMod>").elements.first
       				codigo_marca_modelo_xml_tag&.content = produtos[index].dig("veiculos","codigo_marca_modelo")
@@ -2089,10 +2083,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd//xs:cCorDENATRAN" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !veiculo_xml_tag.nil?
       				codigo_cor_denatran_xml_tag = Nokogiri::XML("<cCorDENATRAN>").elements.first
       				codigo_cor_denatran_xml_tag&.content = produtos[index].dig("veiculos","codigo_cor_denatran")
@@ -2102,10 +2096,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd//xs:lota" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !veiculo_xml_tag.nil?
       				lotacao_xml_tag = Nokogiri::XML("<lota>").elements.first
       				lotacao_xml_tag&.content = produtos[index].dig("veiculos","lotacao")
@@ -2115,10 +2109,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd//xs:tpRest" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			veiculo_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:veicProd","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !veiculo_xml_tag.nil?
       				restricao_xml_tag = Nokogiri::XML("<tpRest>").elements.first
       				restricao_xml_tag&.content = produtos[index].dig("veiculos","restricao")
@@ -2128,19 +2122,19 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:med" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			medicamentos_xml_tag = Nokogiri::XML("<med>").elements.first
       			produto_xml_tag&.add_child(medicamentos_xml_tag) if !produtos[index]["medicamentos"].nil?
       		end
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:med//xs:cProdANVISA" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			medicamento_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::med","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			medicamento_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:med","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !medicamento_xml_tag.nil?
       				codigo_produto_anvisa_xml_tag = Nokogiri::XML("<cProdANVISA>").elements.first
       				codigo_produto_anvisa_xml_tag&.content = produtos[index].dig("medicamentos","codigo_produto_anvisa")
@@ -2150,10 +2144,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:med//xs:vPMC" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			medicamento_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::med","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			medicamento_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:med","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !medicamento_xml_tag.nil?
       				preco_maximo_consumidor_xml_tag = Nokogiri::XML("<vPMC>").elements.first
       				preco_maximo_consumidor_xml_tag&.content = produtos[index].dig("medicamentos","preco_maximo_consumidor")
@@ -2163,19 +2157,19 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:arma" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			armas_xml_tag = Nokogiri::XML("<arma>").elements.first
       			produto_xml_tag&.add_child(armas_xml_tag) if !produtos[index]["armas"].nil?
       		end
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:arma//xs:tpArma" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			arma_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::arma","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			arma_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:arma","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !arma_xml_tag.nil?
       				tipo_arma_xml_tag = Nokogiri::XML("<tpArma>").elements.first
       				tipo_arma_xml_tag&.content = produtos[index].dig("armas","tipo_arma")
@@ -2185,10 +2179,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:arma//xs:nSerie" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			arma_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::arma","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			arma_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:arma","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !arma_xml_tag.nil?
       				numero_serie_xml_tag = Nokogiri::XML("<nSerie>").elements.first
       				numero_serie_xml_tag&.content = produtos[index].dig("armas","numero_serie")
@@ -2198,10 +2192,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:arma//xs:nCano" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			arma_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::arma","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			arma_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:arma","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !arma_xml_tag.nil?
       				numero_cano_xml_tag = Nokogiri::XML("<nCano>").elements.first
       				numero_cano_xml_tag&.content = produtos[index].dig("armas","numero_cano")
@@ -2211,10 +2205,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:arma//xs:descr" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			arma_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::arma","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			arma_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:arma","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !arma_xml_tag.nil?
       				descricao_xml_tag = Nokogiri::XML("<descr>").elements.first
       				descricao_xml_tag&.content = produtos[index].dig("armas","descricao")
@@ -2224,19 +2218,19 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			combustiveis_xml_tag = Nokogiri::XML("<comb>").elements.first
       			produto_xml_tag&.add_child(combustiveis_xml_tag) if !produtos[index]["combustiveis"].nil?
       		end
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb//xs:cProdANP" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			combustivel_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::comb","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			combustivel_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !combustivel_xml_tag.nil?
       				codigo_produto_anp_xml_tag = Nokogiri::XML("<cProdANP>").elements.first
       				codigo_produto_anp_xml_tag&.content = produtos[index].dig("combustiveis","codigo_produto_anp")
@@ -2246,10 +2240,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb//xs:descANP" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			combustivel_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::comb","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			combustivel_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !combustivel_xml_tag.nil?
       				descricao_anp_xml_tag = Nokogiri::XML("<descANP>").elements.first
       				descricao_anp_xml_tag&.content = produtos[index].dig("combustiveis","descricao_anp")
@@ -2259,10 +2253,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb//xs:pGLP" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			combustivel_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::comb","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			combustivel_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !combustivel_xml_tag.nil?
       				percentual_glp_xml_tag = Nokogiri::XML("<pGLP>").elements.first
       				percentual_glp_xml_tag&.content = produtos[index].dig("combustiveis","percentual_glp")
@@ -2272,10 +2266,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb//xs:pGNn" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			combustivel_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::comb","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			combustivel_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !combustivel_xml_tag.nil?
       				percentual_gnn_xml_tag = Nokogiri::XML("<pGNn>").elements.first
       				percentual_gnn_xml_tag&.content = produtos[index].dig("combustiveis","percentual_gnn")
@@ -2285,10 +2279,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb//xs:pGNi" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			combustivel_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::comb","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			combustivel_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !combustivel_xml_tag.nil?
       				percentual_gni_xml_tag = Nokogiri::XML("<pGNi>").elements.first
       				percentual_gni_xml_tag&.content = produtos[index].dig("combustiveis","percentual_gni")
@@ -2298,10 +2292,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb//xs:vPart" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			combustivel_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::comb","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			combustivel_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !combustivel_xml_tag.nil?
       				valor_partida_xml_tag = Nokogiri::XML("<vPart>").elements.first
       				valor_partida_xml_tag&.content = produtos[index].dig("combustiveis","valor_partida")
@@ -2311,10 +2305,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb//xs:CODIF" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			combustivel_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::comb","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			combustivel_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !combustivel_xml_tag.nil?
       				codif_xml_tag = Nokogiri::XML("<CODIF>").elements.first
       				codif_xml_tag&.content = produtos[index].dig("combustiveis","codif")
@@ -2324,10 +2318,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb//xs:qTemp" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			combustivel_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::comb","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			combustivel_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !combustivel_xml_tag.nil?
       				quantidade_temperatura_ambiente_xml_tag = Nokogiri::XML("<qTemp>").elements.first
       				quantidade_temperatura_ambiente_xml_tag&.content = produtos[index].dig("combustiveis","quantidade_temperatura_ambiente")
@@ -2337,10 +2331,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb//xs:UFCons" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			combustivel_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::comb","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			combustivel_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !combustivel_xml_tag.nil?
       				uf_consumo_xml_tag = Nokogiri::XML("<UFCons>").elements.first
       				uf_consumo_xml_tag&.content = produtos[index].dig("combustiveis","uf_consumo")
@@ -2350,10 +2344,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb//xs:CIDE" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			combustivel_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::comb","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			combustivel_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !combustivel_xml_tag.nil?
       				cide_xml_tag = Nokogiri::XML("<CIDE>").elements.first
       				combustivel_xml_tag&.add_child(cide_xml_tag)
@@ -2362,9 +2356,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb//xs:CIDE//xs:qBCProd" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			cide_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb/xs:CIDE","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			quantidade_cide_xml_tag = Nokogiri::XML("<qBCProd>").elements.first
       			quantidade_cide_xml_tag&.content = produtos[index].dig("combustiveis","quantidade_cide")
@@ -2373,9 +2367,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb//xs:CIDE//xs:vAliqProd" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			cide_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb/xs:CIDE","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			aliquota_cide_xml_tag = Nokogiri::XML("<vAliqProd>").elements.first
       			aliquota_cide_xml_tag&.content = produtos[index].dig("combustiveis","aliquota_cide")
@@ -2384,9 +2378,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb//xs:CIDE//xs:vCIDE" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			cide_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb/xs:CIDE","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			valor_cide_xml_tag = Nokogiri::XML("<vCIDE>").elements.first
       			valor_cide_xml_tag&.content = (produtos[index].dig("combustiveis","aliquota_cide").to_d * produtos[index].dig("combustiveis","quantidade_cide").to_d).truncate(2).to_digits
@@ -2395,10 +2389,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb//xs:encerrante" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			combustivel_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::comb","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			combustivel_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !combustivel_xml_tag.nil?
       				encerrante_xml_tag = Nokogiri::XML("<encerrante>").elements.first
       				combustivel_xml_tag&.add_child(encerrante_xml_tag)
@@ -2407,9 +2401,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb//xs:encerrante//xs:nBico" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			encerrante_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb/xs:encerrante","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			numero_bico_xml_tag = Nokogiri::XML("<nBico>").elements.first
       			numero_bico_xml_tag&.content = produtos[index].dig("combustiveis","numero_bico")
@@ -2418,9 +2412,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb//xs:encerrante//xs:nBomba" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			encerrante_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb/xs:encerrante","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			numero_bomba_xml_tag = Nokogiri::XML("<nBomba>").elements.first
       			numero_bomba_xml_tag&.content = produtos[index].dig("combustiveis","numero_bomba")
@@ -2429,9 +2423,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb//xs:encerrante//xs:nTanque" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			encerrante_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb/xs:encerrante","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			numero_tanque_xml_tag = Nokogiri::XML("<nTanque>").elements.first
       			numero_tanque_xml_tag&.content = produtos[index].dig("combustiveis","numero_tanque")
@@ -2440,9 +2434,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb//xs:encerrante//xs:vEncIni" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			encerrante_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb/xs:encerrante","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			valor_encerrante_inicio_xml_tag = Nokogiri::XML("<vEncIni>").elements.first
       			valor_encerrante_inicio_xml_tag&.content = produtos[index].dig("combustiveis","valor_encerrante_inicio")
@@ -2451,9 +2445,9 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb//xs:encerrante//xs:vEncFin" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			encerrante_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb/xs:encerrante","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			valor_encerrante_fim_xml_tag = Nokogiri::XML("<vEncFin>").elements.first
       			valor_encerrante_fim_xml_tag&.content = produtos[index].dig("combustiveis","valor_encerrante_fim")
@@ -2462,10 +2456,10 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:nRECOPI" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
-      			combustivel_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs::comb","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
+      			combustivel_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:comb","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			if !combustivel_xml_tag.nil?
       				papel_xml_tag = Nokogiri::XML("<nRECOPI>").elements.first
       				papel_xml_tag&.content = produtos[index]["papel"]
@@ -3046,7 +3040,7 @@ module BRNF
       			if !icms20_xml_tag.nil?
       				percentual_reducao_xml_tag = Nokogiri::XML("<pRedBC>").elements.first
       				percentual_reducao_xml_tag&.content = icms["percentual_reducao"]
-              icms20_xml_tag&.add_child(pRedBC)
+              icms20_xml_tag&.add_child(percentual_reducao_xml_tag)
       			end
       		end
       	},
@@ -3406,7 +3400,7 @@ module BRNF
       			icms_xml_tag = imposto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			
       			if !icms_xml_tag.nil?
-      				if !['40','41','50'].include?(icms["codigo"])
+      				if ['40','41','50'].include?(icms["codigo"])
       					icms40_xml_tag = Nokogiri::XML("<ICMS40>").elements.first
       					icms_xml_tag&.add_child(icms40_xml_tag)
       				end
@@ -3482,7 +3476,7 @@ module BRNF
       			icms_xml_tag = imposto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS","xs" => "http://www.portalfiscal.inf.br/nfe").first
 
       			if !icms_xml_tag.nil?
-      				if !icms["codigo"] == "51"
+      				if icms["codigo"] == "51"
       					icms51_xml_tag = Nokogiri::XML("<ICMS51>").elements.first
       					icms_xml_tag&.add_child(icms51_xml_tag)
       				end
@@ -3813,7 +3807,7 @@ module BRNF
       			if !icms60_xml_tag.nil?
       				valor_base_calculo_fcp_st_retido_xml_tag = Nokogiri::XML("<vBCFCPSTRet>").elements.first
       				valor_base_calculo_fcp_st_retido_xml_tag&.content = "%.2f" % icms["valor_base_calculo_fcp_st_retido"].to_d.truncate(2)
-              icms60_xml_tag&.add_child(valor_base_calculo_fcp_st_retido)
+              icms60_xml_tag&.add_child(valor_base_calculo_fcp_st_retido_xml_tag)
       			end
       		end
       	},
@@ -4569,7 +4563,7 @@ module BRNF
       				aliquota_fcp_st_xml_tag = icms90_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:ICMS//xs:ICMS90//xs:pFCPST","xs" => "http://www.portalfiscal.inf.br/nfe").first
       				valor_fcp_st_xml_tag = Nokogiri::XML("<vFCPST>").elements.first
       				valor_fcp_st_xml_tag&.content = "%.2f" % ((base_calculo_fcp_st_xml_tag.content.to_d * aliquota_fcp_st_xml_tag.content.to_d)/100.to_d).truncate(2)
-              icms90_xml_tag&.add_child(valor_fcp_st_xml)
+              icms90_xml_tag&.add_child(valor_fcp_st_xml_tag)
       			end
       		end
       	},
@@ -5001,7 +4995,7 @@ module BRNF
       			if !icmsst_xml_tag.nil?
       				valor_icms_st_retido_xml_tag = Nokogiri::XML("<vICMSSTRet>").elements.first
       				valor_icms_st_retido_xml_tag&.content = "%.2f" % icms["valor_icms_st_retido"].to_d.truncate(2)
-              icmsst_xml_tag&.add_child(valor_icms_st_retido)
+              icmsst_xml_tag&.add_child(valor_icms_st_retido_xml_tag)
       			end
       		end
       	},
@@ -5076,7 +5070,7 @@ module BRNF
       			if !icmsst_xml_tag.nil?
       				valor_icms_st_destino_xml_tag = Nokogiri::XML("<vICMSSTDest>").elements.first
       				valor_icms_st_destino_xml_tag&.content = icms["valor_icms_st_destino"]
-              icmsst_xml_tag&.add_child(valor_icms_st_destino)
+              icmsst_xml_tag&.add_child(valor_icms_st_destino_xml_tag)
       			end
       		end
       	},
@@ -5822,7 +5816,7 @@ module BRNF
       			if !icmssn500_xml_tag.nil?
       				valor_fcp_st_retido_xml_tag = Nokogiri::XML("<vFCPSTRet>").elements.first
       				valor_fcp_st_retido_xml_tag&.content = icms["valor_fcp_st_retido"]
-              icmssn500_xml_tag&.add_child(valor_fcp_st_retido)
+              icmssn500_xml_tag&.add_child(valor_fcp_st_retido_xml_tag)
       			end
       		end
       	},
@@ -6752,7 +6746,7 @@ module BRNF
       			pis_xml_tag = imposto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:PIS","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			pis = produtos[index].dig("imposto","pis")
 
-      			if !pisst_xml_tag.nil?
+      			if !pis_xml_tag.nil?
       				if ['01','02'].include?("%02d" % pis["codigo"])
       					pisaliq_xml_tag = Nokogiri::XML("<PISAliq>").elements.first 
       					pis_xml_tag&.add_child(pisaliq_xml_tag)
@@ -7045,10 +7039,12 @@ module BRNF
       		imposto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto","xs" => "http://www.portalfiscal.inf.br/nfe")
 
       		imposto_xml_tags&.each_with_index do |imposto_xml_tag,index|
-      			if msg["modelo"] != "65"
+            pis = produtos[index].dig("imposto","pis")
+            
+            if !pis.nil?
               pisst_xml_tag = Nokogiri::XML("<PISST>").elements.first
-      				imposto_xml_tag&.add_child(pisst_xml_tag)
-      			end
+      				imposto_xml_tag&.add_child(pisst_xml_tag) if msg["modelo"] != "65"
+            end
       		end
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:PISST//xs:vBC" => lambda{|msg,xml|
@@ -7069,6 +7065,7 @@ module BRNF
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:PISST//xs:pPIS" => lambda{|msg,xml|
       		produtos = msg["produtos"]
       		imposto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto","xs" => "http://www.portalfiscal.inf.br/nfe")
+
 
       		imposto_xml_tags&.each_with_index do |imposto_xml_tag,index|
       			pis = produtos[index].dig("imposto","pis")
@@ -7718,37 +7715,37 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:impostoDevol//xs:IPI" => lambda{|msg,xml|
       		produtos = msg["produtos"]
+          det_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		imposto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto","xs" => "http://www.portalfiscal.inf.br/nfe")
-
-      		imposto_xml_tags&.each_with_index do |imposto_xml_tag,index|
-      			ipi_xml_tag = imposto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:impostoDevol//xs:IPI","xs" => "http://www.portalfiscal.inf.br/nfe")
-      			valor_ipi_devolvido_xml_tag = Nokogiri::XML("<vIPIDevol>").elements.first
-      			ipi_xml_tag&.add_child(valor_ipi_devolvido_xml_tag)
-      		end
+          det_xml_tags&.each_with_index do |det_xml_tag,index|
+        		imposto_devol_xml_tag = det_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:impostoDevol","xs" => "http://www.portalfiscal.inf.br/nfe").first
+            ipi_xml_tag = Nokogiri::XML("<IPI>").elements.first
+            imposto_devol_xml_tag.add_child(ipi_xml_tag)
+          end
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:impostoDevol//xs:IPI//xs:vIPIDevol" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		imposto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto","xs" => "http://www.portalfiscal.inf.br/nfe")
+      		det_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		imposto_xml_tags&.each_with_index do |imposto_xml_tag,index|
-      			imposto_devol_xml_tag = imposto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:impostoDevol","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      		det_xml_tags&.each_with_index do |det_xml_tag,index|
+      			imposto_devol_xml_tag = det_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:impostoDevol","xs" => "http://www.portalfiscal.inf.br/nfe").first
 
       			if !produtos[index].dig("imposto","ipi").nil?
       				valor_ipi_xml_tag = imposto_devol_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:IPI//xs:vIPI","xs" => "http://www.portalfiscal.inf.br/nfe").first
-      				valor_ipi_devolvido_xml_tag = imposto_devol_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto//xs:impostoDevol//xs:vIPIDevol","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      				valor_ipi_devolvido_xml_tag = Nokogiri::XML("<vIPIDevol>").elements.first
       				valor_ipi_devolvido_xml_tag&.content = "%.2f" % ((produtos[index].dig("imposto","ipi")["percentual_mercadoria_devolvida"].to_d * valor_ipi_xml_tag.content.to_d)/100.to_d).truncate(2)
-      			end
+      			  imposto_devol_xml_tag.add_child(valor_ipi_devolvido_xml_tag)
+            end
       		end
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:infAdProd" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		imposto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:imposto","xs" => "http://www.portalfiscal.inf.br/nfe")
+      		det_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		imposto_xml_tags&.each_with_index do |imposto_xml_tag,index|
+      		det_xml_tags&.each_with_index do |det_xml_tag,index|
       			infadprod_xml_tag = Nokogiri::XML("<infAdProd>").elements.first
       			infadprod_xml_tag&.content = produtos[index]["informacoes_adicionais_produto"]
-      			imposto_xml_tag&.add_child(infadprod_xml_tag)
+      			det_xml_tag&.add_child(infadprod_xml_tag)
       		end
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:total//xs:ICMSTot//xs:vBC" => lambda{|msg,xml|
@@ -7999,9 +7996,9 @@ module BRNF
       		soma_servicos = 0.to_d
       		produtos = msg["produtos"]
       		
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |tag,index|
+      	 produto_xml_tags&.each_with_index do |tag,index|
       			if !produtos[index].dig("imposto","issqn").nil?
       				soma_servicos += "%.2f" % (produtos[index]["quantidade"].to_d * produtos[index]["preco"].to_d)
       			end
@@ -8021,19 +8018,20 @@ module BRNF
       		total_ipi_xml_tag = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:total//xs:ICMSTot//xs:vIPI","xs" => "http://www.portalfiscal.inf.br/nfe").first
       		total_ipi_devolvido_xml_tag = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:total//xs:ICMSTot//xs:vIPIDevol","xs" => "http://www.portalfiscal.inf.br/nfe").first
 
-      		total_nota_xml_tag&.content = "%.2f" % (
-      				total_produtos_xml_tag.content.to_d
-      			- total_descontos_xml_tag.content.to_d
-      			- total_icms_desonerado_xml_tag.content.to_d
-      			+ total_icms_st_xml_tag.content.to_d
-      			+ total_fcp_st_xml_tag.content.to_d
-      			+ total_frete_xml_tag.content.to_d
-      			+ total_seguro_xml_tag.content.to_d
-      			+ total_outros_xml_tag.content.to_d
-      			+ total_ii_xml_tag.content.to_d
-      			+ total_ipi_xml_tag.content.to_d
-      			+ soma_servicos
-      		).truncate(2)
+          total_nota = 0.to_d
+          total_nota += total_produtos_xml_tag.content.to_d
+          total_nota -= total_descontos_xml_tag.content.to_d
+          total_nota -= total_icms_desonerado_xml_tag.content.to_d
+          total_nota += total_icms_st_xml_tag.content.to_d
+          total_nota += total_fcp_st_xml_tag.content.to_d
+          total_nota += total_frete_xml_tag.content.to_d
+          total_nota += total_seguro_xml_tag.content.to_d
+          total_nota += total_outros_xml_tag.content.to_d
+          total_nota += total_ii_xml_tag.content.to_d
+          total_nota += total_ipi_xml_tag.content.to_d
+          total_nota += soma_servicos
+
+      		total_nota_xml_tag&.content = "%.2f" % total_nota.truncate(2)
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:total//xs:ISSQNtot//xs:vServ" => lambda{|msg,xml|
       		soma_valor_servicos = 0.to_d
@@ -8928,18 +8926,18 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFeSupl//xs:qrCode" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			cean_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:cEAN","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			cean_xml_tag&.content = produtos[index]["cean"]
       		end
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFeSupl//xs:urlChave" => lambda{|msg,xml|
       		produtos = msg["produtos"]
-      		produtos_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
+      	 produto_xml_tags = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod","xs" => "http://www.portalfiscal.inf.br/nfe")
 
-      		produtos_xml_tags&.each_with_index do |produto_xml_tag,index|
+      	 produto_xml_tags&.each_with_index do |produto_xml_tag,index|
       			cean_xml_tag = produto_xml_tag.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:det//xs:prod//xs:cEAN","xs" => "http://www.portalfiscal.inf.br/nfe").first
       			cean_xml_tag&.content = produtos[index]["cean"]
       		end
