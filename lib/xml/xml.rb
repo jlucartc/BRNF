@@ -98,13 +98,11 @@ module BRNF
 			if documento.nil? and !mensagem.nil?
 				xml = @parser.public_send(metodo,mensagem)
 				binding.pry
-				xml = @validator.public_send("valida_#{metodo}",xml)
 			elsif !documento.nil? and mensagem.nil?
 				binding.pry
-				xml = @validator.public_send("valida_#{metodo}",documento)
+				xml
 			elsif documento.nil? and mensagem.nil?
 				xml = @generator.public_send(metodo)
-				xml = @validator.public_send("valida_#{metodo}",xml)
 			else
 				raise "Error: both 'message' and 'document' parameters shoudn't be sent in the method. Choose one and try again."
 			end

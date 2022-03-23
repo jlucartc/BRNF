@@ -96,7 +96,7 @@ module BRNF
 
 		def remove_tags_mutex
 			tags = @map.keys
-			children = {children_tag_ce: [],children_tag_cg: [],children_tag_cga: [],children_tag_normal: []}
+			children = {children_tag_ce: [],children_tag_cg: [],children_tag_normal: []}
 			tags.each do |parent_tag_id|
 				lista_children = get_children_of(parent_tag_id)
 				lista_children.each do |child_tag_id|
@@ -107,13 +107,13 @@ module BRNF
 					when "CG"
 						children[:children_tag_cg] << child_tag_id
 					when "CGA"
-						children[:children_tag_cga] << child_tag_id
+						children[:children_tag_cg] << child_tag_id
 					else
 						children[:children_tag_normal] << child_tag_id
 					end
 				end
-				@map[parent_tag_id]["children"] = ([children[:children_tag_ce].sample,children[:children_tag_cg].sample,children[:children_tag_cga].sample].compact + children[:children_tag_normal]).sort_by{|item| item}
-				children = {children_tag_ce: [],children_tag_cg: [],children_tag_cga: [],children_tag_normal: []}
+				@map[parent_tag_id]["children"] = ([children[:children_tag_ce].sample,children[:children_tag_cg].sample].compact + children[:children_tag_normal]).sort_by{|item| item}
+				children = {children_tag_ce: [],children_tag_cg: [],children_tag_normal: []}
 			end
 		end
 
