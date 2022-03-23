@@ -30,6 +30,7 @@ module XMLParserHelper
 		end
 
 		def consultar_cadastro(message)
+			xml = @builder.build_xml(56,keep_mutex_tags: true)
 			message_schema = {
 				servico:"xServ",
 				uf:"UF",
@@ -42,15 +43,12 @@ module XMLParserHelper
 			xml = @builder.build_xml(1,keep_mutex_tags: true)
 			fill_constant_fields(xml)
 			fill_xml(message,xml)
-			
-			binding.pry
-
 			remove_empty_tags(xml)
-
 			xml
 		end
 
 		def consultar_status_servico(message)
+			xml = @builder.build_xml(51,keep_mutex_tags: true)
 			message_schema = {
 				ambiente:"tpAmb",
 				codigo_uf:"cUF",
@@ -59,6 +57,7 @@ module XMLParserHelper
 		end
 
 		def consultar_retorno_autorizacao(message)
+			xml = @builder.build_xml(6,keep_mutex_tags: true)
 			message_schema = {
 				ambiente:"tpAmb",
 				recibo:"nRec"
@@ -66,6 +65,7 @@ module XMLParserHelper
 		end
 
 		def inutilizar_numeracao(message)
+			xml = @builder.build_xml(10,keep_mutex_tags: true)
 			message_schema = {
 				ambiente:"tpAmb",
 				servico:"xServ",
@@ -81,6 +81,7 @@ module XMLParserHelper
 		end
 
 		def nfe_distribuicao_dfe(message)
+			xml = @builder.build_xml(64,keep_mutex_tags: true)
 			message_schema = {
 				ambiente:"tpAmb",
 				codigo_uf_autor:"cUFAutor",
@@ -92,6 +93,7 @@ module XMLParserHelper
 		end
 
 		def consultar_protocolo(message)
+			xml = @builder.build_xml(46,keep_mutex_tags: true)
 			message_schema = {
 				ambiente:"tpAmb",
 				servico:"xServ",
@@ -100,6 +102,7 @@ module XMLParserHelper
 		end
 
 		def criar_carta_correcao(message)
+			xml = @builder.build_xml(76,keep_mutex_tags: true)
 			message_schema = {
 				lote:"idLote",
 				codigo_orgao:"cOrgao",
@@ -114,6 +117,7 @@ module XMLParserHelper
 		end
 
 		def confirmacao_da_operacao(message)
+			xml = @builder.build_xml(76,keep_mutex_tags: true)
 			message_schema = {
 				lote:"idLote",
 				codigo_orgao:"cOrgao",
@@ -127,6 +131,7 @@ module XMLParserHelper
 		end
 
 		def ciencia_da_operacao(message)
+			xml = @builder.build_xml(76,keep_mutex_tags: true)
 			message_schema = {
 				lote:"idLote",
 				codigo_orgao:"cOrgao",
@@ -140,6 +145,7 @@ module XMLParserHelper
 		end
 
 		def desconhecimento_da_operacao(message)
+			xml = @builder.build_xml(76,keep_mutex_tags: true)
 			message_schema = {
 				lote:"idLote",
 				codigo_orgao:"cOrgao",
@@ -153,6 +159,7 @@ module XMLParserHelper
 		end
 
 		def operacao_nao_realizada(message)
+			xml = @builder.build_xml(76,keep_mutex_tags: true)
 			message_schema = {
 				lote:"idLote",
 				codigo_orgao:"cOrgao",
@@ -166,6 +173,7 @@ module XMLParserHelper
 		end
 
 		def emissao_contingencia(message)
+			xml = @builder.build_xml(76,keep_mutex_tags: true)
 			message_schema = {
 				lote:"idLote",
 				codigo_orgao:"cOrgao",
@@ -195,6 +203,7 @@ module XMLParserHelper
 		end
 
 		def cancelar_nota_substituicao(message)
+			xml = @builder.build_xml(76,keep_mutex_tags: true)
 			message_schema = {
 				lote:"idLote",
 				codigo_orgao:"cOrgao",
@@ -213,6 +222,7 @@ module XMLParserHelper
 		end
 
 		def cancelar_nota(message)
+			xml = @builder.build_xml(76,keep_mutex_tags: true)
 			message_schema = {
 				lote:"idLote",
 				codigo_orgao:"cOrgao",
@@ -228,6 +238,7 @@ module XMLParserHelper
 		end
 
 		def prorrogar_prazo_1(message)
+			xml = @builder.build_xml(76,keep_mutex_tags: true)
 			message_schema = {
 				lote:"idLote",
 				codigo_orgao:"cOrgao",
@@ -246,6 +257,7 @@ module XMLParserHelper
 		end
 
 		def prorrogar_prazo_2(message)
+			xml = @builder.build_xml(76,keep_mutex_tags: true)
 			message_schema = {
 				lote:"idLote",
 				codigo_orgao:"cOrgao",
@@ -264,6 +276,7 @@ module XMLParserHelper
 		end
 
 		def ator_interessado(message)
+			xml = @builder.build_xml(76,keep_mutex_tags: true)
 			message_schema = {
 				lote:"idLote",
 				codigo_orgao:"cOrgao",
@@ -289,9 +302,11 @@ module XMLParserHelper
 		end
 
 		def cancelamento_prazo_1(message)
+			xml = @builder.build_xml(76,keep_mutex_tags: true)
 		end
 
 		def cancelamento_prazo_2(message)
+			xml = @builder.build_xml(76,keep_mutex_tags: true)
 		end
 
 		private
@@ -311,6 +326,23 @@ module XMLParserHelper
 		def fill_xml(msg,xml)
 			@map.get_real_tags.each do |tag|
 				@lambdas[tag["xpath"]].call(msg,xml) if !@lambdas[tag["xpath"]].nil?
+			end
+		end
+
+		def remove_empty_tags(xml)
+			root = xml.is_a?(Nokogiri::XML::Document) ? xml.root : xml
+
+			if root.is_a?(Nokogiri::XML::Text)
+				root.remove if root.content.empty?
+			else
+				if root.children.empty?
+					root.remove
+				else
+					root.children.each do |child|
+						remove_empty_tags(child)
+					end
+					root.remove if root.children.empty?
+				end
 			end
 		end
 	end

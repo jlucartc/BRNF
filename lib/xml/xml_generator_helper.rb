@@ -52,65 +52,63 @@ module XMLGeneratorHelper
 		end
 
 		def confirmacao_da_operacao
-			xml = @builder.build_xml(76)
+			xml = @builder.build_xml(116)
 			@builder.sign_message(xml)
 		end
 
 		def ciencia_da_operacao
-			xml = @builder.build_xml(76)
+			xml = @builder.build_xml(156)
 			@builder.sign_message(xml)
 		end
 
 		def desconhecimento_da_operacao
-			xml = @builder.build_xml(76)
+			xml = @builder.build_xml(196)
 			@builder.sign_message(xml)
 		end
 
 		def operacao_nao_realizada
-			xml = @builder.build_xml(76)
+			xml = @builder.build_xml(236)
 			@builder.sign_message(xml)
 		end
 
 		def emissao_contingencia
-			xml = @builder.build_xml(76)
+			xml = @builder.build_xml(276)
 			@builder.sign_message(xml)
 		end
 
 		def cancelar_nota_substituicao
-			xml = @builder.build_xml(76)
+			xml = @builder.build_xml(316)
 			@builder.sign_message(xml)
 		end
 
 		def cancelar_nota
-			xml = @builder.build_xml(76)
+			xml = @builder.build_xml(356)
 			@builder.sign_message(xml)
 		end
 
 		def prorrogar_prazo_1
-			xml = @builder.build_xml(76)
+			xml = @builder.build_xml(396)
 			@builder.sign_message(xml)
 		end
 
 		def prorrogar_prazo_2
-			xml = @builder.build_xml(76)
+			xml = @builder.build_xml(436)
 			@builder.sign_message(xml)
 		end
 
 		def ator_interessado
-			xml = @builder.build_xml(76)
+			xml = @builder.build_xml(476)
 			@builder.sign_message(xml)
 		end
 
 		def cancelamento_prazo_1
-			xml = @builder.build_xml(76)
+			xml = @builder.build_xml(516)
 			@builder.sign_message(xml)
 		end
 
 		def cancelamento_prazo_2
-			xml = @builder.build_xml(76)
+			xml = @builder.build_xml(556)
 			@builder.sign_message(xml)
 		end
-
 	end
-
 end

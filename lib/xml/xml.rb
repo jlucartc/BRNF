@@ -98,7 +98,7 @@ module BRNF
 			if documento.nil? and !mensagem.nil?
 				xml = @parser.public_send(metodo,mensagem)
 				binding.pry
-				xml = @validator.public_send("valida_#{metodo}",mensagem)
+				xml = @validator.public_send("valida_#{metodo}",xml)
 			elsif !documento.nil? and mensagem.nil?
 				binding.pry
 				xml = @validator.public_send("valida_#{metodo}",documento)

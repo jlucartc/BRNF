@@ -676,8 +676,8 @@ RSpec.describe Gem do
 		expect(condicao).to be(true)
 	end
 
-	it "deve conter valor '210220' em tag tpEvento em operacao nao realizada" do |test|
-		condicao = tp_evento_operacao_nao_realizada.content == '210220'
+	it "deve conter valor '210240' em tag tpEvento em operacao nao realizada" do |test|
+		condicao = tp_evento_operacao_nao_realizada.content == '210240'
 		expect(condicao).to be(true)
 	end
 
@@ -696,8 +696,8 @@ RSpec.describe Gem do
 		expect(condicao).to be(true)
 	end
 
-	it "deve conter valor 'Desconhecimento da Operacao' em tag descEvento em operacao nao realizada" do |test|
-		condicao = desc_evento_operacao_nao_realizada.first.content == 'Desconhecimento da Operacao'
+	it "deve conter valor 'Operacao nao Realizada' em tag descEvento em operacao nao realizada" do |test|
+		condicao = desc_evento_operacao_nao_realizada.first.content == 'Operacao nao Realizada'
 		expect(condicao).to be(true)
 	end
 

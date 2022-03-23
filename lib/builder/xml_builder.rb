@@ -2,9 +2,8 @@ require_relative './../tag_map.rb'
 
 module BRNF
 	class XMLBuilder
-		TAGS = ["E","G","CE","CG","Raiz"]
-		ATTR = ["A"]
-		OPTIONAL = ["GO","CGO"]
+		REAL_TAGS = ["E","G","CE","CG","Root"]
+		AUXILIARY_TAGS = ["GA","CGA"]
 
 		def initialize(fill: true)
 			@should_fill_with_data = fill
@@ -47,11 +46,11 @@ module BRNF
 
 			if has_children(tag_number)
 				element_children_tag = @tag_map.get_children_of(tag_number) - @tag_map.get_attributes_of(tag_number)
-				if OPTIONAL.include?(tag_tipo)
+				if AUXILIARY_TAGS.include?(tag_tipo)
 					element_children_tag.each do |child|
 						result += build_tag(child)
 					end
-				elsif TAGS.include?(tag_tipo)
+				elsif REAL_TAGS.include?(tag_tipo)
 					element_children_tag.each do |child|
 						build_tag(child).each do |item|
 							tag_xml.add_child(item)
@@ -97,6 +96,5 @@ module BRNF
 			xml.content = Regexp.new(regex).random_example.gsub("\u0000",'') unless regex.nil?
 			xml
 		end
-
 	end
 end
