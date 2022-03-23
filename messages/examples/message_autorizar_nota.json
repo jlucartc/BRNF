@@ -1,16 +1,17 @@
 {
 	"lote": "1",
-	"codigo_uf":"20",
+	"codigo_uf":"11",
 	"codigo_numerico": "12345678",
 	"natureza": "VENDA",
 	"modelo": "55",
-	"serie": "001",
-	"numero_nota": "001",
+	"serie": "1",
+	"numero_nota": "1",
 	"tipo_operacao": "1",
 	"ambiente": "2",
 	"finalidade": "1",
 	"consumidor": "0",
 	"indicador_presencial": "0",
+	"versao_aplicacao":"0.0.0",
 	"emissor": {
 		"cpf_cnpj":"78409836000131",
 		"nome_razao_social":"EMPRESA S.A.",
@@ -50,7 +51,7 @@
 		}
 	}],
 	"responsavel_tecnico": {
-		"cnpj":"11111111111",
+		"cnpj":"11111111111111",
 		"nome":"RESPONSAVEL TECNICO",
 		"email":"admin@gmail.com",
 		"fone":"00000000000"
