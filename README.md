@@ -17,13 +17,14 @@ To generate random data, just call the method that builds the XML for the desire
 e.g.: To issue a new invoice, your should call the method `autorizar_nota`:
 
 ```ruby
-	require_relative './lib/brnf.rb'
+require_relative './lib/brnf.rb'
 
-	# If you want a brand new invoice, that's the method call:
-	generator = BRNF::XML.new
-	xml = generator.autorizar_nota()
+# If you want a random invoice, that's the method call:
+generator = BRNF::XML.new
+xml = generator.autorizar_nota()
 
-	# If you wanna validate your own invoice xml, use this:
-	generator = BRNF::XML.new
-	xml = generator.autorizar_nota(documento: File.open("your_invoice.xml"){ |f| Nokogiri::XML(f) })
+# If you wanna create an invoice with your data, use this:
+generator = BRNF::XML.new
+# More info about the message structure soon
+xml = generator.autorizar_nota(message: JSON.parse(File.open("my_json_message.json","r").read) )
 ```
