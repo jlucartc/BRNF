@@ -36,17 +36,13 @@ module BRNF
       		ambiente_xml_tag = xml.xpath("//xs:inutNFe//xs:infInut//xs:tpAmb","xs" => "http://www.portalfiscal.inf.br/nfe").first
       		ambiente_xml_tag&.content = msg["ambiente"]
       	},
-      	"//xs:inutNFe//xs:infInut//xs:xServ" => lambda{|msg,xml|
-      		servico_xml_tag = xml.xpath("//xs:inutNFe//xs:infInut//xs:xServ","xs" => "http://www.portalfiscal.inf.br/nfe").first
-      		servico_xml_tag&.content = msg["servico"]
-      	},
       	"//xs:inutNFe//xs:infInut//xs:cUF" => lambda{|msg,xml|
       		codigo_uf_xml_tag = xml.xpath("//xs:inutNFe//xs:infInut//xs:cUF","xs" => "http://www.portalfiscal.inf.br/nfe").first
       		codigo_uf_xml_tag&.content = msg["codigo_uf"]
       	},
       	"//xs:inutNFe//xs:infInut//xs:ano" => lambda{|msg,xml|
       		ano_xml_tag = xml.xpath("//xs:inutNFe//xs:infInut//xs:ano","xs" => "http://www.portalfiscal.inf.br/nfe").first
-      		ano_xml_tag&.content = msg["ano"]
+      		ano_xml_tag&.content = msg["ano"].nil? ? Time.now.strftime("%Y")[-2..-1] : msg["ano"]
       	},
       	"//xs:inutNFe//xs:infInut//xs:CNPJ" => lambda{|msg,xml|
       		cnpj_xml_tag = xml.xpath("//xs:inutNFe//xs:infInut//xs:CNPJ","xs" => "http://www.portalfiscal.inf.br/nfe").first
@@ -310,7 +306,7 @@ module BRNF
       		item_pedido_xml_tags = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:itemPedido","xs" => "http://www.portalfiscal.inf.br/nfe")
 
       		item_pedido_xml_tags&.each_with_index do |item_pedido_xml_tag,index|
-      			item_pedido_xml_tag["numItem"] = itens_pedido[index].dig("quantidade_item")
+      			item_pedido_xml_tag["numItem"] = itens_pedido[index].dig("numero_item")
       		end
       	},
       	"//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:itemPedido//xs:qtdeItem" => lambda{|msg,xml|

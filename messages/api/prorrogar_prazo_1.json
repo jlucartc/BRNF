@@ -1,0 +1,47 @@
+{
+	"openapi":"3.0.0",
+	"info":{
+		"title":"br-nf-api",
+		"version":"1.00"
+	},
+	"paths":{
+		"/inutilizar_numeracao":{
+			"post":{
+				"description":"Mensagem de prorrogacao de prazo 1",
+				"requestBody":{
+					"required":true,
+					"content":{
+						"application/json":{
+							"schema":{
+								"type":"object",
+								"required":["lote","codigo_orgao","ambiente","cpf_cnpj","chave_nota","protocolo"],
+								"properties":{
+									"lote":{"type":"string","description":"Numero sequencial que identifica o evento."},
+									"codigo_orgao":{"type":"string","description":"Código da UF que receberá o evento."},
+									"ambiente":{"type":"string","description":"Determina se a nota está sendo emitida em ambiente de produção(1) ou em ambiente de testes(2).","enum":["1","2"]},
+									"cpf_cnpj":{"type":"string","description":"CPF/CNPJ do autor do evento."},
+									"chave_nota":{"type":"string","description":"Chave da nota do evento."},
+									"protocolo":{"type":"string","description":"Numero do protocolo de autorização da nota a ser prorrogada."},
+									"itens_pedido":{
+										"type":"array",
+										"description":"Itens inclusos no pedido de prorrogação.",
+										"items":{
+											"type":"object",
+											"properties":{
+												"numero_item":{"type":"string"},
+												"quantidade_item":{"type":"string"}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses":{
+					"200":{"description":"sucesso"}
+				}
+			}
+		}
+	}
+}
