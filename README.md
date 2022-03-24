@@ -56,3 +56,7 @@ A rough description for each message can be found at [this folder](https://githu
 - [./schemas/producao/arquivos/consCad_v2.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/consCad_v2.00.xsd) for description of `BRNF::XML.new.consultar_cadastro()`
 
 The list above was the reference used to create the XML's, and they should provide a better comprehension of the OpenAPI messages when needed. It should be noted that the messages' purpose is only to convey the information needed to fill the xml tags, but they won't be validated at all. The only thing being validated here is the XML(and only at the the test cases or if you explicitly do so by comparing the xml against it's schema).
+
+## Errors and Bugs
+
+If you are having problems with requests denied by SEFAZ, due to malformed XML or broken rules, please open an issue and provide a repeatable case where the error can be reproduced, including the exact message sent, and the results(XML, SEFAZ response), preferably with fake data. Altough I won't be able to reproduce the case fully everytime, since doing so would demand a certificate issued for each state, maybe someone else can see the issue and shed some light over why it's it happening, in the worst case.
