@@ -1,0 +1,39 @@
+{
+	"openapi":"3.0.0",
+	"info":{
+		"title":"br-nf-api",
+		"version":"1.00"
+	},
+	"paths":{
+		"/inutilizar_numeracao":{
+			"post":{
+				"description":"Mensagem de inutilizacao de numeração",
+				"requestBody":{
+					"required":true,
+					"content":{
+						"application/json":{
+							"schema":{
+								"type":"object",
+								"required":["lote","codigo_numerico","natureza","modelo","serie","numero_nota","tipo_operacao","ambiente","finalidade","consumidor","indicador_presencial","emissor","destinatario","produtos","responsavel_tecnico"],
+								"properties":{
+									"ambiente":{"type":"string","description":"Determina se a nota está sendo emitida em ambiente de produção(1) ou em ambiente de testes(2).","enum":["1","2"]},
+									"codigo_uf":{"type":"string","description":"Código do IBGE referente à UF do solicitante.","enum":["11","12","13","14","15","16","17","21","22","23","24","25","26","27","28","29","31","32","33","35","41","42","43","50","51","52","53"]},
+									"ano":{"type":"string","description":"Ano de inutilização da numeração. Caso não seja informado, o ano atual será utilizado."},
+									"cnpj":{"type":"string","description":"CNPJ do emitente."},
+									"modelo":{"type":"string","description":"Informa se a nota é NFCE ou NFE.","enum":["55","65"]},
+									"serie":{"type":"string","description":"Número da série fiscal."},
+									"numero_inicial":{"type":"string","description":"Primeiro número do intervalo numérico que será inutilizado."},
+									"numero_final":{"type":"string","description":"Ultimo número do intervalo numérico que será inutilizado."},
+									"justificativa":{"type":"string","description":"Informa o motivo da inutilizacao."}
+								}
+							}
+						}
+					}
+				},
+				"responses":{
+					"200":{"description":"sucesso"}
+				}
+			}
+		}
+	}
+}
