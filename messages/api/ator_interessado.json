@@ -1,0 +1,47 @@
+{
+	"openapi":"3.0.0",
+	"info":{
+		"title":"br-nf-api",
+		"version":"1.00"
+	},
+	"paths":{
+		"/inutilizar_numeracao":{
+			"post":{
+				"description":"Mensagem de declaração de ator interessado na nota",
+				"requestBody":{
+					"required":true,
+					"content":{
+						"application/json":{
+							"schema":{
+								"type":"object",
+								"required":["lote","codigo_numerico","natureza","modelo","serie","numero_nota","tipo_operacao","ambiente","finalidade","consumidor","indicador_presencial","emissor","destinatario","produtos","responsavel_tecnico"],
+								"properties":{
+									"lote":{"type":"string","description":"Numero sequencial que identifica o evento."},
+									"codigo_orgao":{"type":"string","description":"Código da UF que receberá o evento."},
+									"ambiente":{"type":"string","description":"Determina se a nota está sendo emitida em ambiente de produção(1) ou em ambiente de testes(2).","enum":["1","2"]},
+									"cpf_cnpj":{"type":"string","description":"CPF/CNPJ do autor do evento."},
+									"chave_nota":{"type":"string","description":"Chave da nota do evento."},
+									"tipo_autor":{"type":"string"},
+									"versao_aplicacao":{"type":"string"},
+									"autorizacoes":{
+										"type":"array",
+										"items":{
+											"type":"object",
+											"properties":{
+												"cpf_cnpj":{"type":"string"}
+											}
+										}
+									},
+									"tipo_autorizacao":{"type":"string"}
+								}
+							}
+						}
+					}
+				},
+				"responses":{
+					"200":{"description":"sucesso"}
+				}
+			}
+		}
+	}
+}

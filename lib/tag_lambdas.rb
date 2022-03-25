@@ -14,9 +14,6 @@ module BRNF
       		indsinc_xml_tag = xml.xpath("//xs:enviNFe//xs:indSinc","xs" => "http://www.portalfiscal.inf.br/nfe").first
       		indsinc_xml_tag&.content = 1
       	},
-      	"//xs:enviNFe//xs:NFe" => lambda{|msg,xml|},
-      	"//xs:consReciNFe" => lambda{|msg,xml|},
-      	"//xs:consReciNFe//@versao" => lambda{|msg,xml|},
       	"//xs:consReciNFe//xs:tpAmb" => lambda{|msg,xml|
       		ambiente_xml_tag = xml.xpath("//xs:consReciNFe//xs:tpAmb","xs" => "http://www.portalfiscal.inf.br/nfe").first
       		ambiente_xml_tag&.content = msg["ambiente"]
@@ -25,9 +22,6 @@ module BRNF
       		recibo_xml_tag = xml.xpath("//xs:consReciNFe//xs:nRec","xs" => "http://www.portalfiscal.inf.br/nfe").first
       		recibo_xml_tag&.content = msg["recibo"]
       	},
-      	"//xs:inutNFe" => lambda{|msg,xml|},
-      	"//xs:inutNFe//@versao" => lambda{|msg,xml|},
-      	"//xs:inutNFe//xs:infInut" => lambda{|msg,xml|},
       	"//xs:inutNFe//xs:infInut//@Id" => lambda{|msg,xml|
       		id_xml_tag = xml.xpath("//xs:inutNFe//xs:infInut//@Id","xs" => "http://www.portalfiscal.inf.br/nfe").first
       		id_xml_tag&.content = "ID#{msg["codigo_uf"]}#{msg["ano"]}#{msg["cnpj"]}#{msg["modelo"]}#{msg["serie"]}#{msg["numero_inicial"]}#{msg["numero_final"]}" if !id_xml_tag.nil?
@@ -68,8 +62,6 @@ module BRNF
       		justificativa_xml_tag = xml.xpath("//xs:inutNFe//xs:infInut//xs:xJust","xs" => "http://www.portalfiscal.inf.br/nfe").first
       		justificativa_xml_tag&.content = msg["justificativa"]
       	},
-      	"//xs:consSitNFe" => lambda{|msg,xml|},
-      	"//xs:consSitNFe//@versao" => lambda{|msg,xml|},
       	"//xs:consSitNFe//xs:tpAmb" => lambda{|msg,xml|
       		ambiente_xml_tag = xml.xpath("//xs:consSitNFe//xs:tpAmb","xs" => "http://www.portalfiscal.inf.br/nfe").first
       		ambiente_xml_tag&.content = msg["ambiente"]
@@ -82,8 +74,6 @@ module BRNF
       		chave_nota_xml_tag = xml.xpath("//xs:consSitNFe//xs:chNFe","xs" => "http://www.portalfiscal.inf.br/nfe").first
       		chave_nota_xml_tag&.content = msg["chave_nota"]
       	},
-      	"//xs:consStatServ" => lambda{|msg,xml|},
-      	"//xs:consStatServ//@versao" => lambda{|msg,xml|},
       	"//xs:consStatServ//xs:tpAmb" => lambda{|msg,xml|
       		ambiente_xml_tag = xml.xpath("//xs:consStatServ//xs:tpAmb","xs" => "http://www.portalfiscal.inf.br/nfe").first
       		ambiente_xml_tag&.content = msg["ambiente"]
@@ -96,8 +86,6 @@ module BRNF
       		servico_xml_tag = xml.xpath("//xs:consStatServ//xs:xServ","xs" => "http://www.portalfiscal.inf.br/nfe").first
       		servico_xml_tag&.content = msg["servico"]
       	},
-      	"//xs:ConsCad" => lambda{|msg,xml|},
-      	"//xs:ConsCad//@versao" => lambda{|msg,xml|},
       	"//xs:ConsCad//xs:infCons//xs:xServ" => lambda{|msg,xml|
       		servico_xml_tag = xml.xpath("//xs:ConsCad//xs:infCons//xs:xServ","xs" => "http://www.portalfiscal.inf.br/nfe").first
       		servico_xml_tag&.content = msg["servico"]
@@ -118,7 +106,6 @@ module BRNF
       		cpf_cnpj_xml_tag = xml.xpath("//xs:ConsCad//xs:infCons//xs:CPF","xs" => "http://www.portalfiscal.inf.br/nfe").first
       		cpf_cnpj_xml_tag&.content = msg["cpf_cnpj"] and msg["cpf_cnpj"]&.length == 11
       	},
-      	"//xs:distDFeInt//@versao" => lambda{|msg,xml|},
       	"//xs:distDFeInt//xs:tpAmb" => lambda{|msg,xml|
       		ambiente_xml_tag = xml.xpath("//xs:distDFeInt//xs:tpAmb","xs" => "http://www.portalfiscal.inf.br/nfe").first
       		ambiente_xml_tag&.content = msg["ambiente"]
@@ -135,27 +122,22 @@ module BRNF
       		cpf_cnpj_xml_tag = xml.xpath("//xs:distDFeInt//xs:CPF","xs" => "http://www.portalfiscal.inf.br/nfe").first
       		cpf_cnpj_xml_tag&.content = msg["cpf_cnpj"] and msg["cpf_cnpj"]&.length == 11
       	},
-      	"//xs:distDFeInt//xs:distNSU" => lambda{|msg,xml|},
       	"//xs:distDFeInt//xs:distNSU//xs:ultNSU" => lambda{|msg,xml|
       		ultimo_nsu_xml_tag = xml.xpath("//xs:distDFeInt//xs:distNSU//xs:ultNSU","xs" => "http://www.portalfiscal.inf.br/nfe").first
       		ultimo_nsu_xml_tag&.content = msg["ultimo_nsu"]
       	},
-      	"//xs:distDFeInt//xs:consNSU" => lambda{|msg,xml|},
       	"//xs:distDFeInt//xs:consNSU//xs:NSU" => lambda{|msg,xml|
       		consulta_nsu_xml_tag = xml.xpath("//xs:distDFeInt//xs:consNSU//xs:NSU","xs" => "http://www.portalfiscal.inf.br/nfe").first
       		consulta_nsu_xml_tag&.content = msg["consulta_nsu"]
       	},
-      	"//xs:distDFeInt//xs:consChNFe" => lambda{|msg,xml|},
       	"//xs:distDFeInt//xs:consChNFe//xs:chNFe" => lambda{|msg,xml|
       		chave_nota_xml_tag = xml.xpath("//xs:distDFeInt//xs:consChNFe//xs:chNFe","xs" => "http://www.portalfiscal.inf.br/nfe").first
       		chave_nota_xml_tag&.content = msg["chave_nota"]
       	},
-      	"//xs:envEvento//@versao" => lambda{|msg,xml|},
       	"//xs:envEvento//xs:idLote" => lambda{|msg,xml|
       		lote_xml_tag = xml.xpath("//xs:envEvento//xs:idLote","xs" => "http://www.portalfiscal.inf.br/nfe").first
       		lote_xml_tag&.content = msg["lote"]
       	},
-      	"//xs:envEvento//xs:evento//@versao" => lambda{|msg,xml|},
       	"//xs:envEvento//xs:evento//xs:infEvento//@Id" => lambda{|msg,xml|
       		id_xml_tag = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//@Id","xs" => "http://www.portalfiscal.inf.br/nfe").first
       		id_xml_tag&.content = "ID#{msg["tipo_evento"]}#{msg["chave_nota"]}#{msg["numero_sequencial_evento"]}" if !id_xml_tag.nil?
@@ -196,7 +178,6 @@ module BRNF
       		versao_evento_xml_tag = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:verEvento","xs" => "http://www.portalfiscal.inf.br/nfe").first
       		versao_evento_xml_tag&.content = msg["versao_evento"]
       	},
-      	"//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento" => lambda{|msg,xml|},
       	"//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:descEvento" => lambda{|msg,xml|
       		descricao_xml_tag = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:descEvento","xs" => "http://www.portalfiscal.inf.br/nfe").first
       		descricao_xml_tag&.content = msg["descricao"]
@@ -339,7 +320,7 @@ module BRNF
       		forma_emissao = "1"
       		codigo_numerico = "%06d" % msg["codigo_numerico"].to_i
       		chave = "#{codigo_uf}#{ano_mes}#{cpf_cnpj}#{modelo}#{serie}#{numero_documento}#{forma_emissao}#{codigo_numerico}"
-      		pesos = [4,3,2,9,8,7,6,5,4,3,2,9,8,7,6,5,4,3,2,9,8,7,6,5,4,3,2,9,8,7,6,5,4,3,2,9,8,7,6,5,4,3,2]
+      		pesos = [4,3,2] + [9,8,7,6,5,4,3,2] * 5
       		
       		digito_verificador = (11  - ((0..42).map{|indice| chave[indice].to_i * pesos[indice]}.sum % 11))
       		digito_verificador = [10,11].include?(digito_verificador) ? 0 : digito_verificador
