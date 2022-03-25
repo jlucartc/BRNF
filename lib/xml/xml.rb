@@ -1,6 +1,5 @@
 require_relative './xml_parser_helper.rb'
 require_relative './xml_generator_helper.rb'
-require_relative './../validator/validator.rb'
 
 module BRNF
 
@@ -9,7 +8,6 @@ module BRNF
 		def initialize
 			@generator = XMLGeneratorHelper::XMLGenerator.new
 			@parser = XMLParserHelper::XMLInflator.new
-			@validator = BRNF::Validator.new
 		end
 
 		def autorizar_nota(message: nil)
@@ -101,7 +99,5 @@ module BRNF
 				xml = @generator.public_send(metodo)
 			end
 		end
-
 	end
-
 end
