@@ -1,0 +1,33 @@
+{
+	"openapi":"3.0.0",
+	"info":{
+		"title":"br-nf-api",
+		"version":"1.00"
+	},
+	"paths":{
+		"/inutilizar_numeracao":{
+			"post":{
+				"description":"Mensagem de consulta de cadastro",
+				"requestBody":{
+					"required":true,
+					"content":{
+						"application/json":{
+							"schema":{
+								"type":"object",
+								"required":["uf","cpf_cnpj"],
+								"properties":{
+									"uf":{"type":"string","description":"Sigla da UF consultada."},
+									"inscricao_estadual":{"type":"string","description":"Inscricao estadual do contribuinte"},
+									"cpf_cnpj":{"type":"string","description":"CPF ou CNPJ do contribuinte."},
+								}
+							}
+						}
+					}
+				},
+				"responses":{
+					"200":{"description":"sucesso"}
+				}
+			}
+		}
+	}
+}

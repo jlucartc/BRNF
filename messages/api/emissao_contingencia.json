@@ -1,0 +1,53 @@
+{
+	"openapi":"3.0.0",
+	"info":{
+		"title":"br-nf-api",
+		"version":"1.00"
+	},
+	"paths":{
+		"/inutilizar_numeracao":{
+			"post":{
+				"description":"Mensagem de emissão em contingência",
+				"requestBody":{
+					"required":true,
+					"content":{
+						"application/json":{
+							"schema":{
+								"type":"object",
+								"required":["lote","codigo_orgao","ambiente","cpf_cnpj","chave_nota","tipo_autor","versao_aplicacao","data_emissao","tipo_operacao","destinatario"],
+								"properties":{
+									"lote":{"type":"string","description":"Numero sequencial que identifica o evento."},
+									"codigo_orgao":{"type":"string","description":"Código da UF que receberá o evento."},
+									"ambiente":{"type":"string","description":"Determina se a nota está sendo emitida em ambiente de produção(1) ou em ambiente de testes(2).","enum":["1","2"]},
+									"cpf_cnpj":{"type":"string","description":"CPF/CNPJ do autor do evento."},
+									"chave_nota":{"type":"string","description":"Chave da nota do evento."},
+									"tipo_autor":{"type":"string"},
+									"versao_aplicacao":{"type":"string"},
+									"data_emissao":{"type":"string"},
+									"tipo_operacao":{"type":"string"},
+									"inscricao_estadual":{"type":"string"},
+									"destinatario":{
+										"type":"object",
+										"required":["uf","valor_nota","valor_icms","valor_icms_st"],
+										"properties":{
+											"uf":{"type":"string"},
+											"cpf_cnpj":{"type":"string"},
+											"id_estrangeiro":{"type":"string"},
+											"inscricao_estadual":{"type":"string"},
+											"valor_nota":{"type":"string"},
+											"valor_icms":{"type":"string"},
+											"valor_icms_st":{"type":"string"}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses":{
+					"200":{"description":"sucesso"}
+				}
+			}
+		}
+	}
+}

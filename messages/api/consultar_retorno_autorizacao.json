@@ -1,0 +1,32 @@
+{
+	"openapi":"3.0.0",
+	"info":{
+		"title":"br-nf-api",
+		"version":"1.00"
+	},
+	"paths":{
+		"/inutilizar_numeracao":{
+			"post":{
+				"description":"Mensagem de retorno de autorização",
+				"requestBody":{
+					"required":true,
+					"content":{
+						"application/json":{
+							"schema":{
+								"type":"object",
+								"required":["uf","cpf_cnpj"],
+								"properties":{
+									"ambiente":{"type":"string","description":"Ambiente da consulta"},
+									"recibo":{"type":"string","description":"Recibo a ser consultado"},
+								}
+							}
+						}
+					}
+				},
+				"responses":{
+					"200":{"description":"sucesso"}
+				}
+			}
+		}
+	}
+}
