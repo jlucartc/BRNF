@@ -15,7 +15,26 @@ module BRNF
 			Nokogiri::XML::Document.parse(build_tag(tag).first.to_xml.gsub(/>[\s\n\t]*</,"><"))
 		end
 
-		def sign_message(xml,certfile: nil)
+		def sign_message(xml,pfx_file_path: nil, key_file_path: nil, password: nil, cert_file_path: nil)
+			if !pfx_file_path.nil?
+				begin
+					pfx_file = OpenSSL::PKCS12.new(File.open(pfx_file_path,'r').read,password)
+					key = pfx_file.key
+
+					validate_cert(pfx_file.certificate)
+				rescue OpenSSL::PKCS12::PKCS12Error
+					raise  "Error: wrong password or invalid certificate file."
+				end
+			else
+				if !cert_file_path.nil? and !key_file_path.nil? and !ca_file_path.nil? and !password.nil?
+					key = OpenSSL::Pkey::RSA.new(File.open(key_file_path,'r').read)
+					cert = OpenSSL::X509::Certificate.new(File.open(cert_file_path,'r').read)
+				else
+					key = OpenSSL::PKey::RSA.new(2048)
+					cert = key.to_pem
+				end
+			end
+
 			content = xml.xpath("//*[@Id]").first.canonicalize
 
 			if xml.xpath("//xs:Signature","xs" => "http://www.w3.org/2000/09/xmldsig#").empty?
@@ -70,9 +89,8 @@ module BRNF
 				signature_xml_tag.add_child(key_info_xml_tag)
 
 				digest_value_xml_tag.content = Base64.encode64(Digest::SHA1.digest(content)).gsub(/\n/,'')
-				key = OpenSSL::PKey::RSA.new(2048)
 				signature_value_xml_tag.content = Base64.encode64(key.sign(OpenSSL::Digest::SHA1.new,content)).gsub(/\n/,'')
-				x509_certificate_xml_tag.content = key.to_pem.gsub(/[-]{5}[\sA-Z]+[-]{5}/,'').gsub(/\n/,'')
+				x509_certificate_xml_tag.content = cert.gsub(/[-]{5}[\sA-Z]+[-]{5}/,'').gsub(/\n/,'')
 				parent_xml_tag.add_child(signature_xml_tag)
 			else
 				signature = xml.xpath("//xs:Signature","xs" => "http://www.w3.org/2000/09/xmldsig#")
@@ -82,15 +100,22 @@ module BRNF
 				x509_certificate = signature.xpath("//xs:X509Certificate","xs"=>"http://www.w3.org/2000/09/xmldsig#").first
 				reference['URI'] = "##{xml.xpath("//*[@Id]").first['Id']}"
 				digest.content = Base64.encode64(Digest::SHA1.digest(content)).gsub(/\n/,'')
-				key = OpenSSL::PKey::RSA.new(2048)
 				signature_value.content = Base64.encode64(key.sign(OpenSSL::Digest::SHA1.new,content)).gsub(/\n/,'')
-				x509_certificate.content = key.to_pem.gsub(/[-]{5}[\sA-Z]+[-]{5}/,'').gsub(/\n/,'')
+				x509_certificate.content = cert.gsub(/[-]{5}[\sA-Z]+[-]{5}/,'').gsub(/\n/,'')
 			end
 
 			xml
 		end
 
 		private
+
+		def validate_cert(cert)
+			not_before = cert.not_before
+			not_after = cert.not_after
+
+			raise "Error: expired certificate. Valid until #{not_after}" if not_after < Time.now
+			raise "Error: certificate not valid yet. Valid after #{not_before}" if not_before > Time.now
+		end
 
 		def create_xml_tag(tag_name)
 			Nokogiri::XML("<#{tag_name}>").elements.first
