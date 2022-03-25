@@ -7,14 +7,14 @@
 	"paths":{
 		"/inutilizar_numeracao":{
 			"post":{
-				"description":"Mensagem de declaração de ator interessado na nota",
+				"description":"Mensagem de cancelamento de nota",
 				"requestBody":{
 					"required":true,
 					"content":{
 						"application/json":{
 							"schema":{
 								"type":"object",
-								"required":["lote","codigo_orgao","ambiente","cpf_cnpj","chave_nota","tipo_autor","versao_aplicacao","cpf_cnpj_autorizado"],
+								"required":["lote","codigo_orgao","ambiente","cpf_cnpj","chave_nota","tipo_autor","versao_aplicacao","protocolo"],
 								"properties":{
 									"lote":{"type":"string","description":"Numero sequencial que identifica o evento."},
 									"codigo_orgao":{"type":"string","description":"Código da UF que receberá o evento."},
@@ -23,8 +23,8 @@
 									"chave_nota":{"type":"string","description":"Chave da nota do evento."},
 									"tipo_autor":{"type":"string"},
 									"versao_aplicacao":{"type":"string"},
-									"cpf_cnpj_autorizado":{"type":"string"},
-									"tipo_autorizacao":{"type":"string"}
+									"protocolo":{"type":"string"},
+									"justificativa":{"type":"string"}
 								}
 							}
 						}

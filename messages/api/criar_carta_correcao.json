@@ -7,24 +7,21 @@
 	"paths":{
 		"/inutilizar_numeracao":{
 			"post":{
-				"description":"Mensagem de declaração de ator interessado na nota",
+				"description":"Mensagem de carta de correcao",
 				"requestBody":{
 					"required":true,
 					"content":{
 						"application/json":{
 							"schema":{
 								"type":"object",
-								"required":["lote","codigo_orgao","ambiente","cpf_cnpj","chave_nota","tipo_autor","versao_aplicacao","cpf_cnpj_autorizado"],
+								"required":["lote","codigo_orgao","ambiente","cpf_cnpj","chave_nota","correcao"],
 								"properties":{
 									"lote":{"type":"string","description":"Numero sequencial que identifica o evento."},
 									"codigo_orgao":{"type":"string","description":"Código da UF que receberá o evento."},
 									"ambiente":{"type":"string","description":"Determina se a nota está sendo emitida em ambiente de produção(1) ou em ambiente de testes(2).","enum":["1","2"]},
 									"cpf_cnpj":{"type":"string","description":"CPF/CNPJ do autor do evento."},
 									"chave_nota":{"type":"string","description":"Chave da nota do evento."},
-									"tipo_autor":{"type":"string"},
-									"versao_aplicacao":{"type":"string"},
-									"cpf_cnpj_autorizado":{"type":"string"},
-									"tipo_autorizacao":{"type":"string"}
+									"correcao":{"type":"string"},
 								}
 							}
 						}
