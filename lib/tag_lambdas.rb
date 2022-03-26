@@ -135,7 +135,10 @@ module BRNF
       	},
       	"//xs:envEvento//xs:evento//xs:infEvento//@Id" => lambda{|msg,xml|
       		id_xml_tag = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//@Id","xs" => "http://www.portalfiscal.inf.br/nfe").first
-      		id_xml_tag&.content = "ID#{msg["tipo_evento"]}#{msg["chave_nota"]}#{msg["numero_sequencial_evento"]}" if !id_xml_tag.nil?
+      		id_xml_tag&.content = "ID"
+          id_xml_tag&.content += "%06d" % msg["tipo_evento"]
+          id_xml_tag&.content += msg["chave_nota"]
+          id_xml_tag&.content += "%02d" % msg["sequencia"]
       	},
       	"//xs:envEvento//xs:evento//xs:infEvento//xs:cOrgao" => lambda{|msg,xml|
       		codigo_orgao_xml_tag = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:cOrgao","xs" => "http://www.portalfiscal.inf.br/nfe").first
@@ -147,11 +150,11 @@ module BRNF
       	},
       	"//xs:envEvento//xs:evento//xs:infEvento//xs:CNPJ" => lambda{|msg,xml|
       		cpf_cnpj_xml_tag = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:CNPJ","xs" => "http://www.portalfiscal.inf.br/nfe").first
-      		cpf_cnpj_xml_tag&.content = msg["cpf_cnpj"] and msg["cpf_cnpj"]&.length == 14
+      		cpf_cnpj_xml_tag&.content = msg["cpf_cnpj"] if msg["cpf_cnpj"]&.length == 14
       	},
       	"//xs:envEvento//xs:evento//xs:infEvento//xs:CPF" => lambda{|msg,xml|
       		cpf_cnpj_xml_tag = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:CPF","xs" => "http://www.portalfiscal.inf.br/nfe").first
-      		cpf_cnpj_xml_tag&.content = msg["cpf_cnpj"] and msg["cpf_cnpj"]&.length == 11
+      		cpf_cnpj_xml_tag&.content = msg["cpf_cnpj"] if msg["cpf_cnpj"]&.length == 11
       	},
       	"//xs:envEvento//xs:evento//xs:infEvento//xs:chNFe" => lambda{|msg,xml|
       		chave_nota_xml_tag = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:chNFe","xs" => "http://www.portalfiscal.inf.br/nfe").first
@@ -166,17 +169,13 @@ module BRNF
       		tipo_evento_xml_tag&.content = msg["tipo_evento"]
       	},
       	"//xs:envEvento//xs:evento//xs:infEvento//xs:nSeqEvento" => lambda{|msg,xml|
-      		numero_sequencial_evento_xml_tag = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:nSeqEvento","xs" => "http://www.portalfiscal.inf.br/nfe").first
-      		numero_sequencial_evento_xml_tag&.content = msg["numero_sequencial_evento"]
+      		sequencia_xml_tag = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:nSeqEvento","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      		sequencia_xml_tag&.content = msg["sequencia"]
       	},
-      	"//xs:envEvento//xs:evento//xs:infEvento//xs:verEvento" => lambda{|msg,xml|
-      		versao_evento_xml_tag = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:verEvento","xs" => "http://www.portalfiscal.inf.br/nfe").first
-      		versao_evento_xml_tag&.content = msg["versao_evento"]
-      	},
-      	"//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:descEvento" => lambda{|msg,xml|
-      		descricao_xml_tag = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:descEvento","xs" => "http://www.portalfiscal.inf.br/nfe").first
-      		descricao_xml_tag&.content = msg["descricao"]
-      	},
+        "//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:descEvento" => lambda{|msg,xml|
+          desc_evento_xml_tag = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:descEvento","xs" => "http://www.portalfiscal.inf.br/nfe").first
+          desc_evento_xml_tag&.content = msg["descricao"]
+        },
       	"//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:cOrgaoAutor" => lambda{|msg,xml|
       		codigo_orgao_autor_xml_tag = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:cOrgaoAutor","xs" => "http://www.portalfiscal.inf.br/nfe").first
       		codigo_orgao_autor_xml_tag&.content = msg["codigo_orgao_autor"]
@@ -198,12 +197,8 @@ module BRNF
       		justificativa_xml_tag&.content = msg["justificativa"]
       	},
       	"//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:chNFeRef" => lambda{|msg,xml|
-      		chave_nota_referenciada_xml_tag = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:chNFeRef","xs" => "http://www.portalfiscal.inf.br/nfe").first
-      		chave_nota_referenciada_xml_tag&.content = msg["chave_nota_referenciada"]
-      	},
-      	"//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//@versao" => lambda{|msg,xml|
-      		versao_evento_xml_tag = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//@versao","xs" => "http://www.portalfiscal.inf.br/nfe").first
-      		versao_evento_xml_tag&.content = msg["versao_evento"]
+      		chave_nota_substituta_xml_tag = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:chNFeRef","xs" => "http://www.portalfiscal.inf.br/nfe").first
+      		chave_nota_substituta_xml_tag&.content = msg["chave_nota_substituta"]
       	},
       	"//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xCorrecao" => lambda{|msg,xml|
       		correcao_xml_tag = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xCorrecao","xs" => "http://www.portalfiscal.inf.br/nfe").first
@@ -303,6 +298,14 @@ module BRNF
       		cpf_cnpj_xml_tag = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:autXML//xs:CPF","xs" => "http://www.portalfiscal.inf.br/nfe").first
       		cpf_cnpj_xml_tag&.content = msg["cpf_cnpj"] and msg["cpf_cnpj"]&.length == 11
       	},
+        "//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpAutorizacao" => lambda{|msg,xml|
+          tipo_autorizacao_xml_tag = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpAutorizacao","xs" => "http://www.portalfiscal.inf.br/nfe").first
+          tipo_autorizacao_xml_tag&.content = msg["tipo_autorizacao"]
+        },
+        "//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xCondUso" => lambda{|msg,xml|
+          condicao_uso_xml_tag = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:xCondUso","xs" => "http://www.portalfiscal.inf.br/nfe").first
+          condicao_uso_xml_tag&.content = msg["condicao_uso"]
+        },
       	"//xs:enviNFe//xs:NFe//xs:infNFe//@Id" => lambda{|msg,xml|
       		infnfe_xml_tag = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe","xs" => "http://www.portalfiscal.inf.br/nfe").first
       		

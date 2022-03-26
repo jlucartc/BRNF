@@ -87,6 +87,9 @@ module XMLParserHelper
 		end
 
 		def criar_carta_correcao(message)
+			message["tipo_evento"] = "110110"
+			message["descricao"] = "Carta de Correcao"
+			message["condicao_uso"] = "A Carta de Correcao e disciplinada pelo paragrafo 1o-A do art. 7o do Convenio S/N, de 15 de dezembro de 1970 e pode ser utilizada para regularizacao de erro ocorrido na emissao de documento fiscal, desde que o erro nao esteja relacionado com: I - as variaveis que determinam o valor do imposto tais como: base de calculo, aliquota, diferenca de preco, quantidade, valor da operacao ou da prestacao; II - a correcao de dados cadastrais que implique mudanca do remetente ou do destinatario; III - a data de emissao ou de saida."
 			xml = @builder.build_xml(76,keep_mutex_tags: true)
 			fill_constant_fields(xml)
 			fill_xml(message,xml)
@@ -96,7 +99,9 @@ module XMLParserHelper
 		end
 
 		def confirmacao_da_operacao(message)
-			xml = @builder.build_xml(76,keep_mutex_tags: true)
+			message["tipo_evento"] = "210200"
+			message["descricao"] = "Confirmacao da Operacao"
+			xml = @builder.build_xml(116,keep_mutex_tags: true)
 			fill_constant_fields(xml)
 			fill_xml(message,xml)
 			remove_empty_tags(xml)
@@ -105,7 +110,9 @@ module XMLParserHelper
 		end
 
 		def ciencia_da_operacao(message)
-			xml = @builder.build_xml(76,keep_mutex_tags: true)
+			message["tipo_evento"] = "210220"
+			message["descricao"] = "Ciencia da Operacao"
+			xml = @builder.build_xml(156,keep_mutex_tags: true)
 			fill_constant_fields(xml)
 			fill_xml(message,xml)
 			remove_empty_tags(xml)
@@ -114,7 +121,9 @@ module XMLParserHelper
 		end
 
 		def desconhecimento_da_operacao(message)
-			xml = @builder.build_xml(76,keep_mutex_tags: true)
+			message["tipo_evento"] = "210220"
+			message["descricao"] = "Desconhecimento da Operacao"
+			xml = @builder.build_xml(196,keep_mutex_tags: true)
 			fill_constant_fields(xml)
 			fill_xml(message,xml)
 			remove_empty_tags(xml)
@@ -123,7 +132,9 @@ module XMLParserHelper
 		end
 
 		def operacao_nao_realizada(message)
-			xml = @builder.build_xml(76,keep_mutex_tags: true)
+			message["tipo_evento"] = "210240"
+			message["descricao"] = "Operacao nao Realizada"
+			xml = @builder.build_xml(236,keep_mutex_tags: true)
 			fill_constant_fields(xml)
 			fill_xml(message,xml)
 			remove_empty_tags(xml)
@@ -132,7 +143,9 @@ module XMLParserHelper
 		end
 
 		def emissao_contingencia(message)
-			xml = @builder.build_xml(76,keep_mutex_tags: true)
+			message["tipo_evento"] = "110140"
+			message["descricao"] = "EPEC"
+			xml = @builder.build_xml(276,keep_mutex_tags: true)
 			fill_constant_fields(xml)
 			fill_xml(message,xml)
 			remove_empty_tags(xml)
@@ -141,7 +154,9 @@ module XMLParserHelper
 		end
 
 		def cancelar_nota_substituicao(message)
-			xml = @builder.build_xml(76,keep_mutex_tags: true)
+			message["tipo_evento"] = "110112"
+			message["descricao"] = "Cancelamento por substituicao"
+			xml = @builder.build_xml(316,keep_mutex_tags: true)
 			fill_constant_fields(xml)
 			fill_xml(message,xml)
 			remove_empty_tags(xml)
@@ -150,7 +165,9 @@ module XMLParserHelper
 		end
 
 		def cancelar_nota(message)
-			xml = @builder.build_xml(76,keep_mutex_tags: true)
+			message["tipo_evento"] = "110111"
+			message["descricao"] = "Cancelamento"
+			xml = @builder.build_xml(356,keep_mutex_tags: true)
 			fill_constant_fields(xml)
 			fill_xml(message,xml)
 			remove_empty_tags(xml)
@@ -159,7 +176,9 @@ module XMLParserHelper
 		end
 
 		def prorrogar_prazo_1(message)
-			xml = @builder.build_xml(76,keep_mutex_tags: true)
+			message["tipo_evento"] = "111500"
+			message["descricao"] = "Pedido de Prorrogacao"
+			xml = @builder.build_xml(396,keep_mutex_tags: true)
 			fill_constant_fields(xml)
 			fill_xml(message,xml)
 			remove_empty_tags(xml)
@@ -168,7 +187,9 @@ module XMLParserHelper
 		end
 
 		def prorrogar_prazo_2(message)
-			xml = @builder.build_xml(76,keep_mutex_tags: true)
+			message["tipo_evento"] = "111501"
+			message["descricao"] = "Pedido de Prorrogacao"
+			xml = @builder.build_xml(436,keep_mutex_tags: true)
 			fill_constant_fields(xml)
 			fill_xml(message,xml)
 			remove_empty_tags(xml)
@@ -177,7 +198,10 @@ module XMLParserHelper
 		end
 
 		def ator_interessado(message)
-			xml = @builder.build_xml(76,keep_mutex_tags: true)
+			message["tipo_evento"] = "110150"
+			message["descricao"] = "Ator Interessado na NF-e"
+			message["condicao_uso"] = "O emitente ou destinatário da NF-e, declara que permite o transportador declarado no campo CNPJ/CPF deste evento a autorizar os transportadores subcontratados ou redespachados a terem acesso ao download da NF-e"
+			xml = @builder.build_xml(476,keep_mutex_tags: true)
 			fill_constant_fields(xml)
 			fill_xml(message,xml)
 			remove_empty_tags(xml)
@@ -186,7 +210,9 @@ module XMLParserHelper
 		end
 
 		def cancelamento_prazo_1(message)
-			xml = @builder.build_xml(76,keep_mutex_tags: true)
+			message["tipo_evento"] = "111501"
+			message["descricao"] = "Pedido de Prorrogacao"
+			xml = @builder.build_xml(516,keep_mutex_tags: true)
 			fill_constant_fields(xml)
 			fill_xml(message,xml)
 			remove_empty_tags(xml)
@@ -195,7 +221,9 @@ module XMLParserHelper
 		end
 
 		def cancelamento_prazo_2(message)
-			xml = @builder.build_xml(76,keep_mutex_tags: true)
+			message["tipo_evento"] = "111503"
+			message["descricao"] = "Pedido de Prorrogacao"
+			xml = @builder.build_xml(556,keep_mutex_tags: true)
 			fill_constant_fields(xml)
 			fill_xml(message,xml)
 			remove_empty_tags(xml)

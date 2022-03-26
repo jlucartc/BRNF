@@ -215,10 +215,10 @@ RSpec.describe "XML Parser (producao)" do
 	
 	message_autorizar_nota = JSON.parse(File.open("./messages/examples/message_autorizar_nota.json","r").read)
 	message_inutilizar_numeracao = JSON.parse(File.open("./messages/examples/message_inutilizar_numeracao.json","r").read)
-	# message_criar_carta_correcao = JSON.parse(File.open("","r").read)
-	# message_cancelar_nota = JSON.parse(File.open("","r").read)
+	message_criar_carta_correcao = JSON.parse(File.open("./messages/examples/message_criar_carta_correcao.json","r").read)
+	message_cancelar_nota = JSON.parse(File.open("./messages/examples/message_cancelar_nota.json","r").read)
 	message_consultar_status_servico = JSON.parse(File.open("./messages/examples/message_consulta_status_servico.json","r").read)
-	# message_cancelar_nota_substituicao = JSON.parse(File.open("","r").read)
+	message_cancelar_nota_substituicao = JSON.parse(File.open("./messages/examples/message_cancelar_nota_substituicao.json","r").read)
 	# message_prorrogar_prazo_1 = JSON.parse(File.open("","r").read)
 	# message_prorrogar_prazo_2 = JSON.parse(File.open("","r").read)
 	# message_ator_interessado = JSON.parse(File.open("","r").read)
@@ -238,10 +238,10 @@ RSpec.describe "XML Parser (producao)" do
 
 	xml_autorizacao = generator.autorizar_nota(message: message_autorizar_nota)
 	xml_inutilizacao = generator.inutilizar_numeracao(message: message_inutilizar_numeracao)
-	# xml_evento_carta_correcao = generator.criar_carta_correcao(message: message_criar_carta_correcao)
-	# xml_evento_cancelar_nota = generator.cancelar_nota(message: message_cancelar_nota)
+	xml_evento_carta_correcao = generator.criar_carta_correcao(message: message_criar_carta_correcao)
+	xml_evento_cancelar_nota = generator.cancelar_nota(message: message_cancelar_nota)
 	xml_consultar_status_servico = generator.consultar_status_servico(message: message_consultar_status_servico)
-	# xml_evento_cancelar_nota_substituicao = generator.cancelar_nota_substituicao(message: message_cancelar_nota_substituicao)
+	xml_evento_cancelar_nota_substituicao = generator.cancelar_nota_substituicao(message: message_cancelar_nota_substituicao)
 	# xml_evento_prorrogar_prazo_1 = generator.prorrogar_prazo_1(message: message_prorrogar_prazo_1)
 	# xml_evento_prorrogar_prazo_2 = generator.prorrogar_prazo_2(message: message_prorrogar_prazo_2)
 	# xml_evento_ator_interessado = generator.ator_interessado(message: message_ator_interessado)
@@ -269,17 +269,17 @@ RSpec.describe "XML Parser (producao)" do
 		expect(schema.valid?(xml_inutilizacao)).to be(true)
 	end
 
-	# it "deve criar um xml válido para mensagem de evento de carta de correção" do |test|
-	# 	schema = Nokogiri::XML::Schema(File.open(schema_evento_carta_correcao))
-	# 	puts schema.validate(xml_evento_carta_correcao) if !schema.valid?(xml_evento_carta_correcao)
-	# 	expect(schema.valid?(xml_evento_carta_correcao)).to be(true)
-	# end
+	it "deve criar um xml válido para mensagem de evento de carta de correção" do |test|
+		schema = Nokogiri::XML::Schema(File.open(schema_evento_carta_correcao))
+		puts schema.validate(xml_evento_carta_correcao) if !schema.valid?(xml_evento_carta_correcao)
+		expect(schema.valid?(xml_evento_carta_correcao)).to be(true)
+	end
 
-	# it "deve criar um xml válido para mensagem de cancelamento de nota" do |test|
-	# 	schema = Nokogiri::XML::Schema(File.open(schema_evento_cancelar_nota))
-	# 	puts schema.validate(xml_evento_cancelar_nota) if !schema.valid?(xml_evento_cancelar_nota)
-	# 	expect(schema.valid?(xml_evento_cancelar_nota)).to be(true)
-	# end
+	it "deve criar um xml válido para mensagem de cancelamento de nota" do |test|
+		schema = Nokogiri::XML::Schema(File.open(schema_evento_cancelar_nota))
+		puts schema.validate(xml_evento_cancelar_nota) if !schema.valid?(xml_evento_cancelar_nota)
+		expect(schema.valid?(xml_evento_cancelar_nota)).to be(true)
+	end
 
 	it "deve criar um xml válido para mensagem de consulta de status" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_consultar_status_servico))
@@ -287,11 +287,11 @@ RSpec.describe "XML Parser (producao)" do
 		expect(schema.valid?(xml_consultar_status_servico)).to be(true)
 	end
 
-	# it "deve criar um xml válido para mensagem de cancelamento de nota substituicao" do |test|
-	# 	schema = Nokogiri::XML::Schema(File.open(schema_evento_cancelar_nota_substituicao))
-	# 	puts schema.validate(xml_evento_cancelar_nota_substituicao) if !schema.valid?(xml_evento_cancelar_nota_substituicao)
-	# 	expect(schema.valid?(xml_evento_cancelar_nota_substituicao)).to be(true)
-	# end
+	it "deve criar um xml válido para mensagem de cancelamento de nota substituicao" do |test|
+		schema = Nokogiri::XML::Schema(File.open(schema_evento_cancelar_nota_substituicao))
+		puts schema.validate(xml_evento_cancelar_nota_substituicao) if !schema.valid?(xml_evento_cancelar_nota_substituicao)
+		expect(schema.valid?(xml_evento_cancelar_nota_substituicao)).to be(true)
+	end
 
 	# it "deve criar um xml válido para mensagem de prorrogamento de prazo 1" do |test|
 	# 	schema = Nokogiri::XML::Schema(File.open(schema_evento_prorrogar_prazo_1))
