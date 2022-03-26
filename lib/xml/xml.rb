@@ -1,5 +1,6 @@
-require_relative './xml_parser_helper.rb'
-require_relative './xml_generator_helper.rb'
+require_relative './../parser/xml_parser_helper.rb'
+require_relative './../generator/xml_generator_helper.rb'
+require_relative './../issuer/issuer.rb'
 
 module BRNF
 
