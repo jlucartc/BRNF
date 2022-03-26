@@ -1,8 +1,6 @@
 require 'simplecov'
 SimpleCov.start
 
-#require './nf/api/builder.rb'
-#require './nf/mock/generator.rb'
 require './lib/brnf.rb'
 require 'nokogiri'
 require 'pry'
@@ -31,7 +29,10 @@ RSpec.describe "Random XML Generator (producao)" do
 	schema_consultar_protocolo = './schemas/producao/arquivos/consSitNFe_v4.00.xsd'
 	schema_nfe_distribuicao_dfe = './schemas/producao/arquivos/distDFeInt_v1.01.xsd'
 	schema_consultar_cadastro = './schemas/producao/arquivos/consCad_v2.00.xsd'
+	
 	generator = BRNF::XML.new
+	signer = BRNF::Signer.new
+	
 	xml_autorizacao = generator.autorizar_nota()
 	xml_inutilizacao = generator.inutilizar_numeracao()
 	xml_evento_carta_correcao = generator.criar_carta_correcao()
@@ -52,6 +53,22 @@ RSpec.describe "Random XML Generator (producao)" do
 	xml_consultar_protocolo = generator.consultar_protocolo()
 	xml_nfe_distribuicao_dfe = generator.nfe_distribuicao_dfe()
 	xml_consultar_cadastro = generator.consultar_cadastro()
+
+	xml_autorizacao = signer.sign_message(xml_autorizacao)
+	xml_inutilizacao = signer.sign_message(xml_inutilizacao)
+	xml_evento_carta_correcao = signer.sign_message(xml_evento_carta_correcao)
+	xml_evento_cancelar_nota = signer.sign_message(xml_evento_cancelar_nota)
+	xml_evento_cancelar_nota_substituicao = signer.sign_message(xml_evento_cancelar_nota_substituicao)
+	xml_evento_prorrogar_prazo_1 = signer.sign_message(xml_evento_prorrogar_prazo_1)
+	xml_evento_prorrogar_prazo_2 = signer.sign_message(xml_evento_prorrogar_prazo_2)
+	xml_evento_ator_interessado = signer.sign_message(xml_evento_ator_interessado)
+	xml_evento_confirmacao_da_operacao = signer.sign_message(xml_evento_confirmacao_da_operacao)
+	xml_evento_ciencia_da_operacao = signer.sign_message(xml_evento_ciencia_da_operacao)
+	xml_evento_desconhecimento_da_operacao = signer.sign_message(xml_evento_desconhecimento_da_operacao)
+	xml_evento_operacao_nao_realizada = signer.sign_message(xml_evento_operacao_nao_realizada)
+	xml_evento_emissao_contingencia = signer.sign_message(xml_evento_emissao_contingencia)
+	xml_evento_cancelamento_prazo_1 = signer.sign_message(xml_evento_cancelamento_prazo_1)
+	xml_evento_cancelamento_prazo_2 = signer.sign_message(xml_evento_cancelamento_prazo_2)
 
 	it "deve criar um xml válido para mensagem de autorizacao de notas" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_autorizacao))
@@ -196,11 +213,11 @@ RSpec.describe "XML Parser (producao)" do
 	schema_nfe_distribuicao_dfe = './schemas/producao/arquivos/distDFeInt_v1.01.xsd'
 	schema_consultar_cadastro = './schemas/producao/arquivos/consCad_v2.00.xsd'
 	
-	message_autorizacao = JSON.parse(File.open("./messages/examples/message_autorizar_nota.json","r").read)
-	# message_inutilizar_numeracao = JSON.parse(File.open("","r").read)
+	message_autorizar_nota = JSON.parse(File.open("./messages/examples/message_autorizar_nota.json","r").read)
+	message_inutilizar_numeracao = JSON.parse(File.open("./messages/examples/message_inutilizar_numeracao.json","r").read)
 	# message_criar_carta_correcao = JSON.parse(File.open("","r").read)
 	# message_cancelar_nota = JSON.parse(File.open("","r").read)
-	# message_consultar_status_servico = JSON.parse(File.open("","r").read)
+	message_consultar_status_servico = JSON.parse(File.open("./messages/examples/message_consulta_status_servico.json","r").read)
 	# message_cancelar_nota_substituicao = JSON.parse(File.open("","r").read)
 	# message_prorrogar_prazo_1 = JSON.parse(File.open("","r").read)
 	# message_prorrogar_prazo_2 = JSON.parse(File.open("","r").read)
@@ -212,30 +229,31 @@ RSpec.describe "XML Parser (producao)" do
 	# message_emissao_contingencia = JSON.parse(File.open("","r").read)
 	# message_cancelamento_prazo_1 = JSON.parse(File.open("","r").read)
 	# message_cancelamento_prazo_2 = JSON.parse(File.open("","r").read)
-	# message_consultar_retorno_autorizacao = JSON.parse(File.open("","r").read)
-	# message_consultar_protocolo = JSON.parse(File.open("","r").read)
+	message_consultar_retorno_autorizacao = JSON.parse(File.open("./messages/examples/message_consultar_retorno_autorizacao.json","r").read)
+	message_consultar_protocolo = JSON.parse(File.open("./messages/examples/message_consultar_protocolo.json","r").read)
 	# message_nfe_distribuicao_dfe = JSON.parse(File.open("","r").read)
 	# message_consultar_cadastro = JSON.parse(File.open("","r").read)
 
 	generator = BRNF::XML.new
-	xml_autorizacao = generator.autorizar_nota(message: message_autorizacao)
-	# xml_inutilizacao = generator.inutilizar_numeracao(message: message_inutilizacao)
-	# xml_evento_carta_correcao = generator.criar_carta_correcao(message: message_evento_carta_correcao)
-	# xml_evento_cancelar_nota = generator.cancelar_nota(message: message_evento_cancelar_nota)
-	# xml_consultar_status_servico = generator.consultar_status_servico(message: message_consultar_status_servico)
-	# xml_evento_cancelar_nota_substituicao = generator.cancelar_nota_substituicao(message: message_evento_cancelar_nota_substituicao)
-	# xml_evento_prorrogar_prazo_1 = generator.prorrogar_prazo_1(message: message_evento_prorrogar_prazo_1)
-	# xml_evento_prorrogar_prazo_2 = generator.prorrogar_prazo_2(message: message_evento_prorrogar_prazo_2)
-	# xml_evento_ator_interessado = generator.ator_interessado(message: message_evento_ator_interessado)
-	# xml_evento_confirmacao_da_operacao = generator.confirmacao_da_operacao(message: message_evento_confirmacao_da_operacao)
-	# xml_evento_ciencia_da_operacao = generator.ciencia_da_operacao(message: message_evento_ciencia_da_operacao)
-	# xml_evento_desconhecimento_da_operacao = generator.desconhecimento_da_operacao(message: message_evento_desconhecimento_da_operacao)
-	# xml_evento_operacao_nao_realizada = generator.operacao_nao_realizada(message: message_evento_operacao_nao_realizada)
-	# xml_evento_emissao_contingencia = generator.emissao_contingencia(message: message_evento_emissao_contingencia)
-	# xml_evento_cancelamento_prazo_1 = generator.cancelamento_prazo_1(message: message_evento_cancelamento_prazo_1)
-	# xml_evento_cancelamento_prazo_2 = generator.cancelamento_prazo_2(message: message_evento_cancelamento_prazo_2)
-	# xml_consultar_retorno_autorizacao = generator.consultar_retorno_autorizacao(message: message_consultar_retorno_autorizacao)
-	# xml_consultar_protocolo = generator.consultar_protocolo(message: message_consultar_protocolo)
+
+	xml_autorizacao = generator.autorizar_nota(message: message_autorizar_nota)
+	xml_inutilizacao = generator.inutilizar_numeracao(message: message_inutilizar_numeracao)
+	# xml_evento_carta_correcao = generator.criar_carta_correcao(message: message_criar_carta_correcao)
+	# xml_evento_cancelar_nota = generator.cancelar_nota(message: message_cancelar_nota)
+	xml_consultar_status_servico = generator.consultar_status_servico(message: message_consultar_status_servico)
+	# xml_evento_cancelar_nota_substituicao = generator.cancelar_nota_substituicao(message: message_cancelar_nota_substituicao)
+	# xml_evento_prorrogar_prazo_1 = generator.prorrogar_prazo_1(message: message_prorrogar_prazo_1)
+	# xml_evento_prorrogar_prazo_2 = generator.prorrogar_prazo_2(message: message_prorrogar_prazo_2)
+	# xml_evento_ator_interessado = generator.ator_interessado(message: message_ator_interessado)
+	# xml_evento_confirmacao_da_operacao = generator.confirmacao_da_operacao(message: message_confirmacao_da_operacao)
+	# xml_evento_ciencia_da_operacao = generator.ciencia_da_operacao(message: message_ciencia_da_operacao)
+	# xml_evento_desconhecimento_da_operacao = generator.desconhecimento_da_operacao(message: message_desconhecimento_da_operacao)
+	# xml_evento_operacao_nao_realizada = generator.operacao_nao_realizada(message: message_operacao_nao_realizada)
+	# xml_evento_emissao_contingencia = generator.emissao_contingencia(message: message_emissao_contingencia)
+	# xml_evento_cancelamento_prazo_1 = generator.cancelamento_prazo_1(message: message_cancelamento_prazo_1)
+	# xml_evento_cancelamento_prazo_2 = generator.cancelamento_prazo_2(message: message_cancelamento_prazo_2)
+	xml_consultar_retorno_autorizacao = generator.consultar_retorno_autorizacao(message: message_consultar_retorno_autorizacao)
+	xml_consultar_protocolo = generator.consultar_protocolo(message: message_consultar_protocolo)
 	# xml_nfe_distribuicao_dfe = generator.nfe_distribuicao_dfe(message: message_nfe_distribuicao_dfe)
 	# xml_consultar_cadastro = generator.consultar_cadastro(message: message_consultar_cadastro)
 
@@ -245,11 +263,11 @@ RSpec.describe "XML Parser (producao)" do
 		expect(schema.valid?(xml_autorizacao)).to be(true)
 	end
 
-	# it "deve criar um xml válido para mensagem de inutilizacao de notas" do |test|
-	# 	schema = Nokogiri::XML::Schema(File.open(schema_inutilizacao))
-	# 	puts schema.validate(xml_inutilizacao) if !schema.valid?(xml_inutilizacao)
-	# 	expect(schema.valid?(xml_inutilizacao)).to be(true)
-	# end
+	it "deve criar um xml válido para mensagem de inutilizacao de notas" do |test|
+		schema = Nokogiri::XML::Schema(File.open(schema_inutilizacao))
+		puts schema.validate(xml_inutilizacao) if !schema.valid?(xml_inutilizacao)
+		expect(schema.valid?(xml_inutilizacao)).to be(true)
+	end
 
 	# it "deve criar um xml válido para mensagem de evento de carta de correção" do |test|
 	# 	schema = Nokogiri::XML::Schema(File.open(schema_evento_carta_correcao))
@@ -263,11 +281,11 @@ RSpec.describe "XML Parser (producao)" do
 	# 	expect(schema.valid?(xml_evento_cancelar_nota)).to be(true)
 	# end
 
-	# it "deve criar um xml válido para mensagem de consulta de status" do |test|
-	# 	schema = Nokogiri::XML::Schema(File.open(schema_consultar_status_servico))
-	# 	puts schema.validate(xml_consultar_status_servico) if !schema.valid?(xml_consultar_status_servico)
-	# 	expect(schema.valid?(xml_consultar_status_servico)).to be(true)
-	# end
+	it "deve criar um xml válido para mensagem de consulta de status" do |test|
+		schema = Nokogiri::XML::Schema(File.open(schema_consultar_status_servico))
+		puts schema.validate(xml_consultar_status_servico) if !schema.valid?(xml_consultar_status_servico)
+		expect(schema.valid?(xml_consultar_status_servico)).to be(true)
+	end
 
 	# it "deve criar um xml válido para mensagem de cancelamento de nota substituicao" do |test|
 	# 	schema = Nokogiri::XML::Schema(File.open(schema_evento_cancelar_nota_substituicao))
@@ -335,17 +353,17 @@ RSpec.describe "XML Parser (producao)" do
 	# 	expect(schema.valid?(xml_evento_emissao_contingencia)).to be(true)
 	# end
 
-	# it "deve criar um xml válido para mensagem de consulta de retorno de autorização" do |test|
-	# 	schema = Nokogiri::XML::Schema(File.open(schema_consultar_retorno_autorizacao))
-	# 	puts schema.validate(xml_consultar_retorno_autorizacao) if !schema.valid?(xml_consultar_retorno_autorizacao)
-	# 	expect(schema.valid?(xml_consultar_retorno_autorizacao)).to be(true)
-	# end
+	it "deve criar um xml válido para mensagem de consulta de retorno de autorização" do |test|
+		schema = Nokogiri::XML::Schema(File.open(schema_consultar_retorno_autorizacao))
+		puts schema.validate(xml_consultar_retorno_autorizacao) if !schema.valid?(xml_consultar_retorno_autorizacao)
+		expect(schema.valid?(xml_consultar_retorno_autorizacao)).to be(true)
+	end
 
-	# it "deve criar um xml válido para mensagem de consultar protocolo" do |test|
-	# 	schema = Nokogiri::XML::Schema(File.open(schema_consultar_protocolo))
-	# 	puts schema.validate(xml_consultar_protocolo) if !schema.valid?(xml_consultar_protocolo)
-	# 	expect(schema.valid?(xml_consultar_protocolo)).to be(true)
-	# end
+	it "deve criar um xml válido para mensagem de consultar protocolo" do |test|
+		schema = Nokogiri::XML::Schema(File.open(schema_consultar_protocolo))
+		puts schema.validate(xml_consultar_protocolo) if !schema.valid?(xml_consultar_protocolo)
+		expect(schema.valid?(xml_consultar_protocolo)).to be(true)
+	end
 
 	# it "deve criar um xml válido para mensagem de distribuicao dfe" do |test|
 	# 	schema = Nokogiri::XML::Schema(File.open(schema_nfe_distribuicao_dfe))
