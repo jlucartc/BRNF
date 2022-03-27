@@ -232,7 +232,7 @@ RSpec.describe "XML Parser (producao)" do
 	message_consultar_retorno_autorizacao = JSON.parse(File.open("./messages/examples/message_consultar_retorno_autorizacao.json","r").read)
 	message_consultar_protocolo = JSON.parse(File.open("./messages/examples/message_consultar_protocolo.json","r").read)
 	# message_nfe_distribuicao_dfe = JSON.parse(File.open("","r").read)
-	# message_consultar_cadastro = JSON.parse(File.open("","r").read)
+	message_consultar_cadastro = JSON.parse(File.open("./messages/examples/message_consultar_cadastro.json","r").read)
 
 	generator = BRNF::XML.new
 
@@ -255,7 +255,7 @@ RSpec.describe "XML Parser (producao)" do
 	xml_consultar_retorno_autorizacao = generator.consultar_retorno_autorizacao(message: message_consultar_retorno_autorizacao)
 	xml_consultar_protocolo = generator.consultar_protocolo(message: message_consultar_protocolo)
 	# xml_nfe_distribuicao_dfe = generator.nfe_distribuicao_dfe(message: message_nfe_distribuicao_dfe)
-	# xml_consultar_cadastro = generator.consultar_cadastro(message: message_consultar_cadastro)
+	xml_consultar_cadastro = generator.consultar_cadastro(message: message_consultar_cadastro)
 
 	it "deve criar um xml válido para mensagem de autorizacao de notas" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_autorizacao))
@@ -371,9 +371,9 @@ RSpec.describe "XML Parser (producao)" do
 	# 	expect(schema.valid?(xml_nfe_distribuicao_dfe)).to be(true)
 	# end
 
-	# it "deve criar um xml válido para mensagem de consultar cadastro" do |test|
-	# 	schema = Nokogiri::XML::Schema(File.open(schema_consultar_cadastro))
-	# 	puts schema.validate(xml_consultar_cadastro) if !schema.valid?(xml_consultar_cadastro)
-	# 	expect(schema.valid?(xml_consultar_cadastro)).to be(true)
-	# end
+	it "deve criar um xml válido para mensagem de consultar cadastro" do |test|
+		schema = Nokogiri::XML::Schema(File.open(schema_consultar_cadastro))
+		puts schema.validate(xml_consultar_cadastro) if !schema.valid?(xml_consultar_cadastro)
+		expect(schema.valid?(xml_consultar_cadastro)).to be(true)
+	end
 end

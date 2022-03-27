@@ -32,7 +32,11 @@ module XMLParserHelper
 		end
 
 		def consultar_cadastro(message)
-			@builder.build_xml(56,keep_mutex_tags: true)
+			xml = @builder.build_xml(56,keep_mutex_tags: true)
+			fill_constant_fields(xml)
+			fill_xml(message,xml)
+			remove_empty_tags(xml)
+			xml
 		end
 
 		def autorizar_nota(message)
