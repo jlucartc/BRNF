@@ -225,7 +225,7 @@ RSpec.describe "XML Parser (producao)" do
 	message_confirmacao_da_operacao = JSON.parse(File.open("./messages/examples/eventos/message_confirmacao_da_operacao.json","r").read)
 	message_ciencia_da_operacao = JSON.parse(File.open("./messages/examples/eventos/message_ciencia_da_operacao.json","r").read)
 	message_desconhecimento_da_operacao = JSON.parse(File.open("./messages/examples/eventos/message_desconhecimento_da_operacao.json","r").read)
-	# message_operacao_nao_realizada = JSON.parse(File.open("","r").read)
+	message_operacao_nao_realizada = JSON.parse(File.open("","r").read)
 	# message_emissao_contingencia = JSON.parse(File.open("","r").read)
 	# message_cancelamento_prazo_1 = JSON.parse(File.open("","r").read)
 	# message_cancelamento_prazo_2 = JSON.parse(File.open("","r").read)
@@ -248,7 +248,7 @@ RSpec.describe "XML Parser (producao)" do
 	xml_evento_confirmacao_da_operacao = generator.confirmacao_da_operacao(message: message_confirmacao_da_operacao)
 	xml_evento_ciencia_da_operacao = generator.ciencia_da_operacao(message: message_ciencia_da_operacao)
 	xml_evento_desconhecimento_da_operacao = generator.desconhecimento_da_operacao(message: message_desconhecimento_da_operacao)
-	# xml_evento_operacao_nao_realizada = generator.operacao_nao_realizada(message: message_operacao_nao_realizada)
+	xml_evento_operacao_nao_realizada = generator.operacao_nao_realizada(message: message_operacao_nao_realizada)
 	# xml_evento_emissao_contingencia = generator.emissao_contingencia(message: message_emissao_contingencia)
 	# xml_evento_cancelamento_prazo_1 = generator.cancelamento_prazo_1(message: message_cancelamento_prazo_1)
 	# xml_evento_cancelamento_prazo_2 = generator.cancelamento_prazo_2(message: message_cancelamento_prazo_2)
@@ -341,11 +341,11 @@ RSpec.describe "XML Parser (producao)" do
 		expect(schema.valid?(xml_evento_desconhecimento_da_operacao)).to be(true)
 	end
 
-	# it "deve criar um xml válido para mensagem de operacao não realizada" do |test|
-	# 	schema = Nokogiri::XML::Schema(File.open(schema_evento_operacao_nao_realizada))
-	# 	puts schema.validate(xml_evento_operacao_nao_realizada) if !schema.valid?(xml_evento_operacao_nao_realizada)
-	# 	expect(schema.valid?(xml_evento_operacao_nao_realizada)).to be(true)
-	# end
+	it "deve criar um xml válido para mensagem de operacao não realizada" do |test|
+		schema = Nokogiri::XML::Schema(File.open(schema_evento_operacao_nao_realizada))
+		puts schema.validate(xml_evento_operacao_nao_realizada) if !schema.valid?(xml_evento_operacao_nao_realizada)
+		expect(schema.valid?(xml_evento_operacao_nao_realizada)).to be(true)
+	end
 
 	# it "deve criar um xml válido para mensagem de emissao em contingencia" do |test|
 	# 	schema = Nokogiri::XML::Schema(File.open(schema_evento_emissao_contingencia))
