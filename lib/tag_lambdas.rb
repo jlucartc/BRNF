@@ -95,11 +95,11 @@ module BRNF
       	},
       	"//xs:ConsCad//xs:infCons//xs:CNPJ" => lambda{|msg,xml|
       		cpf_cnpj_xml_tag = xml.xpath("//xs:ConsCad//xs:infCons//xs:CNPJ","xs" => "http://www.portalfiscal.inf.br/nfe").first
-      		cpf_cnpj_xml_tag&.content = msg["cpf_cnpj"] and msg["cpf_cnpj"]&.length == 14
+      		cpf_cnpj_xml_tag&.content = msg["cpf_cnpj"] if msg["cpf_cnpj"]&.length == 14
       	},
       	"//xs:ConsCad//xs:infCons//xs:CPF" => lambda{|msg,xml|
       		cpf_cnpj_xml_tag = xml.xpath("//xs:ConsCad//xs:infCons//xs:CPF","xs" => "http://www.portalfiscal.inf.br/nfe").first
-      		cpf_cnpj_xml_tag&.content = msg["cpf_cnpj"] and msg["cpf_cnpj"]&.length == 11
+      		cpf_cnpj_xml_tag&.content = msg["cpf_cnpj"] if msg["cpf_cnpj"]&.length == 11
       	},
       	"//xs:distDFeInt//xs:tpAmb" => lambda{|msg,xml|
       		ambiente_xml_tag = xml.xpath("//xs:distDFeInt//xs:tpAmb","xs" => "http://www.portalfiscal.inf.br/nfe").first
@@ -111,11 +111,11 @@ module BRNF
       	},
       	"//xs:distDFeInt//xs:CNPJ" => lambda{|msg,xml|
       		cpf_cnpj_xml_tag = xml.xpath("//xs:distDFeInt//xs:CNPJ","xs" => "http://www.portalfiscal.inf.br/nfe").first
-      		cpf_cnpj_xml_tag&.content = msg["cpf_cnpj"] and msg["cpf_cnpj"]&.length == 14
+      		cpf_cnpj_xml_tag&.content = msg["cpf_cnpj"] if msg["cpf_cnpj"]&.length == 14
       	},
       	"//xs:distDFeInt//xs:CPF" => lambda{|msg,xml|
       		cpf_cnpj_xml_tag = xml.xpath("//xs:distDFeInt//xs:CPF","xs" => "http://www.portalfiscal.inf.br/nfe").first
-      		cpf_cnpj_xml_tag&.content = msg["cpf_cnpj"] and msg["cpf_cnpj"]&.length == 11
+      		cpf_cnpj_xml_tag&.content = msg["cpf_cnpj"] if msg["cpf_cnpj"]&.length == 11
       	},
       	"//xs:distDFeInt//xs:distNSU//xs:ultNSU" => lambda{|msg,xml|
       		ultimo_nsu_xml_tag = xml.xpath("//xs:distDFeInt//xs:distNSU//xs:ultNSU","xs" => "http://www.portalfiscal.inf.br/nfe").first
@@ -285,11 +285,11 @@ module BRNF
       	},
       	"//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:autXML//xs:CNPJ" => lambda{|msg,xml|
       		cpf_cnpj_xml_tag = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:autXML//xs:CNPJ","xs" => "http://www.portalfiscal.inf.br/nfe").first
-      		cpf_cnpj_xml_tag&.content = msg.dig("detalhes","cpf_cnpj") and msg.dig("detalhes","cpf_cnpj")&.length == 14
+      		cpf_cnpj_xml_tag&.content = msg.dig("detalhes","cpf_cnpj_autorizado") if msg.dig("detalhes","cpf_cnpj_autorizado")&.length == 14
       	},
       	"//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:autXML//xs:CPF" => lambda{|msg,xml|
       		cpf_cnpj_xml_tag = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:autXML//xs:CPF","xs" => "http://www.portalfiscal.inf.br/nfe").first
-      		cpf_cnpj_xml_tag&.content = msg.dig("detalhes","cpf_cnpj") and msg.dig("detalhes","cpf_cnpj")&.length == 11
+      		cpf_cnpj_xml_tag&.content = msg.dig("detalhes","cpf_cnpj_autorizado") if msg.dig("detalhes","cpf_cnpj_autorizado")&.length == 11
       	},
         "//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpAutorizacao" => lambda{|msg,xml|
           tipo_autorizacao_xml_tag = xml.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:detEvento//xs:tpAutorizacao","xs" => "http://www.portalfiscal.inf.br/nfe").first
@@ -921,11 +921,11 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:retirada//xs:CNPJ" => lambda{|msg,xml|
       		cpf_cnpj_xml_tag = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:retirada//xs:CNPJ","xs" => "http://www.portalfiscal.inf.br/nfe").first
-      		cpf_cnpj_xml_tag&.content = msg.dig("retirada","cpf_cnpj") and msg.dig("retirada","cpf_cnpj")&.length == 14
+      		cpf_cnpj_xml_tag&.content = msg.dig("retirada","cpf_cnpj") if msg.dig("retirada","cpf_cnpj")&.length == 14
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:retirada//xs:CPF" => lambda{|msg,xml|
       		cpf_cnpj_xml_tag = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:retirada//xs:CPF","xs" => "http://www.portalfiscal.inf.br/nfe").first
-      		cpf_cnpj_xml_tag&.content = msg.dig("retirada","cpf_cnpj") and msg.dig("retirada","cpf_cnpj")&.length == 11
+      		cpf_cnpj_xml_tag&.content = msg.dig("retirada","cpf_cnpj") if msg.dig("retirada","cpf_cnpj")&.length == 11
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:retirada//xs:xLgr" => lambda{|msg,xml|
       		logradouro_xml_tag = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:retirada//xs:xLgr","xs" => "http://www.portalfiscal.inf.br/nfe").first
@@ -957,11 +957,11 @@ module BRNF
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:entrega//xs:CNPJ" => lambda{|msg,xml|
       		cpf_cnpj_xml_tag = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:entrega//xs:CNPJ","xs" => "http://www.portalfiscal.inf.br/nfe").first
-      		cpf_cnpj_xml_tag&.content = msg.dig("entrega","cpf_cnpj") and msg.dig("entrega","cpf_cnpj")&.length == 14
+      		cpf_cnpj_xml_tag&.content = msg.dig("entrega","cpf_cnpj") if msg.dig("entrega","cpf_cnpj")&.length == 14
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:entrega//xs:CPF" => lambda{|msg,xml|
       		cpf_cnpj_xml_tag = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:entrega//xs:CPF","xs" => "http://www.portalfiscal.inf.br/nfe").first
-      		cpf_cnpj_xml_tag&.content = msg.dig("entrega","cpf_cnpj") and msg.dig("entrega","cpf_cnpj")&.length == 11
+      		cpf_cnpj_xml_tag&.content = msg.dig("entrega","cpf_cnpj") if msg.dig("entrega","cpf_cnpj")&.length == 11
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFe//xs:entrega//xs:xLgr" => lambda{|msg,xml|
       		logradouro_xml_tag = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:entrega//xs:xLgr","xs" => "http://www.portalfiscal.inf.br/nfe").first
