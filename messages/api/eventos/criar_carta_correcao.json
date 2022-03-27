@@ -5,7 +5,7 @@
 		"version":"1.00"
 	},
 	"paths":{
-		"/inutilizar_numeracao":{
+		"/criar_carta_correcao":{
 			"post":{
 				"description":"Mensagem de carta de correcao",
 				"requestBody":{
@@ -14,7 +14,7 @@
 						"application/json":{
 							"schema":{
 								"type":"object",
-								"required":["lote","codigo_orgao","ambiente","sequencia","cpf_cnpj","chave_nota","correcao"],
+								"required":["lote","codigo_orgao","ambiente","sequencia","cpf_cnpj","chave_nota"],
 								"properties":{
 									"lote":{"type":"string","description":"Numero sequencial que identifica o evento."},
 									"codigo_orgao":{"type":"string","description":"Código da UF que receberá o evento."},
@@ -24,6 +24,7 @@
 									"chave_nota":{"type":"string","description":"Chave da nota do evento."},
 									"detalhes":{
 										"type":"object",
+										"required":["correcao"],
 										"properties":{
 											"correcao":{"type":"string"},
 										}

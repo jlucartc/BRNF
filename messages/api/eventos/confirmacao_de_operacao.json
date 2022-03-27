@@ -5,7 +5,7 @@
 		"version":"1.00"
 	},
 	"paths":{
-		"/inutilizar_numeracao":{
+		"/confirmacao_de_operacao":{
 			"post":{
 				"description":"Mensagem de confirmacao de operação",
 				"requestBody":{

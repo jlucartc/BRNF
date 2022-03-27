@@ -5,7 +5,7 @@
 		"version":"1.00"
 	},
 	"paths":{
-		"/inutilizar_numeracao":{
+		"/ciencia_da_operacao":{
 			"post":{
 				"description":"Mensagem de ciência da operação",
 				"requestBody":{

@@ -5,7 +5,7 @@
 		"version":"1.00"
 	},
 	"paths":{
-		"/inutilizar_numeracao":{
+		"/cancelamento_prazo_2":{
 			"post":{
 				"description":"Mensagem de cancelamento de prazo 2",
 				"requestBody":{
@@ -14,7 +14,7 @@
 						"application/json":{
 							"schema":{
 								"type":"object",
-								"required":["lote","codigo_orgao","ambiente","sequencia","cpf_cnpj","chave_nota","protocolo"],
+								"required":["lote","codigo_orgao","ambiente","sequencia","cpf_cnpj","chave_nota"],
 								"properties":{
 									"lote":{"type":"string","description":"Numero sequencial que identifica o evento."},
 									"codigo_orgao":{"type":"string","description":"Código da UF que receberá o evento."},
@@ -23,6 +23,7 @@
 									"cpf_cnpj":{"type":"string","description":"CPF/CNPJ do autor do evento."},
 									"chave_nota":{"type":"string","description":"Chave da nota do evento."},
 									"detalhes":{
+										"required":["protocolo","itens_pedido"],
 										"type":"object",
 										"properties":{
 											"protocolo":{"type":"string","description":"Numero do protocolo de autorização da nota a ser prorrogada."},

@@ -5,7 +5,7 @@
 		"version":"1.00"
 	},
 	"paths":{
-		"/inutilizar_numeracao":{
+		"/desconhecimento_da_operacao":{
 			"post":{
 				"description":"Mensagem de desconhecimento da operação",
 				"requestBody":{

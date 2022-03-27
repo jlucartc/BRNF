@@ -5,7 +5,7 @@
 		"version":"1.00"
 	},
 	"paths":{
-		"/inutilizar_numeracao":{
+		"/cancelar_nota_substituicao":{
 			"post":{
 				"description":"Mensagem de cancelamento de nota por substituicao",
 				"requestBody":{
@@ -14,7 +14,7 @@
 						"application/json":{
 							"schema":{
 								"type":"object",
-								"required":["lote","codigo_orgao","ambiente","sequencia","cpf_cnpj","codigo_orgao_autor","chave_nota","tipo_autor","versao_aplicacao","protocolo","chave_nota_substituta"],
+								"required":["lote","codigo_orgao","ambiente","sequencia","cpf_cnpj","chave_nota"],
 								"properties":{
 									"lote":{"type":"string","description":"Numero sequencial que identifica o evento."},
 									"codigo_orgao":{"type":"string","description":"Código da UF que receberá o evento."},
@@ -24,6 +24,7 @@
 									"chave_nota":{"type":"string","description":"Chave da nota do evento."},
 									"detalhes":{
 										"type":"object",
+										"required":["codigo_orgao_autor","tipo_autor","versao_aplicacao","protocolo","chave_nota_substituta"],
 										"properties":{
 											"codigo_orgao_autor":{"type":"string"},
 											"tipo_autor":{"type":"string"},

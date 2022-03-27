@@ -5,7 +5,7 @@
 		"version":"1.00"
 	},
 	"paths":{
-		"/inutilizar_numeracao":{
+		"/operacao_nao_realizada":{
 			"post":{
 				"description":"Mensagem de operação não realizada",
 				"requestBody":{

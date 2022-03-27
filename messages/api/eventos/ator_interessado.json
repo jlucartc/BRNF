@@ -5,7 +5,7 @@
 		"version":"1.00"
 	},
 	"paths":{
-		"/inutilizar_numeracao":{
+		"/ator_interessado":{
 			"post":{
 				"description":"Mensagem de declaração de ator interessado na nota",
 				"requestBody":{
@@ -14,7 +14,7 @@
 						"application/json":{
 							"schema":{
 								"type":"object",
-								"required":["lote","codigo_orgao","ambiente","sequencia","cpf_cnpj","chave_nota","tipo_autor","versao_aplicacao","cpf_cnpj_autorizado"],
+								"required":["lote","codigo_orgao","ambiente","sequencia","cpf_cnpj","chave_nota","detalhes"],
 								"properties":{
 									"lote":{"type":"string","description":"Numero sequencial que identifica o evento."},
 									"codigo_orgao":{"type":"string","description":"Código da UF que receberá o evento."},
@@ -24,7 +24,9 @@
 									"chave_nota":{"type":"string","description":"Chave da nota do evento."},
 									"detalhes":{
 										"type":"object",
+										"required":["codigo_orgao_autor","tipo_autor","versao_aplicacao","cpf_cnpj_autorizado"],
 										"properties":{
+											"codigo_orgao_autor":{"type":"string"},
 											"tipo_autor":{"type":"string"},
 											"versao_aplicacao":{"type":"string"},
 											"cpf_cnpj_autorizado":{"type":"string"},
