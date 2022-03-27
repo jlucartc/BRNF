@@ -224,7 +224,7 @@ RSpec.describe "XML Parser (producao)" do
 	message_ator_interessado = JSON.parse(File.open("./messages/examples/eventos/message_ator_interessado.json","r").read)
 	message_confirmacao_da_operacao = JSON.parse(File.open("./messages/examples/eventos/message_confirmacao_da_operacao.json","r").read)
 	message_ciencia_da_operacao = JSON.parse(File.open("./messages/examples/eventos/message_ciencia_da_operacao.json","r").read)
-	# message_desconhecimento_da_operacao = JSON.parse(File.open("","r").read)
+	message_desconhecimento_da_operacao = JSON.parse(File.open("./messages/examples/eventos/message_desconhecimento_da_operacao.json","r").read)
 	# message_operacao_nao_realizada = JSON.parse(File.open("","r").read)
 	# message_emissao_contingencia = JSON.parse(File.open("","r").read)
 	# message_cancelamento_prazo_1 = JSON.parse(File.open("","r").read)
@@ -247,7 +247,7 @@ RSpec.describe "XML Parser (producao)" do
 	xml_evento_ator_interessado = generator.ator_interessado(message: message_ator_interessado)
 	xml_evento_confirmacao_da_operacao = generator.confirmacao_da_operacao(message: message_confirmacao_da_operacao)
 	xml_evento_ciencia_da_operacao = generator.ciencia_da_operacao(message: message_ciencia_da_operacao)
-	# xml_evento_desconhecimento_da_operacao = generator.desconhecimento_da_operacao(message: message_desconhecimento_da_operacao)
+	xml_evento_desconhecimento_da_operacao = generator.desconhecimento_da_operacao(message: message_desconhecimento_da_operacao)
 	# xml_evento_operacao_nao_realizada = generator.operacao_nao_realizada(message: message_operacao_nao_realizada)
 	# xml_evento_emissao_contingencia = generator.emissao_contingencia(message: message_emissao_contingencia)
 	# xml_evento_cancelamento_prazo_1 = generator.cancelamento_prazo_1(message: message_cancelamento_prazo_1)
@@ -335,11 +335,11 @@ RSpec.describe "XML Parser (producao)" do
 		expect(schema.valid?(xml_evento_ciencia_da_operacao)).to be(true)
 	end
 
-	# it "deve criar um xml válido para mensagem de desconhecimento da operacao" do |test|
-	# 	schema = Nokogiri::XML::Schema(File.open(schema_evento_desconhecimento_da_operacao))
-	# 	puts schema.validate(xml_evento_desconhecimento_da_operacao) if !schema.valid?(xml_evento_desconhecimento_da_operacao)
-	# 	expect(schema.valid?(xml_evento_desconhecimento_da_operacao)).to be(true)
-	# end
+	it "deve criar um xml válido para mensagem de desconhecimento da operacao" do |test|
+		schema = Nokogiri::XML::Schema(File.open(schema_evento_desconhecimento_da_operacao))
+		puts schema.validate(xml_evento_desconhecimento_da_operacao) if !schema.valid?(xml_evento_desconhecimento_da_operacao)
+		expect(schema.valid?(xml_evento_desconhecimento_da_operacao)).to be(true)
+	end
 
 	# it "deve criar um xml válido para mensagem de operacao não realizada" do |test|
 	# 	schema = Nokogiri::XML::Schema(File.open(schema_evento_operacao_nao_realizada))
