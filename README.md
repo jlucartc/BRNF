@@ -86,3 +86,41 @@ The list above was the reference used to create the XML's, and they should provi
 ## Errors and Bugs
 
 If you are having problems with requests denied by SEFAZ, due to malformed XML or broken rules, please open an issue and provide a repeatable case where the error can be reproduced, including the exact message sent, and the results(XML, SEFAZ response), preferably with fake data. Altough I won't be able to reproduce the case fully everytime, since doing so would demand a certificate issued for each state, maybe someone else can see the issue and shed some light over why it's it happening, in the worst case.
+
+Currently, there are some services whose WSDL can't be accessed. Some of these services are not maintained by the UFs, and others can't be accessed due to some misconfiguration at the SOAP creation or at the HTTP request.
+The table below presents which services are unavailable at the moment, and at which UF:
+
+| Services               | Environment | Type         | UF's                                                                             |
+|------------------------|-------------|--------------|----------------------------------------------------------------------------------|
+| "NFeAutorizacao"       | producao    | normal       |                                                                                  |
+| "NfeStatusServico"     | producao    | normal       |                                                                                  |
+| "NFeRetAutorizacao"    | producao    | normal       |                                                                                  |
+| "NfeInutilizacao"      | producao    | normal       |                                                                                  |
+| "RecepcaoEvento"       | producao    | normal       |                                                                                  |
+| "NfeConsultaProtocolo" | producao    | normal       |                                                                                  |
+| "RecepcaoEvento"       | producao    | normal       |                                                                                  |
+| "NfeConsultaCadastro"  | producao    | normal       | PE                                                                               |
+| "NFeAutorizacao"       | homologacao | normal       |                                                                                  |
+| "NfeStatusServico"     | homologacao | normal       |                                                                                  |
+| "NFeRetAutorizacao"    | homologacao | normal       |                                                                                  |
+| "NfeInutilizacao"      | homologacao | normal       |                                                                                  |
+| "RecepcaoEvento"       | homologacao | normal       |                                                                                  |
+| "NfeConsultaProtocolo" | homologacao | normal       |                                                                                  |
+| "RecepcaoEvento"       | homologacao | normal       |                                                                                  |
+| "NfeConsultaCadastro"  | homologacao | normal       | AM,GO,PE,MA                                                                      |
+| "NFeAutorizacao"       | producao    | contingência | RS                                                                               |
+| "NfeStatusServico"     | producao    | contingência |                                                                                  |
+| "NFeRetAutorizacao"    | producao    | contingência | RS                                                                               |
+| "NfeInutilizacao"      | producao    | contingência | AM,BA,CE,GO,MS,MT,PE,PR,MA                                                       |
+| "RecepcaoEvento"       | producao    | contingência |                                                                                  |
+| "NfeConsultaProtocolo" | producao    | contingência |                                                                                  |
+| "RecepcaoEvento"       | producao    | contingência |                                                                                  |
+| "NfeConsultaCadastro"  | producao    | contingência | AM,BA,CE,GO,MG,MS,MT,PE,PR,RS,SP,MA,AC,AL,AP,DF,ES,PA,PB,PI,RJ,RN,RO,RR,SC,SE,TO |
+| "NFeAutorizacao"       | homologacao | contingência |                                                                                  |
+| "NfeStatusServico"     | homologacao | contingência |                                                                                  |
+| "NFeRetAutorizacao"    | homologacao | contingência | RS                                                                               |
+| "NfeInutilizacao"      | homologacao | contingência | AM,BA,GO,MS,MT,PE,PR,MA                                                          |
+| "RecepcaoEvento"       | homologacao | contingência |                                                                                  |
+| "NfeConsultaProtocolo" | homologacao | contingência |                                                                                  |
+| "RecepcaoEvento"       | homologacao | contingência |                                                                                  |
+| "NfeConsultaCadastro"  | homologacao | contingência | AM,BA,CE,GO,MG,MS,MT,PE,PR,RS,SP,MA,AC,AL,AP,DF,ES,PA,PB,PI,RJ,RN,RO,RR,SC,SE,TO |
