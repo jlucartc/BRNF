@@ -1,0 +1,11 @@
+{
+	"lote":"1",
+	"codigo_orgao":"23",
+	"ambiente":"2",
+	"sequencia":"1",
+	"cpf_cnpj":"12345678910112",
+	"chave_nota":"21220312345678910112550010000000000000000000",
+	"detalhes":{
+		"justificativa":"Confirmando operação de venda"
+	}
+}
