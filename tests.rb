@@ -225,7 +225,7 @@ RSpec.describe "XML Parser (producao)" do
 	message_confirmacao_da_operacao = JSON.parse(File.open("./messages/examples/eventos/message_confirmacao_da_operacao.json","r").read)
 	message_ciencia_da_operacao = JSON.parse(File.open("./messages/examples/eventos/message_ciencia_da_operacao.json","r").read)
 	message_desconhecimento_da_operacao = JSON.parse(File.open("./messages/examples/eventos/message_desconhecimento_da_operacao.json","r").read)
-	message_operacao_nao_realizada = JSON.parse(File.open("","r").read)
+	message_operacao_nao_realizada = JSON.parse(File.open("./messages/examples/eventos/message_operacao_nao_realizada.json","r").read)
 	# message_emissao_contingencia = JSON.parse(File.open("","r").read)
 	# message_cancelamento_prazo_1 = JSON.parse(File.open("","r").read)
 	# message_cancelamento_prazo_2 = JSON.parse(File.open("","r").read)
