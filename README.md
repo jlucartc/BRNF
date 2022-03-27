@@ -47,39 +47,39 @@ xml = generator.autorizar_nota(message: JSON.parse(File.open("my_json_message.js
 response = issuer.autorizar_nota(xml,"CE","2")
 ```
 
-If you dont have a .pfx file and instead has .pem files, you count create an issuer instance like this:
+If you dont have a .pfx file and instead have .pem files, you can create an `Issuer` instance like this:
 
 ```ruby
 issuer = BRNF::Issuer.new(certificate_password,key_file_path: 'my_key.pem', cert_file_path: 'my_certificate.pem', ca_file_path: 'my_ca.pem')
 ```
 
-You may find more information about the message forma accepted by each service at the next section.
+You may find more information about the message format accepted by each service at the next section.
 
 ## Message structure
 
 A rough description for each message can be found at [this folder](https://github.com/jlucartc/gem_nf/blob/master/messages/api)). There you'll find an OpenAPI description for each service, but keep in mind that these descriptions are not strict enough. To find more strict documentation, see [this folder](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao)), and look for the files below:
 
 
-- [./schemas/producao/arquivos/enviNFe_v4.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/enviNFe_v4.00.xsd) for description of `BRNF::XML.new.autorizar_nota()`
-- [./schemas/producao/arquivos/inutNFe_v4.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/inutNFe_v4.00.xsd) for description of `BRNF::XML.new.inutilizar_numeracao()`
-- [./schemas/producao/arquivos/envCCe_v1.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/envCCe_v1.00.xsd) for description of `BRNF::XML.new.criar_carta_correcao()`
-- [./schemas/producao/arquivos/envEventoCancNFe_v1.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/envEventoCancNFe_v1.00.xsd) for description of `BRNF::XML.new.cancelar_nota()`
-- [./schemas/producao/arquivos/consStatServ_v4.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/consStatServ_v4.00.xsd) for description of `BRNF::XML.new.consultar_status_servico()`
-- [./schemas/producao/arquivos/envEventoCancSubst_v1.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/envEventoCancSubst_v1.00.xsd) for description of `BRNF::XML.new.cancelar_nota_substituicao()`
-- [./schemas/producao/arquivos/envRemIndus_v1.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/envRemIndus_v1.00.xsd) for description of `BRNF::XML.new.prorrogar_prazo_1()`
-- [./schemas/producao/arquivos/envRemIndus_v1.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/envRemIndus_v1.00.xsd) for description of `BRNF::XML.new.prorrogar_prazo_2()`
-- [./schemas/producao/arquivos/envEventoAtorInteressado_v1.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/envEventoAtorInteressado_v1.00.xsd) for description of `BRNF::XML.new.ator_interessado()`
-- [./schemas/producao/arquivos/envConfRecebto_v1.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/envConfRecebto_v1.00.xsd) for description of `BRNF::XML.new.confirmacao_da_operacao()`
-- [./schemas/producao/arquivos/envConfRecebto_v1.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/envConfRecebto_v1.00.xsd) for description of `BRNF::XML.new.ciencia_da_operacao()`
-- [./schemas/producao/arquivos/envConfRecebto_v1.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/envConfRecebto_v1.00.xsd) for description of `BRNF::XML.new.desconhecimento_da_operacao()`
-- [./schemas/producao/arquivos/envConfRecebto_v1.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/envConfRecebto_v1.00.xsd) for description of `BRNF::XML.new.operacao_nao_realizada()`
-- [./schemas/producao/arquivos/envEPEC_v1.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/envEPEC_v1.00.xsd) for description of `BRNF::XML.new.emissao_contingencia()`
-- [./schemas/producao/arquivos/envRemIndus_v1.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/envRemIndus_v1.00.xsd) for description of `BRNF::XML.new.cancelamento_prazo_1()`
-- [./schemas/producao/arquivos/envRemIndus_v1.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/envRemIndus_v1.00.xsd) for description of `BRNF::XML.new.cancelamento_prazo_2()`
-- [./schemas/producao/arquivos/consReciNFe_v4.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/consReciNFe_v4.00.xsd) for description of `BRNF::XML.new.consultar_retorno_autorizacao()`
-- [./schemas/producao/arquivos/consSitNFe_v4.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/consSitNFe_v4.00.xsd) for description of `BRNF::XML.new.consultar_protocolo()`
-- [./schemas/producao/arquivos/distDFeInt_v1.01.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/distDFeInt_v1.01.xsd) for description of `BRNF::XML.new.nfe_distribuicao_dfe()`
-- [./schemas/producao/arquivos/consCad_v2.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/consCad_v2.00.xsd) for description of `BRNF::XML.new.consultar_cadastro()`
+- [enviNFe_v4.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/enviNFe_v4.00.xsd) for description of `BRNF::XML.new.autorizar_nota()`
+- [inutNFe_v4.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/inutNFe_v4.00.xsd) for description of `BRNF::XML.new.inutilizar_numeracao()`
+- [envCCe_v1.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/envCCe_v1.00.xsd) for description of `BRNF::XML.new.criar_carta_correcao()`
+- [envEventoCancNFe_v1.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/envEventoCancNFe_v1.00.xsd) for description of `BRNF::XML.new.cancelar_nota()`
+- [consStatServ_v4.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/consStatServ_v4.00.xsd) for description of `BRNF::XML.new.consultar_status_servico()`
+- [envEventoCancSubst_v1.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/envEventoCancSubst_v1.00.xsd) for description of `BRNF::XML.new.cancelar_nota_substituicao()`
+- [envRemIndus_v1.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/envRemIndus_v1.00.xsd) for description of `BRNF::XML.new.prorrogar_prazo_1()`
+- [envRemIndus_v1.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/envRemIndus_v1.00.xsd) for description of `BRNF::XML.new.prorrogar_prazo_2()`
+- [envEventoAtorInteressado_v1.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/envEventoAtorInteressado_v1.00.xsd) for description of `BRNF::XML.new.ator_interessado()`
+- [envConfRecebto_v1.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/envConfRecebto_v1.00.xsd) for description of `BRNF::XML.new.confirmacao_da_operacao()`
+- [envConfRecebto_v1.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/envConfRecebto_v1.00.xsd) for description of `BRNF::XML.new.ciencia_da_operacao()`
+- [envConfRecebto_v1.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/envConfRecebto_v1.00.xsd) for description of `BRNF::XML.new.desconhecimento_da_operacao()`
+- [envConfRecebto_v1.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/envConfRecebto_v1.00.xsd) for description of `BRNF::XML.new.operacao_nao_realizada()`
+- [envEPEC_v1.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/envEPEC_v1.00.xsd) for description of `BRNF::XML.new.emissao_contingencia()`
+- [envRemIndus_v1.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/envRemIndus_v1.00.xsd) for description of `BRNF::XML.new.cancelamento_prazo_1()`
+- [envRemIndus_v1.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/envRemIndus_v1.00.xsd) for description of `BRNF::XML.new.cancelamento_prazo_2()`
+- [consReciNFe_v4.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/consReciNFe_v4.00.xsd) for description of `BRNF::XML.new.consultar_retorno_autorizacao()`
+- [consSitNFe_v4.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/consSitNFe_v4.00.xsd) for description of `BRNF::XML.new.consultar_protocolo()`
+- [distDFeInt_v1.01.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/distDFeInt_v1.01.xsd) for description of `BRNF::XML.new.nfe_distribuicao_dfe()`
+- [consCad_v2.00.xsd](https://github.com/jlucartc/gem_nf/blob/master/schemas/producao/arquivos/consCad_v2.00.xsd) for description of `BRNF::XML.new.consultar_cadastro()`
 
 The list above was the reference used to create the XML's, and they should provide a better comprehension of the OpenAPI messages when needed. It should be noted that the messages' purpose is only to convey the information needed to fill the xml tags, but they won't be validated at all. The only thing being validated here is the XML(and only at the the test cases or if you explicitly do so by comparing the xml against it's schema).
 
