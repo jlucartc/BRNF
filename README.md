@@ -1,4 +1,4 @@
-# br_nf
+# BRNF
 
 ## Features
 - Issues brazilian invoice(ready, but still lacking testing)
