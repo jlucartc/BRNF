@@ -7,14 +7,14 @@
 	"paths":{
 		"/inutilizar_numeracao":{
 			"post":{
-				"description":"Mensagem de carta de correcao",
+				"description":"Mensagem de ciência da operação",
 				"requestBody":{
 					"required":true,
 					"content":{
 						"application/json":{
 							"schema":{
 								"type":"object",
-								"required":["lote","codigo_orgao","ambiente","sequencia","cpf_cnpj","chave_nota","correcao"],
+								"required":["lote","codigo_orgao","ambiente","sequencia","cpf_cnpj","chave_nota"],
 								"properties":{
 									"lote":{"type":"string","description":"Numero sequencial que identifica o evento."},
 									"codigo_orgao":{"type":"string","description":"Código da UF que receberá o evento."},
@@ -22,7 +22,12 @@
 									"sequencia":{"type":"string","description":"Numero sequencial que identifica o evento"},
 									"cpf_cnpj":{"type":"string","description":"CPF/CNPJ do autor do evento."},
 									"chave_nota":{"type":"string","description":"Chave da nota do evento."},
-									"correcao":{"type":"string"},
+									"detalhes":{
+										"type":"object",
+										"properties":{
+											"justificativa":{"type":"string"}
+										}
+									}
 								}
 							}
 						}

@@ -7,14 +7,14 @@
 	"paths":{
 		"/inutilizar_numeracao":{
 			"post":{
-				"description":"Mensagem de prorrogacao de prazo 2",
+				"description":"Mensagem de desconhecimento da operação",
 				"requestBody":{
 					"required":true,
 					"content":{
 						"application/json":{
 							"schema":{
 								"type":"object",
-								"required":["lote","codigo_orgao","ambiente","sequencia","cpf_cnpj","chave_nota","protocolo"],
+								"required":["lote","codigo_orgao","ambiente","sequencia","cpf_cnpj","chave_nota"],
 								"properties":{
 									"lote":{"type":"string","description":"Numero sequencial que identifica o evento."},
 									"codigo_orgao":{"type":"string","description":"Código da UF que receberá o evento."},
@@ -22,16 +22,10 @@
 									"sequencia":{"type":"string","description":"Numero sequencial que identifica o evento"},
 									"cpf_cnpj":{"type":"string","description":"CPF/CNPJ do autor do evento."},
 									"chave_nota":{"type":"string","description":"Chave da nota do evento."},
-									"protocolo":{"type":"string","description":"Numero do protocolo de autorização da nota a ser prorrogada."},
-									"itens_pedido":{
-										"type":"array",
-										"description":"Itens inclusos no pedido de prorrogação.",
-										"items":{
-											"type":"object",
-											"properties":{
-												"numero_item":{"type":"string"},
-												"quantidade_item":{"type":"string"}
-											}
+									"detalhes":{
+										"type":"object",
+										"properties":{
+											"justificativa":{"type":"string"}
 										}
 									}
 								}

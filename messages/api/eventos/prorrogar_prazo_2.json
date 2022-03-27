@@ -7,27 +7,38 @@
 	"paths":{
 		"/inutilizar_numeracao":{
 			"post":{
-				"description":"Mensagem de cancelamento de nota por substituicao",
+				"description":"Mensagem de prorrogacao de prazo 2",
 				"requestBody":{
 					"required":true,
 					"content":{
 						"application/json":{
 							"schema":{
 								"type":"object",
-								"required":["lote","codigo_orgao","ambiente","sequencia","cpf_cnpj","codigo_orgao_autor","chave_nota","tipo_autor","versao_aplicacao","protocolo","chave_nota_substituta"],
+								"required":["lote","codigo_orgao","ambiente","sequencia","cpf_cnpj","chave_nota","protocolo"],
 								"properties":{
 									"lote":{"type":"string","description":"Numero sequencial que identifica o evento."},
 									"codigo_orgao":{"type":"string","description":"Código da UF que receberá o evento."},
 									"ambiente":{"type":"string","description":"Determina se a nota está sendo emitida em ambiente de produção(1) ou em ambiente de testes(2).","enum":["1","2"]},
-									"sequencia":{"type":"string"},
+									"sequencia":{"type":"string","description":"Numero sequencial que identifica o evento"},
 									"cpf_cnpj":{"type":"string","description":"CPF/CNPJ do autor do evento."},
 									"chave_nota":{"type":"string","description":"Chave da nota do evento."},
-									"codigo_orgao_autor":{"type":"string"},
-									"tipo_autor":{"type":"string"},
-									"versao_aplicacao":{"type":"string"},
-									"protocolo":{"type":"string"},
-									"justificativa":{"type":"string"},
-									"chave_nota_substituta":{"type":"string"}
+									"detalhes":{
+										"type":"object",
+										"properties":{
+											"protocolo":{"type":"string","description":"Numero do protocolo de autorização da nota a ser prorrogada."},
+											"itens_pedido":{
+												"type":"array",
+												"description":"Itens inclusos no pedido de prorrogação.",
+												"items":{
+													"type":"object",
+													"properties":{
+														"numero_item":{"type":"string"},
+														"quantidade_item":{"type":"string"}
+													}
+												}
+											}
+										}
+									}
 								}
 							}
 						}

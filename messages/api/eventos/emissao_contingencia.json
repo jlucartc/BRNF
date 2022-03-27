@@ -22,22 +22,27 @@
 									"sequencia":{"type":"string","description":"Numero sequencial que identifica o evento"},
 									"cpf_cnpj":{"type":"string","description":"CPF/CNPJ do autor do evento."},
 									"chave_nota":{"type":"string","description":"Chave da nota do evento."},
-									"tipo_autor":{"type":"string"},
-									"versao_aplicacao":{"type":"string"},
-									"data_emissao":{"type":"string"},
-									"tipo_operacao":{"type":"string"},
-									"inscricao_estadual":{"type":"string"},
-									"destinatario":{
+									"detalhes":{
 										"type":"object",
-										"required":["uf","valor_nota","valor_icms","valor_icms_st"],
 										"properties":{
-											"uf":{"type":"string"},
-											"cpf_cnpj":{"type":"string"},
-											"id_estrangeiro":{"type":"string"},
+											"tipo_autor":{"type":"string"},
+											"versao_aplicacao":{"type":"string"},
+											"data_emissao":{"type":"string"},
+											"tipo_operacao":{"type":"string"},
 											"inscricao_estadual":{"type":"string"},
-											"valor_nota":{"type":"string"},
-											"valor_icms":{"type":"string"},
-											"valor_icms_st":{"type":"string"}
+											"destinatario":{
+												"type":"object",
+												"required":["uf","valor_nota","valor_icms","valor_icms_st"],
+												"properties":{
+													"uf":{"type":"string"},
+													"cpf_cnpj":{"type":"string"},
+													"id_estrangeiro":{"type":"string"},
+													"inscricao_estadual":{"type":"string"},
+													"valor_nota":{"type":"string"},
+													"valor_icms":{"type":"string"},
+													"valor_icms_st":{"type":"string"}
+												}
+											}
 										}
 									}
 								}

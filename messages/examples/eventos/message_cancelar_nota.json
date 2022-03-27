@@ -6,6 +6,8 @@
 	"cpf_cnpj":"12345678910112",
 	"sequencia":"1",
 	"chave_nota":"21220312345678910112550010000000000000000000",
-	"protocolo":"123456789101112",
-	"justificativa":"Compra cancelada pelo cliente"
+	"detalhes":{
+		"protocolo":"123456789101112",
+		"justificativa":"Compra cancelada pelo cliente"
+	}
 }
