@@ -5,7 +5,6 @@ require './lib/brnf.rb'
 require 'nokogiri'
 require 'pry'
 require 'openssl'
-require 'pry'
 
 RSpec.describe "Random XML Generator (producao)" do
 

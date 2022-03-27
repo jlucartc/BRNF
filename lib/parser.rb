@@ -1,6 +1,5 @@
 require 'csv'
 require 'regexp-examples'
-require 'pry'
 require 'nokogiri'
 require 'json'
 require_relative 'builder'

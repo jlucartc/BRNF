@@ -1,6 +1,5 @@
 require 'csv'
 require 'regexp-examples'
-require 'pry'
 require 'nokogiri'
 require 'digest'
 require 'base64'
