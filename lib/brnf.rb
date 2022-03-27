@@ -1,4 +1,4 @@
-require_relative './xml/xml.rb'
+require_relative 'xml.rb'
 
 module BRNF
 end

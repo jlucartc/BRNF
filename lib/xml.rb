@@ -1,14 +1,14 @@
-require_relative './../parser/xml_parser_helper.rb'
-require_relative './../generator/xml_generator_helper.rb'
-require_relative './../issuer/issuer.rb'
+require_relative 'parser'
+require_relative 'generator'
+require_relative 'issuer'
 
 module BRNF
 
 	class XML
 
 		def initialize
-			@generator = XMLGeneratorHelper::XMLGenerator.new
-			@parser = XMLParserHelper::XMLInflator.new
+			@generator = BRNF::Generator.new
+			@parser = BRNF::Parser.new
 		end
 
 		def autorizar_nota(message: nil)

@@ -1,7 +1,7 @@
 # br_nf
 
 ## Features
-- Issues brazilian invoice(in progress)
+- Issues brazilian invoice(ready, but still lacking testing)
 - generates test invoice with random data(Ready! See an example of valid invoice xml at [this file](https://github.com/jlucartc/gem_nf/blob/master/nota_exemplo.xml))
 
 ## Future improvements
@@ -17,17 +17,43 @@ To generate random data, just call the method that builds the XML for the desire
 e.g.: To issue a new invoice, your should call the method `autorizar_nota`:
 
 ```ruby
-require_relative './lib/brnf.rb'
+require_relative 'lib/brnf'
 
 # If you want a random invoice, that's the method call:
 generator = BRNF::XML.new
 xml = generator.autorizar_nota()
+```
+
+### Using a service
+
+Follow these steps if you want to use any of the services available at SEFAZ:
+
+```ruby
+require_relative 'lib/brnf'
 
 # If you wanna create an invoice with your data, use this:
 generator = BRNF::XML.new
-# More info about the message structure soon
+
+# Object responsible for choosing the right webservice for each service, creating and
+# sending a SOAP message with the xml generated from the provided data.
+issuer = BRNF::Issuer.new(certificate_password,pfx_file_path: pfx_certificate_file_path)
+
 xml = generator.autorizar_nota(message: JSON.parse(File.open("my_json_message.json","r").read) )
+
+# Sends the message with the invoice data and receives a response
+# containing fields confirming the invoice acceptance or denial.
+# It needs to specify the UF to where the message is being sent and
+# the webservice environment (1 - production, 2 - test)
+response = issuer.autorizar_nota(xml,"CE","2")
 ```
+
+If you dont have a .pfx file and instead has .pem files, you count create an issuer instance like this:
+
+```ruby
+issuer = BRNF::Issuer.new(certificate_password,key_file_path: 'my_key.pem', cert_file_path: 'my_certificate.pem', ca_file_path: 'my_ca.pem')
+```
+
+You may find more information about the message forma accepted by each service at the next section.
 
 ## Message structure
 
