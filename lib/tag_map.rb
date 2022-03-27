@@ -62,7 +62,7 @@ module BRNF
 		end
 
 		def create_tag_map()
-			tags = CSV.read("#{__dir__}/../tags.csv",col_sep:";",headers:true)
+			tags = CSV.read("#{__dir__}/tags.csv",col_sep:";",headers:true)
 			mapa_tags = {}
 			tags.each do |tag|
 				if tag["active"] == "1"
