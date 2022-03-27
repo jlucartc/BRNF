@@ -1,0 +1,36 @@
+{
+	"openapi":"3.0.0",
+	"info":{
+		"title":"br-nf-api",
+		"version":"1.00"
+	},
+	"paths":{
+		"/nfe_distribuicao_dfe":{
+			"post":{
+				"description":"Mensagem de distribuição de documentos fiscais",
+				"requestBody":{
+					"required":true,
+					"content":{
+						"application/json":{
+							"schema":{
+								"type":"object",
+								"required":["ambiente","cpf_cnpj"],
+								"properties":{
+									"ambiente":{"type":"string"},
+									"codigo_uf_autor":{"type":"string"},
+									"cpf_cnpj":{"type":"string"},
+									"ultimo_nsu":{"type":"string"},
+									"nsu":{"type":"string"},
+									"chave_nota":{"type":"string"}
+								}
+							}
+						}
+					}
+				},
+				"responses":{
+					"200":{"description":"sucesso"}
+				}
+			}
+		}
+	}
+}

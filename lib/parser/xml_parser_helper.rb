@@ -78,7 +78,6 @@ module XMLParserHelper
 			fill_constant_fields(xml)
 			fill_xml(message,xml)
 			remove_empty_tags(xml)
-			@signer.sign_message(xml)
 			xml
 		end
 

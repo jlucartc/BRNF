@@ -231,7 +231,7 @@ RSpec.describe "XML Parser (producao)" do
 	message_cancelamento_prazo_2 = JSON.parse(File.open("./messages/examples/eventos/message_cancelamento_prazo_2.json","r").read)
 	message_consultar_retorno_autorizacao = JSON.parse(File.open("./messages/examples/message_consultar_retorno_autorizacao.json","r").read)
 	message_consultar_protocolo = JSON.parse(File.open("./messages/examples/message_consultar_protocolo.json","r").read)
-	# message_nfe_distribuicao_dfe = JSON.parse(File.open("","r").read)
+	message_nfe_distribuicao_dfe = JSON.parse(File.open("./messages/examples/message_nfe_distribuicao_dfe.json","r").read)
 	message_consultar_cadastro = JSON.parse(File.open("./messages/examples/message_consultar_cadastro.json","r").read)
 
 	generator = BRNF::XML.new
@@ -254,7 +254,7 @@ RSpec.describe "XML Parser (producao)" do
 	xml_evento_cancelamento_prazo_2 = generator.cancelamento_prazo_2(message: message_cancelamento_prazo_2)
 	xml_consultar_retorno_autorizacao = generator.consultar_retorno_autorizacao(message: message_consultar_retorno_autorizacao)
 	xml_consultar_protocolo = generator.consultar_protocolo(message: message_consultar_protocolo)
-	# xml_nfe_distribuicao_dfe = generator.nfe_distribuicao_dfe(message: message_nfe_distribuicao_dfe)
+	xml_nfe_distribuicao_dfe = generator.nfe_distribuicao_dfe(message: message_nfe_distribuicao_dfe)
 	xml_consultar_cadastro = generator.consultar_cadastro(message: message_consultar_cadastro)
 
 	it "deve criar um xml válido para mensagem de autorizacao de notas" do |test|
@@ -365,11 +365,11 @@ RSpec.describe "XML Parser (producao)" do
 		expect(schema.valid?(xml_consultar_protocolo)).to be(true)
 	end
 
-	# it "deve criar um xml válido para mensagem de distribuicao dfe" do |test|
-	# 	schema = Nokogiri::XML::Schema(File.open(schema_nfe_distribuicao_dfe))
-	# 	puts schema.validate(xml_nfe_distribuicao_dfe) if !schema.valid?(xml_nfe_distribuicao_dfe)
-	# 	expect(schema.valid?(xml_nfe_distribuicao_dfe)).to be(true)
-	# end
+	it "deve criar um xml válido para mensagem de distribuicao dfe" do |test|
+		schema = Nokogiri::XML::Schema(File.open(schema_nfe_distribuicao_dfe))
+		puts schema.validate(xml_nfe_distribuicao_dfe) if !schema.valid?(xml_nfe_distribuicao_dfe)
+		expect(schema.valid?(xml_nfe_distribuicao_dfe)).to be(true)
+	end
 
 	it "deve criar um xml válido para mensagem de consultar cadastro" do |test|
 		schema = Nokogiri::XML::Schema(File.open(schema_consultar_cadastro))
