@@ -219,7 +219,7 @@ RSpec.describe "XML Parser (producao)" do
 	message_cancelar_nota = JSON.parse(File.open("./messages/examples/message_cancelar_nota.json","r").read)
 	message_consultar_status_servico = JSON.parse(File.open("./messages/examples/message_consulta_status_servico.json","r").read)
 	message_cancelar_nota_substituicao = JSON.parse(File.open("./messages/examples/message_cancelar_nota_substituicao.json","r").read)
-	# message_prorrogar_prazo_1 = JSON.parse(File.open("","r").read)
+	message_prorrogar_prazo_1 = JSON.parse(File.open("./messages/examples/message_prorrogar_prazo_1.json","r").read)
 	# message_prorrogar_prazo_2 = JSON.parse(File.open("","r").read)
 	# message_ator_interessado = JSON.parse(File.open("","r").read)
 	# message_confirmacao_de_operacao = JSON.parse(File.open("","r").read)
@@ -242,7 +242,7 @@ RSpec.describe "XML Parser (producao)" do
 	xml_evento_cancelar_nota = generator.cancelar_nota(message: message_cancelar_nota)
 	xml_consultar_status_servico = generator.consultar_status_servico(message: message_consultar_status_servico)
 	xml_evento_cancelar_nota_substituicao = generator.cancelar_nota_substituicao(message: message_cancelar_nota_substituicao)
-	# xml_evento_prorrogar_prazo_1 = generator.prorrogar_prazo_1(message: message_prorrogar_prazo_1)
+	xml_evento_prorrogar_prazo_1 = generator.prorrogar_prazo_1(message: message_prorrogar_prazo_1)
 	# xml_evento_prorrogar_prazo_2 = generator.prorrogar_prazo_2(message: message_prorrogar_prazo_2)
 	# xml_evento_ator_interessado = generator.ator_interessado(message: message_ator_interessado)
 	# xml_evento_confirmacao_da_operacao = generator.confirmacao_da_operacao(message: message_confirmacao_da_operacao)
@@ -293,11 +293,11 @@ RSpec.describe "XML Parser (producao)" do
 		expect(schema.valid?(xml_evento_cancelar_nota_substituicao)).to be(true)
 	end
 
-	# it "deve criar um xml válido para mensagem de prorrogamento de prazo 1" do |test|
-	# 	schema = Nokogiri::XML::Schema(File.open(schema_evento_prorrogar_prazo_1))
-	# 	puts schema.validate(xml_evento_prorrogar_prazo_1) if !schema.valid?(xml_evento_prorrogar_prazo_1)
-	# 	expect(schema.valid?(xml_evento_prorrogar_prazo_1)).to be(true)
-	# end
+	it "deve criar um xml válido para mensagem de prorrogamento de prazo 1" do |test|
+		schema = Nokogiri::XML::Schema(File.open(schema_evento_prorrogar_prazo_1))
+		puts schema.validate(xml_evento_prorrogar_prazo_1) if !schema.valid?(xml_evento_prorrogar_prazo_1)
+		expect(schema.valid?(xml_evento_prorrogar_prazo_1)).to be(true)
+	end
 
 	# it "deve criar um xml válido para mensagem de prorrogamento de prazo 2" do |test|
 	# 	schema = Nokogiri::XML::Schema(File.open(schema_evento_prorrogar_prazo_2))
