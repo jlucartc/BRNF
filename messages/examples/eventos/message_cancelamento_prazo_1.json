@@ -1,0 +1,17 @@
+{
+	"lote":"1",
+	"codigo_orgao":"11",
+	"ambiente":"2",
+	"sequencia":"1",
+	"cpf_cnpj":"12345678911",
+	"chave_nota":"11220412345678910111550010000000000000000010",
+	"detalhes":{
+		"protocolo":"123456789101112",
+		"itens_pedido":[
+			{
+				"numero_item":"1",
+				"quantidade_item":"10"
+			}
+		]
+	}
+}
