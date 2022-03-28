@@ -33,12 +33,11 @@ require_relative 'lib/brnf'
 
 # If you wanna create an invoice with your data, use this:
 generator = BRNF::XML.new
+xml = generator.autorizar_nota(message: JSON.parse(File.open("my_json_message.json","r").read))
 
 # Object responsible for choosing the right webservice for each service, creating and
 # sending a SOAP message with the xml generated from the provided data.
 issuer = BRNF::Issuer.new(certificate_password,pfx_file_path: pfx_certificate_file_path)
-
-xml = generator.autorizar_nota(message: JSON.parse(File.open("my_json_message.json","r").read))
 
 # Sends the message with the invoice data and receives a response
 # containing fields confirming the invoice acceptance or denial.
