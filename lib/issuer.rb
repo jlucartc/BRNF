@@ -6,6 +6,38 @@ module BRNF
 
 	class Issuer
 
+		DEFAULT_UF = "RS"
+		DEFAULT_TYPE = "normal"
+		UF = {
+			"11": "RO",
+			"12": "AC",
+			"13": "AM",
+			"14": "RR",
+			"15": "PA",
+			"16": "AP",
+			"17": "TO",
+			"21": "MA",
+			"22": "PI",
+			"23": "CE",
+			"24": "RN",
+			"25": "PB",
+			"26": "PE",
+			"27": "AL",
+			"28": "SE",
+			"29": "BA",
+			"31": "MG",
+			"32": "ES",
+			"33": "RJ",
+			"35": "SP",
+			"41": "PR",
+			"42": "SC",
+			"43": "RS",
+			"50": "MS",
+			"51": "MT",
+			"52": "GO",
+			"53": "DF"
+		}
+
 		def initialize(password, pfx_file_path: nil, cert_file_path: nil, key_file_path: nil, ca_file_path: nil)
 			pfx_not_present = pfx_file_path.nil?
 			auth_files_not_present = cert_file_path.nil? or key_file_path.nil? or ca_file_path.nil?
@@ -24,188 +56,228 @@ module BRNF
 			validate_cert_file
 		end
 
-		def autorizar_nota(message,uf,environment)
-			send_message(__method__,message,uf,environment)
+		def autorizar_nota(message)
+			send_message(__method__,message)
 		end
 
-		def consultar_status_servico(message,uf,environment)
-			send_message(__method__,message,uf,environment)
+		def consultar_status_servico(message)
+			send_message(__method__,message)
 		end
 
-		def consultar_retorno_autorizacao(message,uf,environment)
-			send_message(__method__,message,uf,environment)
+		def consultar_retorno_autorizacao(message)
+			send_message(__method__,message)
 		end
 
-		def inutilizar_numeracao(message,uf,environment)
-			send_message(__method__,message,uf,environment)
+		def inutilizar_numeracao(message)
+			send_message(__method__,message)
 		end
 
-		def nfe_distribuicao_dfe(message,uf,environment)
-			send_message(__method__,message,uf,environment)
+		def nfe_distribuicao_dfe(message)
+			send_message(__method__,message)
 		end
 
-		def consultar_protocolo(message,uf,environment)
-			send_message(__method__,message,uf,environment)
+		def consultar_protocolo(message)
+			send_message(__method__,message)
 		end
 
-		def criar_carta_correcao(message,uf,environment)
-			send_message(__method__,message,uf,environment)
+		def criar_carta_correcao(message)
+			send_message(__method__,message)
 		end
 
-		def confirmacao_da_operacao(message,uf,environment)
-			send_message(__method__,message,uf,environment)
+		def confirmacao_da_operacao(message)
+			send_message(__method__,message)
 		end
 
-		def ciencia_da_operacao(message,uf,environment)
-			send_message(__method__,message,uf,environment)
+		def ciencia_da_operacao(message)
+			send_message(__method__,message)
 		end
 
-		def desconhecimento_da_operacao(message,uf,environment)
-			send_message(__method__,message,uf,environment)
+		def desconhecimento_da_operacao(message)
+			send_message(__method__,message)
 		end
 
-		def operacao_nao_realizada(message,uf,environment)
-			send_message(__method__,message,uf,environment)
+		def operacao_nao_realizada(message)
+			send_message(__method__,message)
 		end
 
-		def emissao_contingencia(message,uf,environment)
-			send_message(__method__,message,uf,environment)
+		def emissao_contingencia(message)
+			send_message(__method__,message)
 		end
 
-		def cancelar_nota_substituicao(message,uf,environment)
-			send_message(__method__,message,uf,environment)
+		def cancelar_nota_substituicao(message)
+			send_message(__method__,message)
 		end
 
-		def cancelar_nota(message,uf,environment)
-			send_message(__method__,message,uf,environment)
+		def cancelar_nota(message)
+			send_message(__method__,message)
 		end
 
-		def prorrogar_prazo_1(message,uf,environment)
-			send_message(__method__,message,uf,environment)
+		def prorrogar_prazo_1(message)
+			send_message(__method__,message)
 		end
 
-		def prorrogar_prazo_2(message,uf,environment)
-			send_message(__method__,message,uf,environment)
+		def prorrogar_prazo_2(message)
+			send_message(__method__,message)
 		end
 
-		def ator_interessado(message,uf,environment)
-			send_message(__method__,message,uf,environment)
+		def ator_interessado(message)
+			send_message(__method__,message)
 		end
 
-		def cancelamento_prazo_1(message,uf,environment)
-			send_message(__method__,message,uf,environment)
+		def cancelamento_prazo_1(message)
+			send_message(__method__,message)
 		end
 		
-		def cancelamento_prazo_2(message,uf,environment)
-			send_message(__method__,message,uf,environment)
+		def cancelamento_prazo_2(message)
+			send_message(__method__,message)
 		end
 
-		def consultar_cadastro(message,uf,environment)
-			send_message(__method__,message,uf,environment)
+		def consultar_cadastro(message)
+			send_message(__method__,message)
 		end
 
 		private
 
-		def send_message(service,message,uf,environment)
+		def send_message(service,message)
 			case service
 			when :autorizar_nota
  				service_name = "NFeAutorizacao" 				
- 				type = "normal"
+ 				type = DEFAULT_TYPE
+ 				uf = message.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:emit//xs:enderEmit//xs:UF","xs" => "http://www.portalfiscal.inf.br/nfe").first.content
+ 				environment = message.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:ide//xs:tpAmb","xs" => "http://www.portalfiscal.inf.br/nfe").first.content
  				service_url = BRNF::WebServices::get_webservice(uf,type,environment,service_name)[:url]
  				call_service(service_url,message)
 			when :consultar_status_servico
  				service_name = "NfeStatusServico" 				
- 				type = "normal"
+ 				type = DEFAULT_TYPE
+ 				uf = UF[message.xpath("//xs:consStatServ//xs:cUF","xs" => "http://www.portalfiscal.inf.br/nfe").first.content]
+ 				environment = message.xpath("//xs:consStatServ//xs:tpAmb","xs" => "http://www.portalfiscal.inf.br/nfe").first.content
  				service_url = BRNF::WebServices::get_webservice(uf,type,environment,service_name)[:url]
- 				call_service(service_url,message)				
+ 				call_service(service_url,message)
 			when :consultar_retorno_autorizacao
- 				service_name = "NFeRetAutorizacao" 				
- 				type = "normal"
+ 				service_name = "NFeRetAutorizacao"
+ 				type = DEFAULT_TYPE
+				uf = message.xpath("//xs:consReciNFe//xs:nRec","xs" => "http://www.portalfiscal.inf.br/nfe").first.content
+ 				environment = message.xpath("//xs:consReciNFe//xs:tpAmb","xs" => "http://www.portalfiscal.inf.br/nfe").first.content
  				service_url = BRNF::WebServices::get_webservice(uf,type,environment,service_name)[:url]
- 				call_service(service_url,message)		
+ 				call_service(service_url,message)
 			when :inutilizar_numeracao
-				service_name = "NfeInutilizacao"                            				
- 				type = "normal"
+				service_name = "NfeInutilizacao"
+ 				type = DEFAULT_TYPE
+ 				uf = UF[message.xpath("//xs:inutNFe//xs:infInut//xs:cUF","xs" => "http://www.portalfiscal.inf.br/nfe").first.content]
+ 				environment = message.xpath("//xs:inutNFe//xs:infInut//xs:tpAmb","xs" => "http://www.portalfiscal.inf.br/nfe").first.content
  				service_url = BRNF::WebServices::get_webservice(uf,type,environment,service_name)[:url]
  				call_service(service_url,message)
 			when :nfe_distribuicao_dfe
-				service_name = "RecepcaoEvento"				
- 				type = "normal"
+				service_name = "RecepcaoEvento"
+ 				type = DEFAULT_TYPE
+ 				uf = UF[message.xpath("//xs:distDFeInt//xs:cUFAutor","xs" => "http://www.portalfiscal.inf.br/nfe").first.content]
+ 				environment = message.xpath("//xs:distDFeInt//xs:tpAmb","xs" => "http://www.portalfiscal.inf.br/nfe").first.content
  				service_url = BRNF::WebServices::get_webservice(uf,type,environment,service_name)[:url]
- 				call_service(service_url,message)		
+ 				call_service(service_url,message)
 			when :consultar_protocolo
- 				service_name = "NfeConsultaProtocolo" 				
- 				type = "normal"
+ 				service_name = "NfeConsultaProtocolo"
+ 				type = DEFAULT_TYPE
+ 				uf = UF[message.xpath("//xs:consSitNFe//xs:chNFe","xs" => "http://www.portalfiscal.inf.br/nfe").first.content[0..1]]
+ 				environment = message.xpath("//xs:consSitNFe//xs:tpAmb","xs" => "http://www.portalfiscal.inf.br/nfe").first.content
  				service_url = BRNF::WebServices::get_webservice(uf,type,environment,service_name)[:url]
  				call_service(service_url,message)
 			when :criar_carta_correcao
-				service_name = "RecepcaoEvento"				
- 				type = "normal"
+				service_name = "RecepcaoEvento"
+ 				type = DEFAULT_TYPE
+ 				uf = UF[message.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:cOrgao","xs" => "http://www.portalfiscal.inf.br/nfe").first.content]
+ 				environment = message.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:tpAmb","xs" => "http://www.portalfiscal.inf.br/nfe").first.content
  				service_url = BRNF::WebServices::get_webservice(uf,type,environment,service_name)[:url]
  				call_service(service_url,message)
 			when :confirmacao_da_operacao
-				service_name = "RecepcaoEvento"				
- 				type = "normal"
+				service_name = "RecepcaoEvento"
+ 				type = DEFAULT_TYPE
+ 				uf = UF[message.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:cOrgao","xs" => "http://www.portalfiscal.inf.br/nfe").first.content]
+ 				environment = message.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:tpAmb","xs" => "http://www.portalfiscal.inf.br/nfe").first.content
  				service_url = BRNF::WebServices::get_webservice(uf,type,environment,service_name)[:url]
  				call_service(service_url,message)
 			when :ciencia_da_operacao
 				service_name = "RecepcaoEvento"				
- 				type = "normal"
+ 				type = DEFAULT_TYPE
+ 				uf = UF[message.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:cOrgao","xs" => "http://www.portalfiscal.inf.br/nfe").first.content]
+ 				environment = message.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:tpAmb","xs" => "http://www.portalfiscal.inf.br/nfe").first.content
  				service_url = BRNF::WebServices::get_webservice(uf,type,environment,service_name)[:url]
  				call_service(service_url,message)
 			when :desconhecimento_da_operacao
 				service_name = "RecepcaoEvento"				
- 				type = "normal"
+ 				type = DEFAULT_TYPE
+ 				uf = UF[ message.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:cOrgao","xs" => "http://www.portalfiscal.inf.br/nfe").first.content]
+ 				environment = message.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:tpAmb","xs" => "http://www.portalfiscal.inf.br/nfe").first.content
  				service_url = BRNF::WebServices::get_webservice(uf,type,environment,service_name)[:url]
  				call_service(service_url,message)
 			when :operacao_nao_realizada
 				service_name = "RecepcaoEvento"				
- 				type = "normal"
+ 				type = DEFAULT_TYPE
+ 				uf = UF[message.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:cOrgao","xs" => "http://www.portalfiscal.inf.br/nfe").first.content]
+ 				environment = message.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:tpAmb","xs" => "http://www.portalfiscal.inf.br/nfe").first.content
  				service_url = BRNF::WebServices::get_webservice(uf,type,environment,service_name)[:url]
  				call_service(service_url,message)
 			when :emissao_contingencia
 				service_name = "RecepcaoEvento"				
  				type = "contingencia"
+ 				uf = UF[message.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:cOrgao","xs" => "http://www.portalfiscal.inf.br/nfe").first.content]
+ 				environment = message.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:tpAmb","xs" => "http://www.portalfiscal.inf.br/nfe").first.content
  				service_url = BRNF::WebServices::get_webservice(uf,type,environment,service_name)[:url]
  				call_service(service_url,message)
 			when :cancelar_nota_substituicao
 				service_name = "RecepcaoEvento"				
- 				type = "normal"
+ 				type = DEFAULT_TYPE
+ 				uf = UF[message.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:cOrgao","xs" => "http://www.portalfiscal.inf.br/nfe").first.content]
+ 				environment = message.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:tpAmb","xs" => "http://www.portalfiscal.inf.br/nfe").first.content
  				service_url = BRNF::WebServices::get_webservice(uf,type,environment,service_name)[:url]
  				call_service(service_url,message)
 			when :cancelar_nota
 				service_name = "RecepcaoEvento"				
- 				type = "normal"
+ 				type = DEFAULT_TYPE
+ 				uf = UF[message.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:cOrgao","xs" => "http://www.portalfiscal.inf.br/nfe").first.content]
+ 				environment = message.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:tpAmb","xs" => "http://www.portalfiscal.inf.br/nfe").first.content
  				service_url = BRNF::WebServices::get_webservice(uf,type,environment,service_name)[:url]
  				call_service(service_url,message)
 			when :prorrogar_prazo_1
 				service_name = "RecepcaoEvento"				
- 				type = "normal"
+ 				type = DEFAULT_TYPE
+ 				uf = UF[message.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:cOrgao","xs" => "http://www.portalfiscal.inf.br/nfe").first.content]
+ 				environment = message.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:tpAmb","xs" => "http://www.portalfiscal.inf.br/nfe").first.content
  				service_url = BRNF::WebServices::get_webservice(uf,type,environment,service_name)[:url]
  				call_service(service_url,message)
 			when :prorrogar_prazo_2
 				service_name = "RecepcaoEvento"				
- 				type = "normal"
+ 				type = DEFAULT_TYPE
+ 				uf = UF[message.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:cOrgao","xs" => "http://www.portalfiscal.inf.br/nfe").first.content]
+ 				environment = message.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:tpAmb","xs" => "http://www.portalfiscal.inf.br/nfe").first.content
  				service_url = BRNF::WebServices::get_webservice(uf,type,environment,service_name)[:url]
  				call_service(service_url,message)
 			when :ator_interessado
 				service_name = "RecepcaoEvento"				
- 				type = "normal"
+ 				type = DEFAULT_TYPE
+ 				uf = UF[message.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:cOrgao","xs" => "http://www.portalfiscal.inf.br/nfe").first.content]
+ 				environment = message.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:tpAmb","xs" => "http://www.portalfiscal.inf.br/nfe").first.content
  				service_url = BRNF::WebServices::get_webservice(uf,type,environment,service_name)[:url]
  				call_service(service_url,message)
 			when :cancelamento_prazo_1
 				service_name = "RecepcaoEvento"				
- 				type = "normal"
+ 				type = DEFAULT_TYPE
+ 				uf = UF[message.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:cOrgao","xs" => "http://www.portalfiscal.inf.br/nfe").first.content]
+ 				environment = message.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:tpAmb","xs" => "http://www.portalfiscal.inf.br/nfe").first.content
  				service_url = BRNF::WebServices::get_webservice(uf,type,environment,service_name)[:url]
  				call_service(service_url,message)
 			when :cancelamento_prazo_2
 				service_name = "RecepcaoEvento"				
- 				type = "normal"
+ 				type = DEFAULT_TYPE
+ 				uf = UF[message.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:cOrgao","xs" => "http://www.portalfiscal.inf.br/nfe").first.content]
+ 				environment = message.xpath("//xs:envEvento//xs:evento//xs:infEvento//xs:tpAmb","xs" => "http://www.portalfiscal.inf.br/nfe").first.content
  				service_url = BRNF::WebServices::get_webservice(uf,type,environment,service_name)[:url]
  				call_service(service_url,message)
 			when :consultar_cadastro
  				service_name = "NfeConsultaCadastro" 				
- 				type = "normal"
+ 				type = DEFAULT_TYPE
+ 				uf = message.xpath("//xs:ConsCad//xs:infCons//xs:UF","xs" => "http://www.portalfiscal.inf.br/nfe")
+ 				environment = "1"
  				service_url = BRNF::WebServices::get_webservice(uf,type,environment,service_name)[:url]
  				call_service(service_url,message)
 			end

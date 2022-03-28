@@ -38,13 +38,11 @@ generator = BRNF::XML.new
 # sending a SOAP message with the xml generated from the provided data.
 issuer = BRNF::Issuer.new(certificate_password,pfx_file_path: pfx_certificate_file_path)
 
-xml = generator.autorizar_nota(message: JSON.parse(File.open("my_json_message.json","r").read) )
+xml = generator.autorizar_nota(message: JSON.parse(File.open("my_json_message.json","r").read))
 
 # Sends the message with the invoice data and receives a response
 # containing fields confirming the invoice acceptance or denial.
-# It needs to specify the UF to where the message is being sent and
-# the webservice environment (1 - production, 2 - test)
-response = issuer.autorizar_nota(xml,"CE","2")
+response = issuer.autorizar_nota(xml)
 ```
 
 If you dont have a .pfx file and instead have .pem files, you can create an `Issuer` instance like this:
