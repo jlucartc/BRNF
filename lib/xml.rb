@@ -104,83 +104,83 @@ module BRNF
 
 	class Validator
 
-		def autorizar_nota(message: nil)
+		def autorizar_nota(message)
 			validate_xml(message,__method__)
 		end
 
-		def consultar_status_servico(message: nil)
+		def consultar_status_servico(message)
 			validate_xml(message,__method__)
 		end
 
-		def consultar_retorno_autorizacao(message: nil)
+		def consultar_retorno_autorizacao(message)
 			validate_xml(message,__method__)
 		end
 
-		def inutilizar_numeracao(message: nil)
+		def inutilizar_numeracao(message)
 			validate_xml(message,__method__)
 		end
 
-		def nfe_distribuicao_dfe(message: nil)
+		def nfe_distribuicao_dfe(message)
 			validate_xml(message,__method__)
 		end
 
-		def consultar_protocolo(message: nil)
+		def consultar_protocolo(message)
 			validate_xml(message,__method__)
 		end
 
-		def criar_carta_correcao(message: nil)
+		def criar_carta_correcao(message)
 			validate_xml(message,__method__)
 		end
 
-		def confirmacao_da_operacao(message: nil)
+		def confirmacao_da_operacao(message)
 			validate_xml(message,__method__)
 		end
 
-		def ciencia_da_operacao(message: nil)
+		def ciencia_da_operacao(message)
 			validate_xml(message,__method__)
 		end
 
-		def desconhecimento_da_operacao(message: nil)
+		def desconhecimento_da_operacao(message)
 			validate_xml(message,__method__)
 		end
 
-		def operacao_nao_realizada(message: nil)
+		def operacao_nao_realizada(message)
 			validate_xml(message,__method__)
 		end
 
-		def emissao_contingencia(message: nil)
+		def emissao_contingencia(message)
 			validate_xml(message,__method__)
 		end
 
-		def cancelar_nota_substituicao(message: nil)
+		def cancelar_nota_substituicao(message)
 			validate_xml(message,__method__)
 		end
 
-		def cancelar_nota(message: nil)
+		def cancelar_nota(message)
 			validate_xml(message,__method__)
 		end
 
-		def prorrogar_prazo_1(message: nil)
+		def prorrogar_prazo_1(message)
 			validate_xml(message,__method__)
 		end
 
-		def prorrogar_prazo_2(message: nil)
+		def prorrogar_prazo_2(message)
 			validate_xml(message,__method__)
 		end
 
-		def ator_interessado(message: nil)
+		def ator_interessado(message)
 			validate_xml(message,__method__)
 		end
 
-		def cancelamento_prazo_1(message: nil)
+		def cancelamento_prazo_1(message)
 			validate_xml(message,__method__)
 		end
 		
-		def cancelamento_prazo_2(message: nil)
+		def cancelamento_prazo_2(message)
 			validate_xml(message,__method__)
 		end
 
-		def consultar_cadastro(message: nil)
+		def consultar_cadastro(message)
 			validate_xml(message,__method__)
 		end
 
