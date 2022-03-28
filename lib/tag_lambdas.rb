@@ -1,4 +1,6 @@
 require 'bigdecimal/util'
+require_relative 'webservices'
+require 'digest'
 
 module BRNF
 
@@ -8937,10 +8939,33 @@ module BRNF
       		hash_csrt_xml_tag&.content = msg.dig("responsavel_tecnico","hash_csrt")
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFeSupl//xs:qrCode" => lambda{|msg,xml|
-          # como gerar o qrcode?
+          qr_code_xml_tag = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFeSupl//xs:qrCode","xs" => "http://www.portalfiscal.inf.br/nfe").first
+          ambiente_xml_tag = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:ide//xs:tpAmb","xs" => "http://www.portalfiscal.inf.br/nfe").first
+          uf_xml_tag = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:emit//xs:enderEmit//xs:UF","xs" => "http://www.portalfiscal.inf.br/nfe").first
+          id_xml_tag = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//@Id","xs" => "http://www.portalfiscal.inf.br/nfe").first
+
+          if !qr_code_xml_tag.nil?
+            qr_code_xml_tag.content = "<![CDATA[#{BRNF::WebServices::get_webservice(uf_xml_tag.content,"normal",ambiente_xml_tag.content,"qrcode")}?chNFe=#{id_xml_tag.content.gsub('NFe','')}]]>"
+          end
       	},
       	"//xs:enviNFe//xs:NFe//xs:infNFeSupl//xs:urlChave" => lambda{|msg,xml|
-          # como gerar a urlchave?
+          url_chave_xml_tag = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFeSupl//xs:urlChave","xs" => "http://www.portalfiscal.inf.br/nfe").first
+          ambiente_xml_tag = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:ide//xs:tpAmb","xs" => "http://www.portalfiscal.inf.br/nfe").first
+          uf_xml_tag = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//xs:emit//xs:enderEmit//xs:UF","xs" => "http://www.portalfiscal.inf.br/nfe").first
+          id_xml_tag = xml.xpath("//xs:enviNFe//xs:NFe//xs:infNFe//@Id","xs" => "http://www.portalfiscal.inf.br/nfe").first
+          
+          if !url_chave_xml_tag.nil?
+            chave = id_xml_tag.content.gsub('NFe','')
+            versao = "2"
+            ambiente = ambiente_xml_tag.content
+            identificador_csc = msg["identificador_csc"]
+            csc = msg["csc"]
+            string_parametros = "#{chave}|#{versao}|#{ambiente}|#{identificador_csc.to_i}|#{csc}"
+            codigo_hash = Digest::SHA1.hexdigest(string_parametros)
+            url = "#{BRNF::WebServices::get_webservice(uf_xml_tag.content,"normal",ambiente_xml_tag.content,"url_chave")}"
+
+            url_chave_xml_tag.content = "#{url}?p=#{string_parametros}|#{codigo_hash}"
+          end
       	}
       }
     end
