@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.description = "Issues brazilian invoice and generates invoice XML with random data. It can also generate XML for other SEFAZ services."
   s.authors     = ["jlucartc"]
   s.email       = 'jlucartc@gmail.com'
-  s.files       = ["lib/brnf.rb","lib/builder.rb","lib/generator.rb","lib/issuer.rb","lib/parser.rb","lib/signer.rb","lib/tag_lambdas.rb","lib/tag_map.rb","lib/tags.csv","lib/webservices.rb","lib/xml.rb"]
+  s.files       = Dir['lib/*','schemas/*']
   s.homepage    = "https://github.com/jlucartc/BRNF"
   s.add_dependency 'openssl', '2.2.0'
   s.add_dependency 'nokogiri', '1.13.3'
