@@ -31,6 +31,8 @@
                   "indicador_presencial":{"type":"string","description":"Determina se o comprador realizou a operação de forma presencial(normal(1),presencial com entrega a domicilio(4),presencial fora do estabelecimento(5)), remota(pela internet(2),por teleatendimento(3),outro tipo(9)) ou onde não se aplica esse critério(0).","enum":["0","1","2","3","4","5","9"]},
                   "versao_aplicacao":{"type":"string","description":"Versão da aplicação de emissao de notas."},
                   "justificativa_contingencia":{"type":"string","description":"Informa o motivo da contigência. Obrigatório apenas em caso de emissão em contingência."},
+                  "identificador_csc":{"type":"string"},
+                  "csc":{"type":"string"},
                   "notas_referenciadas":{
                     "type":"array",
                     "items":{
