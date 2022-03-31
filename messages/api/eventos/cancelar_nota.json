@@ -23,7 +23,7 @@
 									"cpf_cnpj":{"type":"string","description":"CPF/CNPJ do autor do evento."},
 									"chave_nota":{"type":"string","description":"Chave da nota do evento."},
 									"detalhes":{
-										"required":["protocolo"],
+										"required":["protocolo","justificativa"],
 										"type":"object",
 										"properties":{
 											"protocolo":{"type":"string"},

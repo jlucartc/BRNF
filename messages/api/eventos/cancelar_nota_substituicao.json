@@ -24,7 +24,7 @@
 									"chave_nota":{"type":"string","description":"Chave da nota do evento."},
 									"detalhes":{
 										"type":"object",
-										"required":["codigo_orgao_autor","tipo_autor","versao_aplicacao","protocolo","chave_nota_substituta"],
+										"required":["codigo_orgao_autor","tipo_autor","versao_aplicacao","protocolo","justificativa","chave_nota_substituta"],
 										"properties":{
 											"codigo_orgao_autor":{"type":"string"},
 											"tipo_autor":{"type":"string"},

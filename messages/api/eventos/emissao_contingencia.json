@@ -24,12 +24,11 @@
 									"chave_nota":{"type":"string","description":"Chave da nota do evento."},
 									"detalhes":{
 										"type":"object",
-										"required":["tipo_autor","versao_aplicacao","data_emissao","tipo_operacao","destinatario"],
+										"required":["codigo_orgao_autor","tipo_autor","versao_aplicacao","data_emissao","tipo_operacao","destinatario"],
 										"properties":{
 											"codigo_orgao_autor":{"type":"string"},
 											"tipo_autor":{"type":"string"},
 											"versao_aplicacao":{"type":"string"},
-											"data_emissao":{"type":"string"},
 											"tipo_operacao":{"type":"string"},
 											"inscricao_estadual":{"type":"string"},
 											"destinatario":{

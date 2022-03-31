@@ -201,8 +201,12 @@ module BRNF
 
 		def ator_interessado(message)
 			message["tipo_evento"] = "110150"
-			message["detalhes"]["descricao"] = "Ator interessado na NF-e"
-			message["detalhes"]["condicao_uso"] = "O emitente ou destinatário da NF-e, declara que permite o transportador declarado no campo CNPJ/CPF deste evento a autorizar os transportadores subcontratados ou redespachados a terem acesso ao download da NF-e"
+			
+			if !message["detalhes"].nil?
+				message["detalhes"]["descricao"] = "Ator interessado na NF-e"
+				message["detalhes"]["condicao_uso"] = "O emitente ou destinatário da NF-e, declara que permite o transportador declarado no campo CNPJ/CPF deste evento a autorizar os transportadores subcontratados ou redespachados a terem acesso ao download da NF-e"
+			end
+
 			xml = @builder.build_xml(476,keep_mutex_tags: true)
 			fill_constant_fields(xml)
 			fill_xml(message,xml)

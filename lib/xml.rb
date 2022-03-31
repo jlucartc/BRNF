@@ -5,7 +5,6 @@ require_relative 'issuer'
 module BRNF
 
 	class XML
-
 		def initialize
 			@generator = BRNF::Generator.new
 			@parser = BRNF::Parser.new
@@ -93,17 +92,16 @@ module BRNF
 
 		private
 
-		def generate_xml(message,metodo)
+		def generate_xml(message,method_name)
 			if !message.nil?
-				xml = @parser.public_send(metodo,message)
+				xml = @parser.public_send(method_name,message)
 			elsif message.nil?
-				xml = @generator.public_send(metodo)
+				xml = @generator.public_send(method_name)
 			end
 		end
 	end
 
 	class Validator
-
 		def autorizar_nota(message)
 			validate_xml(message,__method__)
 		end

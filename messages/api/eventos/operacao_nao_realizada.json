@@ -24,6 +24,7 @@
 									"chave_nota":{"type":"string","description":"Chave da nota do evento."},
 									"detalhes":{
 										"type":"object",
+										"required":["justificativa"],
 										"properties":{
 											"justificativa":{"type":"string"}
 										}

@@ -1,0 +1,14 @@
+{
+	"lote":"1",
+	"codigo_orgao":"11",
+	"sequencia":"1",
+	"cpf_cnpj":"12345678910112",
+	"chave_nota":"21220312345678910112550010000000000000000000",
+	"detalhes":{
+		"codigo_orgao_autor":"11",
+		"tipo_autor":"1",
+		"versao_aplicacao":"1.0.0",
+		"cpf_cnpj_autorizado":"12345678913",
+		"tipo_autorizacao":"1"
+	}
+}

@@ -1,0 +1,12 @@
+{
+	"lote":"1",
+	"codigo_orgao":"21",
+	"ambiente":"2",
+	"sequencia":"1",
+	"cpf_cnpj":"12345678910112",
+	"sequencia":"1",
+	"chave_nota":"21220312345678910112550010000000000000000000",
+	"detalhes":{
+		"justificativa":"Compra cancelada pelo cliente"
+	}
+}

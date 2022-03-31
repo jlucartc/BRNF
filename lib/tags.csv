@@ -29,7 +29,7 @@ id;name;type;parent;min;max;regex;namespace;active;inferrable;xpath;message_fiel
 28;SignatureMethod;G;25;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:SignatureMethod;
 29;Algorithm;A;28;1;1;^http://www\.w3\.org/2000/09/xmldsig#rsa-sha1$;;1;1;//xs:Signature//xs:SignedInfo//xs:SignatureMethod//@Algorithm;
 30;Reference;G;25;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference;
-31;URI;A;30;1;1;"^[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{1}[ a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{0,58}[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{1}$";;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//@URI;
+31;URI;A;30;1;1;"^[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{1}[ a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{0,58}[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{1}$";;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//@URI;
 32;Transforms;G;30;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms;
 33;Transform;G;32;2;2;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms//xs:Transform;
 34;Algorithm;A;33;1;1;^http://www\.w3\.org/2000/09/xmldsig#enveloped-signature$;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms//xs:Transform//@Algorithm;
@@ -99,7 +99,7 @@ id;name;type;parent;min;max;regex;namespace;active;inferrable;xpath;message_fiel
 98;SignatureMethod;G;95;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:SignatureMethod;
 99;Algorithm;A;98;1;1;^http://www\.w3\.org/2000/09/xmldsig#rsa-sha1$;;1;1;//xs:Signature//xs:SignedInfo//xs:SignatureMethod//@Algorithm;
 100;Reference;G;95;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference;
-101;URI;A;100;1;1;"^[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{1}[ a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{0,58}[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{1}$";;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//@URI;
+101;URI;A;100;1;1;"^[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{1}[ a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{0,58}[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{1}$";;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//@URI;
 102;Transforms;G;100;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms;
 103;Transform;G;102;2;2;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms//xs:Transform;
 104;Algorithm;A;103;1;1;^http://www\.w3\.org/2000/09/xmldsig#enveloped-signature$;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms//xs:Transform//@Algorithm;
@@ -139,7 +139,7 @@ id;name;type;parent;min;max;regex;namespace;active;inferrable;xpath;message_fiel
 138;SignatureMethod;G;135;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:SignatureMethod;
 139;Algorithm;A;138;1;1;^http://www\.w3\.org/2000/09/xmldsig#rsa-sha1$;;1;1;//xs:Signature//xs:SignedInfo//xs:SignatureMethod//@Algorithm;
 140;Reference;G;135;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference;
-141;URI;A;140;1;1;"^[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{1}[ a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{0,58}[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{1}$";;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//@URI;
+141;URI;A;140;1;1;"^[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{1}[ a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{0,58}[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{1}$";;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//@URI;
 142;Transforms;G;140;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms;
 143;Transform;G;142;2;2;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms//xs:Transform;
 144;Algorithm;A;143;1;1;^http://www\.w3\.org/2000/09/xmldsig#enveloped-signature$;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms//xs:Transform//@Algorithm;
@@ -179,7 +179,7 @@ id;name;type;parent;min;max;regex;namespace;active;inferrable;xpath;message_fiel
 178;SignatureMethod;G;175;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:SignatureMethod;
 179;Algorithm;A;178;1;1;^http://www\.w3\.org/2000/09/xmldsig#rsa-sha1$;;1;1;//xs:Signature//xs:SignedInfo//xs:SignatureMethod//@Algorithm;
 180;Reference;G;175;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference;
-181;URI;A;180;1;1;"^[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{1}[ a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{0,58}[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{1}$";;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//@URI;
+181;URI;A;180;1;1;"^[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{1}[ a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{0,58}[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{1}$";;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//@URI;
 182;Transforms;G;180;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms;
 183;Transform;G;182;2;2;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms//xs:Transform;
 184;Algorithm;A;183;1;1;^http://www\.w3\.org/2000/09/xmldsig#enveloped-signature$;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms//xs:Transform//@Algorithm;
@@ -219,7 +219,7 @@ id;name;type;parent;min;max;regex;namespace;active;inferrable;xpath;message_fiel
 218;SignatureMethod;G;215;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:SignatureMethod;
 219;Algorithm;A;218;1;1;^http://www\.w3\.org/2000/09/xmldsig#rsa-sha1$;;1;1;//xs:Signature//xs:SignedInfo//xs:SignatureMethod//@Algorithm;
 220;Reference;G;215;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference;
-221;URI;A;220;1;1;"^[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{1}[ a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{0,58}[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{1}$";;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//@URI;
+221;URI;A;220;1;1;"^[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{1}[ a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{0,58}[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{1}$";;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//@URI;
 222;Transforms;G;220;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms;
 223;Transform;G;222;2;2;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms//xs:Transform;
 224;Algorithm;A;223;1;1;^http://www\.w3\.org/2000/09/xmldsig#enveloped-signature$;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms//xs:Transform//@Algorithm;
@@ -259,7 +259,7 @@ id;name;type;parent;min;max;regex;namespace;active;inferrable;xpath;message_fiel
 258;SignatureMethod;G;255;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:SignatureMethod;
 259;Algorithm;A;258;1;1;^http://www\.w3\.org/2000/09/xmldsig#rsa-sha1$;;1;1;//xs:Signature//xs:SignedInfo//xs:SignatureMethod//@Algorithm;
 260;Reference;G;255;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference;
-261;URI;A;260;1;1;"^[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{1}[ a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{0,58}[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{1}$";;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//@URI;
+261;URI;A;260;1;1;"^[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{1}[ a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{0,58}[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{1}$";;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//@URI;
 262;Transforms;G;260;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms;
 263;Transform;G;262;2;2;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms//xs:Transform;
 264;Algorithm;A;263;1;1;^http://www\.w3\.org/2000/09/xmldsig#enveloped-signature$;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms//xs:Transform//@Algorithm;
@@ -299,7 +299,7 @@ id;name;type;parent;min;max;regex;namespace;active;inferrable;xpath;message_fiel
 298;SignatureMethod;G;295;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:SignatureMethod;
 299;Algorithm;A;298;1;1;^http://www\.w3\.org/2000/09/xmldsig#rsa-sha1$;;1;1;//xs:Signature//xs:SignedInfo//xs:SignatureMethod//@Algorithm;
 300;Reference;G;295;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference;
-301;URI;A;300;1;1;"^[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{1}[ a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{0,58}[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{1}$";;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//@URI;
+301;URI;A;300;1;1;"^[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{1}[ a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{0,58}[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{1}$";;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//@URI;
 302;Transforms;G;300;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms;
 303;Transform;G;302;2;2;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms//xs:Transform;
 304;Algorithm;A;303;1;1;^http://www\.w3\.org/2000/09/xmldsig#enveloped-signature$;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms//xs:Transform//@Algorithm;
@@ -339,7 +339,7 @@ id;name;type;parent;min;max;regex;namespace;active;inferrable;xpath;message_fiel
 338;SignatureMethod;G;335;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:SignatureMethod;
 339;Algorithm;A;338;1;1;^http://www\.w3\.org/2000/09/xmldsig#rsa-sha1$;;1;1;//xs:Signature//xs:SignedInfo//xs:SignatureMethod//@Algorithm;
 340;Reference;G;335;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference;
-341;URI;A;340;1;1;"^[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{1}[ a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{0,58}[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{1}$";;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//@URI;
+341;URI;A;340;1;1;"^[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{1}[ a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{0,58}[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{1}$";;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//@URI;
 342;Transforms;G;340;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms;
 343;Transform;G;342;2;2;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms//xs:Transform;
 344;Algorithm;A;343;1;1;^http://www\.w3\.org/2000/09/xmldsig#enveloped-signature$;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms//xs:Transform//@Algorithm;
@@ -379,7 +379,7 @@ id;name;type;parent;min;max;regex;namespace;active;inferrable;xpath;message_fiel
 378;SignatureMethod;G;375;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:SignatureMethod;
 379;Algorithm;A;378;1;1;^http://www\.w3\.org/2000/09/xmldsig#rsa-sha1$;;1;1;//xs:Signature//xs:SignedInfo//xs:SignatureMethod//@Algorithm;
 380;Reference;G;375;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference;
-381;URI;A;380;1;1;"^[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{1}[ a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{0,58}[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{1}$";;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//@URI;
+381;URI;A;380;1;1;"^[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{1}[ a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{0,58}[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{1}$";;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//@URI;
 382;Transforms;G;380;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms;
 383;Transform;G;382;2;2;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms//xs:Transform;
 384;Algorithm;A;383;1;1;^http://www\.w3\.org/2000/09/xmldsig#enveloped-signature$;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms//xs:Transform//@Algorithm;
@@ -419,7 +419,7 @@ id;name;type;parent;min;max;regex;namespace;active;inferrable;xpath;message_fiel
 418;SignatureMethod;G;415;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:SignatureMethod;
 419;Algorithm;A;418;1;1;^http://www\.w3\.org/2000/09/xmldsig#rsa-sha1$;;1;1;//xs:Signature//xs:SignedInfo//xs:SignatureMethod//@Algorithm;
 420;Reference;G;415;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference;
-421;URI;A;420;1;1;"^[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{1}[ a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{0,58}[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{1}$";;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//@URI;
+421;URI;A;420;1;1;"^[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{1}[ a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{0,58}[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{1}$";;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//@URI;
 422;Transforms;G;420;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms;
 423;Transform;G;422;2;2;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms//xs:Transform;
 424;Algorithm;A;423;1;1;^http://www\.w3\.org/2000/09/xmldsig#enveloped-signature$;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms//xs:Transform//@Algorithm;
@@ -459,7 +459,7 @@ id;name;type;parent;min;max;regex;namespace;active;inferrable;xpath;message_fiel
 458;SignatureMethod;G;455;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:SignatureMethod;
 459;Algorithm;A;458;1;1;^http://www\.w3\.org/2000/09/xmldsig#rsa-sha1$;;1;1;//xs:Signature//xs:SignedInfo//xs:SignatureMethod//@Algorithm;
 460;Reference;G;455;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference;
-461;URI;A;460;1;1;"^[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{1}[ a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{0,58}[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{1}$";;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//@URI;
+461;URI;A;460;1;1;"^[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{1}[ a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{0,58}[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{1}$";;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//@URI;
 462;Transforms;G;460;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms;
 463;Transform;G;462;2;2;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms//xs:Transform;
 464;Algorithm;A;463;1;1;^http://www\.w3\.org/2000/09/xmldsig#enveloped-signature$;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms//xs:Transform//@Algorithm;
@@ -499,7 +499,7 @@ id;name;type;parent;min;max;regex;namespace;active;inferrable;xpath;message_fiel
 498;SignatureMethod;G;495;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:SignatureMethod;
 499;Algorithm;A;498;1;1;^http://www\.w3\.org/2000/09/xmldsig#rsa-sha1$;;1;1;//xs:Signature//xs:SignedInfo//xs:SignatureMethod//@Algorithm;
 500;Reference;G;495;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference;
-501;URI;A;500;1;1;"^[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{1}[ a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{0,58}[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{1}$";;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//@URI;
+501;URI;A;500;1;1;"^[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{1}[ a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{0,58}[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{1}$";;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//@URI;
 502;Transforms;G;500;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms;
 503;Transform;G;502;2;2;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms//xs:Transform;
 504;Algorithm;A;503;1;1;^http://www\.w3\.org/2000/09/xmldsig#enveloped-signature$;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms//xs:Transform//@Algorithm;
@@ -539,7 +539,7 @@ id;name;type;parent;min;max;regex;namespace;active;inferrable;xpath;message_fiel
 538;SignatureMethod;G;535;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:SignatureMethod;
 539;Algorithm;A;538;1;1;^http://www\.w3\.org/2000/09/xmldsig#rsa-sha1$;;1;1;//xs:Signature//xs:SignedInfo//xs:SignatureMethod//@Algorithm;
 540;Reference;G;535;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference;
-541;URI;A;540;1;1;"^[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{1}[ a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{0,58}[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{1}$";;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//@URI;
+541;URI;A;540;1;1;"^[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{1}[ a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{0,58}[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{1}$";;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//@URI;
 542;Transforms;G;540;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms;
 543;Transform;G;542;2;2;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms//xs:Transform;
 544;Algorithm;A;543;1;1;^http://www\.w3\.org/2000/09/xmldsig#enveloped-signature$;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms//xs:Transform//@Algorithm;
@@ -579,7 +579,7 @@ id;name;type;parent;min;max;regex;namespace;active;inferrable;xpath;message_fiel
 578;SignatureMethod;G;575;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:SignatureMethod;
 579;Algorithm;A;578;1;1;^http://www\.w3\.org/2000/09/xmldsig#rsa-sha1$;;1;1;//xs:Signature//xs:SignedInfo//xs:SignatureMethod//@Algorithm;
 580;Reference;G;575;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference;
-581;URI;A;580;1;1;"^[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{1}[ a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{0,58}[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{1}$";;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//@URI;
+581;URI;A;580;1;1;"^[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{1}[ a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{0,58}[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{1}$";;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//@URI;
 582;Transforms;G;580;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms;
 583;Transform;G;582;2;2;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms//xs:Transform;
 584;Algorithm;A;583;1;1;^http://www\.w3\.org/2000/09/xmldsig#enveloped-signature$;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms//xs:Transform//@Algorithm;
@@ -1514,7 +1514,7 @@ id;name;type;parent;min;max;regex;namespace;active;inferrable;xpath;message_fiel
 1513;SignatureMethod;G;1510;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:SignatureMethod;
 1514;Algorithm;A;1513;1;1;^http://www\.w3\.org/2000/09/xmldsig#rsa-sha1$;;1;1;//xs:Signature//xs:SignedInfo//xs:SignatureMethod//@Algorithm;
 1515;Reference;G;1510;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference;
-1516;URI;A;1515;1;1;"^[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{1}[ a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{0,58}[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@\[\]`|~]{1}$";;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//@URI;
+1516;URI;A;1515;1;1;"^[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{1}[ a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{0,58}[!a-zA-Z0-9""#$&'*+,-.\/:;<=>?@`|~]{1}$";;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//@URI;
 1517;Transforms;G;1515;1;1;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms;
 1518;Transform;G;1517;2;2;;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms//xs:Transform;
 1519;Algorithm;A;1518;1;1;^http://www\.w3\.org/2000/09/xmldsig#enveloped-signature$;;1;1;//xs:Signature//xs:SignedInfo//xs:Reference//xs:Transforms//xs:Transform//@Algorithm;

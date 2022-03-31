@@ -1,0 +1,22 @@
+{
+	"lote":"1",
+	"codigo_orgao":"21",
+	"ambiente":"2",
+	"sequencia":"1",
+	"cpf_cnpj":"12345678911",
+	"chave_nota":"21220312345678910112550020000000000000000000",
+	"detalhes":{
+		"codigo_orgao_autor":"21",
+		"versao_aplicacao":"1.0.0",
+		"data_emissao":"2022-03-01T00:00:00-03:00",
+		"tipo_operacao":"1",
+		"inscricao_estadual":"123456",
+		"destinatario":{
+			"uf":"CE",
+			"cpf_cnpj":"12345678911",
+			"valor_nota":"8",
+			"valor_icms":"5",
+			"valor_icms_st":"2"
+		}
+	}
+}
